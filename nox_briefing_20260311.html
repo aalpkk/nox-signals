@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOX Brifing — 11.03.2026 23:07</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600;700&family=Sora:wght@300;400;500;600;700;800&display=swap');
+:root {
+  --bg-primary: #09090b;
+  --bg-card: #111113;
+  --bg-elevated: #18181b;
+  --bg-hover: #1f1f23;
+  --border-subtle: #27272a;
+  --border-dim: #3f3f46;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --nox-cyan: #22d3ee;
+  --nox-cyan-dim: rgba(34,211,238,0.12);
+  --nox-orange: #fb923c;
+  --nox-orange-dim: rgba(251,146,60,0.12);
+  --nox-green: #4ade80;
+  --nox-red: #f87171;
+  --nox-purple: #c084fc;
+  --nox-yellow: #facc15;
+  --nox-blue: #60a5fa;
+  --font-display: 'Sora', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+  --radius: 10px;
+  --radius-sm: 6px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(34,211,238,0.06), transparent),
+    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(251,146,60,0.04), transparent);
+  pointer-events: none;
+  z-index: 0;
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, var(--nox-cyan), var(--nox-orange));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+.briefing-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+.briefing-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+.briefing-header h1 {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--nox-cyan);
+    margin: 0;
+}
+.briefing-header .subtitle {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+.regime-badge {
+    display: inline-block;
+    padding: 0.4rem 1.2rem;
+    border-radius: 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    margin: 1rem 0;
+    border: 1px solid;
+}
+.briefing-text {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+.briefing-text h2 {
+    color: var(--nox-cyan);
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+}
+.briefing-text strong {
+    color: var(--nox-orange);
+}
+.section-title {
+    font-family: var(--font-display);
+    color: var(--nox-cyan);
+    font-size: 1.1rem;
+    margin: 2rem 0 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.5rem;
+}
+.macro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+.macro-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+}
+.macro-card .name {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.macro-card .price {
+    font-family: var(--font-mono);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.macro-card .change {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+}
+.confluence-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+.confluence-table th {
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.confluence-table td {
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+.confluence-table tr:hover {
+    background: var(--bg-hover);
+}
+.score-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+.rec-badge {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+</style>
+</head>
+<body>
+<div class="briefing-container">
+    <div class="briefing-header">
+        <h1>⬡ NOX Brifing</h1>
+        <div class="subtitle">11.03.2026 23:07 · Otomatik piyasa analizi</div>
+        <div class="regime-badge" style="color:#f87171; border-color:#f87171">
+            RISK_OFF (Risk Skoru: -2)
+        </div>
+    </div>
+
+    <div class="briefing-text">
+        <br>
+<br>
+<p>📊 <strong>NOX Günlük Brifing — 11 Mart 2026</strong></p>
+<br>
+<p>---</p>
+<br>
+<h2>🌍 1. KÜRESEL ORTAM + SEKTÖREL GÜÇ HARİTASI</h2>
+<br>
+<p><strong>Makro Rejim: ⚠️ RISK_OFF (skor: -2)</strong></p>
+<br>
+<p>| Kategori | Detay | Rejim |</p>
+<p>|----------|-------|-------|</p>
+<p>| <strong>BIST 100</strong> | 13,200 — EMA21↓, RSI 46.8, 5G +%2.0 ama yapısal trend DOWN | 🔴 AŞAĞI |</p>
+<p>| <strong>BIST 30</strong> | 15,023 — EMA21↑, RSI 51.6, nispeten dirençli ama momentum zayıf | 🟡 FLAT |</p>
+<p>| <strong>BIST Banka</strong> | 17,594 — EMA21↓, RSI 40.3, en zayıf alt endeks, 5G -%0.1 | 🔴 AŞAĞI |</p>
+<p>| <strong>US (SPY)</strong> | 676 — EMA21↓, RSI 42.8, 5G -%1.3, yapısal downtrend | 🔴 AŞAĞI |</p>
+<p>| <strong>US (QQQ)</strong> | 608 — EMA21↓, RSI 48.8, 5G -%0.5, SPY'den iyi ama zayıf | 🟡 FLAT |</p>
+<p>| <strong>VIX</strong> | 24.63 — 5G +%16.4 🚨 Yüksek, risk_off teyidi | 🔴 YUKARI |</p>
+<p>| <strong>FX (DXY)</strong> | 99.20 — EMA21↑, RSI 61.6, güçleniyor | 🟡 YUKARI |</p>
+<p>| <strong>USD/TRY</strong> | 44.07 — EMA21↑, RSI 79.3 (aşırı alım!), stabil ama gergin | ⚠️ YUKARI |</p>
+<p>| <strong>EUR/TRY</strong> | 51.04 — EMA21↓, düşüşte | 🟢 AŞAĞI (TL lehine) |</p>
+<p>| <strong>Altın</strong> | 5,187 TL — EMA21↑, RSI 56.2, güvenli liman talebi devam | 🟢 YUKARI |</p>
+<p>| <strong>Petrol (WTI)</strong> | 87.68 — 5G +%17.4 🚨 Sert yükseliş, enerji sektörü pozitif ama TL'ye baskı | 🟢 GÜÇLÜ YUKARI |</p>
+<p>| <strong>Bakır</strong> | 5.92 — EMA21↑, RSI 53.6, endüstriyel talep sağlam | 🟢 YUKARI |</p>
+<p>| <strong>BTC</strong> | 70,558 — EMA21↑, RSI 52.4, 5G +%3.5, risk iştahı göstergesi olarak pozitif | 🟢 YUKARI |</p>
+<p>| <strong>ETH</strong> | 2,073 — EMA21↑, RSI 51.0, 5G +%4.8 | 🟢 YUKARI |</p>
+<p>| <strong>US 10Y</strong> | %4.21 — 5G +%3.1, RSI 61.5, Range %100 🚨 Faiz yükselişi EM'den çıkış baskısı | 🔴 YUKARI |</p>
+<br>
+<p><strong>Sektörel Güç Haritası:</strong></p>
+<p>- 🟢 <strong>Güçlü</strong>: Enerji (petrol rallisi), emtia odaklı sanayi, altın/maden</p>
+<p>- 🟡 <strong>Nötr</strong>: BIST30 holding (EMA21↑ ama momentum yok), teknoloji (seçici)</p>
+<p>- 🔴 <strong>Zayıf</strong>: Bankacılık (RSI 40.3, en zayıf), genel BIST100</p>
+<br>
+<p><strong>Rotasyon</strong>: Bankalardan çıkış, enerji/emtia'ya rotasyon belirgin. DXY güçleniyor + US 10Y yükseliyor = EM'ler (BIST dahil) üzerinde baskı. Petrol rallisi enerji sektörüne destek ama cari açık/TL baskısı negatif. Kripto + emtia güçlü ama equities zayıf = <strong>klasik risk_off + enflasyon hedge</strong> ortamı.</p>
+<br>
+<p><strong>Rejim Kararı</strong>: ⚠️ <strong>RISK_OFF</strong> — VIX 24.6, SPY downtrend, US 10Y yükselişte, DXY güçleniyor. BIST100 yapısal downtrend'de. Yeni pozisyon açarken çok seçici ol, pozisyon küçült.</p>
+<br>
+<p>---</p>
+<br>
+<h2>📊 2. BIST TARAMA ÖZETİ</h2>
+<br>
+<p>| Screener | AL | SAT | Toplam |</p>
+<p>|----------|-----|-----|--------|</p>
+<p>| NOX v3 Haftalık Pivot | 444 | 211 | 655 |</p>
+<p>| Regime Transition | 70 | 59 | 129 |</p>
+<p>| AL/SAT Screener | 81 | 0 | 81 |</p>
+<p>| Rejim v3 (eski) | 135 | 0 | 135 |</p>
+<p>| Tavan Scanner | 10 | 3 | 13 |</p>
+<p>| Tavan Kandidat | 5 | 1 | 6 |</p>
+<p>| NOX v3 Günlük (zayıf) | 319 | 168 | 487 |</p>
+<p>| <strong>TOPLAM</strong> | <strong>~1064 AL</strong> | <strong>~442 SAT</strong> | <strong>1506</strong> |</p>
+<br>
+<p><strong>Çakışma Dağılımı:</strong></p>
+<li>156 hisse ≥1 çakışma skoru</li>
+<p>- <strong>50 hisse 3+ kaynak çakışması</strong> — geniş sinyal üretimi var</p>
+<p>- <strong>5 kaynak çakışma</strong>: DESA (nadir, dikkat)</p>
+<p>- <strong>4 kaynak çakışma</strong>: BIMAS, CLEBI, INDES, DERHL, FONET, TGSAS, KIMMR, PCILT + İZLE grubundan KCAER, TKFEN, YEOTK, PRZMA, VBTYZ, DOGUB</p>
+<li>En çok screener'da çıkan: KERVN (6), INVES (6), POLHO (6)</li>
+<br>
+<p><strong>Bugünkü Öne Çıkan Pattern'lar:</strong></p>
+<li>DÖNÜŞ sinyali yoğunluğu yüksek (en yüksek WR sinyal tipi)</li>
+<li>HC2 tetik ağırlıklı NW sinyalleri (WR %68.3)</li>
+<li>RT TAZE pencereler açık — ANSGR, ARASE, BIMAS, TGSAS, KIMMR, ANHYT, VBTYZ hepsi skor=3</li>
+<li>Tavan tarafında GEREL (skor 70, streak 2, düşük hacim 0.5x) öne çıkıyor</li>
+<li>Badge sinyali (H+AL, H+PB) veride yok — RT'lerin detayı sorulabilir</li>
+<br>
+<p>---</p>
+<br>
+<h2>🆕 3. BUGÜN YENİ ÇIKAN SİNYALLER</h2>
+<br>
+<h3>📌 NW Haftalık Pivot AL (Tetik almış — WL durumuna göre sıralı)</h3>
+<br>
+<p><strong>WL = HAZIR (WR %77.8):</strong></p>
+<p>| Hisse | Tetik | Not |</p>
+<p>|-------|-------|-----|</p>
+<p>| <strong>TURSG</strong> | HC2 | Skor=3, 2 kaynakta. NW HAZIR + HC2 = en kaliteli NW sinyali |</p>
+<br>
+<p><strong>WL = İZLE (WR %68.9):</strong></p>
+<p>| Hisse | Tetik | Çakışma | Not |</p>
+<p>|-------|-------|---------|-----|</p>
+<p>| <strong>DERHL</strong> | HC2 | 4 kaynak, skor=3 | +RT 2.DALGA skor=3 |</p>
+<p>| <strong>LYDYE</strong> | HC2 | 3 kaynak, skor=3 | +AL/SAT DÖNÜŞ |</p>
+<p>| <strong>AKFYE</strong> | HC2 | 3 kaynak, skor=3 | +AL/SAT DÖNÜŞ |</p>
+<p>| <strong>TKFEN</strong> | HC2 | 4 kaynak, skor=2 | ⚠️ NW PIVOT_SAT da var → çelişki! |</p>
+<p>| <strong>KCAER</strong> | HC2 | 4 kaynak, skor=2 | CMF negatif (-0.165) |</p>
+<p>| <strong>PRZMA</strong> | HC2 | 4 kaynak, skor=2 | — |</p>
+<p>| <strong>DOGUB</strong> | HC2 | 4 kaynak, skor=2 | AL/SAT ZAYIF (puan yok) |</p>
+<p>| <strong>KIMMR</strong> | ZONE_ONLY | 4 kaynak, skor=3 | +RT TAZE skor=3, CMF negatif (-0.197) |</p>
+<p>| <strong>FONET</strong> | ZONE_ONLY | 4 kaynak, skor=3 | AL/SAT GÜÇLÜ, RT GÜÇLÜ |</p>
+<br>
+<p><strong>WL = BEKLE (WR %59.7):</strong></p>
+<p>| Hisse | Tetik | Çakışma | Not |</p>
+<p>|-------|-------|---------|-----|</p>
+<p>| <strong>DESA</strong> | HC2 | ⭐ 5 kaynak, skor=4 | AL/SAT DÖNÜŞ Q=90 + Tavan (skor 35) |</p>
+<p>| <strong>CLEBI</strong> | HC2 | 4 kaynak, skor=3 | AL/SAT DÖNÜŞ Q=75 |</p>
+<p>| <strong>INDES</strong> | HC2 | 4 kaynak, skor=3 | AL/SAT DÖNÜŞ Q=75 |</p>
+<p>| <strong>PCILT</strong> | HC2 | 4 kaynak, skor=3 | AL/SAT DÖNÜŞ |</p>
+<p>| <strong>EGPRO</strong> | HC2 | 3 kaynak, skor=3 | AL/SAT DÖNÜŞ |</p>
+<p>| <strong>KARSN</strong> | HC2 | 3 kaynak, skor=3 | AL/SAT DÖNÜŞ |</p>
+<p>| <strong>MIATK</strong> | HC2 | 3 kaynak, skor=3 | AL/SAT DÖNÜŞ |</p>
+<p>| <strong>AYEN</strong> | HC2 | 3 kaynak, skor=3 | AL/SAT DÖNÜŞ |</p>
+<p>| <strong>YEOTK</strong> | HC2 | 4 kaynak, skor=2 | ⚠️ OE=3, DÖNÜŞ Q=60 |</p>
+<br>
+<h3>📌 RT (Regime Transition) TAZE AL Sinyalleri</h3>
+<br>
+<p>| Hisse | RT Skor | Çakışma | Not |</p>
+<p>|-------|---------|---------|-----|</p>
+<p>| <strong>BIMAS</strong> | 3 | 4 kaynak, skor=4 | AL/SAT DÖNÜŞ Q=95 🔥 |</p>
+<p>| <strong>TGSAS</strong> | 3 | 4 kaynak, skor=3 | AL/SAT PB |</p>
+<p>| <strong>KIMMR</strong> | 3 | 4 kaynak, skor=3 | NW İZLE + ZONE_ONLY, CMF neg |</p>
+<p>| <strong>VBTYZ</strong> | 3 | 4 kaynak, skor=2 | NW ZONE_ONLY + AL/SAT PB, CMF neg (-0.164) |</p>
+<p>| <strong>ANSGR</strong> | 3 | 3 kaynak, skor=3 | AL/SAT DÖNÜŞ |</p>
+<p>| <strong>ARASE</strong> | 3 | 3 kaynak, skor=3 | AL/SAT PB |</p>
+<p>| <strong>ANHYT</strong> | 3 | 3 kaynak, skor=3 | AL/SAT DÖNÜŞ Q=75 |</p>
+<p>| <strong>DERHL</strong> | 3 | 4 kaynak, skor=3 | 2.DALGA, NW İZLE HC2 |</p>
+<p>| <strong>TKFEN</strong> | AL | 4 kaynak, skor=2 | ⚠️ NW çelişki |</p>
+<p>| <strong>YEOTK</strong> | AL | 4 kaynak, skor=2 | OE=3 |</p>
+<p>| <strong>BLCYT</strong> | AL | — | +Rejim v3 AL |</p>
+<p>| <strong>ENJSA</strong> | AL | — | +Rejim v3 AL |</p>
+<p>| <strong>ETILR</strong> | AL | — | — |</p>
+<p>| <strong>GRTHO</strong> | AL | — | — |</p>
+<p>| <strong>LIDFA</strong> | AL | — | — |</p>
+<p>| <strong>SUMAS</strong> | AL | — | — |</p>
+<p>| <strong>ENSRI</strong> | AL | — | — |</p>
+<p>| <strong>METRO</strong> | AL | — | — |</p>
+<p>| <strong>MANAS</strong> | AL | — | — |</p>
+<p>| <strong>PSDTC</strong> | AL | — | — |</p>
+<br>
+<h3>📌 AL/SAT Screener — DÖNÜŞ Sinyalleri (En Yüksek WR)</h3>
+<br>
+<p>| Hisse | Q Skoru | OE | Çakışma | Not |</p>
+<p>|-------|---------|-----|---------|-----|</p>
+<p>| <strong>BIMAS</strong> | Q=95 🔥 | — | 4 kaynak, skor=4 | RT TAZE skor=3 |</p>
+<p>| <strong>DESA</strong> | Q=90 🔥 | — | 5 kaynak, skor=4 | NW BEKLE HC2 + Tavan |</p>
+<p>| <strong>CLEBI</strong> | Q=75 | — | 4 kaynak, skor=3 | NW BEKLE HC2 |</p>
+<p>| <strong>INDES</strong> | Q=75 | — | 4 kaynak, skor=3 | NW BEKLE HC2 |</p>
+<p>| <strong>ANHYT</strong> | Q=75 | — | 3 kaynak, skor=3 | RT TAZE skor=3 |</p>
+<p>| <strong>KCAER</strong> | Q=75 | — | 4 kaynak, skor=2 | CMF negatif |</p>
+<p>| <strong>TKFEN</strong> | Q=65 | — | 4 kaynak, skor=2 | ⚠️ NW çelişki |</p>
+<p>| <strong>YEOTK</strong> | Q=60 | OE=3 ⚠️ | 4 kaynak, skor=2 | Pozisyon küçült |</p>
+<p>| <strong>DERHL</strong> | DÖNÜŞ | — | 4 kaynak, skor=3 | NW İZLE HC2 + RT 2.DALGA |</p>
+<p>| <strong>LYDYE</strong> | DÖNÜŞ | — | 3 kaynak, skor=3 | NW İZLE HC2 |</p>
+<p>| <strong>AKFYE</strong> | DÖNÜŞ | — | 3 kaynak, skor=3 | NW İZLE HC2 |</p>
+<p>| <strong>ANSGR</strong> | DÖNÜŞ | — | 3 kaynak, skor=3 | RT TAZE skor=3 |</p>
+<p>| <strong>ARASE</strong> | PB | — | 3 kaynak, skor=3 | RT TAZE skor=3 |</p>
+<p>| <strong>PCILT</strong> | DÖNÜŞ | — | 4 kaynak, skor=3 | NW BEKLE HC2 |</p>
+<p>| <strong>EGPRO</strong> | DÖNÜŞ | — | 3 kaynak, skor=3 | NW BEKLE HC2 |</p>
+<p>| <strong>KARSN</strong> | DÖNÜŞ | — | 3 kaynak, skor=3 | NW BEKLE HC2 |</p>
+<p>| <strong>MIATK</strong> | DÖNÜŞ | — | 3 kaynak, skor=3 | NW BEKLE HC2 |</p>
+<p>| <strong>AYEN</strong> | DÖNÜŞ | — | 3 kaynak, skor=3 | NW BEKLE HC2 |</p>
+<p>| <strong>KIMMR</strong> | DÖNÜŞ | — | 4 kaynak, skor=3 | CMF neg, RT TAZE |</p>
+<p>| <strong>TGSAS</strong> | PB | — | 4 kaynak, skor=3 | RT TAZE skor=3 |</p>
+<br>
+<h3>📌 Tavan Scanner Sinyalleri</h3>
+<br>
+<p><strong>Tavan Serisi (aktif):</strong></p>
+<p>| Hisse | Skor | Streak | Vol Ratio | Karar | Not |</p>
+<p>|-------|------|--------|-----------|-------|-----|</p>
+<p>| <strong>GEREL</strong> | 70 🟢 | 2 | 0.5x 🔒 | <strong>AL</strong> | Skor≥60 + düşük hacim = EN GÜÇLÜ tavan setup (WR %84.6) |</p>
+<p>| <strong>KERVN</strong> | 65 🟢 | 1 | 0.8x | <strong>AL</strong> | Skor≥60 + düşük hacim, 6 screener'da çıkıyor |</p>
+<p>| <strong>INVES</strong> | 60 🟢 | 1 | 1.9x | <strong>AL</strong> | Skor≥60, hacim normal, 6 screener'da |</p>
+<p>| <strong>OZRDN</strong> | 60 🟢 | 1 | 1.0x | <strong>AL</strong> | Skor≥60 + normal hacim |</p>
+<p>| <strong>YAPRK</strong> | 56 | 2 | 1.4x | <strong>İZLE</strong> | Skor eşik altı ama streak 2 |</p>
+<p>| <strong>KRONT</strong> | 48 | 2 | 4.0x ⚠️ | <strong>İZLE</strong> | Yüksek hacim = el değiştirme riski, +Rejim AL |</p>
+<p>| <strong>POLHO</strong> | 45 | 2 | 4.2x ⚠️ | <strong>İZLE</strong> | 6 screener'da ama yüksek hacim + düşük skor |</p>
+<p>| <strong>YBTAS</strong> | 43 | 2 | 3.3x ⚠️ | <strong>İZLE</strong> | Yüksek hacim, düşük skor |</p>
+<p>| <strong>TATEN</strong> | 41 | 3 | 5.4x 🚨 | <strong>DİKKAT</strong> | Streak 3 ama hacim çok yüksek = dağıtım riski |</p>
+<p>| <strong>DESA</strong> | 35 | 1 | 5.2x 🚨 | <strong>DİKKAT</strong> | Tavan skor düşük + hacim çok yüksek FAKAT 5 kaynak çakışma + DÖNÜŞ Q=90 |</p>
+<br>
+<h3>📌 Rejim v3 AL Sinyalleri (tüm liste)</h3>
+<br>
+<p>| Hisse | Not |</p>
+<p>|-------|-----|</p>
+<p>| BLCYT | +RT AL çakışması |</p>
+<p>| DOHOL | — |</p>
+<p>| ENJSA | +RT AL çakışması |</p>
+<p>| OZSUB | — |</p>
+<p>| TCKRC | — |</p>
+<p>| ULUUN | — |</p>
+<p>| AYES | — |</p>
+<p>| CRDFA | — |</p>
+<p>| GMTAS | — |</p>
+<p>| TMPOL | — |</p>
+<p>| AYCES | — |</p>
+<p>| CATES | — |</p>
+<p>| ERSU | — |</p>
+<p>| FONET | +4 kaynak çakışma, skor=3 |</p>
+<p>| KRONT | +Tavan streak 2 |</p>
+<br>
+<h3>📌 SAT Sinyalleri (önemli olanlar)</h3>
+<br>
+<p><strong>NW Haftalık Pivot SAT (211 toplam — en dikkat çekici 20):</strong></p>
+<br>
+<p>ORCAY, REEDR, KENT, SARKY, ALVES, PASEU, DGNMO, SMRTG, CUSAN, ALKA, MTRKS, ECZYT, ADGYO, NETAS, MARBL, DOKTA, PARSN, TUKAS, KOTON, CELHA</p>
+<br>
+<p><strong>RT SAT: 59 adet</strong> (portföydeyse → çıkış sinyali)</p>
+<br>
+<p><strong>Çelişki Uyarısı:</strong></p>
+<p>- ⚠️ <strong>TKFEN</strong>: NW PIVOT_AL + NW PIVOT_SAT birlikte var → <strong>çelişki, BEKLE</strong></p>
+<br>
+<p>---</p>
+<br>
+<h2>🟢 4. ÖNERİ LİSTESİ (WR Öncelik Sırasına Göre)</h2>
+<br>
+<h3>GÜÇLÜ_AL (Skor ≥3, çoklu çakışma, yüksek WR)</h3>
+<br>
+<p>| # | Hisse | Skor | Kaynak | Neden Güçlü | Dikkat |</p>
+<p>|---|-------|------|--------|-------------|--------|</p>
+<p>| 1 | <strong>BIMAS</strong> | 4 | 4 kaynak | DÖNÜŞ Q=95 + RT TAZE skor=3 + NW ZONE. En yüksek Q skoru. | Risk_off ortamı, defansif hisse avantajı |</p>
+<p>| 2 | <strong>DESA</strong> | 4 | 5 kaynak ⭐ | DÖNÜŞ Q=90 + NW BEKLE HC2 + Tavan streak 1. 5 kaynak = çok nadir. | Tavan skor 35 + vol 5.2x → tavan tarafı zayıf, NW BEKLE. Swing olarak düşün. |</p>
+<p>| 3 | <strong>DERHL</strong> | 3 | 4 kaynak | NW İZLE HC2 + RT 2.DALGA skor=3 + AL/SAT DÖNÜŞ | RT 2.dalga = momentum devam |</p>
+<p>| 4 | <strong>TURSG</strong> | 3 | 2 kaynak | 🏆 NW HAZIR + HC2 = en yüksek NW WR (%77.8 × %68.3) | Sadece 2 kaynakta ama NW HAZIR çok değerli |</p>
+<p>| 5 | <strong>FONET</strong> | 3 | 4 kaynak | NW İZLE + AL/SAT GÜÇLÜ + RT GÜÇLÜ + Rejim AL | — |</p>
+<p>| 6 | <strong>ANSGR</strong> | 3 | 3 kaynak | DÖNÜŞ + RT TAZE skor=3 | Badge bilgisi yok, detay sorulabilir |</p>
+<p>| 7 | <strong>ANHYT</strong> | 3 | 3 kaynak | DÖNÜŞ Q=75 + RT TAZE skor=3 | — |</p>
+<p>| 8 | <strong>LYDYE</strong> | 3 | 3 kaynak | NW İZLE HC2 + DÖNÜŞ | — |</p>
+<p>| 9 | <strong>AKFYE</strong> | 3 | 3 kaynak | NW İZLE HC2 + DÖNÜŞ | — |</p>
+<p>| 10 | <strong>ARASE</strong> | 3 | 3 kaynak | PB + RT TAZE skor=3. Pullback giriş avantajı. | — |</p>
+<br>
+<h3>AL (Skor ≥3, iyi çakışma)</h3>
+<br>
+<p>| # | Hisse | Skor | Kaynak | Not |</p>
+<p>|---|-------|------|--------|-----|</p>
+<p>| 11 | <strong>CLEBI</strong> | 3 | 4 kaynak | NW BEKLE HC2 + DÖNÜŞ Q=75. BEKLE WR düşük (%59.7) ama 4 kaynak telafi ediyor |</p>
+<p>| 12 | <strong>INDES</strong> | 3 | 4 kaynak | CLEBI ile aynı profil. NW BEKLE HC2 + DÖNÜŞ Q=75 |</p>
+<p>| 13 | <strong>TGSAS</strong> | 3 | 4 kaynak | NW ZONE + PB + RT TAZE skor=3 |</p>
+<p>| 14 | <strong>KIMMR</strong> | 3 | 4 kaynak | NW İZLE ZONE + RT TAZE skor=3. ⚠️ CMF negatif (-0.197) |</p>
+<p>| 15 | <strong>PCILT</strong> | 3 | 4 kaynak | NW BEKLE HC2 + DÖNÜŞ |</p>
+<br>
+<h3>Tavan Özel (Farklı strateji, kısa vade 1-3 gün)</h3>
+<br>
+<p>| # | Hisse | Skor | Streak | Vol | Karar |</p>
+<p>|---|-------|------|--------|-----|-------|</p>
+<p>| T1 | <strong>GEREL</strong> | 70 | 2 | 0.5x 🔒 | <strong>GÜÇLÜ AL</strong> — Kilitli tavan + skor≥60 + düşük hacim = backtest WR %84.6 |</p>
+<p>| T2 | <strong>KERVN</strong> | 65 | 1 | 0.8x | <strong>AL</strong> — Skor≥60 + düşük hacim, 6 screener |</p>
+<p>| T3 | <strong>INVES</strong> | 60 | 1 | 1.9x | <strong>AL</strong> — Skor≥60, 6 screener |</p>
+<p>| T4 | <strong>OZRDN</strong> | 60 | 1 | 1.0x | <strong>AL</strong> — Skor≥60, normal hacim |</p>
+<br>
+<p>---</p>
+<br>
+<h2>🔴 5. DİKKAT / SAT</h2>
+<br>
+<h3>⚠️ OE Uyarısı</h3>
+<p>| Hisse | OE | Durum |</p>
+<p>|-------|-----|-------|</p>
+<p>| <strong>YEOTK</strong> | OE=3 | 4 kaynak skor=2 ama OE=3 → <strong>yarı pozisyon</strong> veya pullback bekle |</p>
+<br>
+<h3>⚠️ Çelişki</h3>
+<p>| Hisse | Durum |</p>
+<p>|-------|-------|</p>
+<p>| <strong>TKFEN</strong> | NW PIVOT_AL + NW PIVOT_SAT aynı anda → <strong>BEKLE, giriş yapma</strong> |</p>
+<br>
+<h3>⚠️ CMF Negatif (Para çıkışı)</h3>
+<p>| Hisse | CMF | Not |</p>
+<p>|-------|-----|-----|</p>
+<p>| <strong>KIMMR</strong> | -0.197 | 4 kaynak skor=3 ama para çıkışı |</p>
+<p>| <strong>KCAER</strong> | -0.165 | 4 kaynak skor=2 |</p>
+<p>| <strong>VBTYZ</strong> | -0.164 | 4 kaynak skor=2 |</p>
+<br>
+<h3>🔴 Tavan DİKKAT (Yüksek hacim = el değiştirme riski)</h3>
+<p>| Hisse | Skor | Vol Ratio | Risk |</p>
+<p>|-------|------|-----------|------|</p>
+<p>| TATEN | 41 | 5.4x 🚨 | Streak 3 ama hacim uç — dağıtım riski yüksek |</p>
+<p>| DESA | 35 | 5.2x 🚨 | Tavan tarafı zayıf (swing için swing sinyalleri güçlü) |</p>
+<p>| POLHO | 45 | 4.2x | Yüksek hacim + düşük skor |</p>
+<p>| KRONT | 48 | 4.0x | Yüksek hacim |</p>
+<p>| YBTAS | 43 | 3.3x | Yüksek hacim |</p>
+<br>
+<h3>🔴 NW Haftalık SAT Sinyalleri (portföyde varsa kontrol et)</h3>
+<p>ORCAY, REEDR, KENT, SARKY, ALVES, PASEU, DGNMO, SMRTG, CUSAN, ALKA, MTRKS, ECZYT, ADGYO, NETAS, MARBL, DOKTA, PARSN, TUKAS, KOTON, CELHA</p>
+<p>*(Toplam 211 NW SAT — portföyünüzdeki hisseleri kontrol edin)*</p>
+<br>
+<p>---</p>
+<br>
+<h2>💡 6. STRATEJİ NOTU</h2>
+<br>
+<p><strong>RISK_OFF ortamındayız.</strong> VIX 24.6, SPY downtrend, US 10Y yükseliyor, DXY güçleniyor — EM'ler için olumsuz makro. BIST100 yapısal downtrend'de, banka endeksi RSI 40 ile en zayıf bacak. Bu ortamda:</p>
+<br>
+<p>1. <strong>Pozisyon küçült</strong> — tek hisse max %10 (normal %15 yerine). Yeni AL sadece skor≥3 çakışmalara.</p>
+<p>2. <strong>Sektörel tercih</strong>: Defansif hisseler öne çıkıyor (BIMAS gibi). Enerji sektörü petrol rallisinden faydalanabilir (ENJSA RT AL'da). Bankalardan uzak dur (RSI 40, downtrend).</p>
+<p>3. <strong>Tavan stratejisi</strong>: Sadece skor≥60 + düşük hacim (GEREL, KERVN, OZRDN). Yüksek hacimli tavanları kovalama.</p>
+<p>4. <strong>Kademe ve takas verisi olmadan giriş yapma</strong> — risk_off'ta ekstra doğrulama şart. Özellikle BIMAS, DESA, DERHL, TURSG için kademe+takas isteyin.</p>
+<br>
+<p>⚠️ *Bu teknik analiz aracıdır, yatırım tavsiyesi değildir. Her işlemde SL belirleyin.*</p>
+    </div>
+
+    <h2 class="section-title">🌍 Makro Enstrümanlar</h2>
+    <div class="macro-grid" id="macroGrid"></div>
+
+    <h2 class="section-title">⬡ Çakışma Analizi</h2>
+    <table class="confluence-table" id="confluenceTable">
+        <thead>
+            <tr>
+                <th>Hisse</th>
+                <th>Skor</th>
+                <th>Tavsiye</th>
+                <th>Detaylar</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+const MACRO = [{"ticker": "DX-Y.NYB", "name": "DXY (Dolar Endeksi)", "category": "FX", "price": 99.199, "chg_1d": 0.37, "chg_5d": 0.43, "chg_1m": 2.46, "above_ema21": true, "trend": "UP"}, {"ticker": "USDTRY=X", "name": "USD/TRY", "category": "FX", "price": 44.0662, "chg_1d": -0.03, "chg_5d": 0.27, "chg_1m": 1.11, "above_ema21": true, "trend": "FLAT"}, {"ticker": "EURTRY=X", "name": "EUR/TRY", "category": "FX", "price": 51.0424, "chg_1d": -0.38, "chg_5d": 0.24, "chg_1m": -1.54, "above_ema21": false, "trend": "DOWN"}, {"ticker": "XU100.IS", "name": "BIST 100", "category": "BIST", "price": 13200.3799, "chg_1d": 0.19, "chg_5d": 1.99, "chg_1m": -4.32, "above_ema21": false, "trend": "DOWN"}, {"ticker": "XU030.IS", "name": "BIST 30", "category": "BIST", "price": 15023.4502, "chg_1d": 0.26, "chg_5d": 2.09, "chg_1m": 0.06, "above_ema21": true, "trend": "FLAT"}, {"ticker": "XBANK.IS", "name": "BIST Banka", "category": "BIST", "price": 17593.75, "chg_1d": -0.62, "chg_5d": -0.15, "chg_1m": -8.29, "above_ema21": false, "trend": "DOWN"}, {"ticker": "XUTEK.IS", "name": "BIST Teknoloji", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XHOLD.IS", "name": "BIST Holding", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XELKT.IS", "name": "BIST Elektrik", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XTRZM.IS", "name": "BIST Turizm", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "SPY", "name": "S&P 500 (SPY)", "category": "US", "price": 676.28, "chg_1d": -0.13, "chg_5d": -1.29, "chg_1m": -2.55, "above_ema21": false, "trend": "DOWN"}, {"ticker": "QQQ", "name": "NASDAQ 100 (QQQ)", "category": "US", "price": 607.69, "chg_1d": -0.01, "chg_5d": -0.5, "chg_1m": -1.08, "above_ema21": false, "trend": "FLAT"}, {"ticker": "^VIX", "name": "VIX", "category": "US", "price": 24.63, "chg_1d": -1.2, "chg_5d": 16.45, "chg_1m": 41.88, "above_ema21": true, "trend": "UP"}, {"ticker": "GC=F", "name": "Altın (Gold)", "category": "Emtia", "price": 5186.8999, "chg_1d": -0.82, "chg_5d": 1.3, "chg_1m": 2.69, "above_ema21": true, "trend": "UP"}, {"ticker": "CL=F", "name": "WTI Petrol", "category": "Emtia", "price": 87.68, "chg_1d": 5.07, "chg_5d": 17.44, "chg_1m": 36.23, "above_ema21": true, "trend": "UP"}, {"ticker": "HG=F", "name": "Bakır (Copper)", "category": "Emtia", "price": 5.9195, "chg_1d": 0.26, "chg_5d": 1.1, "chg_1m": -0.43, "above_ema21": true, "trend": "UP"}, {"ticker": "BTC-USD", "name": "Bitcoin", "category": "Kripto", "price": 70558.2812, "chg_1d": 0.9, "chg_5d": 3.55, "chg_1m": 6.22, "above_ema21": true, "trend": "UP"}, {"ticker": "ETH-USD", "name": "Ethereum", "category": "Kripto", "price": 2073.2822, "chg_1d": 1.78, "chg_5d": 4.78, "chg_1m": 6.11, "above_ema21": true, "trend": "UP"}, {"ticker": "^TNX", "name": "US 10Y Faiz", "category": "Faiz", "price": 4.208, "chg_1d": 1.74, "chg_5d": 3.14, "chg_1m": 0.24, "above_ema21": true, "trend": "UP"}];
+const CONFLUENCE = [{"ticker": "DESA", "score": 4, "details": ["⬡ 5 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+2 AL/SAT DÖNÜŞ Q=90 (en yüksek WR)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 5, "signals": [{"screener": "nox_v3_weekly", "ticker": "DESA", "signal_date": "2026-02-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 12.100000381469728, "quality": null, "trigger_type": "HC2", "rs_score": 0.929, "wl_status": "BEKLE", "tb_stage": "PREP", "delta_pct": 7.8, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "DESA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 12.74, "quality": 90, "rs_score": 5.3, "regime": "TREND", "csv_date": "20260311"}, {"screener": "tavan", "ticker": "DESA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "TAVAN", "entry_price": 12.739999771118164, "quality": 35, "skor": 35, "streak": 1, "volume_ratio": 5.19, "rs": 11.409292203453914, "yabanci_degisim": -0.17, "csv_date": "20260311"}, {"screener": "alsat", "ticker": "DESA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 12.74, "quality": 90, "karar": "AL", "rs_score": 5.3, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 11.96, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "DESA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 12.74, "quality": 1, "entry_window": "TAZE", "regime": "FULL_TREND", "oe": 2, "oe_detail": "5B +10.5%|EMA +5.9%", "trend_score": 2, "cmf": 0.1651, "adx": 21.12, "csv_date": "20260311"}]}, {"ticker": "BIMAS", "score": 4, "details": ["⬡ 4 kaynak çakışması", "+1 NW ZONE_ONLY", "+2 AL/SAT DÖNÜŞ Q=95 (en yüksek WR)", "+2 RT Transition TAZE skor=3", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "BIMAS", "signal_date": "2026-01-09", "direction": "AL", "signal_type": "ZONE_ONLY", "entry_price": 621.0, "quality": null, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 22.4, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "BIMAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 694.5, "quality": 95, "rs_score": 7.7, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "BIMAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 694.5, "quality": 95, "karar": "AL", "rs_score": 7.7, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 655.14, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "BIMAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 694.5, "quality": 3, "entry_window": "TAZE", "regime": "GRI_BOLGE", "oe": 0, "oe_detail": "nan", "trend_score": 2, "cmf": 0.0016, "adx": 31.3, "csv_date": "20260311"}]}, {"ticker": "CLEBI", "score": 3, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DÖNÜŞ Q=75", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "CLEBI", "signal_date": "2026-03-04", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 1661.0, "quality": null, "trigger_type": "HC2", "rs_score": 0.959, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 14.8, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "CLEBI", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 1869.0, "quality": 75, "rs_score": 3.3, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "CLEBI", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 1869.0, "quality": 75, "karar": "AL", "rs_score": 3.3, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 1749.96, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "CLEBI", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 1869.0, "quality": 2, "entry_window": "TAZE", "regime": "FULL_TREND", "oe": 2, "oe_detail": "5B +12.5%|EMA +5.1%", "trend_score": 3, "cmf": 0.0277, "adx": 21.86, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "CLEBI", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 1869.0, "quality": null, "csv_date": "20260311"}]}, {"ticker": "INDES", "score": 3, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DÖNÜŞ Q=75", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "INDES", "signal_date": "2026-03-05", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 7.71999979019165, "quality": null, "trigger_type": "HC2", "rs_score": 0.957, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 7.2, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "INDES", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 8.47, "quality": 75, "rs_score": 3.0, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "INDES", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 8.47, "quality": 75, "karar": "AL", "rs_score": 3.0, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 7.92, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "INDES", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 8.47, "quality": 1, "entry_window": "TAZE", "regime": "FULL_TREND", "oe": 2, "oe_detail": "5B +11.7%|EMA +6.2%", "trend_score": 2, "cmf": 0.1676, "adx": 24.54, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "INDES", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 8.470000267028809, "quality": null, "csv_date": "20260311"}]}, {"ticker": "DERHL", "score": 3, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "+1 RT Transition skor=3 [2.DALGA]", "-1 CMF negatif (-0.149)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "DERHL", "signal_date": "2026-02-17", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 14.210000038146973, "quality": null, "trigger_type": "HC2", "rs_score": 0.914, "wl_status": "İZLE", "tb_stage": "-", "delta_pct": 17.5, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "DERHL", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 14.88, "quality": 40, "rs_score": 1.1, "regime": "CHOPPY", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "DERHL", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 14.88, "quality": 40, "karar": "AL", "rs_score": 1.1, "regime": "CHOPPY", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 13.56, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "DERHL", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 14.88, "quality": 3, "entry_window": "2.DALGA", "regime": "CHOPPY", "oe": 0, "oe_detail": "nan", "trend_score": 2, "cmf": -0.1487, "adx": 31.63, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "DERHL", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 14.880000114440918, "quality": null, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "DERHL", "signal_date": "2026-03-05", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 14.880000114440918, "quality": null, "csv_date": "20260311"}]}, {"ticker": "FONET", "score": 3, "details": ["⬡ 4 kaynak çakışması", "+2 NW ZONE_ONLY + WL=İZLE (WR %68.9)", "+1 AL/SAT GÜÇLÜ karar=AL", "+1 RT GUCLU", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "FONET", "signal_date": "2026-02-06", "direction": "AL", "signal_type": "ZONE_ONLY", "entry_price": 4.639999866485596, "quality": null, "wl_status": "İZLE", "tb_stage": "OK", "delta_pct": 75.1, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "FONET", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GUCLU", "entry_price": 4.45, "quality": 55, "rs_score": 41.1, "regime": "FULL_TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "FONET", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GUCLU", "entry_price": 4.45, "quality": 55, "karar": "AL", "rs_score": 41.1, "regime": "FULL_TREND", "oe": 1, "oe_detail": "ATR exp", "rr": 1.5, "stop_price": 3.74, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "FONET", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GRI_BOLGE→TREND", "entry_price": 4.45, "quality": 0, "entry_window": "2.DALGA", "regime": "FULL_TREND", "oe": 1, "oe_detail": "EMA +15.5%", "trend_score": 3, "cmf": 0.051, "adx": 46.12, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "FONET", "signal_date": "2026-02-27", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 4.449999809265137, "quality": null, "csv_date": "20260311"}]}, {"ticker": "TGSAS", "score": 3, "details": ["⬡ 4 kaynak çakışması", "+1 NW ZONE_ONLY", "+1 AL/SAT PB karar=AL", "+2 RT Transition TAZE skor=3", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "TGSAS", "signal_date": "2026-02-13", "direction": "AL", "signal_type": "ZONE_ONLY", "entry_price": 180.5, "quality": null, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 17.3, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "TGSAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 177.7, "quality": 55, "rs_score": 2.5, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "TGSAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 177.7, "quality": 55, "karar": "AL", "rs_score": 2.5, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.25, "stop_price": 160.11, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "TGSAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 177.7, "quality": 3, "entry_window": "TAZE", "regime": "GRI_BOLGE", "oe": 0, "oe_detail": "nan", "trend_score": 3, "cmf": 0.2622, "adx": 18.54, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "TGSAS", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 177.6999969482422, "quality": null, "csv_date": "20260311"}]}, {"ticker": "KIMMR", "score": 3, "details": ["⬡ 4 kaynak çakışması", "+2 NW ZONE_ONLY + WL=İZLE (WR %68.9)", "+1 AL/SAT DONUS karar=AL", "+2 RT Transition TAZE skor=3", "-1 CMF negatif (-0.197)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "KIMMR", "signal_date": "2026-02-13", "direction": "AL", "signal_type": "ZONE_ONLY", "entry_price": 15.550000190734863, "quality": null, "wl_status": "İZLE", "tb_stage": "-", "delta_pct": 31.2, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "KIMMR", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 17.15, "quality": 35, "rs_score": 9.8, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "KIMMR", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 17.15, "quality": 35, "karar": "AL", "rs_score": 9.8, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 15.69, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "KIMMR", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 17.15, "quality": 3, "entry_window": "TAZE", "regime": "GRI_BOLGE", "oe": 1, "oe_detail": "EMA +5.7%", "trend_score": 3, "cmf": -0.1969, "adx": 16.2, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "KIMMR", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 17.149999618530273, "quality": null, "csv_date": "20260311"}]}, {"ticker": "PCILT", "score": 3, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "PCILT", "signal_date": "2026-02-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 23.5, "quality": null, "trigger_type": "HC2", "rs_score": 0.921, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 19.3, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "PCILT", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 26.2, "quality": 55, "rs_score": 7.1, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "PCILT", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 26.2, "quality": 55, "karar": "AL", "rs_score": 7.1, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 23.59, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "PCILT", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GRI_BOLGE→FULL_TREND", "entry_price": 26.2, "quality": 2, "entry_window": "TAZE", "regime": "FULL_TREND", "oe": 0, "oe_detail": "nan", "trend_score": 3, "cmf": 0.1237, "adx": 28.05, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "PCILT", "signal_date": "2026-03-11", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 26.200000762939453, "quality": null, "csv_date": "20260311"}]}, {"ticker": "ANSGR", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+1 AL/SAT DONUS karar=AL", "+2 RT Transition TAZE skor=3"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "rejim_v3", "ticker": "ANSGR", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 27.8, "quality": 30, "rs_score": 3.4, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "ANSGR", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 27.8, "quality": 30, "karar": "AL", "rs_score": 3.4, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 26.44, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "ANSGR", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 27.8, "quality": 3, "entry_window": "TAZE", "regime": "TREND", "oe": 0, "oe_detail": "nan", "trend_score": 3, "cmf": 0.1008, "adx": 27.05, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "ANSGR", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 27.799999237060547, "quality": null, "csv_date": "20260311"}]}, {"ticker": "EGPRO", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "EGPRO", "signal_date": "2026-03-10", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 26.059999465942383, "quality": null, "trigger_type": "HC2", "rs_score": 1.05, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 9.2, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "EGPRO", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 26.9, "quality": 55, "rs_score": 0.5, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "EGPRO", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 26.9, "quality": 55, "karar": "AL", "rs_score": 0.5, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 25.31, "csv_date": "20260311"}]}, {"ticker": "ARASE", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+1 AL/SAT PB karar=AL", "+2 RT Transition TAZE skor=3"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "rejim_v3", "ticker": "ARASE", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 87.2, "quality": 55, "rs_score": 15.0, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "ARASE", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 87.2, "quality": 55, "karar": "AL", "rs_score": 15.0, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.25, "stop_price": 80.0, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "ARASE", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GRI_BOLGE→TREND", "entry_price": 87.2, "quality": 3, "entry_window": "TAZE", "regime": "TREND", "oe": 0, "oe_detail": "nan", "trend_score": 3, "cmf": 0.3329, "adx": 19.77, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "ARASE", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 87.19999694824219, "quality": null, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "ARASE", "signal_date": "2026-02-27", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 87.19999694824219, "quality": null, "csv_date": "20260311"}]}, {"ticker": "LYDYE", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "LYDYE", "signal_date": "2026-01-21", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 13960.0, "quality": null, "trigger_type": "HC2", "rs_score": 0.872, "wl_status": "İZLE", "tb_stage": "-", "delta_pct": 33.7, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "LYDYE", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 16500.0, "quality": 20, "rs_score": 13.0, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "LYDYE", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 16500.0, "quality": 20, "karar": "AL", "rs_score": 13.0, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 14858.12, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "LYDYE", "signal_date": "2026-03-11", "direction": "SAT", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 16500.0, "quality": 3, "entry_window": "BEKLE", "regime": "TREND", "oe": 1, "oe_detail": "EMA +6.7%", "trend_score": 3, "cmf": -0.0889, "adx": 35.49, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "LYDYE", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 16500.0, "quality": null, "csv_date": "20260311"}]}, {"ticker": "ANHYT", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+1 AL/SAT DÖNÜŞ Q=75", "+2 RT Transition TAZE skor=3"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "rejim_v3", "ticker": "ANHYT", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 118.2, "quality": 75, "rs_score": 0.8, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "ANHYT", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 118.2, "quality": 75, "karar": "AL", "rs_score": 0.8, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 111.65, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "ANHYT", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 118.2, "quality": 3, "entry_window": "TAZE", "regime": "GRI_BOLGE", "oe": 0, "oe_detail": "nan", "trend_score": 2, "cmf": 0.0499, "adx": 23.58, "csv_date": "20260311"}]}, {"ticker": "AKFYE", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "AKFYE", "signal_date": "2026-03-04", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 17.709999084472656, "quality": null, "trigger_type": "HC2", "rs_score": 0.892, "wl_status": "İZLE", "tb_stage": "-", "delta_pct": 17.6, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "AKFYE", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 19.85, "quality": 50, "rs_score": 1.0, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "AKFYE", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 19.85, "quality": 50, "karar": "AL", "rs_score": 1.0, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 18.58, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "AKFYE", "signal_date": "2026-03-11", "direction": "SAT", "signal_type": "CHOPPY→TREND", "entry_price": 19.85, "quality": 2, "entry_window": "BEKLE", "regime": "TREND", "oe": 1, "oe_detail": "5B +12.1%", "trend_score": 3, "cmf": -0.148, "adx": 20.5, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "AKFYE", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 19.850000381469727, "quality": null, "csv_date": "20260311"}]}, {"ticker": "KARSN", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "KARSN", "signal_date": "2026-03-05", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 10.329999923706056, "quality": null, "trigger_type": "HC2", "rs_score": 1.063, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 10.7, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "KARSN", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 10.63, "quality": 55, "rs_score": 3.1, "regime": "CHOPPY", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "KARSN", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 10.63, "quality": 55, "karar": "AL", "rs_score": 3.1, "regime": "CHOPPY", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 9.97, "csv_date": "20260311"}]}, {"ticker": "MIATK", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "MIATK", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 36.70000076293945, "quality": null, "trigger_type": "HC2", "rs_score": 1.045, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 3.7, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "MIATK", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 40.1, "quality": 20, "rs_score": 0.4, "regime": "CHOPPY", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "MIATK", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 40.1, "quality": 20, "karar": "AL", "rs_score": 0.4, "regime": "CHOPPY", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 37.19, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "MIATK", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 40.099998474121094, "quality": null, "csv_date": "20260311"}]}, {"ticker": "AYEN", "score": 3, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "AYEN", "signal_date": "2026-03-06", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 27.700000762939453, "quality": null, "trigger_type": "HC2", "rs_score": 1.022, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 14.9, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "AYEN", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 28.88, "quality": 55, "rs_score": 0.8, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "AYEN", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 28.88, "quality": 55, "karar": "AL", "rs_score": 0.8, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 27.11, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "AYEN", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 28.8799991607666, "quality": null, "csv_date": "20260311"}]}, {"ticker": "TURSG", "score": 3, "details": ["+3 NW PIVOT_AL + WL=HAZIR (WR %77.8)", "+1 HC2 tetik (WR %68.3)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "AL", "source_count": 2, "signals": [{"screener": "nox_v3_weekly", "ticker": "TURSG", "signal_date": "2026-02-10", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 12.449999809265137, "quality": null, "trigger_type": "HC2", "rs_score": 0.949, "wl_status": "HAZIR", "tb_stage": "OK", "delta_pct": 12.7, "csv_date": "20260306"}, {"screener": "regime_transition", "ticker": "TURSG", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GRI_BOLGE→TREND", "entry_price": 12.28, "quality": 2, "entry_window": "TAZE", "regime": "TREND", "oe": 0, "oe_detail": "nan", "trend_score": 3, "cmf": 0.2329, "adx": 19.38, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "TURSG", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 12.279999732971191, "quality": null, "csv_date": "20260311"}]}, {"ticker": "KCAER", "score": 2, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DÖNÜŞ Q=75", "-1 CMF negatif (-0.165)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "KCAER", "signal_date": "2026-02-23", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 11.460000038146973, "quality": null, "trigger_type": "HC2", "rs_score": 0.946, "wl_status": "İZLE", "tb_stage": "-", "delta_pct": 14.7, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "KCAER", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 12.16, "quality": 75, "rs_score": 3.0, "regime": "GRI_BOLGE", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "KCAER", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 12.16, "quality": 75, "karar": "AL", "rs_score": 3.0, "regime": "GRI_BOLGE", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 11.31, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "KCAER", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 12.16, "quality": 2, "entry_window": "TAZE", "regime": "TREND", "oe": 2, "oe_detail": "5B +16.5%|EMA +7.6%", "trend_score": 2, "cmf": -0.1651, "adx": 16.3, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "KCAER", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 12.15999984741211, "quality": null, "csv_date": "20260311"}]}, {"ticker": "TKFEN", "score": 2, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "-2 NW PIVOT_SAT", "+1 AL/SAT DÖNÜŞ Q=65", "+2 RT Transition TAZE skor=3", "-1 CMF negatif (-0.010)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "TKFEN", "signal_date": "2026-01-27", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 73.55000305175781, "quality": null, "trigger_type": "HC2", "rs_score": 0.902, "wl_status": "İZLE", "tb_stage": "-", "delta_pct": 10.6, "csv_date": "20260306"}, {"screener": "nox_v3_weekly", "ticker": "TKFEN", "signal_date": "2026-01-30", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 73.75, "quality": null, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "TKFEN", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 84.65, "quality": 65, "rs_score": 7.3, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "TKFEN", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 84.65, "quality": 65, "karar": "AL", "rs_score": 7.3, "regime": "TREND", "oe": 1, "oe_detail": "RSI2>90", "rr": 1.33, "stop_price": 77.36, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "TKFEN", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 84.65, "quality": 3, "entry_window": "TAZE", "regime": "TREND", "oe": 2, "oe_detail": "5B +22.9%|EMA +8.9%", "trend_score": 2, "cmf": -0.0098, "adx": 25.95, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "TKFEN", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 84.6500015258789, "quality": null, "csv_date": "20260311"}]}, {"ticker": "YEOTK", "score": 2, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT DÖNÜŞ Q=60", "-1 AL/SAT OE=3", "+2 RT Transition TAZE skor=3", "-1 CMF negatif (-0.097)", "-1 RT OE=3", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "YEOTK", "signal_date": "2026-03-05", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 40.0, "quality": null, "trigger_type": "HC2", "rs_score": 0.989, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 12.6, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "YEOTK", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 46.26, "quality": 60, "rs_score": 11.1, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "YEOTK", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 46.26, "quality": 60, "karar": "AL", "rs_score": 11.1, "regime": "TREND", "oe": 3, "oe_detail": "RSI2>90 BB>1 EMA21 uzak", "rr": 1.33, "stop_price": 43.09, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "YEOTK", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 46.26, "quality": 3, "entry_window": "TAZE", "regime": "TREND", "oe": 3, "oe_detail": "BB ustu|5B +16.2%|EMA +12.9%", "trend_score": 2, "cmf": -0.0968, "adx": 17.51, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "YEOTK", "signal_date": "2026-03-06", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 46.2599983215332, "quality": null, "csv_date": "20260311"}]}, {"ticker": "PRZMA", "score": 2, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "PRZMA", "signal_date": "2026-02-18", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 11.970000267028809, "quality": null, "trigger_type": "HC2", "rs_score": 0.822, "wl_status": "İZLE", "tb_stage": "OK", "delta_pct": 29.2, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "PRZMA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "BILESEN", "entry_price": 15.14, "quality": 55, "rs_score": 24.1, "regime": "GRI_BOLGE", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "PRZMA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "BILESEN", "entry_price": 15.14, "quality": 55, "karar": "İZLE", "rs_score": 24.1, "regime": "GRI_BOLGE", "oe": 2, "oe_detail": "RSI14>70 EMA21 uzak", "rr": 1.5, "stop_price": 13.59, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "PRZMA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 15.14, "quality": 1, "entry_window": "2.DALGA", "regime": "FULL_TREND", "oe": 2, "oe_detail": "5B +12.7%|EMA +14.4%", "trend_score": 3, "cmf": 0.4081, "adx": 28.53, "csv_date": "20260311"}]}, {"ticker": "VBTYZ", "score": 2, "details": ["⬡ 4 kaynak çakışması", "+1 NW ZONE_ONLY", "+1 AL/SAT PB karar=AL", "+2 RT Transition TAZE skor=3", "-1 CMF negatif (-0.164)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "VBTYZ", "signal_date": "2026-02-13", "direction": "AL", "signal_type": "ZONE_ONLY", "entry_price": 20.899999618530273, "quality": null, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 39.1, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "VBTYZ", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 22.32, "quality": 65, "rs_score": 14.3, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "VBTYZ", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 22.32, "quality": 65, "karar": "AL", "rs_score": 14.3, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.25, "stop_price": 19.69, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "VBTYZ", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 22.32, "quality": 3, "entry_window": "TAZE", "regime": "GRI_BOLGE", "oe": 1, "oe_detail": "EMA +5.5%", "trend_score": 3, "cmf": -0.1641, "adx": 28.74, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "VBTYZ", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 22.31999969482422, "quality": null, "csv_date": "20260311"}]}, {"ticker": "DOGUB", "score": 2, "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "0 AL/SAT ZAYIF (zayıf, puan yok)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 4, "signals": [{"screener": "nox_v3_weekly", "ticker": "DOGUB", "signal_date": "2026-02-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 35.20000076293945, "quality": null, "trigger_type": "HC2", "rs_score": 0.639, "wl_status": "İZLE", "tb_stage": "OK", "delta_pct": 99.8, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "DOGUB", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "ZAYIF", "entry_price": 64.8, "quality": 50, "rs_score": 40.1, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "DOGUB", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "ZAYIF", "entry_price": 64.8, "quality": 50, "karar": "AL", "rs_score": 40.1, "regime": "TREND", "oe": 2, "oe_detail": "ATR exp EMA21 uzak", "rr": 1.12, "stop_price": 55.07, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "DOGUB", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GRI_BOLGE→FULL_TREND", "entry_price": 64.8, "quality": 1, "entry_window": "2.DALGA", "regime": "FULL_TREND", "oe": 2, "oe_detail": "5B +23.2%|EMA +28.0%", "trend_score": 3, "cmf": 0.2789, "adx": 46.86, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "DOGUB", "signal_date": "2026-03-05", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 64.80000305175781, "quality": null, "csv_date": "20260311"}]}, {"ticker": "BERA", "score": 2, "details": ["⬡ 3 kaynak çakışması", "+2 NW ZONE_ONLY + WL=İZLE (WR %68.9)", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "BERA", "signal_date": "2026-03-06", "direction": "AL", "signal_type": "ZONE_ONLY", "entry_price": 18.899999618530273, "quality": null, "wl_status": "İZLE", "tb_stage": "-", "delta_pct": 21.3, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "BERA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 20.0, "quality": 40, "rs_score": 2.0, "regime": "GRI_BOLGE", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "BERA", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 20.0, "quality": 40, "karar": "AL", "rs_score": 2.0, "regime": "GRI_BOLGE", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 18.32, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "BERA", "signal_date": "2026-03-11", "direction": "SAT", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 20.0, "quality": 1, "entry_window": "BEKLE", "regime": "FULL_TREND", "oe": 2, "oe_detail": "5B +17.2%|EMA +6.8%", "trend_score": 3, "cmf": -0.1394, "adx": 21.6, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "BERA", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 20.0, "quality": null, "csv_date": "20260311"}]}, {"ticker": "ULAS", "score": 2, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "ULAS", "signal_date": "2026-02-03", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 30.0, "quality": null, "trigger_type": "HC2", "rs_score": 0.865, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 24.8, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "ULAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 32.9, "quality": 45, "rs_score": 6.2, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "ULAS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "PB", "entry_price": 32.9, "quality": 45, "karar": "İZLE", "rs_score": 6.2, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.25, "stop_price": 29.63, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "ULAS", "signal_date": "2026-03-10", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 32.900001525878906, "quality": null, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "ULAS", "signal_date": "2026-03-02", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 32.900001525878906, "quality": null, "csv_date": "20260311"}]}, {"ticker": "PRDGS", "score": 2, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [BOS]", "+1 AL/SAT DONUS karar=AL", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "PRDGS", "signal_date": "2026-01-06", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 6.320000171661377, "quality": null, "trigger_type": "BOS", "rs_score": 0.924, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 10.5, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "PRDGS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 7.02, "quality": 55, "rs_score": 1.1, "regime": "TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "PRDGS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "DONUS", "entry_price": 7.02, "quality": 55, "karar": "AL", "rs_score": 1.1, "regime": "TREND", "oe": 0, "oe_detail": "-", "rr": 1.33, "stop_price": 6.29, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "PRDGS", "signal_date": "2026-03-04", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 7.019999980926514, "quality": null, "csv_date": "20260311"}]}, {"ticker": "AYCES", "score": 2, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=İZLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 AL/SAT GÜÇLÜ karar=AL", "-2 AL/SAT OE=5", "+1 RT GUCLU", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "AYCES", "signal_date": "2026-01-07", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 427.0, "quality": null, "trigger_type": "HC2", "rs_score": 0.925, "wl_status": "İZLE", "tb_stage": "OK", "delta_pct": 49.7, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "AYCES", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GUCLU", "entry_price": 670.0, "quality": 70, "rs_score": 33.6, "regime": "FULL_TREND", "csv_date": "20260311"}, {"screener": "alsat", "ticker": "AYCES", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "GUCLU", "entry_price": 670.0, "quality": 70, "karar": "AL", "rs_score": 33.6, "regime": "FULL_TREND", "oe": 5, "oe_detail": "RSI2>90 RSI14>70 BB>1 ATR exp EMA21 uzak", "rr": 1.5, "stop_price": 600.46, "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "AYCES", "signal_date": "2026-03-11", "direction": "SAT", "signal_type": "TREND→FULL_TREND", "entry_price": 670.0, "quality": 0, "entry_window": "BEKLE", "regime": "FULL_TREND", "oe": 4, "oe_detail": "RSI 81|BB ustu|5B +30.9%|EMA +22.5%", "trend_score": 3, "cmf": 0.3326, "adx": 35.39, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "AYCES", "signal_date": "2026-03-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 670.0, "quality": null, "csv_date": "20260311"}]}, {"ticker": "BAGFS", "score": 2, "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL WL=BEKLE [HC2]", "+1 HC2 tetik (WR %68.3)", "+1 RT Transition skor=3 [2.DALGA]", "-1 CMF negatif (-0.025)", "-1 Makro RISK_OFF (dikkat)"], "recommendation": "İZLE", "source_count": 3, "signals": [{"screener": "nox_v3_weekly", "ticker": "BAGFS", "signal_date": "2026-02-23", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 28.040000915527344, "quality": null, "trigger_type": "HC2", "rs_score": 0.951, "wl_status": "BEKLE", "tb_stage": "-", "delta_pct": 35.4, "csv_date": "20260306"}, {"screener": "rejim_v3", "ticker": "BAGFS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "BILESEN", "entry_price": 32.8, "quality": 5, "rs_score": 8.2, "regime": "TREND", "csv_date": "20260311"}, {"screener": "regime_transition", "ticker": "BAGFS", "signal_date": "2026-03-11", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 32.8, "quality": 3, "entry_window": "2.DALGA", "regime": "GRI_BOLGE", "oe": 0, "oe_detail": "nan", "trend_score": 3, "cmf": -0.0253, "adx": 35.83, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "BAGFS", "signal_date": "2026-02-26", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 32.79999923706055, "quality": null, "csv_date": "20260311"}, {"screener": "nox_v3_daily", "ticker": "BAGFS", "signal_date": "2026-03-11", "direction": "SAT", "signal_type": "PIVOT_SAT", "entry_price": 32.79999923706055, "quality": null, "csv_date": "20260311"}]}];
+
+// Makro grid
+const macroGrid = document.getElementById('macroGrid');
+MACRO.forEach(item => {
+    if (!item.price) return;
+    const chg1d = item.chg_1d != null ? item.chg_1d.toFixed(1) : '-';
+    const chg5d = item.chg_5d != null ? item.chg_5d.toFixed(1) : '-';
+    const color = item.chg_1d > 0 ? 'var(--nox-green)' : item.chg_1d < 0 ? 'var(--nox-red)' : 'var(--text-muted)';
+    const trend = item.trend === 'UP' ? '↑' : item.trend === 'DOWN' ? '↓' : '→';
+    const card = document.createElement('div');
+    card.className = 'macro-card';
+    card.innerHTML = `
+        <div class="name">${item.name}</div>
+        <div class="price">${item.price.toLocaleString('tr-TR')}</div>
+        <div class="change" style="color:${color}">${trend} 1G:${chg1d}% · 5G:${chg5d}%</div>
+    `;
+    macroGrid.appendChild(card);
+});
+
+// Çakışma tablosu
+const tbody = document.querySelector('#confluenceTable tbody');
+const recColors = {
+    'GÜÇLÜ_AL': '#4ade80', 'AL': '#4ade80', 'İZLE': '#fbbf24',
+    'NÖTR': '#a1a1aa', 'KAÇIN': '#f87171', 'VERİ_YOK': '#71717a'
+};
+CONFLUENCE.forEach(item => {
+    const tr = document.createElement('tr');
+    const scoreColor = item.score >= 5 ? '#4ade80' : item.score >= 3 ? '#fbbf24' : item.score <= 0 ? '#f87171' : '#a1a1aa';
+    const recColor = recColors[item.recommendation] || '#a1a1aa';
+    const details = (item.details || []).slice(0, 3).join('<br>');
+    tr.innerHTML = `
+        <td><b>${item.ticker}</b></td>
+        <td><span class="score-badge" style="background:${scoreColor}20;color:${scoreColor}">${item.score}</span></td>
+        <td><span class="rec-badge" style="background:${recColor}20;color:${recColor}">${item.recommendation}</span></td>
+        <td style="font-size:0.8rem;color:var(--text-secondary)">${details}</td>
+    `;
+    tbody.appendChild(tr);
+});
+</script>
+</body>
+</html>

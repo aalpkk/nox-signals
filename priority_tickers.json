@@ -1,12 +1,1 @@
-{
-  "updated_at": "2026-03-14T13:58:00+03:00",
-  "total": 28,
-  "tickers": [
-    "TABGD", "PETKM", "SELEC", "KRDMA", "DITAS",
-    "EBEBK", "NTGAZ", "A1CAP", "CRDFA", "SEKFK",
-    "MAGEN", "MANAS", "ATLAS", "KTLEV", "ASELS",
-    "TURSG", "INDES", "AKFYE", "CATES", "KORDS",
-    "KRONT", "HURGZ", "KIMMR", "INVES", "AYES",
-    "SILVR", "ECOGR", "ZERGY"
-  ]
-}
+{"updated_at": "2026-03-15T19:57:06+03:00", "total": 28, "tickers": ["KRDMA", "TABGD", "DITAS", "AKGRT", "SELEC", "EUKYO", "IZENR", "NTGAZ", "GLYHO", "EBEBK", "BAGFS", "SEKFK", "ECILC", "ASELS", "MANAS", "CRDFA", "ULAS", "TURSG", "INDES", "AKFYE", "INVES", "AYES", "KRONT", "HURGZ", "KIMMR", "SILVR", "ECOGR", "ZERGY"]}

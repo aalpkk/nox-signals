@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nyxexpansion v4C scan — 2026-04-24</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+/* ── scan-specific overrides ── */
+.nox-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-bottom: 18px;
+  backdrop-filter: blur(8px);
+}
+.nox-card h2 {
+  font-family: var(--font-display);
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+.nox-card h2 .sub {
+  font-weight: 400; color: var(--text-muted); font-size: 0.85em;
+  margin-left: 4px;
+}
+.nox-card .card-body { font-size: 0.85rem; color: var(--text-secondary); }
+.nox-card .card-footer {
+  margin-top: 10px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 10px;
+}
+
+/* Banners */
+.banner {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 0.82rem; line-height: 1.5;
+  border-left: 3px solid var(--nox-gold);
+  background: rgba(201,169,110,0.04);
+}
+.banner b { color: var(--text-primary); }
+.banner .banner-icon { font-size: 1.2rem; flex-shrink: 0; line-height: 1.2; }
+.banner-sub { margin-top: 6px; font-size: 0.78rem; color: var(--text-muted); }
+.banner-sub code {
+  font-family: var(--font-mono); font-size: 0.78rem;
+  background: var(--bg-elevated); padding: 1px 6px; border-radius: 4px;
+  color: var(--text-secondary);
+}
+.warn-banner { border-left-color: var(--nox-orange); background: rgba(168,135,106,0.05); }
+.ret-banner { border-left-color: var(--nox-green); background: rgba(122,158,122,0.05); }
+.ret-banner-off { border-left-color: var(--nox-red); background: rgba(158,90,90,0.05); }
+.warn-card { border-left: 3px solid var(--nox-red); }
+
+/* KPI strip in portfolio */
+.kpi-strip {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  margin-bottom: 14px; padding: 10px 12px;
+  background: var(--bg-elevated); border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+.kpi { display: flex; flex-direction: column; gap: 2px; min-width: 75px; }
+.kpi .k { font-size: 0.62rem; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.06em; }
+.kpi .v { font-family: var(--font-mono); font-weight: 600;
+  font-size: 0.88rem; color: var(--text-primary); }
+
+/* Section count in h2 */
+.sec-count {
+  display: inline-block; margin-left: 6px;
+  font-family: var(--font-mono); font-size: 0.78em;
+  color: var(--nox-cyan); font-weight: 500;
+}
+
+/* Make number cells slightly tighter */
+td.num { text-align: right; font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono); }
+.detail-cell { white-space: normal; max-width: 320px; }
+</style></head>
+<body>
+<div class="aurora-bg">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
+</div>
+<div class="mesh-overlay"></div>
+
+<div class="nox-container">
+
+  <header class="nox-header">
+    <div class="nox-logo">
+      nyxexpansion<span class="proj"></span>
+      <span class="mode">v4C scan · 2026-04-24</span>
+    </div>
+    <div class="nox-meta">
+      Generated <b>2026-04-25 23:26 UTC</b><br>
+      Dataset: <code>output/nyxexp_dataset_v4.parquet</code>
+    </div>
+  </header>
+
+  <div class="nox-stats"><div class="nox-stat"><span class="dot" style="background:var(--nox-blue)"></span><span>Evren</span><span class="cnt">588</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-cyan)"></span><span>Trigger</span><span class="cnt">14</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-red)"></span><span>Severe</span><span class="cnt">2</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-copper)"></span><span>Rejim</span><span class="cnt">uptrend=14</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-green)"></span><span>PASS</span><span class="cnt">11</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-orange)"></span><span>DROP</span><span class="cnt">3</span></div></div>
+
+  
+    <section class="nox-card banner warn-banner">
+      <span class="banner-icon">⚠️</span>
+      <div>
+        <b>Daily candidate ranker — auto-entry DEĞİL.</b>
+        Bu liste trigger'dan geçen adayları winR sırasıyla gösterir; pozisyon kararı için
+        execution risk (bucket / very_extended / tight_room) ve canlı 17:30 dip/volume
+        gözlemi ayrıca değerlendirilmelidir. Severe bucket hard-exclude edilmiştir.
+      </div>
+    </section>
+    
+  
+        <section class="nox-card banner ret-banner">
+          <span class="banner-icon">🛡</span>
+          <div>
+            <b>Timing-clean retention filter (17:00 TR top-10)</b> —
+            PASS=<b>11</b> · DROP=<b>3</b> · unscored=<b>0</b>.
+            Tradeable list = retention_pass=True; watchlist'te kalanlar gözlem amaçlı,
+            17:30 proxy'de tradeable kabul edilmez.
+            <div class="banner-sub">Notes: <code>ok=14</code></div>
+            <div class="banner-sub">Bugün veri kaynakları: <code>extfeed_15m=14</code></div>
+          </div>
+        </section>
+        
+  
+    <section class="nox-card pf-card">
+      <h2>💼 Markowitz 4'lü Portföy <span class="sub">— Max Sharpe (combinatorial)</span></h2>
+      <div class="kpi-strip"><div class="kpi"><span class="k">Sharpe</span><span class="v">6.337</span></div><div class="kpi"><span class="k">μ (ann.)</span><span class="v">+265.67%</span></div><div class="kpi"><span class="k">σ (ann.)</span><span class="v">41.93%</span></div><div class="kpi"><span class="k">Hisse</span><span class="v">4</span></div><div class="kpi"><span class="k">Lookback</span><span class="v">60g</span></div><div class="kpi"><span class="k">w-aralığı</span><span class="v">[0.10, 0.50]</span></div><div class="kpi"><span class="k">Combos</span><span class="v">126</span></div></div>
+      <div class="nox-table-wrap">
+        <table>
+          <thead><tr>
+            <th>Hisse</th><th>Ağırlık</th><th>winR</th><th>Bucket</th>
+            <th>μ (60g ann.)</th><th>σ (60g ann.)</th><th>Son Gün</th>
+          </tr></thead>
+          <tbody><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:SEKUR" target="_blank" rel="noopener" title="SEKUR — TradingView">SEKUR</a></td><td class='num'><b>33.5%</b></td><td class='num'>4.94</td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>+363.1%</td><td class='num'>74.6%</td><td class='num rs-pos'>+9.46%</td></tr><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:SEGMN" target="_blank" rel="noopener" title="SEGMN — TradingView">SEGMN</a></td><td class='num'><b>25.9%</b></td><td class='num'>5.05</td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>+301.2%</td><td class='num'>73.9%</td><td class='num rs-pos'>+9.53%</td></tr><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:PKART" target="_blank" rel="noopener" title="PKART — TradingView">PKART</a></td><td class='num'><b>25.2%</b></td><td class='num'>9.68</td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>+195.6%</td><td class='num'>57.3%</td><td class='num rs-pos'>+9.50%</td></tr><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:HURGZ" target="_blank" rel="noopener" title="HURGZ — TradingView">HURGZ</a></td><td class='num'><b>15.3%</b></td><td class='num'>5.41</td><td><span class="reg-badge" style="background:rgba(122,143,165,0.18);color:var(--nox-blue)">mild</span></td><td class='num'>+108.0%</td><td class='num'>59.5%</td><td class='num rs-pos'>+5.76%</td></tr></tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <b>Aday havuzu:</b> winR sıralı top-9 (risk_bucket ≠ severe) ·
+        60g daily log-return, yıllıklandırılmış μ/Σ + Ledoit-Wolf shrinkage ·
+        SLSQP, long-only, sum(w)=1.
+      </div>
+    </section>
+    
+
+  <section class="nox-card">
+    <h2>✅ Tradeable Candidates<span class="sec-count">11</span></h2>
+    <div class="card-body">retention_pass=True · 17:30 proxy için kabul edilen liste</div>
+    
+  <div class="nox-table-wrap">
+    <table id="tradeable">
+      <thead><tr>
+        <th>#</th><th>Ticker</th><th>winR</th><th>pct</th>
+        <th>winR_1700</th><th>rank_1700</th>
+        <th>exec_tag</th><th>risk_bucket</th><th>rscr</th>
+        <th>retention</th><th>Not</th>
+      </tr></thead>
+      <tbody>
+<tr><td class='num'>1</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:PRZMA" target="_blank" rel="noopener" title="PRZMA — TradingView">PRZMA</a></td><td class='num'>9.90</td><td class='num'>1.00</td><td class='num'>9.48</td><td class='num'>3</td><td><span class="kc-badge" style="background:rgba(138,122,158,0.16);color:var(--nox-purple)">special_handling</span></td><td><span class="reg-badge" style="background:rgba(158,90,90,0.20);color:var(--nox-red)">severe</span></td><td class='num'>4.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>very_extended, stretch=high, above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>2</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:PKART" target="_blank" rel="noopener" title="PKART — TradingView">PKART</a></td><td class='num'>9.68</td><td class='num'>0.93</td><td class='num'>8.41</td><td class='num'>4</td><td><span class="kc-badge" style="background:rgba(184,149,110,0.16);color:var(--nox-copper)">extended_watch</span></td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>3.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>stretch=high, above_52w, strong_momo</td></tr>
+<tr><td class='num'>3</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:SODSN" target="_blank" rel="noopener" title="SODSN — TradingView">SODSN</a></td><td class='num'>9.04</td><td class='num'>0.86</td><td class='num'>6.64</td><td class='num'>6</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>-0.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>—</td></tr>
+<tr><td class='num'>4</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:AVGYO" target="_blank" rel="noopener" title="AVGYO — TradingView">AVGYO</a></td><td class='num'>6.94</td><td class='num'>0.79</td><td class='num'>6.33</td><td class='num'>6</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(122,143,165,0.18);color:var(--nox-blue)">mild</span></td><td class='num'>1.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>—</td></tr>
+<tr><td class='num'>5</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:TURGG" target="_blank" rel="noopener" title="TURGG — TradingView">TURGG</a></td><td class='num'>6.87</td><td class='num'>0.71</td><td class='num'>5.92</td><td class='num'>7</td><td><span class="kc-badge" style="background:rgba(184,149,110,0.16);color:var(--nox-copper)">extended_watch</span></td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>-0.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>stretch=high, strong_momo</td></tr>
+<tr><td class='num'>6</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:ARENA" target="_blank" rel="noopener" title="ARENA — TradingView">ARENA</a></td><td class='num'>6.06</td><td class='num'>0.64</td><td class='num'>6.62</td><td class='num'>6</td><td><span class="kc-badge" style="background:rgba(184,149,110,0.16);color:var(--nox-copper)">extended_watch</span></td><td><span class="reg-badge" style="background:rgba(122,143,165,0.18);color:var(--nox-blue)">mild</span></td><td class='num'>1.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>strong_momo</td></tr>
+<tr><td class='num'>7</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:KARTN" target="_blank" rel="noopener" title="KARTN — TradingView">KARTN</a></td><td class='num'>5.88</td><td class='num'>0.57</td><td class='num'>6.65</td><td class='num'>6</td><td><span class="kc-badge" style="background:rgba(138,122,158,0.16);color:var(--nox-purple)">special_handling</span></td><td><span class="reg-badge" style="background:rgba(158,90,90,0.20);color:var(--nox-red)">severe</span></td><td class='num'>5.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>8</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:HURGZ" target="_blank" rel="noopener" title="HURGZ — TradingView">HURGZ</a></td><td class='num'>5.41</td><td class='num'>0.50</td><td class='num'>5.37</td><td class='num'>9</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(122,143,165,0.18);color:var(--nox-blue)">mild</span></td><td class='num'>1.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>—</td></tr>
+<tr><td class='num'>9</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:SEGMN" target="_blank" rel="noopener" title="SEGMN — TradingView">SEGMN</a></td><td class='num'>5.05</td><td class='num'>0.43</td><td class='num'>5.91</td><td class='num'>7</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>3.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>above_52w</td></tr>
+<tr><td class='num'>10</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:SEKUR" target="_blank" rel="noopener" title="SEKUR — TradingView">SEKUR</a></td><td class='num'>4.94</td><td class='num'>0.36</td><td class='num'>5.29</td><td class='num'>9</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>3.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>above_52w</td></tr>
+<tr><td class='num'>11</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:VKFYO" target="_blank" rel="noopener" title="VKFYO — TradingView">VKFYO</a></td><td class='num'>4.73</td><td class='num'>0.29</td><td class='num'>5.02</td><td class='num'>10</td><td><span class="kc-badge" style="background:rgba(184,149,110,0.16);color:var(--nox-copper)">extended_watch</span></td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>-0.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='detail-cell'>stretch=high</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  </section>
+
+  <section class="nox-card">
+    <h2>👁 Watchlist Only<span class="sec-count">3</span></h2>
+    <div class="card-body">ranker'da çıktı ama timing-clean retention'da elendi · gözlem amaçlı, tradeable DEĞİL</div>
+    
+  <div class="nox-table-wrap">
+    <table id="watchlist">
+      <thead><tr>
+        <th>#</th><th>Ticker</th><th>winR</th><th>pct</th>
+        <th>winR_1700</th><th>rank_1700</th>
+        <th>exec_tag</th><th>risk_bucket</th><th>rscr</th>
+        <th>retention</th><th>Not</th>
+      </tr></thead>
+      <tbody>
+<tr><td class='num'>1</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:KAREL" target="_blank" rel="noopener" title="KAREL — TradingView">KAREL</a></td><td class='num'>4.53</td><td class='num'>0.21</td><td class='num'>4.56</td><td class='num'>12</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(122,143,165,0.18);color:var(--nox-blue)">mild</span></td><td class='num'>1.0</td><td><span class="kc-badge kc-lo" title="ok">DROP</span></td><td class='detail-cell'>tight_room</td></tr>
+<tr><td class='num'>2</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:HRKET" target="_blank" rel="noopener" title="HRKET — TradingView">HRKET</a></td><td class='num'>4.21</td><td class='num'>0.14</td><td class='num'>4.74</td><td class='num'>11</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(122,143,165,0.18);color:var(--nox-blue)">mild</span></td><td class='num'>1.5</td><td><span class="kc-badge kc-lo" title="ok">DROP</span></td><td class='detail-cell'>—</td></tr>
+<tr><td class='num'>3</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:PAMEL" target="_blank" rel="noopener" title="PAMEL — TradingView">PAMEL</a></td><td class='num'>3.91</td><td class='num'>0.07</td><td class='num'>4.87</td><td class='num'>11</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>-0.5</td><td><span class="kc-badge kc-lo" title="ok">DROP</span></td><td class='detail-cell'>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  </section>
+
+  <div class="nox-status">
+    nyxexpansion daily scan · <b>2026-04-25 23:26 UTC</b> · v4C ·
+    dataset=<code>output/nyxexp_dataset_v4.parquet</code>
+  </div>
+
+</div>
+</body></html>

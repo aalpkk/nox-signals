@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="tr"><head>
 <meta charset="utf-8">
-<title>nyxexpansion v4C scan — 2026-04-25</title>
+<title>nyxexpansion v4C scan — 2026-04-24</title>
 <style>
 body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 20px; background: #fafafa; color: #222; max-width: 1180px; }
 h1 { margin: 0 0 4px; }
@@ -37,13 +37,13 @@ td.note { color: #666; font-size: 0.88em; }
 .footer-note { color: #777; font-size: 0.85em; margin-top: 10px; }
 .footer { color: #888; font-size: 0.82em; margin-top: 16px; }
 </style></head><body>
-<h1>nyxexpansion v4C scan · 2026-04-25</h1>
+<h1>nyxexpansion v4C scan · 2026-04-24</h1>
 <div class="meta">
-  Tarama tarihi: <b>2026-04-25</b> ·
+  Tarama tarihi: <b>2026-04-24</b> ·
   Evren: <b>588</b> ticker ·
-  Trigger: <b>0</b> sinyal ·
-  Rejim: <b>—</b> ·
-  Severe exclude: <b>0</b> ·
+  Trigger: <b>19</b> sinyal ·
+  Rejim: <b>uptrend=19</b> ·
+  Severe exclude: <b>4</b> ·
   Dataset: <code>output/nyxexp_dataset_v4.parquet</code>
 </div>
 
@@ -57,19 +57,37 @@ td.note { color: #666; font-size: 0.88em; }
 
         <div class="banner ret-banner">
           🛡 <b>Timing-clean retention filter (17:00 TR top-10)</b> —
-          PASS=<b>0</b> · DROP=<b>0</b> · unscored=<b>0</b>.
+          PASS=<b>9</b> · DROP=<b>10</b> · unscored=<b>0</b>.
           Tradeable list = retention_pass=True. Watchlist'te kalanlar gözlem amaçlı,
-          17:30 proxy'de tradeable kabul edilmez. Notes: <code>stage_disabled=0</code>.
+          17:30 proxy'de tradeable kabul edilmez. Notes: <code>ok=19</code>.<br><span style="color:#555">Bugün veri kaynakları: <code>matriks_15m=18 · yfinance_1h=1</code></span>
         </div>
         
 
-        <div class="box warn">
-          <h2>💼 Markowitz 4'lü Portföy — ÜRETİLMEDİ</h2>
-          <div>Sebep: insufficient data (have 0 tickers with 60d history)</div>
+        <div class="box">
+          <h2>💼 Markowitz 4'lü Portföy — Max Sharpe (combinatorial)</h2>
+          <div class="kpis">
+            <div>Sharpe: <b>4.939</b></div>
+            <div>Beklenen Getiri (ann.): <b>+224.55%</b></div>
+            <div>Risk σ (ann.): <b>45.47%</b></div>
+            <div>Hisse: <b>4</b></div>
+            <div>Lookback: <b>60g</b></div>
+            <div>Ağırlık aralığı: <b>[0.10, 0.50]</b></div>
+            <div>Kombinasyon: <b>15</b></div>
+          </div>
+          <table class="data">
+            <thead><tr><th>Hisse</th><th>Ağırlık</th><th>winR</th><th>Bucket</th>
+              <th>μ (60g ann.)</th><th>σ (60g ann.)</th><th>Son Gün</th></tr></thead>
+            <tbody><tr><td class='tk'>SEGMN</td><td class='num'><b>40.5%</b></td><td class='num'>5.05</td><td><span class='bucket b-elev'>elevated</span></td><td class='num'>+301.2%</td><td class='num'>74.1%</td><td class='num'>+9.53%</td></tr><tr><td class='tk'>PKART</td><td class='num'><b>39.5%</b></td><td class='num'>9.61</td><td><span class='bucket b-elev'>elevated</span></td><td class='num'>+195.6%</td><td class='num'>56.9%</td><td class='num'>+9.50%</td></tr><tr><td class='tk'>AVGYO</td><td class='num'><b>10.0%</b></td><td class='num'>6.87</td><td><span class='bucket b-mild'>mild</span></td><td class='num'>+124.7%</td><td class='num'>57.5%</td><td class='num'>+9.52%</td></tr><tr><td class='tk'>TURGG</td><td class='num'><b>10.0%</b></td><td class='num'>6.77</td><td><span class='bucket b-clean'>clean</span></td><td class='num'>+128.2%</td><td class='num'>57.0%</td><td class='num'>+9.50%</td></tr></tbody>
+          </table>
+          <div class="footer-note">
+            <b>Aday havuzu:</b> winR sıralı top-6 (risk_bucket ≠ severe) ·
+            Girdi: 60 günlük daily log-return, yıllıklandırılmış μ/Σ + Ledoit-Wolf shrinkage ·
+            Optimizer: SLSQP, long-only, sum(w)=1.
+          </div>
         </div>
         
 <div class="box">
-  <h2>✅ Tradeable Candidates (0)</h2>
+  <h2>✅ Tradeable Candidates (9)</h2>
   <div class="footer-note">retention_pass=True · 17:30 proxy için kabul edilen liste</div>
   
   <table class="data" id="tradeable">
@@ -80,13 +98,21 @@ td.note { color: #666; font-size: 0.88em; }
       <th>retention</th><th>Not</th>
     </tr></thead>
     <tbody>
-
+<tr><td class='num'>1</td><td class='tk'>PRZMA</td><td class='num'>10.36</td><td class='num'>1.00</td><td class='num'>10.68</td><td class='num'>1</td><td><span class='tag t-spec'>special_handling</span></td><td><span class='bucket b-sev'>severe</span></td><td class='num'>4.0</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>very_extended, stretch=high, above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>2</td><td class='tk'>PKART</td><td class='num'>9.61</td><td class='num'>0.95</td><td class='num'>8.57</td><td class='num'>6</td><td><span class='tag t-ext'>extended_watch</span></td><td><span class='bucket b-elev'>elevated</span></td><td class='num'>3.0</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>stretch=high, above_52w, strong_momo</td></tr>
+<tr><td class='num'>3</td><td class='tk'>KARTN</td><td class='num'>8.82</td><td class='num'>0.89</td><td class='num'>6.50</td><td class='num'>10</td><td><span class='tag t-spec'>special_handling</span></td><td><span class='bucket b-sev'>severe</span></td><td class='num'>7.0</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>4</td><td class='tk'>GMTAS</td><td class='num'>8.68</td><td class='num'>0.84</td><td class='num'>7.98</td><td class='num'>7</td><td><span class='tag t-spec'>special_handling</span></td><td><span class='bucket b-sev'>severe</span></td><td class='num'>4.0</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>very_extended, above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>5</td><td class='tk'>SODSN</td><td class='num'>8.62</td><td class='num'>0.79</td><td class='num'>6.62</td><td class='num'>10</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>—</td></tr>
+<tr><td class='num'>6</td><td class='tk'>AVGYO</td><td class='num'>6.87</td><td class='num'>0.68</td><td class='num'>6.58</td><td class='num'>10</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-mild'>mild</span></td><td class='num'>1.5</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>—</td></tr>
+<tr><td class='num'>7</td><td class='tk'>ARENA</td><td class='num'>6.82</td><td class='num'>0.63</td><td class='num'>7.80</td><td class='num'>7</td><td><span class='tag t-ext'>extended_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>stretch=high, strong_momo</td></tr>
+<tr><td class='num'>8</td><td class='tk'>TURGG</td><td class='num'>6.77</td><td class='num'>0.58</td><td class='num'>5.97</td><td class='num'>10</td><td><span class='tag t-ext'>extended_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>stretch=high, strong_momo</td></tr>
+<tr><td class='num'>9</td><td class='tk'>SEGMN</td><td class='num'>5.05</td><td class='num'>0.42</td><td class='num'>6.31</td><td class='num'>10</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-elev'>elevated</span></td><td class='num'>3.0</td><td><span class='ret ret-pass' title='ok'>PASS</span></td><td class='note'>above_52w</td></tr>
     </tbody>
   </table>
 
 </div>
 <div class="box">
-  <h2>👁 Watchlist Only (0)</h2>
+  <h2>👁 Watchlist Only (10)</h2>
   <div class="footer-note">ranker'da çıktı ama timing-clean retention'da elendi · gözlem amaçlı, tradeable DEĞİL</div>
   
   <table class="data" id="watchlist">
@@ -97,10 +123,19 @@ td.note { color: #666; font-size: 0.88em; }
       <th>retention</th><th>Not</th>
     </tr></thead>
     <tbody>
-
+<tr><td class='num'>1</td><td class='tk'>HURGZ</td><td class='num'>8.17</td><td class='num'>0.74</td><td class='num'>5.50</td><td class='num'>11</td><td><span class='tag t-ext'>extended_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>stretch=high</td></tr>
+<tr><td class='num'>2</td><td class='tk'>PASEU</td><td class='num'>5.76</td><td class='num'>0.53</td><td class='num'>5.06</td><td class='num'>12</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>—</td></tr>
+<tr><td class='num'>3</td><td class='tk'>YAYLA</td><td class='num'>5.13</td><td class='num'>0.47</td><td class='num'>4.71</td><td class='num'>14</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-mild'>mild</span></td><td class='num'>1.5</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>—</td></tr>
+<tr><td class='num'>4</td><td class='tk'>SEKUR</td><td class='num'>4.92</td><td class='num'>0.37</td><td class='num'>5.54</td><td class='num'>11</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-elev'>elevated</span></td><td class='num'>3.0</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>above_52w</td></tr>
+<tr><td class='num'>5</td><td class='tk'>KAREL</td><td class='num'>4.49</td><td class='num'>0.32</td><td class='num'>4.59</td><td class='num'>14</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-sev'>severe</span></td><td class='num'>5.0</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>6</td><td class='tk'>MAGEN</td><td class='num'>4.43</td><td class='num'>0.26</td><td class='num'>5.35</td><td class='num'>11</td><td><span class='tag t-spec'>special_handling</span></td><td><span class='bucket b-elev'>elevated</span></td><td class='num'>3.0</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>above_52w</td></tr>
+<tr><td class='num'>7</td><td class='tk'>EGSER</td><td class='num'>4.27</td><td class='num'>0.21</td><td class='num'>4.73</td><td class='num'>14</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>—</td></tr>
+<tr><td class='num'>8</td><td class='tk'>SELEC</td><td class='num'>4.07</td><td class='num'>0.16</td><td class='num'>4.71</td><td class='num'>14</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>—</td></tr>
+<tr><td class='num'>9</td><td class='tk'>HRKET</td><td class='num'>4.03</td><td class='num'>0.11</td><td class='num'>4.84</td><td class='num'>14</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-mild'>mild</span></td><td class='num'>1.5</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>—</td></tr>
+<tr><td class='num'>10</td><td class='tk'>PAMEL</td><td class='num'>3.73</td><td class='num'>0.05</td><td class='num'>4.86</td><td class='num'>14</td><td><span class='tag t-clean'>clean_watch</span></td><td><span class='bucket b-clean'>clean</span></td><td class='num'>-0.5</td><td><span class='ret ret-drop' title='ok'>DROP</span></td><td class='note'>—</td></tr>
     </tbody>
   </table>
 
 </div>
-<div class="footer">nyxexpansion daily scan · 2026-04-25 10:14 UTC · v4C · dataset=output/nyxexp_dataset_v4.parquet</div>
+<div class="footer">nyxexpansion daily scan · 2026-04-25 11:51 UTC · v4C · dataset=output/nyxexp_dataset_v4.parquet</div>
 </body></html>

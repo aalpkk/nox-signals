@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="tr"><head>
+<meta charset="utf-8">
+<title>nyxexpansion v4C scan — 2026-04-25</title>
+<style>
+body { font-family: -apple-system, Segoe UI, Roboto, sans-serif; margin: 20px; background: #fafafa; color: #222; max-width: 1180px; }
+h1 { margin: 0 0 4px; }
+.meta { color: #666; margin-bottom: 16px; font-size: 0.92em; }
+.banner { background: #fff8e1; border-left: 3px solid #f9a825; padding: 10px 14px;
+           margin: 12px 0 18px; font-size: 0.92em; color: #5f4a00; border-radius: 4px; }
+.box { background: white; padding: 16px 22px; border-radius: 8px; margin-bottom: 20px;
+       box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+.box.warn { background: #ffebee; }
+h2 { margin-top: 0; font-size: 1.12em; }
+.kpis { display: flex; flex-wrap: wrap; gap: 22px; font-size: 0.93em; margin-bottom: 14px; color: #333; }
+table.data { width: 100%; border-collapse: collapse; font-size: 0.89em; }
+table.data th { text-align: left; background: #f0f0f0; padding: 7px 9px; font-weight: 600; }
+table.data td { padding: 5px 9px; border-bottom: 1px solid #eee; }
+table.data tr:hover { background: #f7f7f7; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+td.tk { font-weight: 600; }
+td.note { color: #666; font-size: 0.88em; }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.82em; }
+.t-clean { background: #e8f5e9; color: #1b5e20; }
+.t-ext { background: #fff3e0; color: #e65100; }
+.t-spec { background: #f3e5f5; color: #6a1b9a; }
+.bucket { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.82em; font-weight: 500; }
+.b-clean { background: #e3f2fd; color: #0d47a1; }
+.b-mild { background: #f0f4c3; color: #33691e; }
+.b-elev { background: #ffe0b2; color: #e65100; }
+.b-sev { background: #ffcdd2; color: #b71c1c; }
+.ret { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.78em; font-weight: 600; }
+.ret-pass { background: #c8e6c9; color: #1b5e20; }
+.ret-drop { background: #ffe0b2; color: #bf360c; }
+.ret-banner { background: #e8f5e9; border-left: 3px solid #2e7d32; color: #1b5e20; }
+.ret-banner-off { background: #fce4ec; border-left: 3px solid #ad1457; color: #880e4f; }
+.footer-note { color: #777; font-size: 0.85em; margin-top: 10px; }
+.footer { color: #888; font-size: 0.82em; margin-top: 16px; }
+</style></head><body>
+<h1>nyxexpansion v4C scan · 2026-04-25</h1>
+<div class="meta">
+  Tarama tarihi: <b>2026-04-25</b> ·
+  Evren: <b>588</b> ticker ·
+  Trigger: <b>0</b> sinyal ·
+  Rejim: <b>—</b> ·
+  Severe exclude: <b>0</b> ·
+  Dataset: <code>output/nyxexp_dataset_v4.parquet</code>
+</div>
+
+    <div class="banner">
+      ⚠️ <b>Daily candidate ranker — auto-entry DEĞİL.</b>
+      Bu liste trigger'dan geçen adayları winR sırasıyla gösterir; pozisyon kararı için
+      execution risk (bucket / very_extended / tight_room) ve canlı 17:30 dip/volume
+      gözlemi ayrıca değerlendirilmelidir. Severe bucket hard-exclude edilmiştir.
+    </div>
+    
+
+        <div class="banner ret-banner">
+          🛡 <b>Timing-clean retention filter (17:00 TR top-10)</b> —
+          PASS=<b>0</b> · DROP=<b>0</b> · unscored=<b>0</b>.
+          Tradeable list = retention_pass=True. Watchlist'te kalanlar gözlem amaçlı,
+          17:30 proxy'de tradeable kabul edilmez. Notes: <code>stage_disabled=0</code>.
+        </div>
+        
+
+        <div class="box warn">
+          <h2>💼 Markowitz 4'lü Portföy — ÜRETİLMEDİ</h2>
+          <div>Sebep: insufficient data (have 0 tickers with 60d history)</div>
+        </div>
+        
+<div class="box">
+  <h2>✅ Tradeable Candidates (0)</h2>
+  <div class="footer-note">retention_pass=True · 17:30 proxy için kabul edilen liste</div>
+  
+  <table class="data" id="tradeable">
+    <thead><tr>
+      <th>#</th><th>Ticker</th><th>winR</th><th>pct</th>
+      <th>winR_1700</th><th>rank_1700</th>
+      <th>exec_tag</th><th>risk_bucket</th><th>rscr</th>
+      <th>retention</th><th>Not</th>
+    </tr></thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+</div>
+<div class="box">
+  <h2>👁 Watchlist Only (0)</h2>
+  <div class="footer-note">ranker'da çıktı ama timing-clean retention'da elendi · gözlem amaçlı, tradeable DEĞİL</div>
+  
+  <table class="data" id="watchlist">
+    <thead><tr>
+      <th>#</th><th>Ticker</th><th>winR</th><th>pct</th>
+      <th>winR_1700</th><th>rank_1700</th>
+      <th>exec_tag</th><th>risk_bucket</th><th>rscr</th>
+      <th>retention</th><th>Not</th>
+    </tr></thead>
+    <tbody>
+
+    </tbody>
+  </table>
+
+</div>
+<div class="footer">nyxexpansion daily scan · 2026-04-25 10:14 UTC · v4C · dataset=output/nyxexp_dataset_v4.parquet</div>
+</body></html>

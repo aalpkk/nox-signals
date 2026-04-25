@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr"><head><meta charset="UTF-8">
+<title>Smart Breakout — Haftalık (W-FRI) — 24.04.2026</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif}
+body{background:#0d1117;color:#c9d1d9;padding:20px;line-height:1.55}
+h1{color:#58a6ff;border-bottom:2px solid #30363d;padding-bottom:10px;margin-bottom:8px}
+h2{color:#79c0ff;margin-top:30px;margin-bottom:12px;border-left:3px solid #58a6ff;padding-left:10px}
+.meta{color:#8b949e;font-size:13px;margin-bottom:18px}
+.meta b{color:#c9d1d9}
+table{width:100%;border-collapse:collapse;background:#161b22;border-radius:6px;overflow:hidden;font-size:13px}
+th{background:#21262d;color:#79c0ff;padding:9px 8px;text-align:left;font-weight:600;border-bottom:1px solid #30363d}
+td{padding:7px 8px;border-bottom:1px solid #21262d}
+tr.long td.long{color:#3fb950;font-weight:700}
+tr.short td.short{color:#f85149;font-weight:700}
+.tk{color:#58a6ff;text-decoration:none;font-weight:600}
+.tk:hover{text-decoration:underline}
+.strong{color:#3fb950;font-weight:700}
+.medium{color:#d29922;font-weight:600}
+.normal{color:#8b949e}
+.empty{text-align:center;color:#8b949e;font-style:italic;padding:18px}
+.banner{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:12px 16px;margin-bottom:18px;color:#8b949e;font-size:12.5px}
+.banner b{color:#c9d1d9}
+.banner .tag{display:inline-block;padding:2px 8px;border-radius:10px;background:#21262d;color:#79c0ff;margin-right:6px;font-size:11px}
+</style></head><body>
+<h1>📊 Smart Breakout — Haftalık (W-FRI)</h1>
+<div class="meta">As-of: <b>24.04.2026</b> (Cuma kapanışı) · Rapor üretim: 26.04.2026 01:39</div>
+<div class="banner">
+  <span class="tag">universe</span> 609 sembol &nbsp;
+  <span class="tag">tarandı</span> 1 ticker (≥80 hafta veri) &nbsp;
+  <span class="tag">patch</span> 0 bar &nbsp;
+  <span class="tag">backfill</span> 609 ticker
+  <br><br>
+  <b>Parametreler (W-FRI bar):</b>
+  BB(20w) ratio &lt; 0.80 · ATR(10w) &lt; 1.0×SMA20w ·
+  squeeze 5–40 hafta · vol filtre ON · HTF EMA50w OFF · ML scoring DISABLED (model = daily features)
+  <br><br>
+  <b>Veri yolu (3-tier layered, fintables → matriks → yfinance):</b>
+  <br>&nbsp;&nbsp;patch tier dağılımı: —
+  <br>&nbsp;&nbsp;backfill tier dağılımı: <span class="tag">matriks_d</span> 608 &nbsp; <span class="tag">yfinance_d</span> 1
+  
+</div>
+
+<h2>🎯 BREAKOUT — açık sinyaller (son 5 hafta)</h2>
+<table>
+<thead><tr><th>Sembol</th><th>Yön</th><th>Güç</th><th>Giriş</th><th>SL</th><th>TP1</th><th>TP2</th><th>TP3</th><th>Durum</th><th>Eski</th></tr></thead>
+<tbody><tr><td colspan="10" class="empty">— hiç breakout sinyali yok —</td></tr></tbody>
+</table>
+
+<h2>📦 BOX — kırılma bekleyen kutular (en sıkı 60)</h2>
+<table>
+<thead><tr><th>Sembol</th><th>Fiyat</th><th>Tepe</th><th>Taban</th><th>Yakın kenar</th><th>Sıkışma (h)</th><th>Eski</th></tr></thead>
+<tbody><tr><td><b><a href="https://www.tradingview.com/chart/?symbol=BIST:A1CAP" target="_blank" class="tk">A1CAP</a></b></td><td>14.20</td><td>16.82</td><td>10.38</td><td>↑18.5%</td><td>8</td><td>11H</td></tr></tbody>
+</table>
+
+<h2>🌀 SQUEEZE — hâlâ sıkışmada (en uzun 60)</h2>
+<table>
+<thead><tr><th>Sembol</th><th>Fiyat</th><th>Süre (h)</th></tr></thead>
+<tbody><tr><td colspan="3" class="empty">— —</td></tr></tbody>
+</table>
+</body></html>

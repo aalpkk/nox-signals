@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SBT-1700 Scan — 2026-04-24 (E04_C01 paper)</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+.briefing-container {
+  position: relative; z-index: 1;
+  max-width: 1080px; margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+
+.sbt-grid { display: grid; grid-template-columns: 1fr; gap: 1.1rem; margin-bottom: 1.5rem; }
+@media (min-width: 880px) { .sbt-grid { grid-template-columns: 1.4fr 1fr; } }
+
+.sbt-card {
+  background: rgba(199,189,190,0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: none;
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+  position: relative;
+}
+.sbt-card .card-title {
+  font-family: var(--font-display);
+  font-size: 0.7rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+.sbt-card .card-title b { color: var(--nox-gold); font-weight: 700; }
+
+.sbt-banner {
+  background: rgba(158,90,90,0.10);
+  border: 1px solid rgba(158,90,90,0.35);
+  border-left: 3px solid var(--nox-red);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.2rem;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.sbt-banner b { color: var(--nox-red); }
+.sbt-banner.info {
+  background: rgba(122,143,165,0.08);
+  border-color: rgba(122,143,165,0.30);
+  border-left-color: var(--nox-blue);
+}
+.sbt-banner.info b { color: var(--nox-blue); }
+.sbt-banner.gold {
+  background: rgba(201,169,110,0.07);
+  border-color: rgba(201,169,110,0.30);
+  border-left-color: var(--nox-gold);
+}
+.sbt-banner.gold b { color: var(--nox-gold); }
+
+.sbt-cand {
+  display: flex; align-items: center; gap: 0.8rem; flex-wrap: wrap;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 0.65rem;
+}
+.sbt-cand .ticker {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.6rem; font-weight: 900;
+  color: #fff; letter-spacing: -0.01em;
+}
+.sbt-cand .pill {
+  display: inline-flex; align-items: center;
+  padding: 0.18rem 0.6rem;
+  border-radius: 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.sbt-cand .pill.in-decile { background: rgba(201,169,110,0.18); color: var(--nox-gold); border: 1px solid rgba(201,169,110,0.45); }
+.sbt-cand .pill.in-quintile { background: rgba(122,158,122,0.15); color: var(--nox-green); border: 1px solid rgba(122,158,122,0.4); }
+.sbt-cand .pill.below { background: rgba(168,135,106,0.12); color: var(--nox-orange); border: 1px solid rgba(168,135,106,0.35); }
+.sbt-cand .score-chip {
+  font-family: var(--font-mono); font-size: 0.78rem;
+  padding: 0.2rem 0.55rem; border-radius: 6px;
+  background: var(--nox-gold-dim); color: var(--nox-gold);
+  font-weight: 700;
+}
+.sbt-cand .rank-chip {
+  font-family: var(--font-mono); font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.sbt-kv { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem 1rem; }
+.sbt-kv .row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  border-bottom: 1px dashed var(--border-subtle);
+  padding: 0.25rem 0;
+}
+.sbt-kv .row .k {
+  font-family: var(--font-display);
+  font-size: 0.74rem; color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.sbt-kv .row .v {
+  font-family: var(--font-mono);
+  font-size: 0.82rem; color: var(--text-primary);
+  font-weight: 600;
+}
+.sbt-kv .row .v.gold { color: var(--nox-gold); }
+.sbt-kv .row .v.red { color: var(--nox-red); }
+.sbt-kv .row .v.green { color: var(--nox-green); }
+
+table.sbt {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.78rem;
+}
+table.sbt th, table.sbt td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--border-subtle);
+  text-align: left;
+}
+table.sbt th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.66rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+table.sbt td {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+table.sbt td.ticker { font-family: 'Inter', sans-serif; font-weight: 800; color: #fff; }
+
+.sbt-empty {
+  text-align: center;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 1.4rem 0;
+  font-size: 0.85rem;
+}
+
+.sbt-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.sbt-footer code {
+  background: var(--bg-elevated);
+  padding: 1px 6px; border-radius: 3px;
+  color: var(--text-secondary);
+}
+
+details.sbt-details {
+  margin-bottom: 0.75rem;
+}
+details.sbt-details > summary {
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  color: var(--nox-gold);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.55rem 0.85rem;
+  background: rgba(199,189,190,0.06);
+  backdrop-filter: blur(16px);
+  border-radius: 14px;
+  display: flex; align-items: center; gap: 0.4rem;
+}
+details.sbt-details > summary::-webkit-details-marker { display: none; }
+details.sbt-details > summary::before {
+  content: '▸';
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  transition: transform 0.2s;
+}
+details.sbt-details[open] > summary::before { transform: rotate(90deg); }
+details.sbt-details > .body {
+  padding: 0.8rem;
+  background: rgba(6,7,9,0.55);
+  border-radius: 0 0 14px 14px;
+}
+
+.sanity-ok { color: var(--nox-green); font-weight: 700; }
+.sanity-fail { color: var(--nox-red); font-weight: 700; }
+
+</style>
+</head>
+<body>
+
+<div class="aurora-bg">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
+</div>
+<div class="mesh-overlay"></div>
+
+<div class="briefing-container">
+
+  <div class="nox-header" style="margin-bottom:1.2rem;">
+    <div class="nox-logo">
+      SBT-1700<span class="proj">  · E04_C01</span>
+      <span class="mode">paper · live-style scan</span>
+    </div>
+    <div class="nox-meta">
+      As-of close: <b>2026-04-24</b><br>
+      n_train (TRAIN+VAL) = <b>703</b><br>
+      generated 2026-04-26 22:42 UTC
+    </div>
+  </div>
+
+  <div class="nox-stats">
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
+      <span>Tetikli</span><span class="cnt">1</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-green);"></span>
+      <span>Top-quintile</span><span class="cnt">0</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
+      <span>Top-decile</span><span class="cnt">0</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-red);"></span>
+      <span>q80 cutoff</span><span class="cnt">3.193</span></div>
+  </div>
+
+  <div class="sbt-banner">
+    <b>RESEARCH WATCHLIST · NOT LIVE.</b>
+    Frozen 5D ranker + frozen E04_C01. Paper/shadow portföy izleme amaçlıdır,
+    canlı para yok. Forward path bu güne ait sinyallerde 5 işlem günü dolana
+    kadar etiketlenmez. TEST cohort small-N (n=25 top-quintile, 6 rolling-20
+    pencere, top-5 winners = 62% pozitif R) caveats geçerli.
+  </div>
+
+  <div class="sbt-banner info"><b>BELOW CUTOFF</b> · 1 aday tetikledi ama hiçbiri TEST top-quintile eşiğini (q80 = 3.193) aşmadı. Locked policy altında NO-ENTRY günü.</div>
+
+  <div class="sbt-grid">
+    <div>
+      
+    <div class="sbt-card">
+      <div class="card-title">Aday · <b>VKFYO</b></div>
+      <div class="sbt-cand">
+        <span class="ticker">VKFYO</span>
+        <span class="pill below">BELOW TOP-Q</span>
+        <span class="score-chip">score 2.6402</span>
+        <span class="rank-chip">cohort rank #47 / 124</span>
+      </div>
+      <div class="sbt-kv">
+        <div class="row"><span class="k">Entry (17:00 open)</span><span class="v gold">37.7000</span></div>
+        <div class="row"><span class="k">ATR14 prior</span><span class="v">1.4443</span></div>
+        <div class="row"><span class="k">Initial stop (−2.0 ATR)</span><span class="v red">34.8114</span></div>
+        <div class="row"><span class="k">Stop distance</span><span class="v red">+7.66%</span></div>
+        <div class="row"><span class="k">+1R (trail arm)</span><span class="v green">39.1443</span></div>
+        <div class="row"><span class="k">+2R level</span><span class="v green">40.5886</span></div>
+        <div class="row"><span class="k">box_top</span><span class="v">35.3200</span></div>
+        <div class="row"><span class="k">low_1700</span><span class="v">35.3200</span></div>
+        <div class="row"><span class="k">intraday cov.</span><span class="v">1.00</span></div>
+        <div class="row"><span class="k">Round-trip cost</span><span class="v">+0.15%</span></div>
+      </div>
+      <div style="margin-top:0.8rem;padding-top:0.55rem;border-top:1px solid var(--border-subtle);">
+        <div class="card-title" style="margin-bottom:0.4rem;">P2 sizing · 1M TRY ref · binding: <b>risk_budget</b></div>
+        <div class="sbt-kv">
+          <div class="row"><span class="k">Risk budget</span><span class="v">5000 TRY</span></div>
+          <div class="row"><span class="k">Quantity</span><span class="v">1730 pay</span></div>
+          <div class="row"><span class="k">Notional</span><span class="v">65221 TRY</span></div>
+          <div class="row"><span class="k">Actual risk</span><span class="v">4997 TRY</span></div>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+
+    <div class="sbt-card">
+      <div class="card-title">TEST cohort skor dağılımı <b>· locked</b></div>
+      <div class="sbt-kv">
+        <div class="row"><span class="k">TEST n</span><span class="v">124</span></div>
+<div class="row"><span class="k">score mean</span><span class="v">2.4545</span></div>
+<div class="row"><span class="k">score std</span><span class="v">1.2004</span></div>
+<div class="row"><span class="k">min</span><span class="v">0.0761</span></div>
+<div class="row"><span class="k">max</span><span class="v">7.5911</span></div>
+<div class="row"><span class="k">q80 (top-quintile cutoff)</span><span class="v gold">3.1929</span></div>
+<div class="row"><span class="k">q90 (top-decile cutoff)</span><span class="v gold">3.6951</span></div>
+<div class="row"><span class="k">rank-25 score</span><span class="v">3.2244</span></div>
+      </div>
+      <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.6rem;line-height:1.5;">
+        Locked TEST cohort: 124 sinyal, 2026-01-05 → 2026-04-16 (etkili).
+        Top-quintile = q80 üstü; top-decile = q90 üstü.
+      </div>
+    </div>
+  </div>
+
+  
+        <details class="sbt-details">
+          <summary>P2 portföy backtest referansı (locked)</summary>
+          <div class="body">
+            <div class="sbt-kv"><div class="row"><span class="k">Verdict</span><span class="v">PASS</span></div>
+<div class="row"><span class="k">P2 / TEST total return</span><span class="v">+5.79%</span></div>
+<div class="row"><span class="k">P2 / TEST max DD</span><span class="v red">-1.04%</span></div>
+<div class="row"><span class="k">P2 / TEST Sharpe (small-N)</span><span class="v">5.239</span></div>
+<div class="row"><span class="k">P2 / TEST Sortino (small-N)</span><span class="v">5.834</span></div>
+<div class="row"><span class="k">P2 / FULL total return (2.2y)</span><span class="v">+31.22%</span></div>
+<div class="row"><span class="k">P2 / FULL max DD</span><span class="v red">-3.40%</span></div>
+<div class="row"><span class="k">P2 / FULL Sharpe</span><span class="v gold">2.343</span></div>
+<div class="row"><span class="k">P2 / FULL Sortino</span><span class="v">3.678</span></div></div>
+            <div style="font-size:0.72rem;color:var(--text-muted);margin-top:0.6rem;line-height:1.5;">
+              TEST n=25 → küçük örneklem; Sharpe/Sortino ~66 günden anneksiyona dayalı, kalitatif okuyun.
+              FULL view ~2.2y non-OOS (TRAIN+VAL OOS skorları + TEST primary skorları), risk framing için tercih edilen referans.
+            </div>
+          </div>
+        </details>
+        
+
+  <details class="sbt-details">
+    <summary>E04_C01 spec recap</summary>
+    <div class="body">
+      <ul style="font-family:var(--font-mono);font-size:0.78rem;color:var(--text-secondary);
+                 line-height:1.7; padding-left:1.2rem;">
+        <li><b style="color:var(--nox-gold);">Entry</b>: T'nin 17:00–18:00 bar açılışı.</li>
+        <li><b style="color:var(--nox-red);">Initial stop</b>: 2.0 × ATR14_prior.</li>
+        <li><b style="color:var(--nox-green);">C01 trail</b>: MFE +1R'i geçtiği sonraki barda kurulur,
+          stop = MFE − 0.5 ATR.</li>
+        <li><b style="color:var(--nox-gold);">E04 overlay</b>: bar 8 (T+1 mid-session 17:00 close)
+          MFE &lt; +1R ise close exit.</li>
+        <li><b>Cost</b>: 15 bps round-trip, same-bar pessimism.</li>
+        <li><b>Priority</b>: initial_stop → prior-armed giveback → no_follow_through_close → timeout.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="sbt-details">
+    <summary>Reproducibility sanity</summary>
+    <div class="body" style="font-family:var(--font-mono);font-size:0.78rem;line-height:1.7;">
+      <span class="sanity-ok">PASS</span> — fresh fit reproduces existing TEST preds bit-identically (n=124, max |Δ|=0.00e+00).
+      <div style="color:var(--text-muted);margin-top:0.4rem;">
+        Drift varsa locked test readout ile bu scan arasında model değişmiş demektir;
+        bu durumda raporun hiçbir sayısı geçerli değildir, kontrol edilmeden
+        kullanılmaz.
+      </div>
+    </div>
+  </details>
+
+  <div class="sbt-footer">
+    Driver: <code>sbt1700/scan_live.py</code><br>
+    Locked TEST preds: <code>output/sbt_1700_5d_ranker_preds_test.parquet</code><br>
+    Portföy decision: <code>output/sbt_1700_E04_portfolio_decision.json</code><br>
+    Paper-only · NOT live · canlı para yok · forward path henüz etiketsiz.
+  </div>
+
+</div>
+
+</body>
+</html>

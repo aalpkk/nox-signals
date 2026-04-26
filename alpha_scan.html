@@ -1,45 +1,310 @@
 <!DOCTYPE html>
-<html lang="tr"><head>
-<meta charset="utf-8"><title>nyxalpha scan — 2026-04-24</title>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYX Alpha Scan — 24.04.2026</title>
 <style>
-body { font-family: -apple-system, sans-serif; margin: 20px; background: #fafafa; color: #222; }
-h1 { margin: 0 0 4px; }
-.meta { color: #666; margin-bottom: 16px; font-size: 0.9em; }
-.box { background: white; padding: 16px 20px; border-radius: 8px; margin-bottom: 20px;
-       box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
-h2 { margin-top: 0; font-size: 1.1em; }
-.kpis { display: flex; gap: 24px; font-size: 0.95em; margin-bottom: 12px; color: #444; }
-table.data { width: 100%; border-collapse: collapse; font-size: 0.88em; }
-table.data th { text-align: left; background: #f0f0f0; padding: 6px 8px; }
-table.data td { padding: 4px 8px; border-bottom: 1px solid #eee; }
-table.data tr:hover { background: #f7f7f7; }
-.footer { color: #888; font-size: 0.8em; margin-top: 16px; }
-</style></head><body>
-<h1>nyxalpha scan</h1>
-<div class="meta">Kapanış: <b>2026-04-24</b> · Evren: <b>590</b> → Likit: <b>560</b> → Aday: <b>118</b> · Mode: live</div>
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
 
-        <div class="box">
-          <h2>🎯 Markowitz 4'lü Portföy (Max Sharpe)</h2>
-          <div class="kpis">
-            <div>Beklenen Getiri: <b>+119.7%</b></div>
-            <div>Risk (σ): <b>43.2%</b></div>
-            <div>Sharpe: <b>1.61</b></div>
-            <div>Hisse: <b>4</b></div>
-          </div>
-          <table class="data">
-            <thead><tr><th>Hisse</th><th>Ağırlık</th><th>Skor</th><th>ML1g</th><th>ML3g</th>
-            <th>Fiyat</th><th>Stop</th><th>Stop%</th><th>Trail</th></tr></thead>
-            <tbody><tr><td><b>HEDEF</b></td><td>25.0%</td><td>49.5</td><td>0.61</td><td>0.51</td><td>137.00</td><td>121.48</td><td>11.3%</td><td>148.64</td></tr><tr><td><b>EDATA</b></td><td>25.0%</td><td>49.2</td><td>0.62</td><td>0.48</td><td>19.82</td><td>16.26</td><td>17.9%</td><td>22.49</td></tr><tr><td><b>ANELE</b></td><td>25.0%</td><td>48.7</td><td>0.70</td><td>0.53</td><td>50.90</td><td>45.56</td><td>10.5%</td><td>54.90</td></tr><tr><td><b>EFOR</b></td><td>25.0%</td><td>48.1</td><td>0.59</td><td>0.48</td><td>11.61</td><td>9.71</td><td>16.3%</td><td>13.03</td></tr></tbody>
-          </table>
-        </div>
-        
-<div class="box">
-  <h2>Tüm Adaylar (118)</h2>
-  <table class="data">
-    <thead><tr><th>#</th><th>Hisse</th><th>Skor</th><th>ML1g</th><th>ML3g</th><th>ADX</th><th>CMF</th><th>RSI</th>
-    <th>Fiyat</th><th>Stop</th><th>Stop%</th><th>Trail</th></tr></thead>
-    <tbody><tr><td>1</td><td><b>HEDEF</b></td><td>49.5</td><td>0.61</td><td>0.51</td><td>45.8</td><td>+0.229</td><td>58.2</td><td>137.00</td><td>121.48</td><td>11.3%</td><td>148.64</td></tr><tr><td>2</td><td><b>EDATA</b></td><td>49.2</td><td>0.62</td><td>0.48</td><td>56.2</td><td>+0.411</td><td>54.9</td><td>19.82</td><td>16.26</td><td>17.9%</td><td>22.49</td></tr><tr><td>3</td><td><b>ANELE</b></td><td>48.7</td><td>0.70</td><td>0.53</td><td>63.7</td><td>+0.247</td><td>97.1</td><td>50.90</td><td>45.56</td><td>10.5%</td><td>54.90</td></tr><tr><td>4</td><td><b>EFOR</b></td><td>48.1</td><td>0.59</td><td>0.48</td><td>41.8</td><td>+0.189</td><td>59.0</td><td>11.61</td><td>9.71</td><td>16.3%</td><td>13.03</td></tr><tr><td>5</td><td><b>SEKUR</b></td><td>48.1</td><td>0.67</td><td>0.53</td><td>35.0</td><td>+0.489</td><td>70.7</td><td>8.64</td><td>7.61</td><td>11.9%</td><td>9.41</td></tr><tr><td>6</td><td><b>PRZMA</b></td><td>47.5</td><td>0.66</td><td>0.52</td><td>36.5</td><td>+0.589</td><td>88.9</td><td>25.84</td><td>23.24</td><td>10.1%</td><td>27.79</td></tr><tr><td>7</td><td><b>ECOGR</b></td><td>46.6</td><td>0.52</td><td>0.49</td><td>31.1</td><td>+0.090</td><td>59.6</td><td>37.20</td><td>33.63</td><td>9.6%</td><td>39.88</td></tr><tr><td>8</td><td><b>VANGD</b></td><td>45.4</td><td>0.57</td><td>0.55</td><td>39.0</td><td>+0.174</td><td>70.2</td><td>94.90</td><td>83.55</td><td>12.0%</td><td>103.41</td></tr><tr><td>9</td><td><b>TEHOL</b></td><td>45.3</td><td>0.57</td><td>0.54</td><td>42.9</td><td>+0.089</td><td>78.2</td><td>25.24</td><td>22.72</td><td>10.0%</td><td>27.13</td></tr><tr><td>10</td><td><b>BORLS</b></td><td>45.0</td><td>0.63</td><td>0.47</td><td>53.0</td><td>+0.350</td><td>81.5</td><td>7.64</td><td>6.66</td><td>12.9%</td><td>8.38</td></tr><tr><td>11</td><td><b>KRDMB</b></td><td>44.9</td><td>0.66</td><td>0.57</td><td>63.6</td><td>+0.054</td><td>70.0</td><td>75.20</td><td>67.52</td><td>10.2%</td><td>80.96</td></tr><tr><td>12</td><td><b>ALARK</b></td><td>44.7</td><td>0.49</td><td>0.46</td><td>20.5</td><td>+0.168</td><td>49.7</td><td>93.00</td><td>87.85</td><td>5.5%</td><td>96.86</td></tr><tr><td>13</td><td><b>KUTPO</b></td><td>44.7</td><td>0.49</td><td>0.46</td><td>22.2</td><td>+0.081</td><td>56.5</td><td>99.25</td><td>90.99</td><td>8.3%</td><td>105.44</td></tr><tr><td>14</td><td><b>ICUGS</b></td><td>44.6</td><td>0.54</td><td>0.55</td><td>46.1</td><td>+0.028</td><td>77.1</td><td>4.71</td><td>4.09</td><td>13.2%</td><td>5.18</td></tr><tr><td>15</td><td><b>ERSU</b></td><td>44.5</td><td>0.54</td><td>0.54</td><td>56.2</td><td>+0.201</td><td>72.5</td><td>29.80</td><td>26.32</td><td>11.7%</td><td>32.41</td></tr><tr><td>16</td><td><b>MAGEN</b></td><td>44.5</td><td>0.55</td><td>0.54</td><td>53.2</td><td>+0.239</td><td>74.2</td><td>63.90</td><td>59.10</td><td>7.5%</td><td>67.50</td></tr><tr><td>17</td><td><b>TKFEN</b></td><td>44.3</td><td>0.53</td><td>0.55</td><td>54.1</td><td>+0.029</td><td>81.2</td><td>135.10</td><td>122.09</td><td>9.6%</td><td>144.85</td></tr><tr><td>18</td><td><b>ODINE</b></td><td>43.9</td><td>0.64</td><td>0.56</td><td>53.2</td><td>+0.103</td><td>81.1</td><td>995.00</td><td>907.48</td><td>8.8%</td><td>1,060.64</td></tr><tr><td>19</td><td><b>KBORU</b></td><td>43.7</td><td>0.54</td><td>0.52</td><td>36.6</td><td>+0.128</td><td>67.2</td><td>24.36</td><td>21.83</td><td>10.4%</td><td>26.26</td></tr><tr><td>20</td><td><b>BARMA</b></td><td>43.6</td><td>0.54</td><td>0.52</td><td>30.7</td><td>+0.362</td><td>75.0</td><td>58.75</td><td>54.57</td><td>7.1%</td><td>61.89</td></tr><tr><td>21</td><td><b>EGPRO</b></td><td>43.5</td><td>0.52</td><td>0.53</td><td>42.2</td><td>+0.384</td><td>77.7</td><td>43.60</td><td>38.51</td><td>11.7%</td><td>47.42</td></tr><tr><td>22</td><td><b>BURVA</b></td><td>43.4</td><td>0.66</td><td>0.52</td><td>19.7</td><td>+0.233</td><td>70.6</td><td>1,159.00</td><td>977.52</td><td>15.7%</td><td>1,295.11</td></tr><tr><td>23</td><td><b>AHGAZ</b></td><td>43.3</td><td>0.55</td><td>0.50</td><td>39.0</td><td>+0.253</td><td>77.5</td><td>28.30</td><td>26.44</td><td>6.6%</td><td>29.69</td></tr><tr><td>24</td><td><b>KGYO</b></td><td>43.3</td><td>0.53</td><td>0.51</td><td>41.0</td><td>+0.318</td><td>75.1</td><td>11.54</td><td>10.36</td><td>10.2%</td><td>12.43</td></tr><tr><td>25</td><td><b>AYGAZ</b></td><td>43.0</td><td>0.54</td><td>0.49</td><td>20.7</td><td>+0.188</td><td>59.4</td><td>277.50</td><td>255.55</td><td>7.9%</td><td>293.96</td></tr><tr><td>26</td><td><b>CEMZY</b></td><td>43.0</td><td>0.54</td><td>0.49</td><td>37.1</td><td>+0.059</td><td>70.9</td><td>78.65</td><td>71.78</td><td>8.7%</td><td>83.80</td></tr><tr><td>27</td><td><b>AKFIS</b></td><td>42.9</td><td>0.51</td><td>0.53</td><td>42.4</td><td>+0.064</td><td>62.6</td><td>50.20</td><td>44.09</td><td>12.2%</td><td>54.78</td></tr><tr><td>28</td><td><b>DURDO</b></td><td>42.9</td><td>0.53</td><td>0.50</td><td>39.5</td><td>+0.167</td><td>82.8</td><td>4.75</td><td>4.38</td><td>7.8%</td><td>5.03</td></tr><tr><td>29</td><td><b>EUKYO</b></td><td>42.9</td><td>0.51</td><td>0.52</td><td>26.3</td><td>+0.226</td><td>68.6</td><td>7.92</td><td>6.98</td><td>11.9%</td><td>8.62</td></tr><tr><td>30</td><td><b>PKART</b></td><td>42.7</td><td>0.56</td><td>0.46</td><td>41.7</td><td>+0.342</td><td>84.6</td><td>115.90</td><td>104.72</td><td>9.6%</td><td>124.29</td></tr><tr><td>31</td><td><b>VAKBN</b></td><td>42.7</td><td>0.56</td><td>0.47</td><td>23.7</td><td>+0.170</td><td>48.9</td><td>33.48</td><td>30.87</td><td>7.8%</td><td>35.44</td></tr><tr><td>32</td><td><b>RNPOL</b></td><td>42.5</td><td>0.52</td><td>0.50</td><td>52.4</td><td>+0.314</td><td>68.3</td><td>3.15</td><td>2.75</td><td>12.7%</td><td>3.45</td></tr><tr><td>33</td><td><b>TMSN</b></td><td>42.5</td><td>0.56</td><td>0.46</td><td>12.9</td><td>+0.112</td><td>49.1</td><td>104.10</td><td>97.89</td><td>6.0%</td><td>108.76</td></tr><tr><td>34</td><td><b>DSTKF</b></td><td>42.4</td><td>0.61</td><td>0.54</td><td>63.3</td><td>+0.230</td><td>93.7</td><td>2,632.50</td><td>2,447.38</td><td>7.0%</td><td>2,771.34</td></tr><tr><td>35</td><td><b>EBEBK</b></td><td>42.4</td><td>0.52</td><td>0.49</td><td>34.3</td><td>+0.279</td><td>73.0</td><td>72.80</td><td>68.25</td><td>6.2%</td><td>76.21</td></tr><tr><td>36</td><td><b>ARASE</b></td><td>42.3</td><td>0.52</td><td>0.49</td><td>20.8</td><td>-0.136</td><td>57.1</td><td>101.10</td><td>92.38</td><td>8.6%</td><td>107.64</td></tr><tr><td>37</td><td><b>ULAS</b></td><td>42.3</td><td>0.53</td><td>0.48</td><td>25.5</td><td>+0.078</td><td>39.6</td><td>29.70</td><td>25.80</td><td>13.1%</td><td>32.63</td></tr><tr><td>38</td><td><b>PENGD</b></td><td>42.2</td><td>0.62</td><td>0.52</td><td>43.5</td><td>+0.074</td><td>80.3</td><td>15.05</td><td>13.24</td><td>12.0%</td><td>16.41</td></tr><tr><td>39</td><td><b>ECZYT</b></td><td>42.0</td><td>0.51</td><td>0.49</td><td>29.4</td><td>+0.260</td><td>64.4</td><td>377.50</td><td>341.68</td><td>9.5%</td><td>404.36</td></tr><tr><td>40</td><td><b>ORGE</b></td><td>41.9</td><td>0.51</td><td>0.48</td><td>32.5</td><td>+0.114</td><td>77.7</td><td>84.70</td><td>78.55</td><td>7.3%</td><td>89.31</td></tr><tr><td>41</td><td><b>TCKRC</b></td><td>41.9</td><td>0.52</td><td>0.48</td><td>25.1</td><td>+0.103</td><td>68.1</td><td>105.30</td><td>94.81</td><td>10.0%</td><td>113.17</td></tr><tr><td>42</td><td><b>ASUZU</b></td><td>41.8</td><td>0.51</td><td>0.49</td><td>22.2</td><td>+0.131</td><td>58.0</td><td>69.50</td><td>64.90</td><td>6.6%</td><td>72.95</td></tr><tr><td>43</td><td><b>KRDMA</b></td><td>41.7</td><td>0.51</td><td>0.49</td><td>37.6</td><td>-0.031</td><td>59.7</td><td>32.92</td><td>30.35</td><td>7.8%</td><td>34.84</td></tr><tr><td>44</td><td><b>SANKO</b></td><td>41.7</td><td>0.51</td><td>0.48</td><td>26.2</td><td>+0.028</td><td>68.2</td><td>23.18</td><td>21.40</td><td>7.7%</td><td>24.52</td></tr><tr><td>45</td><td><b>DGATE</b></td><td>41.6</td><td>0.51</td><td>0.48</td><td>21.1</td><td>+0.124</td><td>74.5</td><td>88.00</td><td>81.05</td><td>7.9%</td><td>93.22</td></tr><tr><td>46</td><td><b>GEREL</b></td><td>41.6</td><td>0.58</td><td>0.54</td><td>42.1</td><td>+0.371</td><td>72.9</td><td>40.98</td><td>36.45</td><td>11.1%</td><td>44.38</td></tr><tr><td>47</td><td><b>KARSN</b></td><td>41.6</td><td>0.51</td><td>0.48</td><td>22.9</td><td>+0.013</td><td>66.6</td><td>11.30</td><td>10.45</td><td>7.5%</td><td>11.93</td></tr><tr><td>48</td><td><b>LKMNH</b></td><td>41.6</td><td>0.52</td><td>0.46</td><td>17.8</td><td>+0.155</td><td>47.8</td><td>15.55</td><td>14.68</td><td>5.6%</td><td>16.20</td></tr><tr><td>49</td><td><b>MRGYO</b></td><td>41.4</td><td>0.51</td><td>0.47</td><td>37.8</td><td>+0.090</td><td>65.3</td><td>1.84</td><td>1.64</td><td>10.9%</td><td>1.99</td></tr><tr><td>50</td><td><b>ANHYT</b></td><td>41.1</td><td>0.51</td><td>0.46</td><td>13.2</td><td>+0.095</td><td>52.7</td><td>112.10</td><td>105.15</td><td>6.2%</td><td>117.31</td></tr><tr><td>51</td><td><b>HLGYO</b></td><td>41.1</td><td>0.49</td><td>0.48</td><td>31.7</td><td>+0.138</td><td>63.8</td><td>5.79</td><td>5.39</td><td>6.9%</td><td>6.09</td></tr><tr><td>52</td><td><b>ICBCT</b></td><td>41.0</td><td>0.49</td><td>0.47</td><td>34.0</td><td>+0.054</td><td>71.1</td><td>16.19</td><td>15.03</td><td>7.1%</td><td>17.06</td></tr><tr><td>53</td><td><b>TUPRS</b></td><td>41.0</td><td>0.49</td><td>0.48</td><td>24.0</td><td>+0.089</td><td>60.6</td><td>269.00</td><td>249.13</td><td>7.4%</td><td>283.90</td></tr><tr><td>54</td><td><b>ENKAI</b></td><td>40.9</td><td>0.50</td><td>0.47</td><td>33.6</td><td>+0.098</td><td>65.3</td><td>106.50</td><td>99.47</td><td>6.6%</td><td>111.77</td></tr><tr><td>55</td><td><b>GENTS</b></td><td>40.9</td><td>0.51</td><td>0.46</td><td>28.3</td><td>+0.049</td><td>48.0</td><td>7.88</td><td>6.94</td><td>11.9%</td><td>8.59</td></tr><tr><td>56</td><td><b>RYSAS</b></td><td>40.9</td><td>0.49</td><td>0.47</td><td>31.1</td><td>+0.214</td><td>62.8</td><td>22.44</td><td>20.59</td><td>8.2%</td><td>23.83</td></tr><tr><td>57</td><td><b>INDES</b></td><td>40.8</td><td>0.49</td><td>0.48</td><td>22.5</td><td>+0.051</td><td>65.3</td><td>10.04</td><td>9.23</td><td>8.1%</td><td>10.65</td></tr><tr><td>58</td><td><b>KIMMR</b></td><td>40.8</td><td>0.49</td><td>0.47</td><td>21.7</td><td>-0.251</td><td>51.3</td><td>17.79</td><td>16.10</td><td>9.5%</td><td>19.06</td></tr><tr><td>59</td><td><b>MARKA</b></td><td>40.8</td><td>0.49</td><td>0.47</td><td>36.1</td><td>-0.226</td><td>58.2</td><td>55.55</td><td>46.05</td><td>17.1%</td><td>62.68</td></tr><tr><td>60</td><td><b>OZSUB</b></td><td>40.8</td><td>0.48</td><td>0.48</td><td>28.8</td><td>+0.206</td><td>62.0</td><td>24.50</td><td>22.27</td><td>9.1%</td><td>26.17</td></tr><tr><td>61</td><td><b>AKYHO</b></td><td>40.7</td><td>0.50</td><td>0.46</td><td>25.5</td><td>+0.125</td><td>62.4</td><td>2.84</td><td>2.62</td><td>7.7%</td><td>3.00</td></tr><tr><td>62</td><td><b>DERIM</b></td><td>40.7</td><td>0.49</td><td>0.47</td><td>29.9</td><td>+0.093</td><td>63.7</td><td>40.84</td><td>37.58</td><td>8.0%</td><td>43.29</td></tr><tr><td>63</td><td><b>KRTEK</b></td><td>40.6</td><td>0.49</td><td>0.46</td><td>18.5</td><td>+0.080</td><td>48.9</td><td>24.98</td><td>23.36</td><td>6.5%</td><td>26.20</td></tr><tr><td>64</td><td><b>YGGYO</b></td><td>40.6</td><td>0.54</td><td>0.54</td><td>47.6</td><td>+0.236</td><td>74.2</td><td>235.20</td><td>216.00</td><td>8.2%</td><td>249.60</td></tr><tr><td>65</td><td><b>GOODY</b></td><td>40.5</td><td>0.50</td><td>0.45</td><td>32.0</td><td>-0.364</td><td>58.5</td><td>15.64</td><td>14.58</td><td>6.8%</td><td>16.43</td></tr><tr><td>66</td><td><b>PENTA</b></td><td>40.5</td><td>0.50</td><td>0.45</td><td>24.2</td><td>+0.020</td><td>61.1</td><td>14.32</td><td>13.42</td><td>6.3%</td><td>14.99</td></tr><tr><td>67</td><td><b>TAVHL</b></td><td>40.5</td><td>0.50</td><td>0.45</td><td>19.0</td><td>+0.029</td><td>45.8</td><td>308.25</td><td>282.44</td><td>8.4%</td><td>327.61</td></tr><tr><td>68</td><td><b>BOBET</b></td><td>40.4</td><td>0.50</td><td>0.45</td><td>20.9</td><td>-0.080</td><td>57.2</td><td>20.30</td><td>19.13</td><td>5.8%</td><td>21.18</td></tr><tr><td>69</td><td><b>CIMSA</b></td><td>40.4</td><td>0.48</td><td>0.47</td><td>22.1</td><td>+0.091</td><td>68.3</td><td>56.05</td><td>52.18</td><td>6.9%</td><td>58.95</td></tr><tr><td>70</td><td><b>HRKET</b></td><td>40.4</td><td>0.49</td><td>0.45</td><td>22.3</td><td>+0.008</td><td>69.1</td><td>71.20</td><td>66.38</td><td>6.8%</td><td>74.82</td></tr><tr><td>71</td><td><b>KCHOL</b></td><td>40.4</td><td>0.48</td><td>0.47</td><td>16.7</td><td>+0.050</td><td>59.2</td><td>207.00</td><td>195.11</td><td>5.7%</td><td>215.92</td></tr><tr><td>72</td><td><b>OYAKC</b></td><td>40.4</td><td>0.49</td><td>0.45</td><td>17.7</td><td>+0.033</td><td>46.3</td><td>24.24</td><td>22.74</td><td>6.2%</td><td>25.37</td></tr><tr><td>73</td><td><b>TRMET</b></td><td>40.4</td><td>0.49</td><td>0.46</td><td>19.1</td><td>+0.129</td><td>46.2</td><td>131.70</td><td>119.94</td><td>8.9%</td><td>140.52</td></tr><tr><td>74</td><td><b>IZMDC</b></td><td>40.3</td><td>0.48</td><td>0.46</td><td>16.4</td><td>+0.099</td><td>52.9</td><td>6.83</td><td>6.38</td><td>6.6%</td><td>7.17</td></tr><tr><td>75</td><td><b>MNDRS</b></td><td>40.2</td><td>0.48</td><td>0.46</td><td>24.2</td><td>-0.051</td><td>52.7</td><td>13.10</td><td>12.22</td><td>6.7%</td><td>13.76</td></tr><tr><td>76</td><td><b>MACKO</b></td><td>40.1</td><td>0.54</td><td>0.53</td><td>36.1</td><td>+0.031</td><td>73.6</td><td>43.10</td><td>39.45</td><td>8.5%</td><td>45.84</td></tr><tr><td>77</td><td><b>QUAGR</b></td><td>39.8</td><td>0.53</td><td>0.53</td><td>44.0</td><td>-0.008</td><td>64.2</td><td>3.88</td><td>3.45</td><td>11.0%</td><td>4.20</td></tr><tr><td>78</td><td><b>YYAPI</b></td><td>39.7</td><td>0.61</td><td>0.45</td><td>46.3</td><td>-0.222</td><td>39.5</td><td>1.04</td><td>0.95</td><td>8.3%</td><td>1.10</td></tr><tr><td>79</td><td><b>KARTN</b></td><td>39.0</td><td>0.58</td><td>0.45</td><td>36.3</td><td>+0.108</td><td>85.9</td><td>114.30</td><td>103.11</td><td>9.8%</td><td>122.69</td></tr><tr><td>80</td><td><b>BMSTL</b></td><td>38.2</td><td>0.55</td><td>0.46</td><td>10.8</td><td>-0.267</td><td>49.2</td><td>84.90</td><td>78.51</td><td>7.5%</td><td>89.69</td></tr><tr><td>81</td><td><b>DOAS</b></td><td>38.2</td><td>0.55</td><td>0.45</td><td>12.6</td><td>-0.125</td><td>47.0</td><td>184.30</td><td>175.24</td><td>4.9%</td><td>191.10</td></tr><tr><td>82</td><td><b>ODAS</b></td><td>38.0</td><td>0.51</td><td>0.49</td><td>28.8</td><td>+0.001</td><td>60.8</td><td>6.97</td><td>6.36</td><td>8.8%</td><td>7.43</td></tr><tr><td>83</td><td><b>TEZOL</b></td><td>38.0</td><td>0.51</td><td>0.49</td><td>30.2</td><td>+0.222</td><td>62.1</td><td>18.59</td><td>17.20</td><td>7.5%</td><td>19.63</td></tr><tr><td>84</td><td><b>DITAS</b></td><td>37.8</td><td>0.51</td><td>0.48</td><td>25.0</td><td>-0.290</td><td>36.5</td><td>32.60</td><td>27.62</td><td>15.3%</td><td>36.34</td></tr><tr><td>85</td><td><b>ARZUM</b></td><td>37.4</td><td>0.51</td><td>0.47</td><td>29.4</td><td>-0.320</td><td>42.7</td><td>2.72</td><td>2.30</td><td>15.4%</td><td>3.04</td></tr><tr><td>86</td><td><b>TCELL</b></td><td>37.4</td><td>0.51</td><td>0.47</td><td>17.9</td><td>+0.056</td><td>52.5</td><td>114.30</td><td>107.33</td><td>6.1%</td><td>119.53</td></tr><tr><td>87</td><td><b>GOKNR</b></td><td>37.3</td><td>0.52</td><td>0.46</td><td>20.0</td><td>-0.183</td><td>54.3</td><td>22.52</td><td>20.97</td><td>6.9%</td><td>23.68</td></tr><tr><td>88</td><td><b>ALKIM</b></td><td>37.2</td><td>0.49</td><td>0.49</td><td>29.1</td><td>-0.125</td><td>72.3</td><td>20.50</td><td>18.99</td><td>7.3%</td><td>21.63</td></tr><tr><td>89</td><td><b>BIENY</b></td><td>37.2</td><td>0.50</td><td>0.47</td><td>28.3</td><td>-0.181</td><td>61.7</td><td>25.94</td><td>23.90</td><td>7.9%</td><td>27.47</td></tr><tr><td>90</td><td><b>PEKGY</b></td><td>37.2</td><td>0.49</td><td>0.49</td><td>11.8</td><td>-0.031</td><td>59.1</td><td>14.53</td><td>13.20</td><td>9.1%</td><td>15.53</td></tr><tr><td>91</td><td><b>RUZYE</b></td><td>37.2</td><td>0.49</td><td>0.48</td><td>16.3</td><td>+0.087</td><td>69.9</td><td>13.49</td><td>12.32</td><td>8.6%</td><td>14.36</td></tr><tr><td>92</td><td><b>ANSGR</b></td><td>37.1</td><td>0.49</td><td>0.47</td><td>31.0</td><td>+0.208</td><td>69.9</td><td>28.98</td><td>27.34</td><td>5.7%</td><td>30.21</td></tr><tr><td>93</td><td><b>KRDMD</b></td><td>37.1</td><td>0.50</td><td>0.47</td><td>33.2</td><td>-0.027</td><td>64.5</td><td>36.86</td><td>33.84</td><td>8.2%</td><td>39.13</td></tr><tr><td>94</td><td><b>EREGL</b></td><td>37.0</td><td>0.50</td><td>0.47</td><td>25.6</td><td>+0.057</td><td>62.5</td><td>33.00</td><td>30.53</td><td>7.5%</td><td>34.85</td></tr><tr><td>95</td><td><b>IDGYO</b></td><td>37.0</td><td>0.50</td><td>0.46</td><td>13.7</td><td>+0.093</td><td>34.9</td><td>3.43</td><td>3.03</td><td>11.7%</td><td>3.73</td></tr><tr><td>96</td><td><b>MAKIM</b></td><td>37.0</td><td>0.48</td><td>0.48</td><td>33.2</td><td>-0.077</td><td>69.9</td><td>19.76</td><td>17.78</td><td>10.0%</td><td>21.24</td></tr><tr><td>97</td><td><b>OTTO</b></td><td>37.0</td><td>0.49</td><td>0.48</td><td>16.3</td><td>+0.082</td><td>60.1</td><td>353.00</td><td>316.13</td><td>10.4%</td><td>380.65</td></tr><tr><td>98</td><td><b>PRDGS</b></td><td>37.0</td><td>0.49</td><td>0.47</td><td>35.2</td><td>-0.170</td><td>77.2</td><td>8.74</td><td>7.89</td><td>9.8%</td><td>9.38</td></tr><tr><td>99</td><td><b>AKSEN</b></td><td>36.9</td><td>0.50</td><td>0.46</td><td>18.9</td><td>-0.159</td><td>57.2</td><td>81.25</td><td>75.22</td><td>7.4%</td><td>85.77</td></tr><tr><td>100</td><td><b>AKFGY</b></td><td>36.8</td><td>0.51</td><td>0.45</td><td>14.4</td><td>-0.091</td><td>52.0</td><td>2.85</td><td>2.68</td><td>6.1%</td><td>2.98</td></tr><tr><td>101</td><td><b>GLRYH</b></td><td>36.8</td><td>0.50</td><td>0.46</td><td>10.6</td><td>-0.061</td><td>52.7</td><td>4.38</td><td>4.06</td><td>7.4%</td><td>4.62</td></tr><tr><td>102</td><td><b>RUBNS</b></td><td>36.8</td><td>0.51</td><td>0.45</td><td>29.2</td><td>-0.197</td><td>38.0</td><td>31.70</td><td>26.91</td><td>15.1%</td><td>35.29</td></tr><tr><td>103</td><td><b>BIGTK</b></td><td>36.7</td><td>0.49</td><td>0.46</td><td>16.0</td><td>-0.516</td><td>40.3</td><td>216.00</td><td>187.24</td><td>13.3%</td><td>237.57</td></tr><tr><td>104</td><td><b>ISSEN</b></td><td>36.7</td><td>0.49</td><td>0.47</td><td>29.7</td><td>+0.020</td><td>63.0</td><td>8.47</td><td>7.78</td><td>8.1%</td><td>8.99</td></tr><tr><td>105</td><td><b>SISE</b></td><td>36.7</td><td>0.48</td><td>0.47</td><td>17.7</td><td>-0.070</td><td>57.8</td><td>47.88</td><td>44.70</td><td>6.6%</td><td>50.27</td></tr><tr><td>106</td><td><b>THYAO</b></td><td>36.7</td><td>0.49</td><td>0.46</td><td>20.8</td><td>+0.013</td><td>60.7</td><td>325.00</td><td>305.75</td><td>5.9%</td><td>339.43</td></tr><tr><td>107</td><td><b>KRSTL</b></td><td>36.6</td><td>0.49</td><td>0.46</td><td>19.6</td><td>+0.076</td><td>54.2</td><td>9.45</td><td>8.75</td><td>7.4%</td><td>9.97</td></tr><tr><td>108</td><td><b>KZGYO</b></td><td>36.6</td><td>0.50</td><td>0.45</td><td>18.9</td><td>-0.314</td><td>52.9</td><td>23.44</td><td>21.75</td><td>7.2%</td><td>24.71</td></tr><tr><td>109</td><td><b>MANAS</b></td><td>36.6</td><td>0.48</td><td>0.47</td><td>17.6</td><td>-0.152</td><td>49.9</td><td>23.00</td><td>19.02</td><td>17.3%</td><td>25.98</td></tr><tr><td>110</td><td><b>RYGYO</b></td><td>36.6</td><td>0.50</td><td>0.45</td><td>14.4</td><td>-0.193</td><td>50.2</td><td>32.30</td><td>29.53</td><td>8.6%</td><td>34.38</td></tr><tr><td>111</td><td><b>KNFRT</b></td><td>36.5</td><td>0.48</td><td>0.47</td><td>32.2</td><td>+0.062</td><td>65.1</td><td>12.59</td><td>11.62</td><td>7.7%</td><td>13.32</td></tr><tr><td>112</td><td><b>MEGMT</b></td><td>36.5</td><td>0.48</td><td>0.47</td><td>35.4</td><td>-0.102</td><td>56.7</td><td>79.30</td><td>73.34</td><td>7.5%</td><td>83.77</td></tr><tr><td>113</td><td><b>TRGYO</b></td><td>36.5</td><td>0.48</td><td>0.47</td><td>24.9</td><td>+0.282</td><td>76.4</td><td>96.95</td><td>92.19</td><td>4.9%</td><td>100.52</td></tr><tr><td>114</td><td><b>VAKFA</b></td><td>36.4</td><td>0.49</td><td>0.46</td><td>18.8</td><td>-0.097</td><td>58.9</td><td>13.67</td><td>12.72</td><td>7.0%</td><td>14.38</td></tr><tr><td>115</td><td><b>YYLGD</b></td><td>36.4</td><td>0.49</td><td>0.45</td><td>22.0</td><td>-0.104</td><td>52.9</td><td>11.71</td><td>10.89</td><td>7.0%</td><td>12.32</td></tr><tr><td>116</td><td><b>IHYAY</b></td><td>36.2</td><td>0.49</td><td>0.45</td><td>24.8</td><td>-0.142</td><td>58.3</td><td>1.86</td><td>1.71</td><td>7.8%</td><td>1.97</td></tr><tr><td>117</td><td><b>PARSN</b></td><td>36.2</td><td>0.48</td><td>0.46</td><td>11.0</td><td>-0.079</td><td>52.0</td><td>83.85</td><td>78.98</td><td>5.8%</td><td>87.50</td></tr><tr><td>118</td><td><b>MEDTR</b></td><td>36.0</td><td>0.48</td><td>0.45</td><td>19.7</td><td>+0.163</td><td>64.1</td><td>30.42</td><td>28.77</td><td>5.4%</td><td>31.66</td></tr></tbody>
-  </table>
+.aurora-bg { position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; overflow:hidden; pointer-events:none; }
+.aurora-layer { position: absolute; width:200%; height:200%; top:-50%; left:-50%; opacity:1; }
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background: radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed; top:0; left:0; width:100%; height:100%; z-index:0; pointer-events:none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%,100% { transform: translate(0,0) rotate(0deg); }
+  25% { transform: translate(4%,-4%) rotate(3deg); }
+  50% { transform: translate(-4%,4%) rotate(-3deg); }
+  75% { transform: translate(2%,2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%,100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+
+.container {
+  position: relative; z-index: 1;
+  max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 3rem;
+}
+
+/* Sticky status bar */
+.status-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(6,6,8,0.55);
+  backdrop-filter: blur(24px) saturate(1.3);
+  -webkit-backdrop-filter: blur(24px) saturate(1.3);
+  border-bottom: 1px solid rgba(201,169,110,0.08);
+  padding: 0.6rem 1.5rem;
+  margin: 0 -1.5rem 1.75rem;
+  display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+}
+.status-bar .logo {
+  display: inline-flex; align-items: baseline; gap: 0.15rem; white-space: nowrap;
+}
+.status-bar .logo .nox-text {
+  font-family: var(--font-brand);
+  font-size: 2.4rem;
+  color: #fff;
+  letter-spacing: 0.06em;
+  line-height: 0.85;
+}
+.status-bar .logo .alpha-text {
+  font-family: var(--font-handwrite);
+  font-size: 1.3rem;
+  color: var(--nox-gold);
+  margin-left: 0.25rem;
+  position: relative;
+  top: -0.1rem;
+}
+.status-bar .meta-pill {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 0.75rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+.status-bar .meta-pill b { color: var(--nox-gold); font-weight: 600; }
+.status-bar .meta-right {
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono); white-space: nowrap; margin-left: auto;
+}
+
+/* Layer titles */
+.layer-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--nox-gold);
+  margin: 1.5rem 0 0.6rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.layer-title:first-of-type { margin-top: 0; }
+
+/* Cards */
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.25rem 1.25rem;
+  margin-bottom: 0.5rem;
+}
+.portfolio-card {
+  border-color: rgba(201,169,110,0.18);
+  background: linear-gradient(180deg, rgba(201,169,110,0.025) 0%, var(--bg-card) 60%);
+}
+
+/* KPI strip */
+.kpi-strip {
+  display: flex; flex-wrap: wrap; gap: 1.5rem;
+  padding: 0.5rem 0 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 1rem;
+}
+.kpi { display: flex; flex-direction: column; gap: 0.15rem; }
+.kpi-label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+}
+.kpi-val {
+  font-family: var(--font-mono);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.kpi-pos { color: var(--nox-green); }
+.kpi-mid { color: var(--nox-gold); }
+.kpi-neg { color: var(--nox-red); }
+
+/* Tables */
+.table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+  background: rgba(6,7,9,0.3);
+}
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 5; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.66rem;
+  text-transform: uppercase; letter-spacing: 0.07em;
+  padding: 9px 10px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+  font-family: var(--font-display);
+}
+td {
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(39,39,42,0.4);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--text-secondary);
+}
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+td.idx { color: var(--text-muted); }
+td.ticker { color: var(--text-primary); font-family: var(--font-display); font-weight: 600; }
+td.ticker b { color: var(--nox-gold); }
+td.score { color: var(--nox-gold); font-weight: 600; }
+td.wt { color: var(--nox-copper); font-weight: 600; }
+td.pos { color: var(--nox-green); }
+td.neg { color: var(--nox-red); }
+
+/* Counter pill in header */
+.section-meta {
+  display: inline-flex; gap: 0.4rem; align-items: center;
+  font-family: var(--font-mono); font-size: 0.66rem;
+  color: var(--text-muted);
+  text-transform: none; letter-spacing: 0.02em;
+  margin-left: 0.6rem;
+  padding: 0.15rem 0.55rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0.6rem;
+}
+.section-meta b { color: var(--nox-gold); font-weight: 600; }
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.75rem 0 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.footer b { color: var(--nox-gold); font-weight: 500; }
+.footer .sep { color: var(--border-dim); margin: 0 0.5rem; }
+
+@media (max-width: 768px) {
+  .container { padding: 0 0.75rem 2rem; }
+  .status-bar { margin: 0 -0.75rem 1.25rem; }
+  .kpi-strip { gap: 1rem; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 6px 7px; }
+}
+</style>
+</head>
+<body>
+<div class="aurora-bg">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
 </div>
-<div class="footer">nyxalpha · 2026-04-24 16:35 · BE_SHIFT_R=2.0</div>
-</body></html>
+<div class="mesh-overlay"></div>
+
+<div class="container">
+  <div class="status-bar">
+    <span class="logo"><span class="nox-text">NYX</span><span class="alpha-text">alpha</span></span>
+    <span class="meta-pill">Kapanış: <b>24.04.2026</b></span>
+    <span class="meta-pill">Evren <b>591</b> → Likit <b>560</b> → Aday <b>118</b></span>
+    <span class="meta-pill">Mode <b>cache</b></span>
+    <span class="meta-right">26.04.2026 22:44</span>
+  </div>
+
+    <div class="layer-title">Markowitz Portföy — Max Sharpe</div>
+    <div class="card portfolio-card">
+      <div class="kpi-strip">
+        <div class="kpi"><span class="kpi-label">Beklenen Getiri</span><span class="kpi-val kpi-pos">+119.7%</span></div>
+        <div class="kpi"><span class="kpi-label">Risk (σ)</span><span class="kpi-val">43.2%</span></div>
+        <div class="kpi"><span class="kpi-label">Sharpe</span><span class="kpi-val kpi-pos">1.61</span></div>
+        <div class="kpi"><span class="kpi-label">Hisse</span><span class="kpi-val">4</span></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr>
+            <th>Hisse</th><th>Ağırlık</th><th>Skor</th><th>ML1g</th><th>ML3g</th>
+            <th>Fiyat</th><th>Stop</th><th>Stop %</th><th>Trail</th>
+          </tr></thead>
+          <tbody><tr><td class='ticker'><b>HEDEF</b></td><td class='wt'>25.0%</td><td class='score'>49.5</td><td>0.61</td><td>0.51</td><td>137.00</td><td class='neg'>121.48</td><td class='neg'>11.3%</td><td class='pos'>148.64</td></tr><tr><td class='ticker'><b>EDATA</b></td><td class='wt'>25.0%</td><td class='score'>49.2</td><td>0.62</td><td>0.48</td><td>19.82</td><td class='neg'>16.26</td><td class='neg'>17.9%</td><td class='pos'>22.49</td></tr><tr><td class='ticker'><b>ANELE</b></td><td class='wt'>25.0%</td><td class='score'>48.7</td><td>0.70</td><td>0.53</td><td>50.90</td><td class='neg'>45.56</td><td class='neg'>10.5%</td><td class='pos'>54.90</td></tr><tr><td class='ticker'><b>EFOR</b></td><td class='wt'>25.0%</td><td class='score'>48.1</td><td>0.59</td><td>0.48</td><td>11.61</td><td class='neg'>9.71</td><td class='neg'>16.3%</td><td class='pos'>13.03</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+
+  <div class="layer-title">Tüm Adaylar <span class="section-meta">N = <b>118</b></span></div>
+  <div class="card">
+    <div class="table-wrap">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Hisse</th><th>Skor</th><th>ML1g</th><th>ML3g</th>
+          <th>ADX</th><th>CMF</th><th>RSI</th>
+          <th>Fiyat</th><th>Stop</th><th>Stop %</th><th>Trail</th>
+        </tr></thead>
+        <tbody><tr><td class='idx'>1</td><td class='ticker'><b>HEDEF</b></td><td class='score'>49.5</td><td>0.61</td><td>0.51</td><td>45.8</td><td class='pos'>+0.229</td><td>58.2</td><td>137.00</td><td class='neg'>121.48</td><td class='neg'>11.3%</td><td class='pos'>148.64</td></tr><tr><td class='idx'>2</td><td class='ticker'><b>EDATA</b></td><td class='score'>49.2</td><td>0.62</td><td>0.48</td><td>56.2</td><td class='pos'>+0.411</td><td>54.9</td><td>19.82</td><td class='neg'>16.26</td><td class='neg'>17.9%</td><td class='pos'>22.49</td></tr><tr><td class='idx'>3</td><td class='ticker'><b>ANELE</b></td><td class='score'>48.7</td><td>0.70</td><td>0.53</td><td>63.7</td><td class='pos'>+0.247</td><td>97.1</td><td>50.90</td><td class='neg'>45.56</td><td class='neg'>10.5%</td><td class='pos'>54.90</td></tr><tr><td class='idx'>4</td><td class='ticker'><b>EFOR</b></td><td class='score'>48.1</td><td>0.59</td><td>0.48</td><td>41.8</td><td class='pos'>+0.189</td><td>59.0</td><td>11.61</td><td class='neg'>9.71</td><td class='neg'>16.3%</td><td class='pos'>13.03</td></tr><tr><td class='idx'>5</td><td class='ticker'><b>SEKUR</b></td><td class='score'>48.1</td><td>0.67</td><td>0.53</td><td>35.0</td><td class='pos'>+0.489</td><td>70.7</td><td>8.64</td><td class='neg'>7.61</td><td class='neg'>11.9%</td><td class='pos'>9.41</td></tr><tr><td class='idx'>6</td><td class='ticker'><b>PRZMA</b></td><td class='score'>47.5</td><td>0.66</td><td>0.52</td><td>36.5</td><td class='pos'>+0.589</td><td>88.9</td><td>25.84</td><td class='neg'>23.24</td><td class='neg'>10.1%</td><td class='pos'>27.79</td></tr><tr><td class='idx'>7</td><td class='ticker'><b>ECOGR</b></td><td class='score'>46.6</td><td>0.52</td><td>0.49</td><td>31.1</td><td class='pos'>+0.090</td><td>59.6</td><td>37.20</td><td class='neg'>33.63</td><td class='neg'>9.6%</td><td class='pos'>39.88</td></tr><tr><td class='idx'>8</td><td class='ticker'><b>VANGD</b></td><td class='score'>45.4</td><td>0.57</td><td>0.55</td><td>39.0</td><td class='pos'>+0.174</td><td>70.2</td><td>94.90</td><td class='neg'>83.55</td><td class='neg'>12.0%</td><td class='pos'>103.41</td></tr><tr><td class='idx'>9</td><td class='ticker'><b>TEHOL</b></td><td class='score'>45.3</td><td>0.57</td><td>0.54</td><td>42.9</td><td class='pos'>+0.089</td><td>78.2</td><td>25.24</td><td class='neg'>22.72</td><td class='neg'>10.0%</td><td class='pos'>27.13</td></tr><tr><td class='idx'>10</td><td class='ticker'><b>BORLS</b></td><td class='score'>45.0</td><td>0.63</td><td>0.47</td><td>53.0</td><td class='pos'>+0.350</td><td>81.5</td><td>7.64</td><td class='neg'>6.66</td><td class='neg'>12.9%</td><td class='pos'>8.38</td></tr><tr><td class='idx'>11</td><td class='ticker'><b>KRDMB</b></td><td class='score'>44.9</td><td>0.66</td><td>0.57</td><td>63.6</td><td class='pos'>+0.054</td><td>70.0</td><td>75.20</td><td class='neg'>67.52</td><td class='neg'>10.2%</td><td class='pos'>80.96</td></tr><tr><td class='idx'>12</td><td class='ticker'><b>ALARK</b></td><td class='score'>44.7</td><td>0.49</td><td>0.46</td><td>20.5</td><td class='pos'>+0.168</td><td>49.7</td><td>93.00</td><td class='neg'>87.85</td><td class='neg'>5.5%</td><td class='pos'>96.86</td></tr><tr><td class='idx'>13</td><td class='ticker'><b>KUTPO</b></td><td class='score'>44.7</td><td>0.49</td><td>0.46</td><td>22.2</td><td class='pos'>+0.081</td><td>56.5</td><td>99.25</td><td class='neg'>90.99</td><td class='neg'>8.3%</td><td class='pos'>105.44</td></tr><tr><td class='idx'>14</td><td class='ticker'><b>ICUGS</b></td><td class='score'>44.6</td><td>0.54</td><td>0.55</td><td>46.1</td><td class='pos'>+0.028</td><td>77.1</td><td>4.71</td><td class='neg'>4.09</td><td class='neg'>13.2%</td><td class='pos'>5.18</td></tr><tr><td class='idx'>15</td><td class='ticker'><b>ERSU</b></td><td class='score'>44.5</td><td>0.54</td><td>0.54</td><td>56.2</td><td class='pos'>+0.201</td><td>72.5</td><td>29.80</td><td class='neg'>26.32</td><td class='neg'>11.7%</td><td class='pos'>32.41</td></tr><tr><td class='idx'>16</td><td class='ticker'><b>MAGEN</b></td><td class='score'>44.5</td><td>0.55</td><td>0.54</td><td>53.2</td><td class='pos'>+0.239</td><td>74.2</td><td>63.90</td><td class='neg'>59.10</td><td class='neg'>7.5%</td><td class='pos'>67.50</td></tr><tr><td class='idx'>17</td><td class='ticker'><b>TKFEN</b></td><td class='score'>44.3</td><td>0.53</td><td>0.55</td><td>54.1</td><td class='pos'>+0.029</td><td>81.2</td><td>135.10</td><td class='neg'>122.09</td><td class='neg'>9.6%</td><td class='pos'>144.85</td></tr><tr><td class='idx'>18</td><td class='ticker'><b>ODINE</b></td><td class='score'>43.9</td><td>0.64</td><td>0.56</td><td>53.2</td><td class='pos'>+0.103</td><td>81.1</td><td>995.00</td><td class='neg'>907.48</td><td class='neg'>8.8%</td><td class='pos'>1,060.64</td></tr><tr><td class='idx'>19</td><td class='ticker'><b>KBORU</b></td><td class='score'>43.7</td><td>0.54</td><td>0.52</td><td>36.6</td><td class='pos'>+0.131</td><td>67.2</td><td>24.36</td><td class='neg'>21.83</td><td class='neg'>10.4%</td><td class='pos'>26.26</td></tr><tr><td class='idx'>20</td><td class='ticker'><b>BARMA</b></td><td class='score'>43.6</td><td>0.54</td><td>0.52</td><td>30.7</td><td class='pos'>+0.362</td><td>75.0</td><td>58.75</td><td class='neg'>54.57</td><td class='neg'>7.1%</td><td class='pos'>61.89</td></tr><tr><td class='idx'>21</td><td class='ticker'><b>EGPRO</b></td><td class='score'>43.5</td><td>0.52</td><td>0.53</td><td>42.2</td><td class='pos'>+0.384</td><td>77.7</td><td>43.60</td><td class='neg'>38.51</td><td class='neg'>11.7%</td><td class='pos'>47.42</td></tr><tr><td class='idx'>22</td><td class='ticker'><b>BURVA</b></td><td class='score'>43.4</td><td>0.66</td><td>0.52</td><td>19.7</td><td class='pos'>+0.233</td><td>70.6</td><td>1,159.00</td><td class='neg'>977.52</td><td class='neg'>15.7%</td><td class='pos'>1,295.11</td></tr><tr><td class='idx'>23</td><td class='ticker'><b>AHGAZ</b></td><td class='score'>43.3</td><td>0.55</td><td>0.50</td><td>39.0</td><td class='pos'>+0.253</td><td>77.5</td><td>28.30</td><td class='neg'>26.44</td><td class='neg'>6.6%</td><td class='pos'>29.69</td></tr><tr><td class='idx'>24</td><td class='ticker'><b>KGYO</b></td><td class='score'>43.3</td><td>0.53</td><td>0.51</td><td>41.0</td><td class='pos'>+0.318</td><td>75.1</td><td>11.54</td><td class='neg'>10.36</td><td class='neg'>10.2%</td><td class='pos'>12.43</td></tr><tr><td class='idx'>25</td><td class='ticker'><b>AYGAZ</b></td><td class='score'>43.0</td><td>0.54</td><td>0.49</td><td>20.7</td><td class='pos'>+0.188</td><td>59.4</td><td>277.50</td><td class='neg'>255.55</td><td class='neg'>7.9%</td><td class='pos'>293.96</td></tr><tr><td class='idx'>26</td><td class='ticker'><b>CEMZY</b></td><td class='score'>43.0</td><td>0.54</td><td>0.49</td><td>37.1</td><td class='pos'>+0.059</td><td>70.9</td><td>78.65</td><td class='neg'>71.78</td><td class='neg'>8.7%</td><td class='pos'>83.80</td></tr><tr><td class='idx'>27</td><td class='ticker'><b>AKFIS</b></td><td class='score'>42.9</td><td>0.51</td><td>0.53</td><td>42.4</td><td class='pos'>+0.064</td><td>62.6</td><td>50.20</td><td class='neg'>44.09</td><td class='neg'>12.2%</td><td class='pos'>54.78</td></tr><tr><td class='idx'>28</td><td class='ticker'><b>DURDO</b></td><td class='score'>42.9</td><td>0.53</td><td>0.50</td><td>39.5</td><td class='pos'>+0.167</td><td>82.8</td><td>4.75</td><td class='neg'>4.38</td><td class='neg'>7.8%</td><td class='pos'>5.03</td></tr><tr><td class='idx'>29</td><td class='ticker'><b>EUKYO</b></td><td class='score'>42.9</td><td>0.51</td><td>0.52</td><td>26.3</td><td class='pos'>+0.226</td><td>68.6</td><td>7.92</td><td class='neg'>6.98</td><td class='neg'>11.9%</td><td class='pos'>8.62</td></tr><tr><td class='idx'>30</td><td class='ticker'><b>PKART</b></td><td class='score'>42.7</td><td>0.56</td><td>0.46</td><td>41.7</td><td class='pos'>+0.342</td><td>84.6</td><td>115.90</td><td class='neg'>104.72</td><td class='neg'>9.6%</td><td class='pos'>124.29</td></tr><tr><td class='idx'>31</td><td class='ticker'><b>VAKBN</b></td><td class='score'>42.7</td><td>0.56</td><td>0.47</td><td>23.7</td><td class='pos'>+0.170</td><td>48.9</td><td>33.48</td><td class='neg'>30.87</td><td class='neg'>7.8%</td><td class='pos'>35.44</td></tr><tr><td class='idx'>32</td><td class='ticker'><b>RNPOL</b></td><td class='score'>42.5</td><td>0.52</td><td>0.50</td><td>52.4</td><td class='pos'>+0.314</td><td>68.3</td><td>3.15</td><td class='neg'>2.75</td><td class='neg'>12.7%</td><td class='pos'>3.45</td></tr><tr><td class='idx'>33</td><td class='ticker'><b>TMSN</b></td><td class='score'>42.5</td><td>0.56</td><td>0.46</td><td>12.9</td><td class='pos'>+0.112</td><td>49.1</td><td>104.10</td><td class='neg'>97.89</td><td class='neg'>6.0%</td><td class='pos'>108.76</td></tr><tr><td class='idx'>34</td><td class='ticker'><b>DSTKF</b></td><td class='score'>42.4</td><td>0.61</td><td>0.54</td><td>63.3</td><td class='pos'>+0.230</td><td>93.7</td><td>2,632.50</td><td class='neg'>2,447.38</td><td class='neg'>7.0%</td><td class='pos'>2,771.34</td></tr><tr><td class='idx'>35</td><td class='ticker'><b>EBEBK</b></td><td class='score'>42.4</td><td>0.52</td><td>0.49</td><td>34.3</td><td class='pos'>+0.279</td><td>73.0</td><td>72.80</td><td class='neg'>68.25</td><td class='neg'>6.2%</td><td class='pos'>76.21</td></tr><tr><td class='idx'>36</td><td class='ticker'><b>ARASE</b></td><td class='score'>42.3</td><td>0.52</td><td>0.49</td><td>20.8</td><td class='neg'>-0.136</td><td>57.1</td><td>101.10</td><td class='neg'>92.38</td><td class='neg'>8.6%</td><td class='pos'>107.64</td></tr><tr><td class='idx'>37</td><td class='ticker'><b>ULAS</b></td><td class='score'>42.3</td><td>0.53</td><td>0.48</td><td>25.5</td><td class='pos'>+0.078</td><td>39.6</td><td>29.70</td><td class='neg'>25.80</td><td class='neg'>13.1%</td><td class='pos'>32.63</td></tr><tr><td class='idx'>38</td><td class='ticker'><b>PENGD</b></td><td class='score'>42.2</td><td>0.62</td><td>0.52</td><td>43.5</td><td class='pos'>+0.074</td><td>80.3</td><td>15.05</td><td class='neg'>13.24</td><td class='neg'>12.0%</td><td class='pos'>16.41</td></tr><tr><td class='idx'>39</td><td class='ticker'><b>ECZYT</b></td><td class='score'>42.0</td><td>0.51</td><td>0.49</td><td>29.4</td><td class='pos'>+0.260</td><td>64.4</td><td>377.50</td><td class='neg'>341.68</td><td class='neg'>9.5%</td><td class='pos'>404.36</td></tr><tr><td class='idx'>40</td><td class='ticker'><b>TCKRC</b></td><td class='score'>41.9</td><td>0.52</td><td>0.48</td><td>25.1</td><td class='pos'>+0.103</td><td>68.1</td><td>105.30</td><td class='neg'>94.81</td><td class='neg'>10.0%</td><td class='pos'>113.17</td></tr><tr><td class='idx'>41</td><td class='ticker'><b>ASUZU</b></td><td class='score'>41.8</td><td>0.51</td><td>0.49</td><td>22.2</td><td class='pos'>+0.131</td><td>58.0</td><td>69.50</td><td class='neg'>64.90</td><td class='neg'>6.6%</td><td class='pos'>72.95</td></tr><tr><td class='idx'>42</td><td class='ticker'><b>KRDMA</b></td><td class='score'>41.7</td><td>0.51</td><td>0.49</td><td>37.6</td><td class='neg'>-0.031</td><td>59.7</td><td>32.92</td><td class='neg'>30.35</td><td class='neg'>7.8%</td><td class='pos'>34.84</td></tr><tr><td class='idx'>43</td><td class='ticker'><b>SANKO</b></td><td class='score'>41.7</td><td>0.51</td><td>0.48</td><td>26.2</td><td class='pos'>+0.028</td><td>68.2</td><td>23.18</td><td class='neg'>21.40</td><td class='neg'>7.7%</td><td class='pos'>24.52</td></tr><tr><td class='idx'>44</td><td class='ticker'><b>DGATE</b></td><td class='score'>41.6</td><td>0.51</td><td>0.48</td><td>21.1</td><td class='pos'>+0.124</td><td>74.5</td><td>88.00</td><td class='neg'>81.05</td><td class='neg'>7.9%</td><td class='pos'>93.22</td></tr><tr><td class='idx'>45</td><td class='ticker'><b>GEREL</b></td><td class='score'>41.6</td><td>0.58</td><td>0.54</td><td>42.1</td><td class='pos'>+0.371</td><td>72.9</td><td>40.98</td><td class='neg'>36.45</td><td class='neg'>11.1%</td><td class='pos'>44.38</td></tr><tr><td class='idx'>46</td><td class='ticker'><b>KARSN</b></td><td class='score'>41.6</td><td>0.51</td><td>0.48</td><td>22.9</td><td class='pos'>+0.013</td><td>66.6</td><td>11.30</td><td class='neg'>10.45</td><td class='neg'>7.5%</td><td class='pos'>11.93</td></tr><tr><td class='idx'>47</td><td class='ticker'><b>LKMNH</b></td><td class='score'>41.6</td><td>0.52</td><td>0.46</td><td>17.8</td><td class='pos'>+0.155</td><td>47.8</td><td>15.55</td><td class='neg'>14.68</td><td class='neg'>5.6%</td><td class='pos'>16.20</td></tr><tr><td class='idx'>48</td><td class='ticker'><b>MRGYO</b></td><td class='score'>41.4</td><td>0.51</td><td>0.47</td><td>37.8</td><td class='pos'>+0.090</td><td>65.3</td><td>1.84</td><td class='neg'>1.64</td><td class='neg'>10.9%</td><td class='pos'>1.99</td></tr><tr><td class='idx'>49</td><td class='ticker'><b>ANHYT</b></td><td class='score'>41.1</td><td>0.51</td><td>0.46</td><td>13.2</td><td class='pos'>+0.095</td><td>52.7</td><td>112.10</td><td class='neg'>105.15</td><td class='neg'>6.2%</td><td class='pos'>117.31</td></tr><tr><td class='idx'>50</td><td class='ticker'><b>HLGYO</b></td><td class='score'>41.1</td><td>0.49</td><td>0.48</td><td>31.7</td><td class='pos'>+0.138</td><td>63.8</td><td>5.79</td><td class='neg'>5.39</td><td class='neg'>6.9%</td><td class='pos'>6.09</td></tr><tr><td class='idx'>51</td><td class='ticker'><b>ICBCT</b></td><td class='score'>41.0</td><td>0.49</td><td>0.47</td><td>34.0</td><td class='pos'>+0.054</td><td>71.1</td><td>16.19</td><td class='neg'>15.03</td><td class='neg'>7.1%</td><td class='pos'>17.06</td></tr><tr><td class='idx'>52</td><td class='ticker'><b>TUPRS</b></td><td class='score'>41.0</td><td>0.49</td><td>0.48</td><td>24.0</td><td class='pos'>+0.089</td><td>60.6</td><td>269.00</td><td class='neg'>249.13</td><td class='neg'>7.4%</td><td class='pos'>283.90</td></tr><tr><td class='idx'>53</td><td class='ticker'><b>ENKAI</b></td><td class='score'>40.9</td><td>0.50</td><td>0.47</td><td>33.6</td><td class='pos'>+0.098</td><td>65.3</td><td>106.50</td><td class='neg'>99.47</td><td class='neg'>6.6%</td><td class='pos'>111.77</td></tr><tr><td class='idx'>54</td><td class='ticker'><b>GENTS</b></td><td class='score'>40.9</td><td>0.51</td><td>0.46</td><td>28.3</td><td class='pos'>+0.049</td><td>48.0</td><td>7.88</td><td class='neg'>6.94</td><td class='neg'>11.9%</td><td class='pos'>8.59</td></tr><tr><td class='idx'>55</td><td class='ticker'><b>RYSAS</b></td><td class='score'>40.9</td><td>0.49</td><td>0.47</td><td>31.1</td><td class='pos'>+0.214</td><td>62.8</td><td>22.44</td><td class='neg'>20.59</td><td class='neg'>8.2%</td><td class='pos'>23.83</td></tr><tr><td class='idx'>56</td><td class='ticker'><b>INDES</b></td><td class='score'>40.8</td><td>0.49</td><td>0.48</td><td>22.5</td><td class='pos'>+0.051</td><td>65.3</td><td>10.04</td><td class='neg'>9.23</td><td class='neg'>8.1%</td><td class='pos'>10.65</td></tr><tr><td class='idx'>57</td><td class='ticker'><b>KIMMR</b></td><td class='score'>40.8</td><td>0.49</td><td>0.47</td><td>21.7</td><td class='neg'>-0.251</td><td>51.3</td><td>17.79</td><td class='neg'>16.10</td><td class='neg'>9.5%</td><td class='pos'>19.06</td></tr><tr><td class='idx'>58</td><td class='ticker'><b>MARKA</b></td><td class='score'>40.8</td><td>0.49</td><td>0.47</td><td>36.1</td><td class='neg'>-0.226</td><td>58.2</td><td>55.55</td><td class='neg'>46.05</td><td class='neg'>17.1%</td><td class='pos'>62.68</td></tr><tr><td class='idx'>59</td><td class='ticker'><b>OZSUB</b></td><td class='score'>40.8</td><td>0.48</td><td>0.48</td><td>28.8</td><td class='pos'>+0.206</td><td>62.0</td><td>24.50</td><td class='neg'>22.27</td><td class='neg'>9.1%</td><td class='pos'>26.17</td></tr><tr><td class='idx'>60</td><td class='ticker'><b>AKYHO</b></td><td class='score'>40.7</td><td>0.50</td><td>0.46</td><td>25.5</td><td class='pos'>+0.125</td><td>62.4</td><td>2.84</td><td class='neg'>2.62</td><td class='neg'>7.7%</td><td class='pos'>3.00</td></tr><tr><td class='idx'>61</td><td class='ticker'><b>DERIM</b></td><td class='score'>40.7</td><td>0.49</td><td>0.47</td><td>29.9</td><td class='pos'>+0.093</td><td>63.7</td><td>40.84</td><td class='neg'>37.58</td><td class='neg'>8.0%</td><td class='pos'>43.29</td></tr><tr><td class='idx'>62</td><td class='ticker'><b>KRTEK</b></td><td class='score'>40.6</td><td>0.49</td><td>0.46</td><td>18.5</td><td class='pos'>+0.080</td><td>48.9</td><td>24.98</td><td class='neg'>23.36</td><td class='neg'>6.5%</td><td class='pos'>26.20</td></tr><tr><td class='idx'>63</td><td class='ticker'><b>YGGYO</b></td><td class='score'>40.6</td><td>0.54</td><td>0.54</td><td>47.6</td><td class='pos'>+0.236</td><td>74.2</td><td>235.20</td><td class='neg'>216.00</td><td class='neg'>8.2%</td><td class='pos'>249.60</td></tr><tr><td class='idx'>64</td><td class='ticker'><b>GOODY</b></td><td class='score'>40.5</td><td>0.50</td><td>0.45</td><td>32.0</td><td class='neg'>-0.364</td><td>58.5</td><td>15.64</td><td class='neg'>14.58</td><td class='neg'>6.8%</td><td class='pos'>16.43</td></tr><tr><td class='idx'>65</td><td class='ticker'><b>PENTA</b></td><td class='score'>40.5</td><td>0.50</td><td>0.45</td><td>24.2</td><td class='pos'>+0.020</td><td>61.1</td><td>14.32</td><td class='neg'>13.42</td><td class='neg'>6.3%</td><td class='pos'>14.99</td></tr><tr><td class='idx'>66</td><td class='ticker'><b>TAVHL</b></td><td class='score'>40.5</td><td>0.50</td><td>0.45</td><td>19.0</td><td class='pos'>+0.029</td><td>45.8</td><td>308.25</td><td class='neg'>282.44</td><td class='neg'>8.4%</td><td class='pos'>327.61</td></tr><tr><td class='idx'>67</td><td class='ticker'><b>BOBET</b></td><td class='score'>40.4</td><td>0.50</td><td>0.45</td><td>20.9</td><td class='neg'>-0.080</td><td>57.2</td><td>20.30</td><td class='neg'>19.13</td><td class='neg'>5.8%</td><td class='pos'>21.18</td></tr><tr><td class='idx'>68</td><td class='ticker'><b>CIMSA</b></td><td class='score'>40.4</td><td>0.48</td><td>0.47</td><td>22.1</td><td class='pos'>+0.091</td><td>68.3</td><td>56.05</td><td class='neg'>52.18</td><td class='neg'>6.9%</td><td class='pos'>58.95</td></tr><tr><td class='idx'>69</td><td class='ticker'><b>HRKET</b></td><td class='score'>40.4</td><td>0.49</td><td>0.45</td><td>22.3</td><td class='pos'>+0.008</td><td>69.1</td><td>71.20</td><td class='neg'>66.38</td><td class='neg'>6.8%</td><td class='pos'>74.82</td></tr><tr><td class='idx'>70</td><td class='ticker'><b>KCHOL</b></td><td class='score'>40.4</td><td>0.48</td><td>0.47</td><td>16.7</td><td class='pos'>+0.050</td><td>59.2</td><td>207.00</td><td class='neg'>195.11</td><td class='neg'>5.7%</td><td class='pos'>215.92</td></tr><tr><td class='idx'>71</td><td class='ticker'><b>OYAKC</b></td><td class='score'>40.4</td><td>0.49</td><td>0.45</td><td>17.7</td><td class='pos'>+0.033</td><td>46.3</td><td>24.24</td><td class='neg'>22.74</td><td class='neg'>6.2%</td><td class='pos'>25.37</td></tr><tr><td class='idx'>72</td><td class='ticker'><b>TRMET</b></td><td class='score'>40.4</td><td>0.49</td><td>0.46</td><td>19.1</td><td class='pos'>+0.129</td><td>46.2</td><td>131.70</td><td class='neg'>119.94</td><td class='neg'>8.9%</td><td class='pos'>140.52</td></tr><tr><td class='idx'>73</td><td class='ticker'><b>IZMDC</b></td><td class='score'>40.3</td><td>0.48</td><td>0.46</td><td>16.4</td><td class='pos'>+0.099</td><td>52.9</td><td>6.83</td><td class='neg'>6.38</td><td class='neg'>6.6%</td><td class='pos'>7.17</td></tr><tr><td class='idx'>74</td><td class='ticker'><b>MNDRS</b></td><td class='score'>40.2</td><td>0.48</td><td>0.46</td><td>24.2</td><td class='neg'>-0.051</td><td>52.7</td><td>13.10</td><td class='neg'>12.22</td><td class='neg'>6.7%</td><td class='pos'>13.76</td></tr><tr><td class='idx'>75</td><td class='ticker'><b>ORGE</b></td><td class='score'>40.2</td><td>0.48</td><td>0.46</td><td>32.5</td><td class='pos'>+0.137</td><td>77.7</td><td>84.70</td><td class='neg'>78.55</td><td class='neg'>7.3%</td><td class='pos'>89.31</td></tr><tr><td class='idx'>76</td><td class='ticker'><b>MACKO</b></td><td class='score'>40.1</td><td>0.54</td><td>0.53</td><td>36.1</td><td class='pos'>+0.031</td><td>73.6</td><td>43.10</td><td class='neg'>39.45</td><td class='neg'>8.5%</td><td class='pos'>45.84</td></tr><tr><td class='idx'>77</td><td class='ticker'><b>QUAGR</b></td><td class='score'>39.8</td><td>0.53</td><td>0.53</td><td>44.0</td><td class='neg'>-0.008</td><td>64.2</td><td>3.88</td><td class='neg'>3.45</td><td class='neg'>11.0%</td><td class='pos'>4.20</td></tr><tr><td class='idx'>78</td><td class='ticker'><b>YYAPI</b></td><td class='score'>39.7</td><td>0.61</td><td>0.45</td><td>46.3</td><td class='neg'>-0.222</td><td>39.5</td><td>1.04</td><td class='neg'>0.95</td><td class='neg'>8.3%</td><td class='pos'>1.10</td></tr><tr><td class='idx'>79</td><td class='ticker'><b>KARTN</b></td><td class='score'>39.0</td><td>0.58</td><td>0.45</td><td>36.3</td><td class='pos'>+0.108</td><td>85.9</td><td>114.30</td><td class='neg'>103.11</td><td class='neg'>9.8%</td><td class='pos'>122.69</td></tr><tr><td class='idx'>80</td><td class='ticker'><b>BMSTL</b></td><td class='score'>38.2</td><td>0.55</td><td>0.46</td><td>10.8</td><td class='neg'>-0.267</td><td>49.2</td><td>84.90</td><td class='neg'>78.51</td><td class='neg'>7.5%</td><td class='pos'>89.69</td></tr><tr><td class='idx'>81</td><td class='ticker'><b>DOAS</b></td><td class='score'>38.2</td><td>0.55</td><td>0.45</td><td>12.6</td><td class='neg'>-0.125</td><td>47.0</td><td>184.30</td><td class='neg'>175.24</td><td class='neg'>4.9%</td><td class='pos'>191.10</td></tr><tr><td class='idx'>82</td><td class='ticker'><b>ODAS</b></td><td class='score'>38.0</td><td>0.51</td><td>0.49</td><td>28.8</td><td class='pos'>+0.001</td><td>60.8</td><td>6.97</td><td class='neg'>6.36</td><td class='neg'>8.8%</td><td class='pos'>7.43</td></tr><tr><td class='idx'>83</td><td class='ticker'><b>TEZOL</b></td><td class='score'>38.0</td><td>0.51</td><td>0.49</td><td>30.2</td><td class='pos'>+0.222</td><td>62.1</td><td>18.59</td><td class='neg'>17.20</td><td class='neg'>7.5%</td><td class='pos'>19.63</td></tr><tr><td class='idx'>84</td><td class='ticker'><b>DITAS</b></td><td class='score'>37.8</td><td>0.51</td><td>0.48</td><td>25.0</td><td class='neg'>-0.290</td><td>36.5</td><td>32.60</td><td class='neg'>27.62</td><td class='neg'>15.3%</td><td class='pos'>36.34</td></tr><tr><td class='idx'>85</td><td class='ticker'><b>ARZUM</b></td><td class='score'>37.4</td><td>0.51</td><td>0.47</td><td>29.4</td><td class='neg'>-0.320</td><td>42.7</td><td>2.72</td><td class='neg'>2.30</td><td class='neg'>15.4%</td><td class='pos'>3.04</td></tr><tr><td class='idx'>86</td><td class='ticker'><b>TCELL</b></td><td class='score'>37.4</td><td>0.51</td><td>0.47</td><td>17.9</td><td class='pos'>+0.056</td><td>52.5</td><td>114.30</td><td class='neg'>107.33</td><td class='neg'>6.1%</td><td class='pos'>119.53</td></tr><tr><td class='idx'>87</td><td class='ticker'><b>GOKNR</b></td><td class='score'>37.3</td><td>0.52</td><td>0.46</td><td>20.0</td><td class='neg'>-0.183</td><td>54.3</td><td>22.52</td><td class='neg'>20.97</td><td class='neg'>6.9%</td><td class='pos'>23.68</td></tr><tr><td class='idx'>88</td><td class='ticker'><b>ALKIM</b></td><td class='score'>37.2</td><td>0.49</td><td>0.49</td><td>29.1</td><td class='neg'>-0.125</td><td>72.3</td><td>20.50</td><td class='neg'>18.99</td><td class='neg'>7.3%</td><td class='pos'>21.63</td></tr><tr><td class='idx'>89</td><td class='ticker'><b>BIENY</b></td><td class='score'>37.2</td><td>0.50</td><td>0.47</td><td>28.3</td><td class='neg'>-0.181</td><td>61.7</td><td>25.94</td><td class='neg'>23.90</td><td class='neg'>7.9%</td><td class='pos'>27.47</td></tr><tr><td class='idx'>90</td><td class='ticker'><b>PEKGY</b></td><td class='score'>37.2</td><td>0.49</td><td>0.49</td><td>11.8</td><td class='neg'>-0.031</td><td>59.1</td><td>14.53</td><td class='neg'>13.20</td><td class='neg'>9.1%</td><td class='pos'>15.53</td></tr><tr><td class='idx'>91</td><td class='ticker'><b>RUZYE</b></td><td class='score'>37.2</td><td>0.49</td><td>0.48</td><td>16.3</td><td class='pos'>+0.087</td><td>69.9</td><td>13.49</td><td class='neg'>12.32</td><td class='neg'>8.6%</td><td class='pos'>14.36</td></tr><tr><td class='idx'>92</td><td class='ticker'><b>ANSGR</b></td><td class='score'>37.1</td><td>0.49</td><td>0.47</td><td>31.0</td><td class='pos'>+0.208</td><td>69.9</td><td>28.98</td><td class='neg'>27.34</td><td class='neg'>5.7%</td><td class='pos'>30.21</td></tr><tr><td class='idx'>93</td><td class='ticker'><b>KRDMD</b></td><td class='score'>37.1</td><td>0.50</td><td>0.47</td><td>33.2</td><td class='neg'>-0.027</td><td>64.5</td><td>36.86</td><td class='neg'>33.84</td><td class='neg'>8.2%</td><td class='pos'>39.13</td></tr><tr><td class='idx'>94</td><td class='ticker'><b>EREGL</b></td><td class='score'>37.0</td><td>0.50</td><td>0.47</td><td>25.6</td><td class='pos'>+0.057</td><td>62.5</td><td>33.00</td><td class='neg'>30.53</td><td class='neg'>7.5%</td><td class='pos'>34.85</td></tr><tr><td class='idx'>95</td><td class='ticker'><b>IDGYO</b></td><td class='score'>37.0</td><td>0.50</td><td>0.46</td><td>13.7</td><td class='pos'>+0.093</td><td>34.9</td><td>3.43</td><td class='neg'>3.03</td><td class='neg'>11.7%</td><td class='pos'>3.73</td></tr><tr><td class='idx'>96</td><td class='ticker'><b>MAKIM</b></td><td class='score'>37.0</td><td>0.48</td><td>0.48</td><td>33.2</td><td class='neg'>-0.077</td><td>69.9</td><td>19.76</td><td class='neg'>17.78</td><td class='neg'>10.0%</td><td class='pos'>21.24</td></tr><tr><td class='idx'>97</td><td class='ticker'><b>OTTO</b></td><td class='score'>37.0</td><td>0.49</td><td>0.48</td><td>16.3</td><td class='pos'>+0.082</td><td>60.1</td><td>353.00</td><td class='neg'>316.13</td><td class='neg'>10.4%</td><td class='pos'>380.65</td></tr><tr><td class='idx'>98</td><td class='ticker'><b>PRDGS</b></td><td class='score'>37.0</td><td>0.49</td><td>0.47</td><td>35.2</td><td class='neg'>-0.170</td><td>77.2</td><td>8.74</td><td class='neg'>7.89</td><td class='neg'>9.8%</td><td class='pos'>9.38</td></tr><tr><td class='idx'>99</td><td class='ticker'><b>AKSEN</b></td><td class='score'>36.9</td><td>0.50</td><td>0.46</td><td>18.9</td><td class='neg'>-0.159</td><td>57.2</td><td>81.25</td><td class='neg'>75.22</td><td class='neg'>7.4%</td><td class='pos'>85.77</td></tr><tr><td class='idx'>100</td><td class='ticker'><b>AKFGY</b></td><td class='score'>36.8</td><td>0.51</td><td>0.45</td><td>14.4</td><td class='neg'>-0.091</td><td>52.0</td><td>2.85</td><td class='neg'>2.68</td><td class='neg'>6.1%</td><td class='pos'>2.98</td></tr><tr><td class='idx'>101</td><td class='ticker'><b>GLRYH</b></td><td class='score'>36.8</td><td>0.50</td><td>0.46</td><td>10.6</td><td class='neg'>-0.061</td><td>52.7</td><td>4.38</td><td class='neg'>4.06</td><td class='neg'>7.4%</td><td class='pos'>4.62</td></tr><tr><td class='idx'>102</td><td class='ticker'><b>RUBNS</b></td><td class='score'>36.8</td><td>0.51</td><td>0.45</td><td>29.2</td><td class='neg'>-0.197</td><td>38.0</td><td>31.70</td><td class='neg'>26.91</td><td class='neg'>15.1%</td><td class='pos'>35.29</td></tr><tr><td class='idx'>103</td><td class='ticker'><b>BIGTK</b></td><td class='score'>36.7</td><td>0.49</td><td>0.46</td><td>16.0</td><td class='neg'>-0.516</td><td>40.3</td><td>216.00</td><td class='neg'>187.24</td><td class='neg'>13.3%</td><td class='pos'>237.57</td></tr><tr><td class='idx'>104</td><td class='ticker'><b>ISSEN</b></td><td class='score'>36.7</td><td>0.49</td><td>0.47</td><td>29.7</td><td class='pos'>+0.020</td><td>63.0</td><td>8.47</td><td class='neg'>7.78</td><td class='neg'>8.1%</td><td class='pos'>8.99</td></tr><tr><td class='idx'>105</td><td class='ticker'><b>SISE</b></td><td class='score'>36.7</td><td>0.48</td><td>0.47</td><td>17.7</td><td class='neg'>-0.070</td><td>57.8</td><td>47.88</td><td class='neg'>44.70</td><td class='neg'>6.6%</td><td class='pos'>50.27</td></tr><tr><td class='idx'>106</td><td class='ticker'><b>THYAO</b></td><td class='score'>36.7</td><td>0.49</td><td>0.46</td><td>20.8</td><td class='pos'>+0.013</td><td>60.7</td><td>325.00</td><td class='neg'>305.75</td><td class='neg'>5.9%</td><td class='pos'>339.43</td></tr><tr><td class='idx'>107</td><td class='ticker'><b>KRSTL</b></td><td class='score'>36.6</td><td>0.49</td><td>0.46</td><td>19.6</td><td class='pos'>+0.076</td><td>54.2</td><td>9.45</td><td class='neg'>8.75</td><td class='neg'>7.4%</td><td class='pos'>9.97</td></tr><tr><td class='idx'>108</td><td class='ticker'><b>KZGYO</b></td><td class='score'>36.6</td><td>0.50</td><td>0.45</td><td>18.9</td><td class='neg'>-0.314</td><td>52.9</td><td>23.44</td><td class='neg'>21.75</td><td class='neg'>7.2%</td><td class='pos'>24.71</td></tr><tr><td class='idx'>109</td><td class='ticker'><b>MANAS</b></td><td class='score'>36.6</td><td>0.48</td><td>0.47</td><td>17.6</td><td class='neg'>-0.152</td><td>49.9</td><td>23.00</td><td class='neg'>19.02</td><td class='neg'>17.3%</td><td class='pos'>25.98</td></tr><tr><td class='idx'>110</td><td class='ticker'><b>RYGYO</b></td><td class='score'>36.6</td><td>0.50</td><td>0.45</td><td>14.4</td><td class='neg'>-0.193</td><td>50.2</td><td>32.30</td><td class='neg'>29.53</td><td class='neg'>8.6%</td><td class='pos'>34.38</td></tr><tr><td class='idx'>111</td><td class='ticker'><b>KNFRT</b></td><td class='score'>36.5</td><td>0.48</td><td>0.47</td><td>32.2</td><td class='pos'>+0.062</td><td>65.1</td><td>12.59</td><td class='neg'>11.62</td><td class='neg'>7.7%</td><td class='pos'>13.32</td></tr><tr><td class='idx'>112</td><td class='ticker'><b>MEGMT</b></td><td class='score'>36.5</td><td>0.48</td><td>0.47</td><td>35.4</td><td class='neg'>-0.102</td><td>56.7</td><td>79.30</td><td class='neg'>73.34</td><td class='neg'>7.5%</td><td class='pos'>83.77</td></tr><tr><td class='idx'>113</td><td class='ticker'><b>TRGYO</b></td><td class='score'>36.5</td><td>0.48</td><td>0.47</td><td>24.9</td><td class='pos'>+0.282</td><td>76.4</td><td>96.95</td><td class='neg'>92.19</td><td class='neg'>4.9%</td><td class='pos'>100.52</td></tr><tr><td class='idx'>114</td><td class='ticker'><b>VAKFA</b></td><td class='score'>36.4</td><td>0.49</td><td>0.46</td><td>18.8</td><td class='neg'>-0.097</td><td>58.9</td><td>13.67</td><td class='neg'>12.72</td><td class='neg'>7.0%</td><td class='pos'>14.38</td></tr><tr><td class='idx'>115</td><td class='ticker'><b>YYLGD</b></td><td class='score'>36.4</td><td>0.49</td><td>0.45</td><td>22.0</td><td class='neg'>-0.104</td><td>52.9</td><td>11.71</td><td class='neg'>10.89</td><td class='neg'>7.0%</td><td class='pos'>12.32</td></tr><tr><td class='idx'>116</td><td class='ticker'><b>IHYAY</b></td><td class='score'>36.2</td><td>0.49</td><td>0.45</td><td>24.8</td><td class='neg'>-0.142</td><td>58.3</td><td>1.86</td><td class='neg'>1.71</td><td class='neg'>7.8%</td><td class='pos'>1.97</td></tr><tr><td class='idx'>117</td><td class='ticker'><b>PARSN</b></td><td class='score'>36.2</td><td>0.48</td><td>0.46</td><td>11.0</td><td class='neg'>-0.079</td><td>52.0</td><td>83.85</td><td class='neg'>78.98</td><td class='neg'>5.8%</td><td class='pos'>87.50</td></tr><tr><td class='idx'>118</td><td class='ticker'><b>MEDTR</b></td><td class='score'>36.0</td><td>0.48</td><td>0.45</td><td>19.7</td><td class='pos'>+0.163</td><td>64.1</td><td>30.42</td><td class='neg'>28.77</td><td class='neg'>5.4%</td><td class='pos'>31.66</td></tr></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="footer">
+    nyxalpha <span class="sep">·</span> generated <b>26.04.2026 22:44</b>
+    <span class="sep">·</span> BE_SHIFT_R <b>2.0</b>
+    <span class="sep">·</span> Fintables 591-universe
+  </div>
+</div>
+</body>
+</html>

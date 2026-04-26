@@ -311,6 +311,27 @@ tr.hidden { display: none; }
 .sbt-cand .pill.in-decile { background: rgba(201,169,110,0.18); color: var(--nox-gold); border: 1px solid rgba(201,169,110,0.45); }
 .sbt-cand .pill.in-quintile { background: rgba(122,158,122,0.15); color: var(--nox-green); border: 1px solid rgba(122,158,122,0.4); }
 .sbt-cand .pill.below { background: rgba(168,135,106,0.12); color: var(--nox-orange); border: 1px solid rgba(168,135,106,0.35); }
+
+.sbt1700-badge {
+  display: inline-flex; align-items: center; gap: 0.3rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.sbt1700-badge.d10 {
+  background: rgba(201,169,110,0.20);
+  color: var(--nox-gold);
+  border-color: rgba(201,169,110,0.50);
+  box-shadow: 0 0 0 1px rgba(201,169,110,0.10) inset;
+}
+.sbt1700-badge.q5 {
+  background: rgba(168,135,106,0.14);
+  color: var(--nox-copper, #a8876a);
+  border-color: rgba(168,135,106,0.40);
+}
 .sbt-cand .score-chip {
   font-family: var(--font-mono); font-size: 0.78rem;
   padding: 0.2rem 0.55rem; border-radius: 6px;
@@ -423,6 +444,7 @@ details.sbt-details > .body {
 </style>
 </head>
 <body>
+<script id="sbt1700-data" type="application/json">{"schema_version": 1, "system": "SBT-1700/E04_C01", "scan_date": "2026-04-24", "cutoffs": {"q80": 3.192879580703899, "q90": 3.695062729605979}, "picks": []}</script>
 
 <div class="aurora-bg">
   <div class="aurora-layer aurora-layer-1"></div>
@@ -441,7 +463,7 @@ details.sbt-details > .body {
     <div class="nox-meta">
       As-of close: <b>2026-04-24</b><br>
       n_train (TRAIN+VAL) = <b>703</b><br>
-      generated 2026-04-26 22:42 UTC
+      generated 2026-04-26 23:04 UTC
     </div>
   </div>
 
@@ -474,6 +496,7 @@ details.sbt-details > .body {
       <div class="sbt-cand">
         <span class="ticker">VKFYO</span>
         <span class="pill below">BELOW TOP-Q</span>
+        
         <span class="score-chip">score 2.6402</span>
         <span class="rank-chip">cohort rank #47 / 124</span>
       </div>

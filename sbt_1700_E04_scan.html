@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SBT-1700 Scan — 2026-04-24 (E04_C01 paper)</title>
+<title>SBT-1700 Scan — 2026-04-27 (E04_C01 paper)</title>
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
@@ -311,27 +311,6 @@ tr.hidden { display: none; }
 .sbt-cand .pill.in-decile { background: rgba(201,169,110,0.18); color: var(--nox-gold); border: 1px solid rgba(201,169,110,0.45); }
 .sbt-cand .pill.in-quintile { background: rgba(122,158,122,0.15); color: var(--nox-green); border: 1px solid rgba(122,158,122,0.4); }
 .sbt-cand .pill.below { background: rgba(168,135,106,0.12); color: var(--nox-orange); border: 1px solid rgba(168,135,106,0.35); }
-
-.sbt1700-badge {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  padding: 0.18rem 0.55rem;
-  border-radius: 4px;
-  font-family: var(--font-mono);
-  font-size: 0.7rem; font-weight: 700;
-  letter-spacing: 0.05em; text-transform: uppercase;
-  border: 1px solid transparent;
-}
-.sbt1700-badge.d10 {
-  background: rgba(201,169,110,0.20);
-  color: var(--nox-gold);
-  border-color: rgba(201,169,110,0.50);
-  box-shadow: 0 0 0 1px rgba(201,169,110,0.10) inset;
-}
-.sbt1700-badge.q5 {
-  background: rgba(168,135,106,0.14);
-  color: var(--nox-copper, #a8876a);
-  border-color: rgba(168,135,106,0.40);
-}
 .sbt-cand .score-chip {
   font-family: var(--font-mono); font-size: 0.78rem;
   padding: 0.2rem 0.55rem; border-radius: 6px;
@@ -444,7 +423,6 @@ details.sbt-details > .body {
 </style>
 </head>
 <body>
-<script id="sbt1700-data" type="application/json">{"schema_version": 1, "system": "SBT-1700/E04_C01", "scan_date": "2026-04-24", "cutoffs": {"q80": 3.192879580703899, "q90": 3.695062729605979}, "picks": []}</script>
 
 <div class="aurora-bg">
   <div class="aurora-layer aurora-layer-1"></div>
@@ -461,15 +439,15 @@ details.sbt-details > .body {
       <span class="mode">paper · live-style scan</span>
     </div>
     <div class="nox-meta">
-      As-of close: <b>2026-04-24</b><br>
+      As-of close: <b>2026-04-27</b><br>
       n_train (TRAIN+VAL) = <b>703</b><br>
-      generated 2026-04-26 23:04 UTC
+      generated 2026-04-27 14:31 UTC
     </div>
   </div>
 
   <div class="nox-stats">
     <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
-      <span>Tetikli</span><span class="cnt">1</span></div>
+      <span>Tetikli</span><span class="cnt">0</span></div>
     <div class="nox-stat"><span class="dot" style="background:var(--nox-green);"></span>
       <span>Top-quintile</span><span class="cnt">0</span></div>
     <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
@@ -486,43 +464,11 @@ details.sbt-details > .body {
     pencere, top-5 winners = 62% pozitif R) caveats geçerli.
   </div>
 
-  <div class="sbt-banner info"><b>BELOW CUTOFF</b> · 1 aday tetikledi ama hiçbiri TEST top-quintile eşiğini (q80 = 3.193) aşmadı. Locked policy altında NO-ENTRY günü.</div>
+  <div class="sbt-banner info"><b>NO TRIGGER</b> · Scan günü için tetiklenen aday yok. Portföy paper takibi açısından NO-ENTRY.</div>
 
   <div class="sbt-grid">
     <div>
-      
-    <div class="sbt-card">
-      <div class="card-title">Aday · <b>VKFYO</b></div>
-      <div class="sbt-cand">
-        <span class="ticker">VKFYO</span>
-        <span class="pill below">BELOW TOP-Q</span>
-        
-        <span class="score-chip">score 2.6402</span>
-        <span class="rank-chip">cohort rank #47 / 124</span>
-      </div>
-      <div class="sbt-kv">
-        <div class="row"><span class="k">Entry (17:00 open)</span><span class="v gold">37.7000</span></div>
-        <div class="row"><span class="k">ATR14 prior</span><span class="v">1.4443</span></div>
-        <div class="row"><span class="k">Initial stop (−2.0 ATR)</span><span class="v red">34.8114</span></div>
-        <div class="row"><span class="k">Stop distance</span><span class="v red">+7.66%</span></div>
-        <div class="row"><span class="k">+1R (trail arm)</span><span class="v green">39.1443</span></div>
-        <div class="row"><span class="k">+2R level</span><span class="v green">40.5886</span></div>
-        <div class="row"><span class="k">box_top</span><span class="v">35.3200</span></div>
-        <div class="row"><span class="k">low_1700</span><span class="v">35.3200</span></div>
-        <div class="row"><span class="k">intraday cov.</span><span class="v">1.00</span></div>
-        <div class="row"><span class="k">Round-trip cost</span><span class="v">+0.15%</span></div>
-      </div>
-      <div style="margin-top:0.8rem;padding-top:0.55rem;border-top:1px solid var(--border-subtle);">
-        <div class="card-title" style="margin-bottom:0.4rem;">P2 sizing · 1M TRY ref · binding: <b>risk_budget</b></div>
-        <div class="sbt-kv">
-          <div class="row"><span class="k">Risk budget</span><span class="v">5000 TRY</span></div>
-          <div class="row"><span class="k">Quantity</span><span class="v">1730 pay</span></div>
-          <div class="row"><span class="k">Notional</span><span class="v">65221 TRY</span></div>
-          <div class="row"><span class="k">Actual risk</span><span class="v">4997 TRY</span></div>
-        </div>
-      </div>
-    </div>
-    
+      <div class="sbt-card"><div class="sbt-empty">Aday yok</div></div>
     </div>
 
     <div class="sbt-card">

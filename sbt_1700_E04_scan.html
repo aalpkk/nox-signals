@@ -440,8 +440,8 @@ details.sbt-details > .body {
     </div>
     <div class="nox-meta">
       As-of close: <b>2026-04-28</b><br>
-      n_train (TRAIN+VAL) = <b>703</b><br>
-      generated 2026-04-28 16:22 UTC
+      n_train (TRAIN+VAL) = <b>706</b><br>
+      generated 2026-04-28 17:21 UTC
     </div>
   </div>
 
@@ -531,7 +531,7 @@ details.sbt-details > .body {
   <details class="sbt-details">
     <summary>Reproducibility sanity</summary>
     <div class="body" style="font-family:var(--font-mono);font-size:0.78rem;line-height:1.7;">
-      <span class="sanity-ok">PASS</span> — fresh fit reproduces existing TEST preds bit-identically (n=124, max |Δ|=0.00e+00).
+      <span class="sanity-fail">DRIFT</span> — max |Δ| = 1.92e+00 over n=124 TEST rows.
       <div style="color:var(--text-muted);margin-top:0.4rem;">
         Drift varsa locked test readout ile bu scan arasında model değişmiş demektir;
         bu durumda raporun hiçbir sayısı geçerli değildir, kontrol edilmeden

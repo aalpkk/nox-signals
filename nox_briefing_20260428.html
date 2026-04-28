@@ -1,0 +1,1918 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NYX Brifing — 28.04.2026 21:15</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+.briefing-container {
+    position: relative;
+    z-index: 1;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 1.5rem 2rem;
+}
+
+/* ─── KATMAN 1: DURUM (sticky top bar) ─── */
+.nox-status-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(6,6,8,0.55);
+    backdrop-filter: blur(24px) saturate(1.3);
+    -webkit-backdrop-filter: blur(24px) saturate(1.3);
+    border-bottom: 1px solid rgba(201,169,110,0.08);
+    padding: 0.6rem 1.5rem;
+    margin: 0 -1.5rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+.nox-status-bar .logo {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.15rem;
+    white-space: nowrap;
+}
+.nox-status-bar .logo .nox-text {
+    font-family: var(--font-brand);
+    font-size: 6rem;
+    color: #fff;
+    letter-spacing: 0.06em;
+    line-height: 0.85;
+}
+.nox-status-bar .logo .brief-text {
+    font-family: var(--font-handwrite);
+    font-size: 1.3rem;
+    color: #fff;
+    margin-left: 0.15rem;
+    position: relative;
+    top: -0.1rem;
+}
+.nox-status-bar .regime-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.7rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    font-size: 0.72rem;
+    border: 1px solid;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.nox-status-bar .macro-pills {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    flex: 1;
+}
+.nox-status-bar .mpill {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 0.75rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+.nox-status-bar .mpill b { font-weight: 600; }
+.nox-status-bar .meta-right {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+    margin-left: auto;
+}
+
+/* ─── KATMAN 1.5: Endeks uyarıları ─── */
+.nox-index-warn {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+    padding: 0.5rem 0.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+}
+
+/* ─── KATMAN 2: AKSİYON KARTLARI ─── */
+.action-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+}
+.action-card {
+    background: rgba(199,189,190,0.08);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none;
+    border-radius: 18px;
+    padding: 0.9rem 1.1rem;
+    border-left: 3px solid transparent;
+    transition: all 0.25s ease;
+    animation: cardFadeIn 0.3s ease-out both;
+    position: relative;
+    overflow: hidden;
+}
+.action-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184,149,110,0.15), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.action-card:hover {
+    background: rgba(199,189,190,0.12);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(184,149,110,0.03);
+    transform: translateY(-1px);
+}
+.action-card:hover::before { opacity: 1; }
+.action-card.tier1 { border-left: 3px solid rgba(201,169,110,0.4); }
+.action-card.tier2a { border-left: 3px solid rgba(184,149,110,0.25); }
+.action-card.tier2b { border-left: 3px solid rgba(138,122,158,0.25); }
+@keyframes cardFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.action-card .card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+}
+.action-card .card-head .ticker {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 1.15rem;
+    color: #fff;
+}
+.action-card .card-head .tier-tag {
+    font-size: 0.6rem;
+    font-family: var(--font-mono);
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+.action-card .card-head .tier-tag.t1 { background: rgba(201,169,110,0.12); color: #c9a96e; }
+.action-card .card-head .tier-tag.t2a { background: rgba(168,135,106,0.12); color: #a8876a; }
+.action-card .card-head .tier-tag.t2b { background: rgba(138,122,158,0.12); color: #8a7a9e; }
+.action-card .card-head .score-pill {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    background: var(--nox-gold-dim);
+    color: var(--nox-gold);
+    margin-left: auto;
+}
+.action-card .card-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-bottom: 0.4rem;
+}
+.action-card .card-reasons {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 0.4rem;
+}
+.action-card .card-entry {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+    padding-top: 0.4rem;
+    border-top: 1px solid var(--border-subtle);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+}
+.action-card .card-entry .e-label { color: var(--text-muted); }
+.action-card .card-entry .e-limit { color: var(--nox-gold); font-weight: 600; }
+.action-card .card-entry .e-sl { color: var(--nox-red); font-weight: 600; }
+.action-card .card-entry .e-tp { color: var(--nox-green); font-weight: 600; }
+.tier-group-label {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 1.2rem 0 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.tier-group-label:first-child { margin-top: 0; }
+.tier-group-label .cnt {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-muted);
+}
+
+/* ─── KATMAN 3: RADAR ─── */
+.radar-section {
+    background: rgba(199,189,190,0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none;
+    border-radius: 18px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+.radar-section .radar-header {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+.radar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.82rem;
+}
+.radar-item:last-child { border-bottom: none; }
+.radar-item .rank { color: var(--text-muted); font-family: var(--font-mono); font-size: 0.72rem; min-width: 1.2rem; }
+.radar-item .ticker { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 0.92rem; min-width: 4rem; }
+.radar-item .tag {
+    font-size: 0.65rem;
+    padding: 0.08rem 0.3rem;
+    border-radius: 3px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+}
+.radar-item .tag.ml { background: rgba(192,132,252,0.15); color: var(--nox-purple); }
+.radar-item .tag.brk { background: rgba(250,204,21,0.15); color: var(--nox-yellow); }
+.radar-item .tag.ltp { background: rgba(74,222,128,0.15); color: var(--nox-green); }
+
+/* ─── KATMAN 4: DETAY (collapse) ─── */
+.detail-block {
+    margin-bottom: 0.75rem;
+}
+.detail-block > summary {
+    font-family: var(--font-display);
+    color: var(--nox-gold);
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    padding: 0.6rem 0.8rem;
+    background: rgba(199,189,190,0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: none;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.2s;
+    list-style: none;
+}
+.detail-block > summary::-webkit-details-marker { display: none; }
+.detail-block > summary::before {
+    content: '▸';
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    transition: transform 0.2s;
+}
+.detail-block[open] > summary::before { transform: rotate(90deg); }
+.detail-block > summary:hover {
+    background: rgba(199,189,190,0.10);
+}
+.detail-block > summary .det-count {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+.detail-block .detail-body {
+    padding: 0.8rem;
+    border: none;
+    border-radius: 0 0 16px 16px;
+    background: rgba(6,7,9,0.6);
+}
+
+/* ─── TABS (sinyal listeleri) ─── */
+.nox-tabs {
+    display: flex;
+    gap: 0;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 0.75rem;
+    overflow-x: auto;
+}
+.nox-tab {
+    padding: 0.5rem 1rem;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.15s, border-color 0.15s;
+    background: none;
+    border-top: none; border-left: none; border-right: none;
+    font-family: var(--font-display);
+}
+.nox-tab:hover { color: var(--text-secondary); }
+.nox-tab.active {
+    color: var(--nox-gold);
+    border-bottom-color: var(--nox-gold);
+}
+.nox-tab-panel { display: none; }
+.nox-tab-panel.active { display: block; }
+
+/* ─── SECTION TITLE (katman başlıkları) ─── */
+.layer-title {
+    font-family: var(--font-display);
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin: 2rem 0 0.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid transparent;
+    border-image: linear-gradient(90deg, rgba(201,169,110,0.2), transparent 60%) 1;
+}
+
+/* ─── FOOTER ─── */
+.nox-footer {
+    text-align: center;
+    padding: 2rem 0 1rem;
+    font-size: 0.65rem;
+    color: rgba(255,255,255,0.35);
+    font-family: var(--font-mono);
+    letter-spacing: 0.1em;
+}
+
+/* ─── GLOSSARY ─── */
+.glossary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+}
+.glossary-group {
+    padding-bottom: 0.5rem;
+}
+.glossary-cat {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--nox-gold);
+    margin-bottom: 0.4rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid rgba(201,169,110,0.1);
+}
+.glossary-row {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.2rem 0;
+    font-size: 0.78rem;
+    line-height: 1.4;
+}
+.glossary-key {
+    font-family: var(--font-mono);
+    font-weight: 600;
+    color: var(--text-primary);
+    min-width: 5.5rem;
+    flex-shrink: 0;
+    font-size: 0.72rem;
+}
+.glossary-val {
+    color: var(--text-secondary);
+    font-size: 0.74rem;
+}
+
+/* SECTION TITLES (legacy — used in detail blocks) */
+.section-title {
+    font-family: var(--font-display);
+    color: var(--nox-cyan);
+    font-size: 1.1rem;
+    margin: 2.5rem 0 1rem;
+    border-bottom: 1px solid var(--border-subtle);
+    padding-bottom: 0.5rem;
+}
+
+/* SIGNAL LISTS — 2x2 grid */
+.signal-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin: 1rem 0;
+}
+@media (max-width: 700px) {
+    .signal-grid { grid-template-columns: 1fr; }
+}
+.signal-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1rem;
+}
+.signal-section .list-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+.signal-section .list-header .count {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-left: auto;
+}
+.signal-card {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
+}
+.signal-card:last-child { border-bottom: none; }
+.signal-card .rank {
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    min-width: 1.2rem;
+}
+.signal-card .ticker {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.92rem;
+    min-width: 4rem;
+}
+.signal-card .reasons {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.signal-card .score-pill {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    background: var(--nox-cyan-dim);
+    color: var(--nox-cyan);
+    white-space: nowrap;
+}
+.ml-badge {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+.ml-badge.ml-strong { background: rgba(201,169,110,0.15); color: var(--nox-gold); }
+.ml-badge.ml-mid { background: rgba(122,143,165,0.15); color: var(--nox-blue); }
+.ml-badge.ml-weak { background: rgba(158,90,90,0.15); color: var(--nox-red); }
+
+/* DUAL ML BADGE */
+.ml-dual {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    white-space: nowrap;
+}
+.ml-dual .ml-s, .ml-dual .ml-w {
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+}
+.ml-dual .ml-s { border-right: 1px solid var(--border-subtle); }
+
+/* SBT BADGE */
+.sbt-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+.sbt-badge.sbt-ap { background: rgba(122,158,122,0.2); color: var(--nox-green); }
+.sbt-badge.sbt-a { background: rgba(122,143,165,0.2); color: var(--nox-blue); }
+.sbt-badge.sbt-b { background: rgba(138,133,128,0.12); color: var(--text-secondary); }
+.sbt-badge.sbt-x { background: rgba(158,90,90,0.15); color: var(--nox-red); }
+
+/* VOL TIER BADGE (Hacim-donus) */
+.vol-tier {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-left: 4px;
+    white-space: nowrap;
+}
+.vol-tier.vt-altin { background: rgba(201,169,110,0.15); color: var(--nox-gold); }
+.vol-tier.vt-gumus { background: rgba(192,192,192,0.2); color: #c0c0c0; }
+.vol-tier.vt-bronz { background: rgba(205,127,50,0.2); color: #cd7f32; }
+
+/* SECTOR BADGE */
+.sector-badge {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    white-space: nowrap;
+}
+.sector-badge.sector-ok { background: rgba(122,158,122,0.15); color: var(--nox-green); }
+.sector-badge.sector-warn { background: rgba(168,135,106,0.15); color: var(--nox-orange); }
+
+/* GATE TAG */
+.gate-tag {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 0.08rem 0.25rem;
+    border-radius: 3px;
+    background: rgba(158,90,90,0.12);
+    color: var(--nox-red);
+    white-space: nowrap;
+}
+.brk-avoid {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+    background: rgba(158,90,90,0.18);
+    color: var(--nox-red);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* RERANK SECTION */
+.rerank-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.rerank-item:last-child { border-bottom: none; }
+.rerank-delta {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.rerank-delta.up { color: var(--nox-green); }
+.rerank-delta.down { color: var(--nox-red); }
+
+/* FILTERED SECTION */
+.filtered-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0;
+    font-size: 0.82rem;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+}
+.filtered-item:last-child { border-bottom: none; }
+.filtered-item .reason { font-style: italic; }
+
+/* OVERLAP SECTION */
+.overlap-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.overlap-section .group-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.overlap-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+}
+.overlap-badge.b4 { background: rgba(158,90,90,0.2); color: var(--nox-red); }
+.overlap-badge.b3 { background: rgba(168,135,106,0.2); color: var(--nox-orange); }
+.overlap-badge.b2 { background: rgba(201,169,110,0.15); color: var(--nox-gold); }
+.overlap-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
+}
+.overlap-item:last-child { border-bottom: none; }
+.overlap-item .ticker { font-family: 'Inter', sans-serif; font-weight: 900; font-size: 0.92rem; min-width: 4rem; }
+.overlap-item .lists-tag {
+    font-size: 0.7rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    font-family: var(--font-mono);
+}
+.overlap-item .quality {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--nox-orange);
+    margin-left: auto;
+}
+.overlap-item .reasons-text {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* MACRO */
+.macro-signals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+.regime-signal {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+}
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+}
+.category-regime {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 0.7rem 1rem;
+}
+.category-regime .cat-name {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.category-regime .cat-regime {
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-top: 0.2rem;
+}
+.category-regime .cat-score {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+.macro-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 0.8rem;
+    margin: 1rem 0;
+}
+.macro-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+}
+.macro-card .name {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.macro-card .price {
+    font-family: var(--font-mono);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+.macro-card .change {
+    font-family: var(--font-mono);
+    font-size: 0.8rem;
+}
+.macro-card .detail {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    margin-top: 0.2rem;
+}
+
+/* NEWS */
+.news-section {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+.news-item {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--border-subtle);
+    font-size: 0.85rem;
+}
+.news-item:last-child { border-bottom: none; }
+.news-item a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+.news-item a:hover { color: var(--nox-cyan); }
+.news-item .news-meta {
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+}
+
+/* AI ANALYSIS */
+.briefing-text {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-primary);
+}
+.briefing-text h2 {
+    color: var(--nox-cyan);
+    font-size: 1.1rem;
+    margin-top: 1.2rem;
+}
+.briefing-text strong {
+    color: var(--nox-orange);
+}
+
+/* CONFLUENCE TABLE */
+.confluence-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 1rem 0;
+}
+.confluence-table th {
+    background: var(--bg-elevated);
+    color: var(--text-secondary);
+    text-align: left;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--border-subtle);
+}
+.confluence-table td {
+    padding: 0.5rem 0.8rem;
+    border-bottom: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+.confluence-table tr:hover {
+    background: var(--bg-hover);
+}
+.score-badge {
+    display: inline-block;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-family: var(--font-mono);
+}
+.rec-badge {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+.tv-link {
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: opacity 0.15s;
+}
+.tv-link:hover {
+    opacity: 0.75;
+    color: var(--nox-gold);
+}
+.shortlist-badge {
+    display: inline-block;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+.shortlist-badge.in-list {
+    background: rgba(74,222,128,0.15);
+    color: #4ade80;
+}
+.shortlist-badge.conflict {
+    background: rgba(248,113,113,0.15);
+    color: #f87171;
+}
+.shortlist-badge.not-in {
+    color: var(--text-muted);
+}
+</style>
+</head>
+<body>
+<div class="aurora-bg">
+    <div class="aurora-layer aurora-layer-1"></div>
+    <div class="aurora-layer aurora-layer-2"></div>
+    <div class="aurora-layer aurora-layer-3"></div>
+</div>
+<div class="mesh-overlay"></div>
+<div class="briefing-container">
+
+    <!-- ══════ KATMAN 1: DURUM (sticky) ══════ -->
+    <div class="nox-status-bar" id="statusBar">
+        <span class="logo"><span class="nox-text">NYX</span><span class="brief-text">brief</span></span>
+        <span class="regime-pill" style="color:#7a9e7a;border-color:#7a9e7a">GÜÇLÜ_RISK_ON</span>
+        <span class="macro-pills" id="macroPills"></span>
+        <span class="meta-right">28.04.2026 21:15</span>
+    </div>
+    <div class="nox-index-warn" id="indexWarn" style="display:none"></div>
+
+    <!-- ══════ KATMAN 2: AKSİYON ══════ -->
+    <div class="layer-title">Aksiyon — Shortlist</div>
+    <div id="actionCards"></div>
+
+    <!-- ══════ KATMAN 3: RADAR ══════ -->
+    <div class="layer-title">Radar — Keşif</div>
+    <div id="radarContainer"></div>
+
+    <!-- ══════ KATMAN 4: DETAY ══════ -->
+    <div class="layer-title">Detay</div>
+
+    <!-- 4a: Sinyal Listeleri (tab'lı) -->
+    <details class="detail-block" id="signalListsBlock">
+        <summary>Sinyal Listeleri <span class="det-count" id="signalListsCount"></span></summary>
+        <div class="detail-body">
+            <div class="nox-tabs" id="signalTabs"></div>
+            <div id="signalTabPanels"></div>
+        </div>
+    </details>
+
+    <!-- 4b: AI Analiz -->
+    <details class="detail-block">
+        <summary>AI Analiz</summary>
+        <div class="detail-body briefing-text"><p>```html</p>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:OZATD" target="_blank" class="tv-link" title="OZATD — TradingView">OZATD</a></b></p>
+<p>Normal: limit 310-312</p>
+<p>Gap-up >315: bekle pullback 308</p>
+<p>Gap-down <305: limit 304-306</p>
+<p>SL:290 TP1:327 TP2:345</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:TRILC" target="_blank" class="tv-link" title="TRILC — TradingView">TRILC</a></b></p>
+<p>Normal: PULLBACK BEKLE (OE=5)</p>
+<p>Gap-up: girme, çok uzamış</p>
+<p>Gap-down <3.40: limit 3.35-3.38</p>
+<p>SL:3.29 TP1:3.97 TP2:4.30</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:BIGEN" target="_blank" class="tv-link" title="BIGEN — TradingView">BIGEN</a></b></p>
+<p>Normal: PULLBACK BEKLE (OE=4)</p>
+<p>Gap-up: girme</p>
+<p>Gap-down <15.00: limit 14.80-15.00</p>
+<p>SL:13.73 TP1:17.97 TP2:19.50</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:AKCNS" target="_blank" class="tv-link" title="AKCNS — TradingView">AKCNS</a></b></p>
+<p>Normal: limit 211.50-212.50</p>
+<p>Gap-up >215: piyasa max 217</p>
+<p>Gap-down: limit 209-210</p>
+<p>SL:204 TP1:218 TP2:225</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:PLTUR" target="_blank" class="tv-link" title="PLTUR — TradingView">PLTUR</a></b></p>
+<p>Normal: limit 26.00-26.30</p>
+<p>Gap-up >27: piyasa max 27.50</p>
+<p>Gap-down: limit 25.50-25.80</p>
+<p>SL:24.50 TP1:28.50 TP2:31.00</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:OBASE" target="_blank" class="tv-link" title="OBASE — TradingView">OBASE</a></b></p>
+<p>Normal: limit 41.00-41.50</p>
+<p>Gap-up >42: limit 41.50</p>
+<p>Gap-down: limit 40.20-40.50</p>
+<p>SL:37.48 TP1:45.97 TP2:49.00</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:ESCOM" target="_blank" class="tv-link" title="ESCOM — TradingView">ESCOM</a></b></p>
+<p>Normal: limit 5.32-5.36</p>
+<p>Gap-up >5.45: bekle pullback</p>
+<p>Gap-down: limit 5.25-5.30</p>
+<p>SL:5.05 TP1:5.65 TP2:5.90</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:YYAPI" target="_blank" class="tv-link" title="YYAPI — TradingView">YYAPI</a></b></p>
+<p>Normal: limit 1.26-1.27</p>
+<p>Gap-up >1.30: bekle pullback</p>
+<p>Gap-down: limit 1.24-1.25</p>
+<p>SL:1.20 TP1:1.33 TP2:1.38</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:TRCAS" target="_blank" class="tv-link" title="TRCAS — TradingView">TRCAS</a></b></p>
+<p>Normal: limit 47.00-47.50</p>
+<p>Gap-up >48: piyasa max 48.50</p>
+<p>Gap-down: limit 46.50-47.00</p>
+<p>SL:45.00 TP1:50.00 TP2:53.00</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:ARASE" target="_blank" class="tv-link" title="ARASE — TradingView">ARASE</a></b></p>
+<p>Normal: limit 110.50-111.50</p>
+<p>Gap-up >113: limit 112</p>
+<p>Gap-down: limit 108-109</p>
+<p>SL:100.69 TP1:123.96 TP2:132.00</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:GUNDG" target="_blank" class="tv-link" title="GUNDG — TradingView">GUNDG</a></b></p>
+<p>Normal: limit 890-900</p>
+<p>Gap-up >910: bekle pullback 890</p>
+<p>Gap-down: limit 875-885</p>
+<p>SL:840 TP1:940 TP2:990</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:ORCAY" target="_blank" class="tv-link" title="ORCAY — TradingView">ORCAY</a></b></p>
+<p>Normal: limit 4.03-4.06</p>
+<p>Gap-up >4.15: bekle pullback</p>
+<p>Gap-down: limit 3.98-4.01</p>
+<p>SL:3.83 TP1:4.27 TP2:4.45</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:SMRVA" target="_blank" class="tv-link" title="SMRVA — TradingView">SMRVA</a></b></p>
+<p>Normal: limit 91.00-92.00</p>
+<p>Gap-up >93: bekle pullback</p>
+<p>Gap-down: limit 89.00-90.00</p>
+<p>SL:86.00 TP1:96.50 TP2:101.00</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:ICUGS" target="_blank" class="tv-link" title="ICUGS — TradingView">ICUGS</a></b></p>
+<p>Normal: limit 5.68-5.72</p>
+<p>Gap-up >5.80: bekle pullback</p>
+<p>Gap-down: limit 5.60-5.65</p>
+<p>SL:5.40 TP1:6.05 TP2:6.30</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:FENER" target="_blank" class="tv-link" title="FENER — TradingView">FENER</a></b></p>
+<p>Normal: limit 3.08-3.10</p>
+<p>Gap-up >3.15: bekle pullback</p>
+<p>Gap-down: limit 3.03-3.06</p>
+<p>SL:2.92 TP1:3.26 TP2:3.40</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:TURGG" target="_blank" class="tv-link" title="TURGG — TradingView">TURGG</a></b></p>
+<p>Normal: PULLBACK BEKLE (OE=5)</p>
+<p>Gap-up: girme</p>
+<p>Gap-down <41.50: limit 41.00-41.50</p>
+<p>SL:38.44 TP1:49.93 TP2:53.50</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:DYOBY" target="_blank" class="tv-link" title="DYOBY — TradingView">DYOBY</a></b></p>
+<p>Normal: PULLBACK BEKLE (OE=5)</p>
+<p>Gap-up: girme</p>
+<p>Gap-down <19.00: limit 18.80-19.00</p>
+<p>SL:17.63 TP1:23.13 TP2:24.80</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:KLSYN" target="_blank" class="tv-link" title="KLSYN — TradingView">KLSYN</a></b></p>
+<p>Normal: limit 12.75-12.90</p>
+<p>Gap-up >13.20: bekle pullback</p>
+<p>Gap-down: limit 12.60-12.75</p>
+<p>SL:11.59 TP1:14.81 TP2:15.80</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:AGESA" target="_blank" class="tv-link" title="AGESA — TradingView">AGESA</a></b></p>
+<p>Normal: limit 232-234</p>
+<p>Gap-up >237: piyasa max 239</p>
+<p>Gap-down: limit 229-231</p>
+<p>SL:225 TP1:245 TP2:257</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:FONET" target="_blank" class="tv-link" title="FONET — TradingView">FONET</a></b></p>
+<p>Normal: limit 5.03-5.08</p>
+<p>Gap-up >5.20: piyasa max 5.30</p>
+<p>Gap-down: limit 4.96-5.01</p>
+<p>SL:4.72 TP1:5.60 TP2:5.90</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:KOCMT" target="_blank" class="tv-link" title="KOCMT — TradingView">KOCMT</a></b></p>
+<p>Normal: limit 2.60-2.62</p>
+<p>Gap-up >2.67: piyasa max 2.70</p>
+<p>Gap-down: limit 2.57-2.59</p>
+<p>SL:2.51 TP1:2.75 TP2:2.87</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:YAYLA" target="_blank" class="tv-link" title="YAYLA — TradingView">YAYLA</a></b></p>
+<p>Normal: limit 28.30-28.50</p>
+<p>Gap-up >29: bekle pullback</p>
+<p>Gap-down: limit 27.80-28.10</p>
+<p>SL:27.00 TP1:30.00 TP2:31.50</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:ISYAT" target="_blank" class="tv-link" title="ISYAT — TradingView">ISYAT</a></b></p>
+<p>Normal: limit 8.56-8.64</p>
+<p>Gap-up >8.80: bekle pullback</p>
+<p>Gap-down: limit 8.45-8.52</p>
+<p>SL:8.15 TP1:9.10 TP2:9.50</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:PASEU" target="_blank" class="tv-link" title="PASEU — TradingView">PASEU</a></b></p>
+<p>Normal: limit 136-138</p>
+<p>Gap-up >140: bekle pullback</p>
+<p>Gap-down: limit 133-135</p>
+<p>SL:129 TP1:144 TP2:151</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:ISGSY" target="_blank" class="tv-link" title="ISGSY — TradingView">ISGSY</a></b></p>
+<p>Normal: limit 128-130</p>
+<p>Gap-up >132: bekle pullback</p>
+<p>Gap-down: limit 126-127</p>
+<p>SL:122 TP1:136 TP2:142</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:RODRG" target="_blank" class="tv-link" title="RODRG — TradingView">RODRG</a></b></p>
+<p>Normal: PULLBACK BEKLE (OE=5)</p>
+<p>Gap-up: girme</p>
+<p>Gap-down <22.80: limit 22.50-22.80</p>
+<p>SL:22.10 TP1:25.45 TP2:27.00</p>
+<br>
+<p><b><a href="https://www.tradingview.com/chart/?symbol=BIST:DOGUB" target="_blank" class="tv-link" title="DOGUB — TradingView">DOGUB</a></b></p>
+<p>Normal: limit 0.81-0.82</p>
+<p>Gap-up >0.84: bekle pullback</p>
+<p>Gap-down: limit 0.79-0.80</p>
+<p>SL:0.77 TP1:0.85 TP2:0.89</p>
+<p>```</p></div>
+    </details>
+
+    <!-- 4c: ML Rerank + Filtered -->
+    <details class="detail-block" id="mlDetailBlock">
+        <summary>ML Detay <span class="det-count" id="mlDetailCount"></span></summary>
+        <div class="detail-body">
+            <div style="font-weight:600;font-size:0.85rem;margin-bottom:0.5rem">Rerank Değişimi</div>
+            <div id="rerankContainer"></div>
+            <div style="font-weight:600;font-size:0.85rem;margin:1rem 0 0.5rem">Filtreyle Elenenler</div>
+            <div id="filteredContainer"></div>
+        </div>
+    </details>
+
+    <!-- 4d: Makro Detay -->
+    <details class="detail-block">
+        <summary>Makro Detay</summary>
+        <div class="detail-body">
+            <div class="macro-signals" id="macroSignals"></div>
+            <div class="category-grid" id="categoryGrid"></div>
+            <div class="macro-grid" id="macroGrid"></div>
+        </div>
+    </details>
+
+    <!-- 4e: Backtest -->
+    <details class="detail-block">
+        <summary>Backtest Sonuçları</summary>
+        <div class="detail-body">
+
+        <h3 style="color:var(--nox-cyan);font-size:0.9rem;margin:0 0 0.5rem">Özet Sıralama (5G WR)</h3>
+        <div style="overflow-x:auto">
+        <table class="confluence-table" style="font-size:0.75rem">
+            <thead><tr><th>#</th><th>Strateji</th><th>N</th><th>5G WR</th><th>5G ORT</th><th>5G MED</th></tr></thead>
+            <tbody>
+            <tr><td>1</td><td>OL rt+tavan</td><td>26</td><td style="color:#7a9e7a;font-weight:600">71.4%</td><td>+9.04%</td><td>+8.82%</td></tr>
+            <tr><td>2</td><td>Rejim (RT)</td><td>102</td><td style="color:#7a9e7a;font-weight:600">66.7%</td><td>+4.55%</td><td>+2.63%</td></tr>
+            <tr><td>3</td><td>ML≥0.50</td><td>200</td><td style="color:#7a9e7a;font-weight:600">64.5%</td><td>+4.04%</td><td>+2.92%</td></tr>
+            <tr><td>4</td><td>ML≥0.55</td><td>103</td><td style="color:#7a9e7a;font-weight:600">63.1%</td><td>+4.11%</td><td>+3.20%</td></tr>
+            <tr><td>5</td><td>OL nw+tavan</td><td>16</td><td style="color:#7a9e7a">61.5%</td><td>+5.93%</td><td>+4.14%</td></tr>
+            <tr><td>6</td><td>OL 3+ liste</td><td>5</td><td style="color:#7a9e7a">60.0%</td><td>+5.34%</td><td>+4.14%</td></tr>
+            <tr><td>7</td><td>NW Elmas</td><td>1140</td><td style="color:#c9a96e">59.6%</td><td>+2.16%</td><td>+1.05%</td></tr>
+            <tr><td>8</td><td>AL/SAT</td><td>29</td><td style="color:#c9a96e">58.6%</td><td>+4.74%</td><td>+2.60%</td></tr>
+            <tr><td>9</td><td>Tier2</td><td>180</td><td style="color:#c9a96e">58.5%</td><td>+3.71%</td><td>+2.20%</td></tr>
+            <tr><td>10</td><td>T+Y (Taze+Yeni)</td><td>63</td><td style="color:#c9a96e">58.2%</td><td>+4.50%</td><td>+5.62%</td></tr>
+            </tbody>
+        </table>
+        </div>
+
+        <details style="margin-top:1rem">
+            <summary style="color:var(--text-secondary);font-size:0.8rem;cursor:pointer">Shortlist Backtest Detay (20 gün, N=733)</summary>
+            <div style="overflow-x:auto;margin-top:0.5rem">
+            <table class="confluence-table" style="font-size:0.7rem">
+                <thead><tr><th>Strateji</th><th>N</th><th>1G ORT</th><th>1G WR</th><th>3G ORT</th><th>3G WR</th><th>5G ORT</th><th>5G WR</th></tr></thead>
+                <tbody>
+                <tr><td>OL rt+tavan</td><td>26</td><td>4.57</td><td>70.8</td><td>8.32</td><td>77.3</td><td>9.04</td><td style="color:#7a9e7a">71.4</td></tr>
+                <tr><td>OL 3+ liste</td><td>5</td><td>4.76</td><td>100.0</td><td>6.29</td><td>80.0</td><td>5.34</td><td>60.0</td></tr>
+                <tr><td>T+Y (Taze+Yeni)</td><td>63</td><td>3.36</td><td>62.3</td><td>6.81</td><td>68.4</td><td>4.50</td><td>58.2</td></tr>
+                <tr><td>OL nw+tavan</td><td>16</td><td>3.19</td><td>68.8</td><td>5.50</td><td>71.4</td><td>5.93</td><td>61.5</td></tr>
+                <tr><td>Tier1</td><td>80</td><td>2.73</td><td>61.5</td><td>5.62</td><td>64.4</td><td>3.78</td><td>53.6</td></tr>
+                <tr><td>Rejim (RT)</td><td>102</td><td>0.68</td><td>55.4</td><td>3.75</td><td>58.3</td><td>4.55</td><td style="color:#7a9e7a">66.7</td></tr>
+                <tr><td>Tier2</td><td>180</td><td>1.69</td><td>58.1</td><td>2.76</td><td>54.4</td><td>3.71</td><td>58.5</td></tr>
+                <tr><td>AL/SAT</td><td>29</td><td>0.54</td><td>44.8</td><td>2.65</td><td>55.2</td><td>4.74</td><td>58.6</td></tr>
+                <tr><td>Tavan</td><td>180</td><td>0.72</td><td>44.0</td><td>0.90</td><td>48.9</td><td>1.88</td><td>54.2</td></tr>
+                <tr><td>NW Pivot</td><td>162</td><td>0.27</td><td>55.8</td><td>0.52</td><td>50.0</td><td>0.15</td><td style="color:#9e5a5a">45.1</td></tr>
+                <tr style="font-weight:600;border-top:2px solid var(--border-dim)"><td>GENEL</td><td>733</td><td>1.07</td><td>53.5</td><td>2.15</td><td>53.5</td><td>2.50</td><td>54.1</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </details>
+
+        <details style="margin-top:0.75rem">
+            <summary style="color:var(--text-secondary);font-size:0.8rem;cursor:pointer">ML Filtreli (Shortlist üzeri)</summary>
+            <div style="overflow-x:auto;margin-top:0.5rem">
+            <table class="confluence-table" style="font-size:0.7rem">
+                <thead><tr><th>ML Eşik</th><th>N</th><th>1G ORT</th><th>1G WR</th><th>3G ORT</th><th>3G WR</th><th>5G ORT</th><th>5G WR</th></tr></thead>
+                <tbody>
+                <tr><td>Baseline</td><td>505-649</td><td>1.07</td><td>53.5</td><td>2.15</td><td>53.5</td><td>2.50</td><td>54.1</td></tr>
+                <tr><td>ML≥0.45</td><td>378-481</td><td>1.57</td><td>56.3</td><td>2.50</td><td>54.4</td><td>2.98</td><td>56.6</td></tr>
+                <tr><td style="color:var(--nox-cyan)">ML≥0.50</td><td>200-254</td><td>2.32</td><td>63.0</td><td>3.52</td><td>61.0</td><td>4.04</td><td style="color:#7a9e7a;font-weight:600">64.5</td></tr>
+                <tr><td>ML≥0.55</td><td>103-129</td><td>3.43</td><td>63.6</td><td>4.65</td><td>63.1</td><td>4.11</td><td style="color:#7a9e7a">63.1</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </details>
+
+        <details style="margin-top:0.75rem">
+            <summary style="color:var(--text-secondary);font-size:0.8rem;cursor:pointer">Uzun Vadeli Backtestler (Tüm BIST, 2-3 yıl)</summary>
+            <div style="overflow-x:auto;margin-top:0.5rem">
+            <table class="confluence-table" style="font-size:0.7rem">
+                <thead><tr><th>Strateji</th><th>N</th><th>1G ORT</th><th>1G WR</th><th>3G ORT</th><th>3G WR</th><th>5G ORT</th><th>5G WR</th></tr></thead>
+                <tbody>
+                <tr><td>NW Elmas</td><td>1140</td><td>0.41</td><td>51.1</td><td>1.17</td><td>53.5</td><td>2.16</td><td style="color:#c9a96e">59.6</td></tr>
+                <tr><td>RT Volume (sıçrama)</td><td>4793</td><td>0.49</td><td>50.3</td><td>1.13</td><td>51.6</td><td>1.58</td><td>52.7</td></tr>
+                <tr><td>RT Volume (tümü)</td><td>6953</td><td>0.50</td><td>49.9</td><td>1.03</td><td>50.8</td><td>1.53</td><td>52.4</td></tr>
+                <tr><td>SBT Breakout</td><td>2061</td><td>0.39</td><td>50.9</td><td>0.48</td><td>50.1</td><td>0.65</td><td>50.3</td></tr>
+                <tr><td>AL/SAT Dönüş</td><td>8897</td><td>0.15</td><td>46.5</td><td>0.34</td><td>45.7</td><td>0.51</td><td style="color:#9e5a5a">46.8</td></tr>
+                <tr><td>Divergence BUY</td><td>27125</td><td>0.14</td><td>47.3</td><td>0.77</td><td>47.6</td><td>0.69</td><td style="color:#9e5a5a">48.8</td></tr>
+                </tbody>
+            </table>
+            </div>
+        </details>
+
+        <div style="margin-top:0.75rem;font-size:0.7rem;color:var(--text-muted);line-height:1.5">
+            <b>Çıkarımlar:</b> OL rt+tavan en iyi getiri/risk (medyan +8.82%) |
+            ML≥0.50 en iyi N/WR dengesi (N=200, %64.5) |
+            1G momentum: ML≥0.55 (ORT %3.43) |
+            Medyan negatif = tehlike: AL/SAT Dönüş, Divergence
+        </div>
+        </div>
+    </details>
+
+    <!-- 4f: Haberler -->
+    <details class="detail-block">
+        <summary>Piyasa Haberleri</summary>
+        <div class="detail-body" id="newsContainer"></div>
+    </details>
+
+    <!-- 4g: Çakışma Tablosu (en sonda) -->
+    <details class="detail-block">
+        <summary>Çakışma Tablosu <span class="det-count" id="confluenceCount"></span></summary>
+        <div class="detail-body" style="overflow-x:auto">
+            <table class="confluence-table" id="confluenceTable">
+                <thead>
+                    <tr>
+                        <th>Hisse</th>
+                        <th>Skor</th>
+                        <th>Yapısal</th>
+                        <th>Taktik</th>
+                        <th>Kaynaklar</th>
+                        <th>Sonuç</th>
+                        <th>Durum</th>
+                        <th>Detaylar</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </details>
+
+    <!-- 4h: Sözlük -->
+    <details class="detail-block">
+        <summary>Kısaltmalar ve Terimler</summary>
+        <div class="detail-body">
+            <div class="glossary-grid">
+                <div class="glossary-group">
+                    <div class="glossary-cat">Sinyal Kaynakları</div>
+                    <div class="glossary-row"><span class="glossary-key">NYX-Tek</span><span class="glossary-val">NYX Teknik Sinyal — teknik dönüş sinyalleri (RSI, MACD, hacim)</span></div>
+                    <div class="glossary-row"><span class="glossary-key">NYX9</span><span class="glossary-val">NYX 9 — tavan/kilitli tavan adayları, streak takibi</span></div>
+                    <div class="glossary-row"><span class="glossary-key">NYX-Dip</span><span class="glossary-val">NYX Dip Pivot — haftalık Elmas pivot kırılım sinyalleri</span></div>
+                    <div class="glossary-row"><span class="glossary-key">NYX-Trend</span><span class="glossary-val">NYX Trend — rejim geçiş sinyalleri (trend başlangıcı)</span></div>
+                    <div class="glossary-row"><span class="glossary-key">NYX-Krlm</span><span class="glossary-val">NYX Kırılım — birikim→kırılım pattern tespiti</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">Tier Sistemi</div>
+                    <div class="glossary-row"><span class="glossary-key">T1</span><span class="glossary-val">Tier 1 — 2+ listede çakışan, en güçlü sinyaller</span></div>
+                    <div class="glossary-row"><span class="glossary-key">T2A</span><span class="glossary-val">Tier 2A — Taktik (1G momentum), kısa vadeli fırsatlar</span></div>
+                    <div class="glossary-row"><span class="glossary-key">T2B</span><span class="glossary-val">Tier 2B — Swing-Lite, orta vadeli izleme listesi</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">ML Skorları</div>
+                    <div class="glossary-row"><span class="glossary-key">S##</span><span class="glossary-val">ML Short skoru — 1 günlük yükseliş olasılığı (%)</span></div>
+                    <div class="glossary-row"><span class="glossary-key">W##</span><span class="glossary-val">ML Swing skoru — 3 günlük yükseliş olasılığı (%)</span></div>
+                    <div class="glossary-row"><span class="glossary-key">🟢 ≥60</span><span class="glossary-val">Güçlü ML sinyali</span></div>
+                    <div class="glossary-row"><span class="glossary-key">🟡 40-59</span><span class="glossary-val">Orta ML sinyali</span></div>
+                    <div class="glossary-row"><span class="glossary-key">🔴 &lt;40</span><span class="glossary-val">Zayıf ML sinyali</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">SBT Bucket</div>
+                    <div class="glossary-row"><span class="glossary-key">SBT:A+</span><span class="glossary-val">En güçlü breakout adayı</span></div>
+                    <div class="glossary-row"><span class="glossary-key">SBT:A</span><span class="glossary-val">Güçlü breakout adayı</span></div>
+                    <div class="glossary-row"><span class="glossary-key">SBT:B</span><span class="glossary-val">Orta — izlemeye devam</span></div>
+                    <div class="glossary-row"><span class="glossary-key">SBT:X</span><span class="glossary-val">Zayıf/bozulmuş setup → gate cezası</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">ICE (Kurumsal Teyit)</div>
+                    <div class="glossary-row"><span class="glossary-key">ICE×1.15</span><span class="glossary-val">Kurumsal çarpan — ≥1.15 güçlü kurumsal destek</span></div>
+                    <div class="glossary-row"><span class="glossary-key">r=0.95</span><span class="glossary-val">Maliyet avantajı oranı — SM broker ortalama maliyeti / fiyat. &lt;1 = kurumsal karda</span></div>
+                    <div class="glossary-row"><span class="glossary-key">SM4g💪</span><span class="glossary-val">Smart Money streak — 4 gün üst üste net alım, güçlü momentum</span></div>
+                    <div class="glossary-row"><span class="glossary-key">Δ+2.3%</span><span class="glossary-val">Pozisyon değişimi — kurumsal net alım yüzdesi (son gün)</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">Breakout ML</div>
+                    <div class="glossary-row"><span class="glossary-key">BRK🎯T5</span><span class="glossary-val">Birikim→Breakout Top 5 — en yüksek kırılım olasılığı</span></div>
+                    <div class="glossary-row"><span class="glossary-key">BRK⚡T10</span><span class="glossary-val">Birikim→Breakout Top 6-10 — izle</span></div>
+                    <div class="glossary-row"><span class="glossary-key">F##</span><span class="glossary-val">Fusion skoru — 0.4×Master + 0.6×ML_S birleşik tahmin</span></div>
+                    <div class="glossary-row"><span class="glossary-key">⛔ALMA</span><span class="glossary-val">ML tarafından elenen (zayıf breakout + zayıf ML)</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">Hacim & Sektör</div>
+                    <div class="glossary-row"><span class="glossary-key">🥇ALTIN</span><span class="glossary-val">Altın hacim tier — ortalama hacmin 3x+ sıçrama</span></div>
+                    <div class="glossary-row"><span class="glossary-key">🥈GUMUS</span><span class="glossary-val">Gümüş hacim tier — ortalama hacmin 2-3x sıçrama</span></div>
+                    <div class="glossary-row"><span class="glossary-key">✅XUHIZ</span><span class="glossary-val">Sektör endeksi AL — endeks rejimi yükseliş trendinde</span></div>
+                    <div class="glossary-row"><span class="glossary-key">⚠️XBANK↓</span><span class="glossary-val">Sektör endeksi PASİF — endeks rejimi düşüş/nötr</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">Giriş Stratejisi</div>
+                    <div class="glossary-row"><span class="glossary-key">Limit</span><span class="glossary-val">Limit emir fiyatı (kapanışın -%1.5 altı)</span></div>
+                    <div class="glossary-row"><span class="glossary-key">TP</span><span class="glossary-val">Take Profit — hedef fiyat (%4 yukarı)</span></div>
+                    <div class="glossary-row"><span class="glossary-key">streak</span><span class="glossary-val">Ardışık tavan/güçlü gün sayısı</span></div>
+                    <div class="glossary-row"><span class="glossary-key">##p</span><span class="glossary-val">Rule engine puanı — sinyal güç skoru</span></div>
+                </div>
+                <div class="glossary-group">
+                    <div class="glossary-cat">Makro</div>
+                    <div class="glossary-row"><span class="glossary-key">RISK_ON</span><span class="glossary-val">Piyasa olumlu — alım için uygun ortam</span></div>
+                    <div class="glossary-row"><span class="glossary-key">NÖTR</span><span class="glossary-val">Kararsız — seçici ol</span></div>
+                    <div class="glossary-row"><span class="glossary-key">RISK_OFF</span><span class="glossary-val">Piyasa olumsuz — defansif kal</span></div>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <div class="nox-footer">by AAK. YTD.</div>
+</div>
+
+<script>
+const TV = 'https://www.tradingview.com/chart/?symbol=BIST:';
+const LISTS = {"alsat": {"label": "NYX Teknik Sinyal", "icon": "", "short": "NYX-Tek", "total": 12, "items": [{"ticker": "ARASE", "score": 504, "reasons": ["∩TVN", "⏳3G", "CMB", "Q=100", "RS=19", "MACD=+0.2269", "OE=2", "R:R=1.5", "🤖S50🔵·W45🔵", "✅XELKT"], "signal_type": "CMB", "ml_score": 0.51, "ml_score_short": 0.51, "ml_score_swing": 0.457, "ml_effect": "neutral", "rule_score": 500, "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.274, "breakout_fusion": 0.711}, {"ticker": "OBASE", "score": 488, "reasons": ["∩ALP", "⏳3G", "CMB", "Q=85", "RS=1", "MACD=+0.3616", "OE=2", "R:R=1.5", "🤖S47🔵·W44🔵", "ML↓", "✅XBLSM"], "signal_type": "CMB", "ml_score": 0.471, "ml_score_short": 0.471, "ml_score_swing": 0.45, "ml_effect": "down", "rule_score": 485, "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.294, "breakout_fusion": 0.597}, {"ticker": "TURGG", "score": 474, "reasons": ["⚡3LİSTE", "⏳3G", "CMB", "Q=100", "RS=40", "MACD=+1.0796", "OE=5", "R:R=1.5", "⚠️taban(ardışık2x,4gün)", "🤖S41🔵·W43🔵", "ML↓", "✅XINSA"], "signal_type": "CMB", "ml_score": 0.412, "ml_score_short": 0.412, "ml_score_swing": 0.435, "ml_effect": "down", "rule_score": 470, "sector_index": "XINSA", "sector_regime": "AL"}, {"ticker": "BIGEN", "score": 290, "reasons": ["⚡3LİSTE", "⏳3G", "GÜÇLÜ✓", "Q=100", "RS=53", "MACD=+0.5424", "OE=4", "R:R=1.5", "⚠️taban(ardışık4x,6gün)", "🤖S43🔵·W46🔵", "✅XELKT"], "signal_type": "GUCLU", "ml_score": 0.433, "ml_score_short": 0.433, "ml_score_swing": 0.464, "ml_effect": "neutral", "rule_score": 285, "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.629, "breakout_fusion": 0.575}, {"ticker": "DYOBY", "score": 263, "reasons": ["∩TVN", "⏳3G", "GÜÇLÜ✓", "Q=90", "RS=39", "MACD=+0.5435", "OE=5", "R:R=1.5", "🤖S53🔵·W44🔵", "ML↓", "✅XKMYA"], "signal_type": "GUCLU", "ml_score": 0.539, "ml_score_short": 0.539, "ml_score_swing": 0.449, "ml_effect": "down", "rule_score": 260, "sector_index": "XKMYA", "sector_regime": "AL"}, {"ticker": "KLSYN", "score": 253, "reasons": ["⏳3G", "GÜÇLÜ✓", "Q=55", "RS=30", "MACD=+0.2279", "OE=3", "R:R=1.5", "⚠️taban(ardışık2x,3gün)", "🤖S56🔵·W47🔵", "✅XKAGT"], "signal_type": "GUCLU", "ml_score": 0.562, "ml_score_short": 0.562, "ml_score_swing": 0.473, "ml_effect": "neutral", "rule_score": 250, "sector_index": "XKAGT", "sector_regime": "AL"}, {"ticker": "MERCN", "score": 253, "reasons": ["⏳3G", "GÜÇLÜ✓", "Q=55", "RS=40", "MACD=+0.8045", "OE=3", "R:R=1.5", "⚠️taban(ardışık2x,12gün)", "🤖S60🟡·W51🔵", "✅XKMYA"], "signal_type": "GUCLU", "ml_score": 0.602, "ml_score_short": 0.602, "ml_score_swing": 0.51, "ml_effect": "neutral", "rule_score": 250, "sector_index": "XKMYA", "sector_regime": "AL"}, {"ticker": "ARENA", "score": 242, "reasons": ["⏳3G", "GÜÇLÜ✓", "Q=70", "RS=45", "MACD=+1.7348", "OE=5", "R:R=1.5", "🤖S54🔵·W44🔵", "ML↓", "SBT:C", "✅XBLSM"], "signal_type": "GUCLU", "ml_score": 0.549, "ml_score_short": 0.549, "ml_score_swing": 0.449, "ml_effect": "down", "sbt_bucket": "C", "rule_score": 240, "sector_index": "XBLSM", "sector_regime": "AL"}, {"ticker": "TATGD", "score": 179, "reasons": ["∩RT", "⏳3G", "BİLEŞEN✓", "Q=75", "RS=8", "MACD=+0.1024", "OE=2", "R:R=1.5", "🤖S46🔵·W46🔵", "✅XGIDA"], "signal_type": "BILESEN", "ml_score": 0.469, "ml_score_short": 0.469, "ml_score_swing": 0.465, "ml_effect": "neutral", "rule_score": 175, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.357, "breakout_fusion": 0.645}, {"ticker": "TRILC", "score": 160, "reasons": ["⚡3LİSTE", "⏳3G", "BİLEŞEN✓", "Q=85", "RS=22", "MACD=+0.0907", "OE=5", "R:R=1.5", "🤖S43🔵·W45🔵", "✅XKMYA"], "signal_type": "BILESEN", "ml_score": 0.436, "ml_score_short": 0.436, "ml_score_swing": 0.456, "ml_effect": "neutral", "rule_score": 155, "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.575, "breakout_fusion": 0.58}, {"ticker": "HUBVC", "score": 148, "reasons": ["🔄SW", "DÖNÜŞ", "Q=95", "RS=8", "MACD=+0.1013", "OE=1", "R:R=1.33", "🤖S46🔵·W45🔵", "✅XHOLD"], "signal_type": "DONUS", "ml_score": 0.461, "ml_score_short": 0.461, "ml_score_swing": 0.457, "ml_effect": "neutral", "rule_score": 145, "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "RODRG", "score": 117, "reasons": ["∩TVN", "🔄SW", "DÖNÜŞ", "Q=100", "RS=2", "MACD=+0.3087", "OE=5", "R:R=1.33", "🤖S47🔵·W46🔵", "SBT:X", "⚠️XTEKS↓"], "signal_type": "DONUS", "ml_score": 0.474, "ml_score_short": 0.474, "ml_score_swing": 0.461, "ml_effect": "neutral", "sbt_bucket": "X", "rule_score": 120, "sector_index": "XTEKS", "sector_regime": "PASIF", "breakout_master": 0.447, "breakout_fusion": 0.759}]}, "tavan": {"label": "NYX 9", "icon": "", "short": "NYX9", "total": 24, "items": [{"ticker": "OZATD", "score": 558, "reasons": ["⚡3LİSTE", "⚡1G", "seri:2", "🔒skor:80", "vol:0.1x", "RS+33%", "CMF+0.46", "🤖S63🟡·W47🔵", "✅XMESY"], "signal_type": "TAVAN", "ml_score": 0.63, "ml_score_short": 0.63, "ml_score_swing": 0.478, "ml_effect": "neutral", "rule_score": 553, "sector_index": "XMESY", "sector_regime": "AL"}, {"ticker": "YYAPI", "score": 436, "reasons": ["∩ALP", "⚡1G", "🔥seri:3", "⚠️Y-KLT:63", "vol:1.2x", "RS-1%", "CMF-0.04", "⚠️taban(ardışık3x,6gün)", "🤖S55🔵·W47🔵"], "signal_type": "TAVAN", "ml_score": 0.553, "ml_score_short": 0.553, "ml_score_swing": 0.471, "ml_effect": "neutral", "rule_score": 435}, {"ticker": "ICUGS", "score": 359, "reasons": ["∩ALP", "⚡1G", "seri:2", "⚠️Y-KLT:60", "vol:1.3x", "RS+75%", "CMF+0.11", "🤖S64🟡·W50🔵", "✅XHOLD"], "signal_type": "TAVAN", "ml_score": 0.65, "ml_score_short": 0.65, "ml_score_swing": 0.509, "ml_effect": "neutral", "rule_score": 355, "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "TRILC", "score": 358, "reasons": ["⚡3LİSTE", "⚡1G", "seri:2", "⚠️Y-KLT:60", "vol:1.2x", "RS+30%", "CMF+0.07", "🤖S47🔵·W46🔵", "✅XKMYA"], "signal_type": "TAVAN", "ml_score": 0.477, "ml_score_short": 0.477, "ml_score_swing": 0.461, "ml_effect": "neutral", "rule_score": 353, "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.575, "breakout_fusion": 0.58}, {"ticker": "ESCOM", "score": 319, "reasons": ["∩ALP", "⚡1G", "▲skor:45", "vol:0.5x", "RS+11%", "CMF-0.20", "🤖S44🔵·W46🔵", "✅XBLSM"], "signal_type": "TAVAN", "ml_score": 0.449, "ml_score_short": 0.449, "ml_score_swing": 0.466, "ml_effect": "neutral", "rule_score": 315, "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.369, "breakout_fusion": 0.581}, {"ticker": "ORCAY", "score": 289, "reasons": ["∩ALP", "⚡1G", "▲skor:47", "vol:1.7x", "RS+13%", "CMF+0.21", "🤖S43🔵·W46🔵", "✅XGIDA"], "signal_type": "TAVAN", "ml_score": 0.438, "ml_score_short": 0.438, "ml_score_swing": 0.46, "ml_effect": "neutral", "rule_score": 285, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.466, "breakout_fusion": 0.654}, {"ticker": "TURGG", "score": 287, "reasons": ["⚡3LİSTE", "⚡1G", "▲skor:48", "vol:2.7x", "RS+36%", "CMF+0.45", "⚠️taban(ardışık2x,4gün)", "🤖S39🔴·W45🔵", "✅XINSA"], "signal_type": "TAVAN", "ml_score": 0.398, "ml_score_short": 0.398, "ml_score_swing": 0.454, "ml_effect": "neutral", "rule_score": 282, "sector_index": "XINSA", "sector_regime": "AL"}, {"ticker": "SMRVA", "score": 270, "reasons": ["∩ALP", "⚡1G", "▲skor:45", "vol:1.6x", "RS+49%", "CMF+0.06", "⚠️taban(ardışık6x,40gün)", "🤖S38🔴·W43🔵", "ML↓", "✅XUMAL"], "signal_type": "TAVAN", "ml_score": 0.384, "ml_score_short": 0.384, "ml_score_swing": 0.439, "ml_effect": "down", "rule_score": 267, "sector_index": "XUMAL", "sector_regime": "AL", "breakout_master": 0.71, "breakout_fusion": 0.407}, {"ticker": "BIGEN", "score": 242, "reasons": ["⚡3LİSTE", "⚡1G", "skor:53", "vol:2.0x", "RS+58%", "CMF+0.45", "⚠️taban(ardışık4x,6gün)", "🤖S43🔵·W47🔵", "✅XELKT"], "signal_type": "TAVAN", "ml_score": 0.435, "ml_score_short": 0.435, "ml_score_swing": 0.471, "ml_effect": "neutral", "rule_score": 237, "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.629, "breakout_fusion": 0.575}, {"ticker": "FENER", "score": 199, "reasons": ["∩ALP", "⚡1G", "▲skor:35", "vol:2.3x", "RS+6%", "⚠️taban(ardışık2x,7gün)", "🤖S42🔵·W45🔵", "✅XSPOR"], "signal_type": "TAVAN", "ml_score": 0.427, "ml_score_short": 0.427, "ml_score_swing": 0.453, "ml_effect": "neutral", "rule_score": 195, "sector_index": "XSPOR", "sector_regime": "AL", "breakout_master": 0.409, "breakout_fusion": 0.372}, {"ticker": "SEYKM", "score": 184, "reasons": ["∩SBT", "⚡1G", "▲skor:32", "vol:2.3x", "RS-2%", "🤖S42🔵·W46🔵", "✅XKMYA"], "signal_type": "TAVAN", "ml_score": 0.428, "ml_score_short": 0.428, "ml_score_swing": 0.464, "ml_effect": "neutral", "rule_score": 180, "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.361, "breakout_fusion": 0.378}, {"ticker": "ISGSY", "score": 173, "reasons": ["⚡1G", "▲skor:30", "vol:2.0x", "RS-6%", "✅XHOLD"], "signal_type": "TAVAN", "ml_effect": "neutral", "rule_score": 170, "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "RODRG", "score": 162, "reasons": ["∩AS", "⚡1G", "▲skor:32", "vol:3.6x", "RS-2%", "CMF+0.30", "🤖S48🔵·W46🔵", "SBT:X", "⚠️XTEKS↓"], "signal_type": "TAVAN", "ml_score": 0.484, "ml_score_short": 0.484, "ml_score_swing": 0.464, "ml_effect": "neutral", "sbt_bucket": "X", "rule_score": 165, "sector_index": "XTEKS", "sector_regime": "PASIF", "breakout_master": 0.447, "breakout_fusion": 0.759}, {"ticker": "ARASE", "score": 159, "reasons": ["∩AS", "⚡1G", "▲skor:27", "vol:2.9x", "RS+11%", "CMF+0.01", "🤖S51🔵·W46🔵", "✅XELKT"], "signal_type": "TAVAN", "ml_score": 0.513, "ml_score_short": 0.513, "ml_score_swing": 0.468, "ml_effect": "neutral", "rule_score": 155, "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.274, "breakout_fusion": 0.711}, {"ticker": "SAYAS", "score": 152, "reasons": ["∩ALP", "⚡1G", "▲skor:32", "vol:3.8x", "RS+12%", "CMF-0.00", "🤖S45🔵·W46🔵", "SBT:X", "✅XMESY"], "signal_type": "TAVAN", "ml_score": 0.46, "ml_score_short": 0.46, "ml_score_swing": 0.466, "ml_effect": "neutral", "sbt_bucket": "X", "rule_score": 150, "sector_index": "XMESY", "sector_regime": "AL", "breakout_master": 0.378, "breakout_fusion": 0.644}]}, "nw": {"label": "NYX Dip Pivot", "icon": "", "short": "NYX-Dip", "total": 6, "items": [{"ticker": "CEMZY", "score": 90, "reasons": ["⚡1G", "⚡D+W", "🔥BUGÜN", "δ12.5%", "ADX=44", "RSI=20", "⚠️taban(ardışık2x,7gün)", "🤖S51🔵·W48🔵", "✅XGIDA"], "signal_type": "PIVOT_AL", "ml_score": 0.516, "ml_score_short": 0.516, "ml_score_swing": 0.483, "ml_effect": "neutral", "rule_score": 87, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.237, "breakout_fusion": 0.684}, {"ticker": "BSOKE", "score": 49, "reasons": ["⚡1G", "🔥BUGÜN", "δ3.8%", "ADX=31", "RSI=59", "🤖S48🔵·W47🔵", "✅XTAST"], "signal_type": "PIVOT_AL", "ml_score": 0.484, "ml_score_short": 0.484, "ml_score_swing": 0.473, "ml_effect": "neutral", "rule_score": 46, "sector_index": "XTAST", "sector_regime": "AL", "breakout_master": 0.219, "breakout_fusion": 0.587}, {"ticker": "GUNDG", "score": 46, "reasons": ["∩ALP", "⚡1G", "🔥BUGÜN", "δ7.5%", "ADX=33", "RSI=63", "🤖S47🔵·W49🔵", "✅XGIDA"], "signal_type": "PIVOT_AL", "ml_score": 0.476, "ml_score_short": 0.476, "ml_score_swing": 0.494, "ml_effect": "neutral", "rule_score": 42, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.305, "breakout_fusion": 0.647}, {"ticker": "GEREL", "score": 44, "reasons": ["⚡1G", "🔥BUGÜN", "δ9.0%", "ADX=42", "RSI=60", "🤖S50🔵·W51🔵", "✅XMESY"], "signal_type": "PIVOT_AL", "ml_score": 0.51, "ml_score_short": 0.51, "ml_score_swing": 0.519, "ml_effect": "neutral", "rule_score": 41, "sector_index": "XMESY", "sector_regime": "AL", "breakout_master": 0.506, "breakout_fusion": 0.899, "breakout_tier": "top10"}, {"ticker": "OZATD", "score": 35, "reasons": ["⚡3LİSTE", "⚡1G", "🔥BUGÜN", "δ29.1%", "ADX=46", "RSI=76", "🤖S63🟡·W48🔵", "✅XMESY"], "signal_type": "PIVOT_AL", "ml_score": 0.631, "ml_score_short": 0.631, "ml_score_swing": 0.485, "ml_effect": "neutral", "rule_score": 30, "sector_index": "XMESY", "sector_regime": "AL"}, {"ticker": "TRHOL", "score": 33, "reasons": ["⚡1G", "🔥BUGÜN", "δ25.5%", "ADX=41", "RSI=74", "⚠️taban(ardışık4x,16gün)", "🤖S61🟡·W53🔵", "✅XHOLD"], "signal_type": "PIVOT_AL", "ml_score": 0.614, "ml_score_short": 0.614, "ml_score_swing": 0.537, "ml_effect": "neutral", "rule_score": 30, "sector_index": "XHOLD", "sector_regime": "AL", "breakout_master": 0.537, "breakout_fusion": 0.97, "breakout_tier": "top5"}]}, "rt": {"label": "NYX Trend", "icon": "", "short": "NYX-Trend", "total": 52, "items": [{"ticker": "AGESA", "score": 153, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F4", "CMF+0.15", "ADX=18", "🤖S51🔵·W46🔵", "✅XSGRT"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.519, "ml_score_short": 0.519, "ml_score_swing": 0.462, "ml_effect": "neutral", "rule_score": 150, "sector_index": "XSGRT", "sector_regime": "AL", "breakout_master": 0.111, "breakout_fusion": 0.582}, {"ticker": "FONET", "score": 148, "reasons": ["🔄SW", "🏅H+AL", "TAZE", "📍BUGÜN", "F3", "CMF-0.11", "ADX=28", "🤖S44🔵·W49🔵", "✅XBLSM"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.446, "ml_score_short": 0.446, "ml_score_swing": 0.493, "ml_effect": "neutral", "rule_score": 145, "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.435, "breakout_fusion": 0.593}, {"ticker": "VBTYZ", "score": 143, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF-0.07", "ADX=25", "🤖S42🔵·W45🔵", "✅XBLSM"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.42, "ml_score_short": 0.42, "ml_score_swing": 0.451, "ml_effect": "neutral", "rule_score": 140, "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.372, "breakout_fusion": 0.351}, {"ticker": "ASUZU", "score": 143, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF+0.17", "ADX=22", "🤖S48🔵·W46🔵", "✅XMESY"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.482, "ml_score_short": 0.482, "ml_score_swing": 0.469, "ml_effect": "neutral", "rule_score": 140, "sector_index": "XMESY", "sector_regime": "AL", "breakout_master": 0.189, "breakout_fusion": 0.551}, {"ticker": "KOCMT", "score": 142, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF-0.10", "ADX=22", "🤖S47🔵·W43🔵", "ML↓", "✅XMANA"], "signal_type": "CHOPPY→FULL_TREND", "ml_score": 0.473, "ml_score_short": 0.473, "ml_score_swing": 0.438, "ml_effect": "down", "rule_score": 140, "vol_tier": "NORMAL", "vol_tier_icon": "", "sector_index": "XMANA", "sector_regime": "AL", "breakout_master": 0.148, "breakout_fusion": 0.468}, {"ticker": "CCOLA", "score": 142, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF+0.05", "ADX=25", "🤖S41🔵·W44🔵", "ML↓", "✅XGIDA"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.415, "ml_score_short": 0.415, "ml_score_swing": 0.442, "ml_effect": "down", "rule_score": 140, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.169, "breakout_fusion": 0.132}, {"ticker": "EGEEN", "score": 142, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF-0.04", "ADX=37", "🤖S43🔵·W43🔵", "ML↓", "✅XMESY"], "signal_type": "CHOPPY→FULL_TREND", "ml_score": 0.438, "ml_score_short": 0.438, "ml_score_swing": 0.433, "ml_effect": "down", "rule_score": 140, "vol_tier": "NORMAL", "vol_tier_icon": "", "sector_index": "XMESY", "sector_regime": "AL", "breakout_master": 0.403, "breakout_fusion": 0.509}, {"ticker": "KONYA", "score": 142, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF-0.06", "ADX=33", "🤖S49🔵·W44🔵", "ML↓", "✅XTAST"], "signal_type": "CHOPPY→TREND", "ml_score": 0.492, "ml_score_short": 0.492, "ml_score_swing": 0.447, "ml_effect": "down", "rule_score": 140, "vol_tier": "NORMAL", "vol_tier_icon": "", "sector_index": "XTAST", "sector_regime": "AL", "breakout_master": 0.255, "breakout_fusion": 0.659}, {"ticker": "GIPTA", "score": 142, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF-0.31", "ADX=32", "⚠️taban(ardışık3x,12gün)", "🤖S42🔵·W44🔵", "ML↓", "✅XKAGT"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.422, "ml_score_short": 0.422, "ml_score_swing": 0.444, "ml_effect": "down", "rule_score": 140, "sector_index": "XKAGT", "sector_regime": "AL", "breakout_master": 0.619, "breakout_fusion": 0.485}, {"ticker": "MPARK", "score": 138, "reasons": ["🔄SW", "🏅H+AL", "TAZE", "📍BUGÜN", "F2", "CMF+0.07", "ADX=26", "🤖S49🔵·W45🔵", "✅XUHIZ"], "signal_type": "GRI_BOLGE→TREND", "ml_score": 0.493, "ml_score_short": 0.493, "ml_score_swing": 0.452, "ml_effect": "neutral", "rule_score": 135, "vol_tier": "NORMAL", "vol_tier_icon": "", "sector_index": "XUHIZ", "sector_regime": "AL", "breakout_master": 0.129, "breakout_fusion": 0.537}, {"ticker": "PETUN", "score": 133, "reasons": ["🔄SW", "🏅H+AL", "2.DALGA", "F4", "CMF+0.02", "ADX=24", "🤖S47🔵·W45🔵", "✅XGIDA"], "signal_type": "CHOPPY→TREND", "ml_score": 0.473, "ml_score_short": 0.473, "ml_score_swing": 0.457, "ml_effect": "neutral", "rule_score": 130, "vol_tier": "NORMAL", "vol_tier_icon": "", "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.136, "breakout_fusion": 0.463}, {"ticker": "AKSEN", "score": 133, "reasons": ["🔄SW", "🏅H+AL", "TAZE", "📅04/27", "F3", "CMF-0.23", "ADX=20", "🤖S49🔵·W46🔵", "✅XELKT"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.499, "ml_score_short": 0.499, "ml_score_swing": 0.464, "ml_effect": "neutral", "rule_score": 130, "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.141, "breakout_fusion": 0.562}, {"ticker": "TABGD", "score": 132, "reasons": ["🔄SW", "🏅H+AL", "2.DALGA", "F4", "CMF-0.10", "ADX=17", "🤖S45🔵·W44🔵", "ML↓", "✅XTRZM"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.46, "ml_score_short": 0.46, "ml_score_swing": 0.443, "ml_effect": "down", "rule_score": 130, "sector_index": "XTRZM", "sector_regime": "AL", "breakout_master": 0.123, "breakout_fusion": 0.385}, {"ticker": "BULGS", "score": 132, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F2", "CMF-0.17", "ADX=14", "🤖S43🔵·W42🔵", "ML↓", "✅XHOLD"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.431, "ml_score_short": 0.431, "ml_score_swing": 0.429, "ml_effect": "down", "rule_score": 130, "sector_index": "XHOLD", "sector_regime": "AL", "breakout_master": 0.291, "breakout_fusion": 0.354}, {"ticker": "RUZYE", "score": 127, "reasons": ["⏳3G", "🏅H+PB", "2.DALGA", "F2", "CMF+0.04", "ADX=17", "🤖S45🔵·W44🔵", "ML↓", "⚠️XMADN↓"], "signal_type": "CHOPPY→GRI_BOLGE", "ml_score": 0.455, "ml_score_short": 0.455, "ml_score_swing": 0.447, "ml_effect": "down", "rule_score": 130, "sector_index": "XMADN", "sector_regime": "PASIF", "breakout_master": 0.318, "breakout_fusion": 0.544}]}, "sbt": {"label": "NYX Kırılım", "icon": "", "short": "NYX-Krlm", "total": 18, "items": [{"ticker": "YAYLA", "score": 252, "reasons": ["⚡1G", "SBT:A", "💪3/4", "ML%39", "🤖S38🔴·W42🔵", "ML↓", "SBT:A", "✅XINSA"], "signal_type": "BREAKOUT", "ml_score": 0.388, "ml_score_short": 0.388, "ml_score_swing": 0.421, "ml_effect": "down", "sbt_bucket": "A", "rule_score": 249, "sector_index": "XINSA", "sector_regime": "AL"}, {"ticker": "ISYAT", "score": 245, "reasons": ["⚡1G", "SBT:A", "💪3/4", "ML%35", "🤖S46🔵·W44🔵", "ML↓", "SBT:A"], "signal_type": "BREAKOUT", "ml_score": 0.464, "ml_score_short": 0.464, "ml_score_swing": 0.446, "ml_effect": "down", "sbt_bucket": "A", "rule_score": 245}, {"ticker": "PASEU", "score": 195, "reasons": ["⚡1G", "SBT:B", "💪3/4", "ML%32", "🤖S50🔵·W47🔵", "SBT:B", "✅XULAS"], "signal_type": "BREAKOUT", "ml_score": 0.501, "ml_score_short": 0.501, "ml_score_swing": 0.477, "ml_effect": "neutral", "sbt_bucket": "B", "rule_score": 192, "sector_index": "XULAS", "sector_regime": "AL"}, {"ticker": "PLTUR", "score": 193, "reasons": ["∩RT", "⚡1G", "SBT:B", "💪3/4", "ML%29", "🤖S43🔵·W45🔵", "SBT:B", "✅XUHIZ"], "signal_type": "BREAKOUT", "ml_score": 0.432, "ml_score_short": 0.432, "ml_score_swing": 0.451, "ml_effect": "neutral", "sbt_bucket": "B", "rule_score": 189, "sector_index": "XUHIZ", "sector_regime": "AL"}, {"ticker": "DUNYH", "score": 173, "reasons": ["⚡1G", "SBT:B", "💪2/4", "ML%31", "🤖S44🔵·W43🔵", "ML↓", "SBT:B", "✅XHOLD"], "signal_type": "BREAKOUT", "ml_score": 0.444, "ml_score_short": 0.444, "ml_score_swing": 0.435, "ml_effect": "down", "sbt_bucket": "B", "rule_score": 171, "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "VKFYO", "score": 169, "reasons": ["⚡1G", "SBT:B", "💪2/4", "ML%30", "🤖S43🔵·W44🔵", "ML↓", "SBT:B"], "signal_type": "BREAKOUT", "ml_score": 0.44, "ml_score_short": 0.44, "ml_score_swing": 0.449, "ml_effect": "down", "sbt_bucket": "B", "rule_score": 170}, {"ticker": "SEYKM", "score": 155, "reasons": ["∩TVN", "⚡1G", "SBT:A+✓", "💪3/4", "ML%42", "🤖S42🔵·W43🔵", "ML↓", "✅XKMYA"], "signal_type": "BREAKOUT", "ml_score": 0.426, "ml_score_short": 0.426, "ml_score_swing": 0.43, "ml_effect": "down", "sbt_bucket": "A+✓", "rule_score": 152, "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.361, "breakout_fusion": 0.378}, {"ticker": "BVSAN", "score": 139, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%27", "🤖S42🔵·W43🔵", "ML↓", "SBT:C", "✅XMESY"], "signal_type": "BREAKOUT", "ml_score": 0.425, "ml_score_short": 0.425, "ml_score_swing": 0.44, "ml_effect": "down", "sbt_bucket": "C", "rule_score": 137, "sector_index": "XMESY", "sector_regime": "AL", "breakout_master": 0.209, "breakout_fusion": 0.228}, {"ticker": "HURGZ", "score": 139, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%26", "🤖S55🔵·W45🔵", "SBT:C", "✅XUHIZ"], "signal_type": "BREAKOUT", "ml_score": 0.557, "ml_score_short": 0.557, "ml_score_swing": 0.459, "ml_effect": "neutral", "sbt_bucket": "C", "rule_score": 136, "sector_index": "XUHIZ", "sector_regime": "AL"}, {"ticker": "MARBL", "score": 137, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%25", "🤖S43🔵·W44🔵", "ML↓", "SBT:C", "✅XTAST"], "signal_type": "BREAKOUT", "ml_score": 0.437, "ml_score_short": 0.437, "ml_score_swing": 0.443, "ml_effect": "down", "sbt_bucket": "C", "rule_score": 135, "sector_index": "XTAST", "sector_regime": "AL", "breakout_master": 0.404, "breakout_fusion": 0.499}, {"ticker": "AKENR", "score": 137, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%25", "🤖S45🔵·W44🔵", "ML↓", "SBT:C", "✅XELKT"], "signal_type": "BREAKOUT", "ml_score": 0.453, "ml_score_short": 0.453, "ml_score_swing": 0.444, "ml_effect": "down", "sbt_bucket": "C", "rule_score": 135, "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.264, "breakout_fusion": 0.478}, {"ticker": "PARSN", "score": 135, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%22", "🤖S48🔵·W45🔵", "SBT:C", "✅XMESY"], "signal_type": "BREAKOUT", "ml_score": 0.483, "ml_score_short": 0.483, "ml_score_swing": 0.453, "ml_effect": "neutral", "sbt_bucket": "C", "rule_score": 132, "sector_index": "XMESY", "sector_regime": "AL", "breakout_master": 0.158, "breakout_fusion": 0.528}, {"ticker": "EGSER", "score": 135, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%22", "🤖S47🔵·W45🔵", "SBT:C", "✅XTAST"], "signal_type": "BREAKOUT", "ml_score": 0.472, "ml_score_short": 0.472, "ml_score_swing": 0.453, "ml_effect": "neutral", "sbt_bucket": "C", "rule_score": 132, "sector_index": "XTAST", "sector_regime": "AL", "breakout_master": 0.225, "breakout_fusion": 0.53}, {"ticker": "PEKGY", "score": 133, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%20", "⚠️taban(ardışık3x,15gün)", "🤖S54🔵·W51🔵", "SBT:C", "✅XGMYO"], "signal_type": "BREAKOUT", "ml_score": 0.546, "ml_score_short": 0.546, "ml_score_swing": 0.519, "ml_effect": "neutral", "sbt_bucket": "C", "rule_score": 130, "sector_index": "XGMYO", "sector_regime": "AL"}, {"ticker": "GSRAY", "score": 130, "reasons": ["⚡1G", "SBT:C", "💪3/4", "ML%18", "🤖S42🔵·W44🔵", "ML↓", "SBT:C", "✅XSPOR"], "signal_type": "BREAKOUT", "ml_score": 0.425, "ml_score_short": 0.425, "ml_score_swing": 0.444, "ml_effect": "down", "sbt_bucket": "C", "rule_score": 128, "sector_index": "XSPOR", "sector_regime": "AL", "breakout_master": 0.366, "breakout_fusion": 0.379}]}, "alpha": {"label": "NYX Alpha", "icon": "🎯", "short": "NYX-Alpha", "total": 47, "items": [{"ticker": "OZATD", "score": 155, "reasons": ["⚡3LİSTE", "⏳3G", "ML:0.73", "SW:0.53", "C50", "S10%", "🤖S63🟡·W48🔵", "✅XMESY"], "signal_type": "", "ml_score": 0.631, "ml_score_short": 0.631, "ml_score_swing": 0.485, "ml_effect": "neutral", "rule_score": 150, "sector_index": "XMESY", "sector_regime": "AL", "alpha_ml1g": 0.7335849305692939, "alpha_ml3g": 0.5346190316971151, "alpha_composite": 50.0, "alpha_stop": 278.96, "alpha_stop_pct": 9.6, "alpha_trail": 331.09, "alpha_close": 308.75}, {"ticker": "DOGUB", "score": 142, "reasons": ["∩TVN", "⏳3G", "ML:0.50", "SW:0.50", "C46", "S22%", "⚠️taban(ardışık2x,12gün)", "🤖S45🔵·W48🔵", "✅XTAST"], "signal_type": "", "ml_score": 0.453, "ml_score_short": 0.453, "ml_score_swing": 0.485, "ml_effect": "neutral", "rule_score": 138, "sector_index": "XTAST", "sector_regime": "AL", "alpha_ml1g": 0.5006595216057388, "alpha_ml3g": 0.503372983688475, "alpha_composite": 46.1, "alpha_stop": 86.51, "alpha_stop_pct": 22.1, "alpha_trail": 129.37, "alpha_close": 111.0}, {"ticker": "HEDEF", "score": 141, "reasons": ["⏳3G", "ML:0.56", "SW:0.54", "C45", "S12%", "⚠️taban(ardışık2x,8gün)", "🤖S58🔵·W55🔵", "ML↑", "✅XHOLD"], "signal_type": "", "ml_score": 0.585, "ml_score_short": 0.585, "ml_score_swing": 0.551, "ml_effect": "up", "rule_score": 135, "sector_index": "XHOLD", "sector_regime": "AL", "alpha_ml1g": 0.5586873576685476, "alpha_ml3g": 0.540197786709288, "alpha_composite": 45.0, "alpha_stop": 129.21, "alpha_stop_pct": 11.5, "alpha_trail": 158.59, "alpha_close": 146.0}, {"ticker": "ISKPL", "score": 140, "reasons": ["⏳3G", "ML:0.57", "SW:0.56", "C46", "S10%", "🤖S52🔵·W53🔵", "✅XKMYA"], "signal_type": "", "ml_score": 0.53, "ml_score_short": 0.53, "ml_score_swing": 0.535, "ml_effect": "neutral", "rule_score": 137, "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.36, "breakout_fusion": 0.816, "alpha_ml1g": 0.5678584441855482, "alpha_ml3g": 0.5591542670943778, "alpha_composite": 45.8, "alpha_stop": 17.34, "alpha_stop_pct": 10.5, "alpha_trail": 20.9, "alpha_close": 19.3700008392334}, {"ticker": "MOBTL", "score": 139, "reasons": ["⏳3G", "ML:0.51", "SW:0.48", "C46", "S9%", "🤖S47🔵·W46🔵", "✅XBLSM"], "signal_type": "", "ml_score": 0.471, "ml_score_short": 0.471, "ml_score_swing": 0.461, "ml_effect": "neutral", "rule_score": 136, "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.304, "breakout_fusion": 0.614, "alpha_ml1g": 0.5083383831422098, "alpha_ml3g": 0.476358550631595, "alpha_composite": 45.5, "alpha_stop": 11.98, "alpha_stop_pct": 9.4, "alpha_trail": 14.15, "alpha_close": 13.220000267028809}, {"ticker": "ESCOM", "score": 138, "reasons": ["∩TVN", "⏳3G", "ML:0.70", "SW:0.53", "C45", "S12%", "🤖S45🔵·W46🔵", "✅XBLSM"], "signal_type": "", "ml_score": 0.455, "ml_score_short": 0.455, "ml_score_swing": 0.46, "ml_effect": "neutral", "rule_score": 134, "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.369, "breakout_fusion": 0.581, "alpha_ml1g": 0.697459320739007, "alpha_ml3g": 0.5290684414046771, "alpha_composite": 44.8, "alpha_stop": 4.64, "alpha_stop_pct": 12.5, "alpha_trail": 5.8, "alpha_close": 5.300000190734863}, {"ticker": "TRILC", "score": 137, "reasons": ["⚡3LİSTE", "⏳3G", "ML:0.59", "SW:0.47", "C44", "S8%", "🤖S43🔵·W45🔵", "✅XKMYA"], "signal_type": "", "ml_score": 0.436, "ml_score_short": 0.436, "ml_score_swing": 0.456, "ml_effect": "neutral", "rule_score": 132, "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.575, "breakout_fusion": 0.58, "alpha_ml1g": 0.5905313011878173, "alpha_ml3g": 0.47490403420817495, "alpha_composite": 44.0, "alpha_stop": 3.29, "alpha_stop_pct": 7.7, "alpha_trail": 3.76, "alpha_close": 3.559999942779541}, {"ticker": "VANGD", "score": 136, "reasons": ["⏳3G", "ML:0.55", "SW:0.53", "C44", "S12%", "🤖S47🔵·W49🔵", "✅XGIDA"], "signal_type": "", "ml_score": 0.473, "ml_score_short": 0.473, "ml_score_swing": 0.494, "ml_effect": "neutral", "rule_score": 133, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.552, "breakout_fusion": 0.798, "alpha_ml1g": 0.5501993292539671, "alpha_ml3g": 0.5340409250862312, "alpha_composite": 44.5, "alpha_stop": 80.22, "alpha_stop_pct": 12.3, "alpha_trail": 99.96, "alpha_close": 91.5}, {"ticker": "ICUGS", "score": 136, "reasons": ["∩TVN", "⏳3G", "ML:0.55", "SW:0.52", "C44", "S12%", "🤖S63🟡·W52🔵", "✅XHOLD"], "signal_type": "", "ml_score": 0.634, "ml_score_short": 0.634, "ml_score_swing": 0.529, "ml_effect": "neutral", "rule_score": 132, "sector_index": "XHOLD", "sector_regime": "AL", "alpha_ml1g": 0.5529864735913158, "alpha_ml3g": 0.5183890895747055, "alpha_composite": 44.1, "alpha_stop": 4.95, "alpha_stop_pct": 12.5, "alpha_trail": 6.19, "alpha_close": 5.659999847412109}, {"ticker": "SMRVA", "score": 135, "reasons": ["∩TVN", "⏳3G", "ML:0.60", "SW:0.47", "C44", "S18%", "⚠️taban(ardışık6x,40gün)", "🤖S37🔴·W42🔵", "ML↓", "✅XUMAL"], "signal_type": "", "ml_score": 0.377, "ml_score_short": 0.377, "ml_score_swing": 0.424, "ml_effect": "down", "rule_score": 132, "sector_index": "XUMAL", "sector_regime": "AL", "breakout_master": 0.71, "breakout_fusion": 0.407, "alpha_ml1g": 0.5998114182810939, "alpha_ml3g": 0.4673284072972625, "alpha_composite": 44.0, "alpha_stop": 74.21, "alpha_stop_pct": 17.7, "alpha_trail": 102.19, "alpha_close": 90.19999694824219}, {"ticker": "TKFEN", "score": 135, "reasons": ["⏳3G", "ML:0.54", "SW:0.53", "C44", "S9%", "🤖S55🔵·W52🔵", "✅XHOLD"], "signal_type": "", "ml_score": 0.554, "ml_score_short": 0.554, "ml_score_swing": 0.525, "ml_effect": "neutral", "rule_score": 132, "sector_index": "XHOLD", "sector_regime": "AL", "breakout_master": 0.488, "breakout_fusion": 0.936, "breakout_tier": "top5", "alpha_ml1g": 0.5383661535881964, "alpha_ml3g": 0.5302774301577574, "alpha_composite": 44.1, "alpha_stop": 126.84, "alpha_stop_pct": 9.3, "alpha_trail": 149.7, "alpha_close": 139.89999389648438}, {"ticker": "ERSU", "score": 134, "reasons": ["⏳3G", "ML:0.53", "SW:0.53", "C44", "S12%", "🤖S51🔵·W53🔵", "✅XGIDA"], "signal_type": "", "ml_score": 0.515, "ml_score_short": 0.515, "ml_score_swing": 0.53, "ml_effect": "neutral", "rule_score": 131, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.477, "breakout_fusion": 0.902, "breakout_tier": "top10", "alpha_ml1g": 0.5337979661524569, "alpha_ml3g": 0.5302774301577574, "alpha_composite": 43.9, "alpha_stop": 25.64, "alpha_stop_pct": 12.0, "alpha_trail": 31.77, "alpha_close": 29.139999389648438}, {"ticker": "DURDO", "score": 133, "reasons": ["⏳3G", "ML:0.54", "SW:0.52", "C44", "S8%", "🤖S48🔵·W48🔵", "✅XKAGT"], "signal_type": "", "ml_score": 0.487, "ml_score_short": 0.487, "ml_score_swing": 0.481, "ml_effect": "neutral", "rule_score": 130, "sector_index": "XKAGT", "sector_regime": "AL", "breakout_master": 0.435, "breakout_fusion": 0.802, "alpha_ml1g": 0.537100451153411, "alpha_ml3g": 0.5172985811664548, "alpha_composite": 43.6, "alpha_stop": 4.41, "alpha_stop_pct": 8.3, "alpha_trail": 5.11, "alpha_close": 4.809999942779541}, {"ticker": "GUNDG", "score": 133, "reasons": ["∩NW", "⏳3G", "ML:0.52", "SW:0.51", "C43", "S13%", "🤖S47🔵·W49🔵", "✅XGIDA"], "signal_type": "", "ml_score": 0.476, "ml_score_short": 0.476, "ml_score_swing": 0.494, "ml_effect": "neutral", "rule_score": 129, "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.305, "breakout_fusion": 0.647, "alpha_ml1g": 0.5235534493270998, "alpha_ml3g": 0.5092244722990614, "alpha_composite": 43.0, "alpha_stop": 770.37, "alpha_stop_pct": 12.9, "alpha_trail": 969.22, "alpha_close": 884.0}, {"ticker": "KBORU", "score": 132, "reasons": ["⏳3G", "ML:0.51", "SW:0.53", "C43", "S10%", "🤖S52🔵·W52🔵", "✅XKMYA"], "signal_type": "", "ml_score": 0.524, "ml_score_short": 0.524, "ml_score_swing": 0.529, "ml_effect": "neutral", "rule_score": 129, "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.378, "breakout_fusion": 0.838, "alpha_ml1g": 0.5116990086671122, "alpha_ml3g": 0.531352767633872, "alpha_composite": 43.3, "alpha_stop": 21.86, "alpha_stop_pct": 10.0, "alpha_trail": 26.13, "alpha_close": 24.299999237060547}]}};
+const OVERLAP = [{"overlap_count": 3, "label": "3 Cakisma", "items": [{"ticker": "OZATD", "quality": 143, "reasons": ["⚡1G ⚡ALP+NW+TVN [140p] 🔀T+Y", "[ALP] ⚡3LİSTE ⏳3G ML:0.73 SW:0.53", "[NW] ⚡3LİSTE ⚡1G 🔥BUGÜN δ29.1%", "[TVN] ⚡3LİSTE ⚡1G seri:2 🔒skor:80", "🤖S63🟡·W48🔵", "✅XMESY"], "overlap_count": 3, "in_lists": ["tavan", "nw", "alpha"], "relaxed": false, "ml_score": 0.631, "ml_score_short": 0.631, "ml_score_swing": 0.485, "ml_effect": "neutral", "sector_index": "XMESY", "sector_regime": "AL"}, {"ticker": "TRILC", "quality": 121, "reasons": ["⚡1G ⚡ALP+AS+TVN [118p]", "[ALP] ⚡3LİSTE ⏳3G ML:0.59 SW:0.47", "[AS] ⚡3LİSTE ⏳3G BİLEŞEN✓ Q=85", "[TVN] ⚡3LİSTE ⚡1G seri:2 ⚠️Y-KLT:60", "🤖S43🔵·W45🔵", "✅XKMYA"], "overlap_count": 3, "in_lists": ["alsat", "tavan", "alpha"], "relaxed": false, "ml_score": 0.436, "ml_score_short": 0.436, "ml_score_swing": 0.456, "ml_effect": "neutral", "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.575, "breakout_fusion": 0.58, "brk_ml_s": 0.436}, {"ticker": "BIGEN", "quality": 118, "reasons": ["⚡1G ⚡ALP+AS+TVN [115p]", "[ALP] ⚡3LİSTE ⏳3G ML:0.58 SW:0.47", "[AS] ⚡3LİSTE ⏳3G GÜÇLÜ✓ Q=100", "[TVN] ⚡3LİSTE ⚡1G skor:53 vol:2.0x", "⚠️taban(ardışık4x,6gün)", "🤖S43🔵·W46🔵", "✅XELKT"], "overlap_count": 3, "in_lists": ["alsat", "tavan", "alpha"], "relaxed": false, "ml_score": 0.433, "ml_score_short": 0.433, "ml_score_swing": 0.464, "ml_effect": "neutral", "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.629, "breakout_fusion": 0.575, "brk_ml_s": 0.433}], "total": 3}, {"overlap_count": 2, "label": "2 Cakisma", "items": [{"ticker": "AKCNS", "quality": 94, "reasons": ["⏳3G ⚡ALP+RT [91p]", "[ALP] ∩RT ⏳3G ML:0.50 SW:0.49", "[RT] ∩ALP 🔄SW 🏅H+AL 2.DALGA", "🤖S48🔵·W46🔵", "✅XTAST"], "overlap_count": 2, "in_lists": ["rt", "alpha"], "relaxed": false, "ml_score": 0.487, "ml_score_short": 0.487, "ml_score_swing": 0.463, "ml_effect": "neutral", "vol_tier": "NORMAL", "vol_tier_icon": "", "sector_index": "XTAST", "sector_regime": "AL", "breakout_master": 0.146, "breakout_fusion": 0.535, "brk_ml_s": 0.487}, {"ticker": "PLTUR", "quality": 88, "reasons": ["⚡1G ⚡RT+SBT [85p]", "[RT] ∩SBT 🔄SW 🏅H+AL 2.DALGA", "[SBT] ∩RT ⚡1G SBT:B 💪3/4", "🤖S43🔵·W45🔵", "SBT:B", "✅XUHIZ"], "overlap_count": 2, "in_lists": ["rt", "sbt"], "relaxed": false, "ml_score": 0.432, "ml_score_short": 0.432, "ml_score_swing": 0.451, "ml_effect": "neutral", "sbt_bucket": "B", "sector_index": "XUHIZ", "sector_regime": "AL"}, {"ticker": "OBASE", "quality": 85, "reasons": ["⚡1G ⚡ALP+AS [83p]", "[ALP] ∩AS ⏳3G ML:0.52 SW:0.48", "[AS] ∩ALP ⏳3G CMB Q=85", "🤖S47🔵·W44🔵", "ML↓", "✅XBLSM"], "overlap_count": 2, "in_lists": ["alsat", "alpha"], "relaxed": false, "ml_score": 0.471, "ml_score_short": 0.471, "ml_score_swing": 0.45, "ml_effect": "down", "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.294, "breakout_fusion": 0.597, "brk_ml_s": 0.471}, {"ticker": "ESCOM", "quality": 78, "reasons": ["⚡1G ⚡ALP+TVN [75p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.70 SW:0.53", "[TVN] ∩ALP ⚡1G ▲skor:45 vol:0.5x", "🤖S45🔵·W46🔵", "✅XBLSM"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.455, "ml_score_short": 0.455, "ml_score_swing": 0.46, "ml_effect": "neutral", "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.369, "breakout_fusion": 0.581, "brk_ml_s": 0.455}, {"ticker": "YYAPI", "quality": 64, "reasons": ["⚡1G ⚡ALP+TVN [65p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.56 SW:0.46", "[TVN] ∩ALP ⚡1G 🔥seri:3 ⚠️Y-KLT:63", "⚠️taban(ardışık3x,6gün)", "🤖S56🔵·W44🔵", "ML↓"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.561, "ml_score_short": 0.561, "ml_score_swing": 0.449, "ml_effect": "down"}, {"ticker": "TRCAS", "quality": 67, "reasons": ["⏳3G ⚡ALP+RT [64p]", "[ALP] ∩RT ⏳3G ML:0.49 SW:0.46", "[RT] ∩ALP ⏳3G 2.DALGA F3", "🤖S51🔵·W45🔵", "✅XHOLD"], "overlap_count": 2, "in_lists": ["rt", "alpha"], "relaxed": false, "ml_score": 0.512, "ml_score_short": 0.512, "ml_score_swing": 0.458, "ml_effect": "neutral", "sector_index": "XHOLD", "sector_regime": "AL", "breakout_master": 0.252, "breakout_fusion": 0.694, "brk_ml_s": 0.512}, {"ticker": "ARASE", "quality": 58, "reasons": ["⚡1G ⚡AS+TVN [55p] 🔶TAKTİK", "[AS] ∩TVN ⏳3G CMB Q=100", "[TVN] ∩AS ⚡1G ▲skor:27 vol:2.9x", "🤖S50🔵·W45🔵", "✅XELKT"], "overlap_count": 2, "in_lists": ["alsat", "tavan"], "relaxed": false, "ml_score": 0.51, "ml_score_short": 0.51, "ml_score_swing": 0.457, "ml_effect": "neutral", "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.274, "breakout_fusion": 0.711, "brk_ml_s": 0.51}, {"ticker": "GUNDG", "quality": 58, "reasons": ["⚡1G ⚡ALP+NW [55p]", "[ALP] ∩NW ⏳3G ML:0.52 SW:0.51", "[NW] ∩ALP ⚡1G 🔥BUGÜN δ7.5%", "🤖S47🔵·W49🔵", "✅XGIDA"], "overlap_count": 2, "in_lists": ["nw", "alpha"], "relaxed": false, "ml_score": 0.476, "ml_score_short": 0.476, "ml_score_swing": 0.494, "ml_effect": "neutral", "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.305, "breakout_fusion": 0.647, "brk_ml_s": 0.476}, {"ticker": "ORCAY", "quality": 57, "reasons": ["⚡1G ⚡ALP+TVN [55p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.57 SW:0.47", "[TVN] ∩ALP ⚡1G ▲skor:47 vol:1.7x", "🤖S45🔵·W44🔵", "ML↓", "✅XGIDA"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.453, "ml_score_short": 0.453, "ml_score_swing": 0.45, "ml_effect": "down", "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.466, "breakout_fusion": 0.654, "brk_ml_s": 0.453}, {"ticker": "SMRVA", "quality": 57, "reasons": ["⚡1G ⚡ALP+TVN [55p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.60 SW:0.47", "[TVN] ∩ALP ⚡1G ▲skor:45 vol:1.6x", "⚠️taban(ardışık6x,40gün)", "🤖S37🔴·W42🔵", "ML↓", "✅XUMAL"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.377, "ml_score_short": 0.377, "ml_score_swing": 0.424, "ml_effect": "down", "sector_index": "XUMAL", "sector_regime": "AL", "breakout_master": 0.71, "breakout_fusion": 0.407, "brk_ml_s": 0.377}, {"ticker": "ICUGS", "quality": 53, "reasons": ["⚡1G ⚡ALP+TVN [50p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.55 SW:0.52", "[TVN] ∩ALP ⚡1G seri:2 ⚠️Y-KLT:60", "🤖S63🟡·W52🔵", "✅XHOLD"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.634, "ml_score_short": 0.634, "ml_score_swing": 0.529, "ml_effect": "neutral", "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "FENER", "quality": 47, "reasons": ["⚡1G ⚡ALP+TVN [45p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.52 SW:0.46", "[TVN] ∩ALP ⚡1G ▲skor:35 vol:2.3x", "⚠️taban(ardışık2x,7gün)", "🤖S41🔵·W43🔵", "ML↓", "✅XSPOR"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.418, "ml_score_short": 0.418, "ml_score_swing": 0.436, "ml_effect": "down", "sector_index": "XSPOR", "sector_regime": "AL", "breakout_master": 0.409, "breakout_fusion": 0.372, "brk_ml_s": 0.418}, {"ticker": "MANAS", "quality": 47, "reasons": ["⚡1G ⚡ALP+TVN [45p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.57 SW:0.47", "[TVN] ∩ALP ⚡1G ▲skor:20 vol:3.3x", "⚠️taban(ardışık3x,17gün)", "🤖S41🔵·W42🔵", "ML↓", "✅XBLSM"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.412, "ml_score_short": 0.412, "ml_score_swing": 0.424, "ml_effect": "down", "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.481, "breakout_fusion": 0.401, "brk_ml_s": 0.412}, {"ticker": "SAYAS", "quality": 46, "reasons": ["⚡1G ⚡ALP+TVN [45p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.55 SW:0.45", "[TVN] ∩ALP ⚡1G ▲skor:32 vol:3.8x", "🤖S46🔵·W46🔵", "SBT:X", "✅XMESY"], "overlap_count": 2, "in_lists": ["tavan", "alpha"], "relaxed": false, "ml_score": 0.462, "ml_score_short": 0.462, "ml_score_swing": 0.466, "ml_effect": "neutral", "sbt_bucket": "X", "sector_index": "XMESY", "sector_regime": "AL", "breakout_master": 0.378, "breakout_fusion": 0.644, "brk_ml_s": 0.462}, {"ticker": "SEYKM", "quality": 46, "reasons": ["⚡1G ⚡SBT+TVN [44p]", "[SBT] ∩TVN ⚡1G SBT:A+✓ 💪3/4", "[TVN] ∩SBT ⚡1G ▲skor:32 vol:2.3x", "🤖S42🔵·W43🔵", "ML↓", "✅XKMYA"], "overlap_count": 2, "in_lists": ["tavan", "sbt"], "relaxed": false, "ml_score": 0.426, "ml_score_short": 0.426, "ml_score_swing": 0.43, "ml_effect": "down", "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.361, "breakout_fusion": 0.378, "brk_ml_s": 0.426}], "total": 15}];
+const MD = {"signals": ["🟢 XU100 uptrend", "🟢 SPY uptrend", "🟢 BTC uptrend — risk iştahı"], "categories": {"FX": {"regime": "YUKARI", "score": 2.0, "instruments": [{"name": "DXY (Dolar Endeksi)", "category": "FX", "above_ema": 0, "rsi": 47.6, "range_pct": 28.2, "score": 0}, {"name": "USD/TRY", "category": "FX", "above_ema": 1, "rsi": 87.6, "range_pct": 100.0, "score": 3}, {"name": "EUR/TRY", "category": "FX", "above_ema": 1, "rsi": 61.4, "range_pct": 89.5, "score": 3}]}, "BIST": {"regime": "YUKARI", "score": 2.0, "instruments": [{"name": "BIST 100", "category": "BIST", "above_ema": 1, "rsi": 61.3, "range_pct": 85.3, "score": 3}, {"name": "BIST 30", "category": "BIST", "above_ema": 1, "rsi": 62.4, "range_pct": 86.1, "score": 3}, {"name": "BIST Banka", "category": "BIST", "above_ema": 0, "rsi": 47.1, "range_pct": 54.1, "score": 0}]}, "US": {"regime": "YUKARI", "score": 2.0, "instruments": [{"name": "S&P 500 (SPY)", "category": "US", "above_ema": 1, "rsi": 66.6, "range_pct": 93.4, "score": 3}, {"name": "NASDAQ 100 (QQQ)", "category": "US", "above_ema": 1, "rsi": 68.6, "range_pct": 91.4, "score": 3}, {"name": "VIX", "category": "US", "above_ema": 0, "rsi": 40.8, "range_pct": 8.8, "score": 0}]}, "Emtia": {"regime": "NÖTR", "score": 1.67, "instruments": [{"name": "Altın (Gold)", "category": "Emtia", "above_ema": 0, "rsi": 41.6, "range_pct": 0.0, "score": 0}, {"name": "WTI Petrol", "category": "Emtia", "above_ema": 1, "rsi": 56.3, "range_pct": 55.7, "score": 2}, {"name": "Bakır (Copper)", "category": "Emtia", "above_ema": 1, "rsi": 55.9, "range_pct": 75.0, "score": 3}]}, "Kripto": {"regime": "YUKARI", "score": 2.0, "instruments": [{"name": "Bitcoin", "category": "Kripto", "above_ema": 1, "rsi": 55.1, "range_pct": 67.8, "score": 3}, {"name": "Ethereum", "category": "Kripto", "above_ema": 0, "rsi": 51.3, "range_pct": 42.5, "score": 1}]}, "Faiz": {"regime": "GÜÇLÜ_YUKARI", "score": 3.0, "instruments": [{"name": "US 10Y Faiz", "category": "Faiz", "above_ema": 1, "rsi": 58.6, "range_pct": 100.0, "score": 3}]}}, "instruments": [{"ticker": "DX-Y.NYB", "name": "DXY (Dolar Endeksi)", "category": "FX", "price": 98.609, "chg_1d": 0.13, "chg_5d": 0.2, "chg_1m": -1.54, "above_ema21": false, "trend": "FLAT"}, {"ticker": "USDTRY=X", "name": "USD/TRY", "category": "FX", "price": 45.0234, "chg_1d": 0.02, "chg_5d": 0.31, "chg_1m": 1.3, "above_ema21": true, "trend": "UP"}, {"ticker": "EURTRY=X", "name": "EUR/TRY", "category": "FX", "price": 52.7591, "chg_1d": 0.18, "chg_5d": -0.31, "chg_1m": 3.31, "above_ema21": true, "trend": "UP"}, {"ticker": "XU100.IS", "name": "BIST 100", "category": "BIST", "price": 14329.3398, "chg_1d": -1.81, "chg_5d": -1.07, "chg_1m": 12.85, "above_ema21": true, "trend": "UP"}, {"ticker": "XU030.IS", "name": "BIST 30", "category": "BIST", "price": 16470.2207, "chg_1d": -1.88, "chg_5d": -0.73, "chg_1m": 13.95, "above_ema21": true, "trend": "UP"}, {"ticker": "XBANK.IS", "name": "BIST Banka", "category": "BIST", "price": 17144.5293, "chg_1d": -1.97, "chg_5d": -6.21, "chg_1m": 9.96, "above_ema21": false, "trend": "DOWN"}, {"ticker": "XUTEK.IS", "name": "BIST Teknoloji", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XHOLD.IS", "name": "BIST Holding", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XELKT.IS", "name": "BIST Elektrik", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XTRZM.IS", "name": "BIST Turizm", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "SPY", "name": "S&P 500 (SPY)", "category": "US", "price": 710.98, "chg_1d": -0.59, "chg_5d": 0.98, "chg_1m": 12.13, "above_ema21": true, "trend": "UP"}, {"ticker": "QQQ", "name": "NASDAQ 100 (QQQ)", "category": "US", "price": 656.75, "chg_1d": -1.13, "chg_5d": 1.93, "chg_1m": 16.74, "above_ema21": true, "trend": "UP"}, {"ticker": "^VIX", "name": "VIX", "category": "US", "price": 18.23, "chg_1d": 1.17, "chg_5d": -6.51, "chg_1m": -41.29, "above_ema21": false, "trend": "DOWN"}, {"ticker": "GC=F", "name": "Altın (Gold)", "category": "Emtia", "price": 4610.8999, "chg_1d": -1.38, "chg_5d": -1.86, "chg_1m": 2.65, "above_ema21": false, "trend": "DOWN"}, {"ticker": "CL=F", "name": "WTI Petrol", "category": "Emtia", "price": 100.07, "chg_1d": 3.84, "chg_5d": 8.62, "chg_1m": 0.43, "above_ema21": true, "trend": "UP"}, {"ticker": "HG=F", "name": "Bakır (Copper)", "category": "Emtia", "price": 5.976, "chg_1d": -0.7, "chg_5d": -0.42, "chg_1m": 9.31, "above_ema21": true, "trend": "UP"}, {"ticker": "BTC-USD", "name": "Bitcoin", "category": "Kripto", "price": 76117.5625, "chg_1d": -1.61, "chg_5d": -2.75, "chg_1m": 5.81, "above_ema21": true, "trend": "UP"}, {"ticker": "ETH-USD", "name": "Ethereum", "category": "Kripto", "price": 2287.72, "chg_1d": -0.67, "chg_5d": -1.88, "chg_1m": 2.05, "above_ema21": false, "trend": "FLAT"}, {"ticker": "^TNX", "name": "US 10Y Faiz", "category": "Faiz", "price": 4.359, "chg_1d": 0.53, "chg_5d": 1.56, "chg_1m": -1.82, "above_ema21": true, "trend": "UP"}]};
+const MACRO = [{"ticker": "DX-Y.NYB", "name": "DXY (Dolar Endeksi)", "category": "FX", "price": 98.609, "chg_1d": 0.13, "chg_5d": 0.2, "chg_1m": -1.54, "above_ema21": false, "trend": "FLAT"}, {"ticker": "USDTRY=X", "name": "USD/TRY", "category": "FX", "price": 45.0234, "chg_1d": 0.02, "chg_5d": 0.31, "chg_1m": 1.3, "above_ema21": true, "trend": "UP"}, {"ticker": "EURTRY=X", "name": "EUR/TRY", "category": "FX", "price": 52.7591, "chg_1d": 0.18, "chg_5d": -0.31, "chg_1m": 3.31, "above_ema21": true, "trend": "UP"}, {"ticker": "XU100.IS", "name": "BIST 100", "category": "BIST", "price": 14329.3398, "chg_1d": -1.81, "chg_5d": -1.07, "chg_1m": 12.85, "above_ema21": true, "trend": "UP"}, {"ticker": "XU030.IS", "name": "BIST 30", "category": "BIST", "price": 16470.2207, "chg_1d": -1.88, "chg_5d": -0.73, "chg_1m": 13.95, "above_ema21": true, "trend": "UP"}, {"ticker": "XBANK.IS", "name": "BIST Banka", "category": "BIST", "price": 17144.5293, "chg_1d": -1.97, "chg_5d": -6.21, "chg_1m": 9.96, "above_ema21": false, "trend": "DOWN"}, {"ticker": "XUTEK.IS", "name": "BIST Teknoloji", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XHOLD.IS", "name": "BIST Holding", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XELKT.IS", "name": "BIST Elektrik", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "XTRZM.IS", "name": "BIST Turizm", "category": "BIST", "price": null, "chg_1d": null, "chg_5d": null, "chg_1m": null, "above_ema21": null, "trend": "N/A"}, {"ticker": "SPY", "name": "S&P 500 (SPY)", "category": "US", "price": 710.98, "chg_1d": -0.59, "chg_5d": 0.98, "chg_1m": 12.13, "above_ema21": true, "trend": "UP"}, {"ticker": "QQQ", "name": "NASDAQ 100 (QQQ)", "category": "US", "price": 656.75, "chg_1d": -1.13, "chg_5d": 1.93, "chg_1m": 16.74, "above_ema21": true, "trend": "UP"}, {"ticker": "^VIX", "name": "VIX", "category": "US", "price": 18.23, "chg_1d": 1.17, "chg_5d": -6.51, "chg_1m": -41.29, "above_ema21": false, "trend": "DOWN"}, {"ticker": "GC=F", "name": "Altın (Gold)", "category": "Emtia", "price": 4610.8999, "chg_1d": -1.38, "chg_5d": -1.86, "chg_1m": 2.65, "above_ema21": false, "trend": "DOWN"}, {"ticker": "CL=F", "name": "WTI Petrol", "category": "Emtia", "price": 100.07, "chg_1d": 3.84, "chg_5d": 8.62, "chg_1m": 0.43, "above_ema21": true, "trend": "UP"}, {"ticker": "HG=F", "name": "Bakır (Copper)", "category": "Emtia", "price": 5.976, "chg_1d": -0.7, "chg_5d": -0.42, "chg_1m": 9.31, "above_ema21": true, "trend": "UP"}, {"ticker": "BTC-USD", "name": "Bitcoin", "category": "Kripto", "price": 76117.5625, "chg_1d": -1.61, "chg_5d": -2.75, "chg_1m": 5.81, "above_ema21": true, "trend": "UP"}, {"ticker": "ETH-USD", "name": "Ethereum", "category": "Kripto", "price": 2287.72, "chg_1d": -0.67, "chg_5d": -1.88, "chg_1m": 2.05, "above_ema21": false, "trend": "FLAT"}, {"ticker": "^TNX", "name": "US 10Y Faiz", "category": "Faiz", "price": 4.359, "chg_1d": 0.53, "chg_5d": 1.56, "chg_1m": -1.82, "above_ema21": true, "trend": "UP"}];
+const CONF = [{"ticker": "MERCN", "score": 7, "raw_score": 6, "structural_score": 6, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL İZLE [BOS]", "+2 AL/SAT GÜÇLÜ karar=AL", "ℹ️ AL/SAT OE=3 (bilgi notu)", "+2 H+AL badge", "ℹ️ CMF negatif (-0.006) (bilgi notu)", "ℹ️ RT OE=3 (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["alsat", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "MERCN", "signal_date": "2026-04-14", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 17.07, "quality": null, "trigger_type": "BOS", "wl_status": "İZLE", "delta_pct": 51.1, "rs_score": 0.926, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "MERCN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 24.66, "quality": 0, "entry_window": "2.DALGA", "oe": 3, "oe_detail": "RSI 82, 5B +11.7%, EMA +23.3%", "cmf": -0.006, "adx": 33.7, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-14", "csv_date": "20260428", "atr_pct": 5.67, "rvol": 2.94, "participation_score": 2, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "MERCN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "GUCLU", "entry_price": 24.66, "quality": 55, "karar": "AL", "csv_date": "20260428", "rs_score": 40.0, "regime": "TREND", "oe": 3, "oe_detail": "RSI14>70 ATR exp EMA21 uzak", "rr": 1.5, "stop_price": 21.86, "target_price": 28.85, "macd": 0.8045, "rvol": 2.9, "atr_pct": 5.67, "part_score": 2, "cmf": -0.006, "ml_score": 0.602, "ml_score_short": 0.602, "ml_score_swing": 0.51, "_rule_score": 250, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XKMYA", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "TRILC", "score": 6, "raw_score": 5, "structural_score": 3, "tactical_score": 2, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL İZLE EMA_R (WR %57.8)", "+1 AL/SAT BİLEŞEN Q=85 MACD>0", "ℹ️ AL/SAT OE=5 (bilgi notu)", "ℹ️ RT Hacim BRONZ (ATR≤4% Part≥3)", "ℹ️ RT OE=4 (bilgi notu)", "+2 Tavan seri:2 vol:1.2x", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 4, "sources": ["alsat", "nox_v3_weekly", "regime_transition", "tavan"], "signals": [{"screener": "nox_v3_weekly", "ticker": "TRILC", "signal_date": "2026-04-14", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 2.49, "quality": null, "trigger_type": "EMA_R", "wl_status": "İZLE", "delta_pct": 30.9, "rs_score": 0.927, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "TRILC", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 3.56, "quality": 1, "entry_window": "2.DALGA", "oe": 4, "oe_detail": "RSI 88, BB ustu, 5B +23.1%, EMA +26.6%", "cmf": 0.073, "adx": 30.7, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-16", "csv_date": "20260428", "atr_pct": 3.83, "rvol": 1.16, "participation_score": 3, "vol_tier": "BRONZ", "vol_tier_icon": "🥉"}, {"screener": "tavan", "ticker": "TRILC", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "TAVAN", "entry_price": 3.56, "quality": 60, "skor": 60, "streak": 2, "volume_ratio": 1.2, "rs": 30.5, "csv_date": "20260428", "ml_score": 0.477, "ml_score_short": 0.477, "ml_score_swing": 0.461, "breakout_master": 0.575, "breakout_fusion": 0.58, "breakout_tier": null, "brk_ml_s": 0.436, "brk_tavan_prob": 0.713, "brk_rally_prob": 0.438, "_rule_score": 353, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XKMYA", "sector_regime": "AL", "sector_in_trade": true}, {"screener": "alsat", "ticker": "TRILC", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "BILESEN", "entry_price": 3.56, "quality": 85, "karar": "AL", "csv_date": "20260428", "rs_score": 22.2, "regime": "GRI_BOLGE", "oe": 5, "oe_detail": "RSI2>90 RSI14>70 BB>1 ATR exp EMA21 uzak", "rr": 1.5, "stop_price": 3.29, "target_price": 3.97, "macd": 0.0907, "rvol": 1.2, "atr_pct": 3.83, "part_score": 2, "cmf": null, "ml_score": 0.436, "ml_score_short": 0.436, "ml_score_swing": 0.456, "breakout_master": 0.575, "breakout_fusion": 0.58, "breakout_tier": null, "brk_ml_s": 0.436, "brk_tavan_prob": 0.713, "brk_rally_prob": 0.438, "_rule_score": 155, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XKMYA", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "OBASE", "score": 6, "raw_score": 5, "structural_score": 5, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "0 NW ADAY (onaysız pivot)", "+3 AL/SAT CMB Q=85", "+2 H+AL badge", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["alsat", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "OBASE", "signal_date": "2026-04-24", "direction": "AL", "signal_type": "ADAY", "entry_price": 38.24, "quality": null, "wl_status": "BEKLE", "delta_pct": 21.2, "fresh": "ADAY", "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "OBASE", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 40.88, "quality": 1, "entry_window": "2.DALGA", "oe": 1, "oe_detail": "EMA +9.6%", "cmf": 0.171, "adx": 30.9, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-09", "csv_date": "20260428", "atr_pct": 4.15, "rvol": 1.91, "participation_score": 3, "vol_tier": "NORMAL", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "OBASE", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CMB", "entry_price": 40.88, "quality": 85, "karar": "AL", "csv_date": "20260428", "rs_score": 0.9, "regime": "TREND", "oe": 2, "oe_detail": "RSI2>90 EMA21 uzak", "rr": 1.5, "stop_price": 37.48, "target_price": 45.97, "macd": 0.3616, "rvol": 1.9, "atr_pct": 4.15, "part_score": 3, "cmf": 0.171, "ml_score": 0.471, "ml_score_short": 0.471, "ml_score_swing": 0.45, "breakout_master": 0.294, "breakout_fusion": 0.597, "breakout_tier": null, "brk_ml_s": 0.471, "brk_tavan_prob": 0.254, "brk_rally_prob": 0.334, "_rule_score": 485, "gate_penalty": 0, "ml_effect": "down", "sector_index": "XBLSM", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "DOHOL", "score": 6, "raw_score": 5, "structural_score": 5, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL İZLE [HC2]", "+2 H+AL badge", "ℹ️ CMF negatif (-0.072) (bilgi notu)", "+1 MKK kurumsal ağırlıklı (bireysel %28.1)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["mkk", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "DOHOL", "signal_date": "2026-04-13", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 21.48, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 13.8, "rs_score": 0.941, "fresh": "YAKIN", "gate": false, "tb_stage": "-", "dw_overlap": true, "csv_date": "20260424"}, {"screener": "nox_v3_daily", "ticker": "DOHOL", "signal_date": "2026-04-14", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 22.8, "quality": null, "fresh": "YAKIN", "gate": false, "delta_pct": 19.9, "adx": 18.4, "rsi": 66.4, "rg": 0.0, "slope": 0.57, "rs_score": null, "dw_overlap": true, "csv_date": "20260428"}, {"screener": "regime_transition", "ticker": "DOHOL", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 22.8, "quality": 1, "entry_window": "2.DALGA", "oe": 2, "oe_detail": "5B +8.6%, EMA +6.9%", "cmf": -0.072, "adx": 18.4, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-14", "csv_date": "20260428", "atr_pct": 3.49, "rvol": 1.03, "participation_score": 2, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL"}]}, {"ticker": "ARASE", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": true, "conflict_sources": ["regime_transition"], "details": ["⚠️ Çelişki: AL=['alsat', 'nox_v3_weekly', 'tavan'] vs SAT=['regime_transition']", "⬡ 4 kaynak çakışması", "0 NW ADAY (onaysız pivot)", "+3 AL/SAT CMB Q=100", "+1 MKK kurumsal ağırlıklı (bireysel %23.9)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "BEKLE", "source_count": 4, "sources": ["alsat", "mkk", "nox_v3_weekly", "tavan"], "signals": [{"screener": "nox_v3_weekly", "ticker": "ARASE", "signal_date": "2026-04-24", "direction": "AL", "signal_type": "ADAY", "entry_price": 101.1, "quality": null, "wl_status": "BEKLE", "delta_pct": 32.9, "fresh": "ADAY", "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "ARASE", "signal_date": "2026-04-28", "direction": "SAT", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 110.0, "quality": 2, "entry_window": "GEC", "oe": 1, "oe_detail": "EMA +10.4%", "cmf": 0.011, "adx": 21.8, "trend_score": 3, "regime": "TREND", "transition_date": "2026-04-03", "csv_date": "20260428", "atr_pct": 4.23, "rvol": 2.86, "participation_score": 3, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "tavan", "ticker": "ARASE", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "TAVAN", "entry_price": 110.0, "quality": 27, "skor": 27, "streak": 1, "volume_ratio": 2.9, "rs": 10.9, "csv_date": "20260428", "ml_score": 0.513, "ml_score_short": 0.513, "ml_score_swing": 0.468, "breakout_master": 0.274, "breakout_fusion": 0.711, "breakout_tier": null, "brk_ml_s": 0.51, "brk_tavan_prob": 0.258, "brk_rally_prob": 0.291, "_rule_score": 155, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XELKT", "sector_regime": "AL", "sector_in_trade": true}, {"screener": "alsat", "ticker": "ARASE", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CMB", "entry_price": 110.0, "quality": 100, "karar": "AL", "csv_date": "20260428", "rs_score": 19.3, "regime": "TREND", "oe": 2, "oe_detail": "RSI2>90 EMA21 uzak", "rr": 1.5, "stop_price": 100.69, "target_price": 123.96, "macd": 0.2269, "rvol": 2.9, "atr_pct": 4.23, "part_score": 3, "cmf": 0.011, "ml_score": 0.51, "ml_score_short": 0.51, "ml_score_swing": 0.457, "breakout_master": 0.274, "breakout_fusion": 0.711, "breakout_tier": null, "brk_ml_s": 0.51, "brk_tavan_prob": 0.258, "brk_rally_prob": 0.291, "_rule_score": 500, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XELKT", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "DYOBY", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 4 kaynak çakışması", "0 NW ADAY (onaysız pivot)", "+2 AL/SAT GÜÇLÜ karar=AL", "ℹ️ AL/SAT OE=5 (bilgi notu)", "+2 H+AL badge", "ℹ️ RT OE=4 (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 4, "sources": ["alsat", "nox_v3_weekly", "regime_transition", "tavan"], "signals": [{"screener": "nox_v3_weekly", "ticker": "DYOBY", "signal_date": "2026-04-24", "direction": "AL", "signal_type": "ADAY", "entry_price": 17.27, "quality": null, "wl_status": "İZLE", "delta_pct": 41.0, "fresh": "ADAY", "csv_date": "20260424"}, {"screener": "nox_v3_daily", "ticker": "DYOBY", "signal_date": "2026-04-14", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 19.83, "quality": null, "fresh": "YAKIN", "gate": false, "delta_pct": 55.7, "adx": 40.6, "rsi": 80.1, "rg": 0.0, "slope": 2.89, "rs_score": null, "dw_overlap": false, "csv_date": "20260428"}, {"screener": "regime_transition", "ticker": "DYOBY", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 19.83, "quality": 0, "entry_window": "2.DALGA", "oe": 4, "oe_detail": "RSI 80, BB ustu, 5B +21.8%, EMA +26.1%", "cmf": 0.225, "adx": 40.6, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-10", "csv_date": "20260428", "atr_pct": 5.55, "rvol": 2.85, "participation_score": 3, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "tavan", "ticker": "DYOBY", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "TAVAN", "entry_price": 2.8, "quality": 35, "skor": 35, "streak": 0, "volume_ratio": 26.1, "rs": 0.4, "csv_date": "20260428", "ml_score": 0.544, "ml_score_short": 0.544, "ml_score_swing": 0.464, "_rule_score": 26, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XKMYA", "sector_regime": "AL", "sector_in_trade": true}, {"screener": "alsat", "ticker": "DYOBY", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "GUCLU", "entry_price": 19.83, "quality": 90, "karar": "AL", "csv_date": "20260428", "rs_score": 39.4, "regime": "FULL_TREND", "oe": 5, "oe_detail": "RSI2>90 RSI14>70 BB>1 ATR exp EMA21 uzak", "rr": 1.5, "stop_price": 17.63, "target_price": 23.13, "macd": 0.5435, "rvol": 2.8, "atr_pct": 5.55, "part_score": 3, "cmf": 0.225, "ml_score": 0.539, "ml_score_short": 0.539, "ml_score_swing": 0.449, "_rule_score": 260, "gate_penalty": 0, "ml_effect": "down", "sector_index": "XKMYA", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "ULUSE", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 4 kaynak çakışması", "+2 NW PIVOT_AL İZLE [HC2]", "ℹ️ AL/SAT OE=3 (bilgi notu)", "+2 H+AL badge", "-1 RT Hacim ELE (kötü hacim profili)", "+1 MKK kurumsal ağırlıklı (bireysel %19.4)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 4, "sources": ["alsat", "mkk", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "ULUSE", "signal_date": "2026-04-06", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 164.3, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 59.8, "rs_score": 0.924, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "ULUSE", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 260.5, "quality": 1, "entry_window": "2.DALGA", "oe": 2, "oe_detail": "5B +9.8%, EMA +21.2%", "cmf": 0.036, "adx": 41.5, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-13", "csv_date": "20260428", "atr_pct": 6.25, "rvol": 1.15, "participation_score": 3, "vol_tier": "ELE", "vol_tier_icon": "🔴", "badge": "H+AL"}, {"screener": "alsat", "ticker": "ULUSE", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "ZAYIF", "entry_price": 260.5, "quality": 40, "karar": "İZLE", "csv_date": "20260428", "rs_score": 34.5, "regime": "FULL_TREND", "oe": 3, "oe_detail": "RSI2>90 RSI14>70 EMA21 uzak", "rr": 1.13, "stop_price": 227.95, "target_price": 297.12, "macd": 7.1755, "rvol": 1.2, "atr_pct": 6.25, "part_score": 3, "cmf": 0.036}]}, {"ticker": "KARSN", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL İZLE [HC2]", "ℹ️ AL/SAT OE=3 (bilgi notu)", "+2 H+AL badge", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["alsat", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "KARSN", "signal_date": "2026-04-01", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 9.57, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 22.8, "rs_score": 0.972, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "KARSN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 12.12, "quality": 0, "entry_window": "2.DALGA", "oe": 1, "oe_detail": "EMA +12.8%", "cmf": 0.113, "adx": 24.9, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-13", "csv_date": "20260428", "atr_pct": 3.84, "rvol": 2.13, "participation_score": 3, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "KARSN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "GUCLU", "entry_price": 12.12, "quality": 80, "karar": "İZLE", "csv_date": "20260428", "rs_score": 15.4, "regime": "FULL_TREND", "oe": 3, "oe_detail": "RSI2>90 RSI14>70 EMA21 uzak", "rr": 1.5, "stop_price": 11.19, "target_price": 13.52, "macd": 0.1905, "rvol": 2.1, "atr_pct": 3.84, "part_score": 3, "cmf": 0.113}]}, {"ticker": "ARENA", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "0 NW ADAY (onaysız pivot)", "+2 AL/SAT GÜÇLÜ karar=AL", "ℹ️ AL/SAT OE=5 (bilgi notu)", "+2 H+AL badge", "ℹ️ RT OE=4 (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["alsat", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "ARENA", "signal_date": "2026-04-24", "direction": "AL", "signal_type": "ADAY", "entry_price": 37.76, "quality": null, "wl_status": "İZLE", "delta_pct": 59.6, "fresh": "ADAY", "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "ARENA", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 41.92, "quality": 0, "entry_window": "2.DALGA", "oe": 4, "oe_detail": "RSI 90, BB ustu, 5B +42.1%, EMA +35.9%", "cmf": 0.475, "adx": 36.9, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-14", "csv_date": "20260428", "atr_pct": 5.05, "rvol": 4.67, "participation_score": 3, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "ARENA", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "GUCLU", "entry_price": 41.92, "quality": 70, "karar": "AL", "csv_date": "20260428", "rs_score": 44.9, "regime": "FULL_TREND", "oe": 5, "oe_detail": "RSI2>90 RSI14>70 BB>1 ATR exp EMA21 uzak", "rr": 1.5, "stop_price": 37.69, "target_price": 48.27, "macd": 1.7348, "rvol": 4.7, "atr_pct": 5.05, "part_score": 3, "cmf": 0.475, "ml_score": 0.549, "ml_score_short": 0.549, "ml_score_swing": 0.449, "sbt_bucket": "C", "_rule_score": 240, "gate_penalty": 0, "ml_effect": "down", "sector_index": "XBLSM", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "KAREL", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL İZLE [HC2]", "ℹ️ AL/SAT OE=4 (bilgi notu)", "+2 H+AL badge", "ℹ️ RT OE=3 (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["alsat", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "KAREL", "signal_date": "2026-03-31", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 8.52, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 44.0, "rs_score": 0.956, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "KAREL", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 12.28, "quality": 0, "entry_window": "2.DALGA", "oe": 3, "oe_detail": "BB ustu, 5B +19.3%, EMA +20.7%", "cmf": 0.199, "adx": 34.2, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-10", "csv_date": "20260428", "atr_pct": 4.41, "rvol": 2.18, "participation_score": 3, "vol_tier": "NORMAL", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "KAREL", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "GUCLU", "entry_price": 12.28, "quality": 70, "karar": "İZLE", "csv_date": "20260428", "rs_score": 29.1, "regime": "FULL_TREND", "oe": 4, "oe_detail": "RSI2>90 RSI14>70 BB>1 EMA21 uzak", "rr": 1.5, "stop_price": 11.2, "target_price": 13.9, "macd": 0.2903, "rvol": 2.2, "atr_pct": 4.41, "part_score": 3, "cmf": 0.199}]}, {"ticker": "EBEBK", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL İZLE [BOS]", "+2 H+AL badge", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["alsat", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "EBEBK", "signal_date": "2026-04-08", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 64.45, "quality": null, "trigger_type": "BOS", "wl_status": "İZLE", "delta_pct": 27.6, "rs_score": 0.969, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "EBEBK", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 73.3, "quality": 1, "entry_window": "2.DALGA", "oe": 1, "oe_detail": "EMA +7.8%", "cmf": 0.315, "adx": 38.2, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-08", "csv_date": "20260428", "atr_pct": 3.38, "rvol": 0.47, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "EBEBK", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "ZAYIF", "entry_price": 73.3, "quality": 55, "karar": "İZLE", "csv_date": "20260428", "rs_score": 12.3, "regime": "FULL_TREND", "oe": 1, "oe_detail": "EMA21 uzak", "rr": 1.12, "stop_price": 68.35, "target_price": 78.87, "macd": 0.779, "rvol": 0.5, "atr_pct": 3.38, "part_score": 2, "cmf": 0.315}]}, {"ticker": "PKART", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL İZLE [HC2]", "0 AL/SAT ZAYIF (zayıf, puan yok)", "ℹ️ AL/SAT OE=3 (bilgi notu)", "+2 H+AL badge", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["alsat", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "PKART", "signal_date": "2026-03-17", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 74.15, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 67.5, "rs_score": 0.982, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": true, "csv_date": "20260424"}, {"screener": "nox_v3_daily", "ticker": "PKART", "signal_date": "2026-04-20", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 113.0, "quality": null, "fresh": "YAKIN", "gate": true, "delta_pct": 48.3, "adx": 47.2, "rsi": 77.0, "rg": 54.2, "slope": 2.52, "rs_score": null, "dw_overlap": true, "csv_date": "20260428"}, {"screener": "regime_transition", "ticker": "PKART", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 113.0, "quality": 1, "entry_window": "2.DALGA", "oe": 2, "oe_detail": "5B +29.7%, EMA +23.4%", "cmf": 0.212, "adx": 47.2, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-16", "csv_date": "20260428", "atr_pct": 5.72, "rvol": 1.29, "participation_score": 3, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "PKART", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "ZAYIF", "entry_price": 113.0, "quality": 50, "karar": "AL", "csv_date": "20260428", "rs_score": 40.7, "regime": "FULL_TREND", "oe": 3, "oe_detail": "RSI14>70 ATR exp EMA21 uzak", "rr": 1.12, "stop_price": 100.07, "target_price": 127.54, "macd": 3.8572, "rvol": 1.3, "atr_pct": 5.72, "part_score": 3, "cmf": 0.212}]}, {"ticker": "BINBN", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["⬡ 3 kaynak çakışması", "+2 NW PIVOT_AL İZLE [HC2]", "+2 H+AL badge", "-1 RT Hacim ELE (kötü hacim profili)", "+1 MKK kurumsal birikim (bireysel -1.31% günlük)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 3, "sources": ["mkk", "nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "BINBN", "signal_date": "2026-04-15", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 162.5, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 34.5, "rs_score": 1.075, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "BINBN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 181.3, "quality": 2, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": 0.077, "adx": 24.5, "trend_score": 2, "regime": "TREND", "transition_date": "2026-04-20", "csv_date": "20260428", "atr_pct": 5.86, "rvol": 0.83, "participation_score": 2, "vol_tier": "ELE", "vol_tier_icon": "🔴", "badge": "H+AL"}]}, {"ticker": "DENGE", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "ℹ️ CMF negatif (-0.148) (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "DENGE", "signal_date": "2026-04-15", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 2.49, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 19.7, "rs_score": 0.935, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "DENGE", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 2.55, "quality": 2, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": -0.148, "adx": 22.6, "trend_score": 2, "regime": "TREND", "transition_date": "2026-04-16", "csv_date": "20260428", "atr_pct": 4.79, "rvol": 0.69, "participation_score": 1, "vol_tier": "", "vol_tier_icon": ""}]}, {"ticker": "BNTAS", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "0 RT Transition skor=3 [2.DALGA] (no-badge)", "ℹ️ CMF negatif (-0.093) (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "BNTAS", "signal_date": "2026-04-06", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 6.36, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 17.2, "rs_score": 0.999, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "BNTAS", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 6.66, "quality": 3, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": -0.093, "adx": 28.5, "trend_score": 3, "regime": "TREND", "transition_date": "2026-04-09", "csv_date": "20260428", "atr_pct": 2.84, "rvol": 1.2, "participation_score": 2, "vol_tier": "", "vol_tier_icon": "", "ml_score": 0.447, "ml_score_short": 0.447, "ml_score_swing": 0.444, "breakout_master": 0.09, "breakout_fusion": 0.302, "breakout_tier": null, "brk_ml_s": 0.447, "brk_tavan_prob": 0.093, "brk_rally_prob": 0.087, "_rule_score": 40, "gate_penalty": 0, "ml_effect": "down", "sector_index": "XMESY", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "DAGI", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "ℹ️ CMF negatif (-0.098) (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "DAGI", "signal_date": "2026-03-31", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 5.59, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 19.6, "rs_score": 1.038, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "DAGI", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 6.66, "quality": 1, "entry_window": "2.DALGA", "oe": 2, "oe_detail": "5B +9.2%, EMA +8.2%", "cmf": -0.098, "adx": 35.1, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-10", "csv_date": "20260428", "atr_pct": 4.22, "rvol": 1.02, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": ""}]}, {"ticker": "SANKO", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+2 NW PIVOT_AL İZLE [HC2]", "+2 H+AL badge", "ℹ️ CMF negatif (-0.075) (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "SANKO", "signal_date": "2026-04-01", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 19.65, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 24.3, "rs_score": 0.996, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "SANKO", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 22.58, "quality": 1, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": -0.075, "adx": 28.4, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-10", "csv_date": "20260428", "atr_pct": 3.94, "rvol": 1.19, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": "", "badge": "H+AL"}]}, {"ticker": "KRVGD", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+2 NW PIVOT_AL İZLE [BOS]", "+2 H+AL badge", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "KRVGD", "signal_date": "2026-04-10", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 2.94, "quality": null, "trigger_type": "BOS", "wl_status": "İZLE", "delta_pct": 12.3, "rs_score": 0.941, "fresh": "YAKIN", "gate": true, "tb_stage": "-", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "KRVGD", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 2.97, "quality": 3, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": 0.13, "adx": 18.8, "trend_score": 2, "regime": "GRI_BOLGE", "transition_date": "2026-04-20", "csv_date": "20260428", "atr_pct": 3.61, "rvol": 1.03, "participation_score": 3, "vol_tier": "", "vol_tier_icon": "", "badge": "H+AL", "ml_score": 0.465, "ml_score_short": 0.465, "ml_score_swing": 0.454, "breakout_master": 0.273, "breakout_fusion": 0.556, "breakout_tier": null, "brk_ml_s": 0.465, "brk_tavan_prob": 0.213, "brk_rally_prob": 0.334, "_rule_score": 120, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XGIDA", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "IHLAS", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "ℹ️ CMF negatif (-0.113) (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "IHLAS", "signal_date": "2026-04-06", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 2.04, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 18.2, "rs_score": 1.01, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "IHLAS", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 2.2, "quality": 1, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": -0.113, "adx": 22.5, "trend_score": 2, "regime": "FULL_TREND", "transition_date": "2026-04-15", "csv_date": "20260428", "atr_pct": 3.45, "rvol": 1.17, "participation_score": 2, "vol_tier": "", "vol_tier_icon": ""}]}, {"ticker": "TSPOR", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "ℹ️ CMF negatif (-0.011) (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "TSPOR", "signal_date": "2026-04-06", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 0.97, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 14.4, "rs_score": 0.996, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "TSPOR", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 1.0, "quality": 1, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": -0.011, "adx": 28.0, "trend_score": 2, "regime": "FULL_TREND", "transition_date": "2026-04-15", "csv_date": "20260428", "atr_pct": 3.8, "rvol": 1.39, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": ""}]}, {"ticker": "KLSYN", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+2 AL/SAT GÜÇLÜ karar=AL", "ℹ️ AL/SAT OE=3 (bilgi notu)", "+2 H+AL badge", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["alsat", "regime_transition"], "signals": [{"screener": "regime_transition", "ticker": "KLSYN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 12.88, "quality": 0, "entry_window": "2.DALGA", "oe": 2, "oe_detail": "5B +10.1%, EMA +17.1%", "cmf": 0.105, "adx": 34.3, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-15", "csv_date": "20260428", "atr_pct": 5.0, "rvol": 2.61, "participation_score": 3, "vol_tier": "NORMAL", "vol_tier_icon": "", "badge": "H+AL"}, {"screener": "alsat", "ticker": "KLSYN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "GUCLU", "entry_price": 12.88, "quality": 55, "karar": "AL", "csv_date": "20260428", "rs_score": 30.0, "regime": "FULL_TREND", "oe": 3, "oe_detail": "RSI2>90 RSI14>70 EMA21 uzak", "rr": 1.5, "stop_price": 11.59, "target_price": 14.81, "macd": 0.2279, "rvol": 2.6, "atr_pct": 5.0, "part_score": 3, "cmf": 0.105, "ml_score": 0.562, "ml_score_short": 0.562, "ml_score_swing": 0.473, "_rule_score": 250, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XKAGT", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "ISBIR", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "ISBIR", "signal_date": "2026-03-31", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 73.0, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 17.4, "rs_score": 1.091, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": true, "csv_date": "20260424"}, {"screener": "nox_v3_daily", "ticker": "ISBIR", "signal_date": "2026-04-27", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 80.25, "quality": null, "fresh": "YAKIN", "gate": true, "delta_pct": 15.8, "adx": 20.6, "rsi": 60.3, "rg": 49.7, "slope": 0.41, "rs_score": null, "dw_overlap": true, "csv_date": "20260428"}, {"screener": "regime_transition", "ticker": "ISBIR", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 80.25, "quality": 1, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": 0.021, "adx": 20.6, "trend_score": 2, "regime": "FULL_TREND", "transition_date": "2026-04-20", "csv_date": "20260428", "atr_pct": 3.02, "rvol": 0.46, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": ""}]}, {"ticker": "ANGEN", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "ANGEN", "signal_date": "2026-04-15", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 11.04, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 15.6, "rs_score": 0.991, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "ANGEN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 11.24, "quality": 2, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": 0.204, "adx": 33.4, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-15", "csv_date": "20260428", "atr_pct": 2.62, "rvol": 0.98, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": ""}]}, {"ticker": "DARDL", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "ℹ️ CMF negatif (-0.004) (bilgi notu)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "DARDL", "signal_date": "2026-04-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 2.01, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 18.1, "rs_score": 0.932, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "DARDL", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 2.23, "quality": 2, "entry_window": "2.DALGA", "oe": 1, "oe_detail": "EMA +5.3%", "cmf": -0.004, "adx": 25.6, "trend_score": 3, "regime": "TREND", "transition_date": "2026-04-17", "csv_date": "20260428", "atr_pct": 3.52, "rvol": 0.88, "participation_score": 1, "vol_tier": "", "vol_tier_icon": ""}]}, {"ticker": "OYLUM", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "OYLUM", "signal_date": "2026-04-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 7.62, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 17.8, "rs_score": 0.887, "fresh": "YAKIN", "gate": true, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "OYLUM", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 8.3, "quality": 1, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": 0.196, "adx": 29.3, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-20", "csv_date": "20260428", "atr_pct": 4.68, "rvol": 1.02, "participation_score": 3, "vol_tier": "NORMAL", "vol_tier_icon": ""}]}, {"ticker": "PETUN", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+2 NW PIVOT_AL İZLE [HC2]", "+2 H+AL badge", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 2, "sources": ["nox_v3_weekly", "regime_transition"], "signals": [{"screener": "nox_v3_weekly", "ticker": "PETUN", "signal_date": "2026-04-13", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 12.36, "quality": null, "trigger_type": "HC2", "wl_status": "İZLE", "delta_pct": 15.4, "rs_score": 0.999, "fresh": "YAKIN", "gate": false, "tb_stage": "PREP", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "PETUN", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "CHOPPY→TREND", "entry_price": 12.44, "quality": 4, "entry_window": "2.DALGA", "oe": 0, "oe_detail": "", "cmf": 0.02, "adx": 23.5, "trend_score": 3, "regime": "GRI_BOLGE", "transition_date": "2026-04-10", "csv_date": "20260428", "atr_pct": 2.79, "rvol": 0.57, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": "", "badge": "H+AL", "ml_score": 0.473, "ml_score_short": 0.473, "ml_score_swing": 0.457, "breakout_master": 0.136, "breakout_fusion": 0.463, "breakout_tier": null, "brk_ml_s": 0.473, "brk_tavan_prob": 0.117, "brk_rally_prob": 0.155, "_rule_score": 130, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XGIDA", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "GSRAY", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": true, "conflict_sources": ["regime_transition"], "details": ["⚠️ Çelişki: AL=['nox_v3_weekly', 'sbt'] vs SAT=['regime_transition']", "+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "BEKLE", "source_count": 1, "sources": ["nox_v3_weekly"], "signals": [{"screener": "nox_v3_weekly", "ticker": "GSRAY", "signal_date": "2026-04-09", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 1.12, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 15.8, "rs_score": 0.956, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "GSRAY", "signal_date": "2026-04-28", "direction": "SAT", "signal_type": "CHOPPY→GRI_BOLGE", "entry_price": 1.15, "quality": 1, "entry_window": "BEKLE", "oe": 0, "oe_detail": "", "cmf": -0.157, "adx": 21.1, "trend_score": 2, "regime": "FULL_TREND", "transition_date": "2026-04-21", "csv_date": "20260428", "atr_pct": 3.56, "rvol": 1.32, "participation_score": 2, "vol_tier": "", "vol_tier_icon": ""}, {"screener": "sbt", "ticker": "GSRAY", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "BREAKOUT", "entry_price": 1.17, "quality": 3, "sl_price": 1.0, "tp1_price": 1.34, "tp2_price": 1.51, "tp3_price": 1.68, "sbt_bucket": "C", "sbt_ml_prob": 0.1885, "sbt_gate": "OK", "bars_ago": 2, "csv_date": "20260428", "ml_score": 0.425, "ml_score_short": 0.425, "ml_score_swing": 0.444, "breakout_master": 0.366, "breakout_fusion": 0.379, "breakout_tier": null, "brk_ml_s": 0.425, "brk_tavan_prob": 0.387, "brk_rally_prob": 0.345, "_rule_score": 128, "gate_penalty": 0, "ml_effect": "down", "sector_index": "XSPOR", "sector_regime": "AL", "sector_in_trade": true}]}, {"ticker": "SMRTG", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": false, "conflict_sources": [], "details": ["+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "TRADEABLE", "source_count": 1, "sources": ["nox_v3_weekly"], "signals": [{"screener": "nox_v3_weekly", "ticker": "SMRTG", "signal_date": "2026-04-07", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 6.51, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 19.8, "rs_score": 0.927, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}]}, {"ticker": "BMSCH", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": true, "conflict_sources": ["regime_transition"], "details": ["⚠️ Çelişki: AL=['nox_v3_daily', 'nox_v3_weekly'] vs SAT=['regime_transition']", "+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "BEKLE", "source_count": 1, "sources": ["nox_v3_weekly"], "signals": [{"screener": "nox_v3_weekly", "ticker": "BMSCH", "signal_date": "2026-04-15", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 16.62, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 16.8, "rs_score": 0.838, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": true, "csv_date": "20260424"}, {"screener": "nox_v3_daily", "ticker": "BMSCH", "signal_date": "2026-04-20", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 17.81, "quality": null, "fresh": "YAKIN", "gate": true, "delta_pct": 12.4, "adx": 21.9, "rsi": 54.4, "rg": 0.0, "slope": 0.94, "rs_score": null, "dw_overlap": true, "csv_date": "20260428"}, {"screener": "regime_transition", "ticker": "BMSCH", "signal_date": "2026-04-28", "direction": "SAT", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 17.81, "quality": 2, "entry_window": "BEKLE", "oe": 0, "oe_detail": "", "cmf": -0.124, "adx": 21.9, "trend_score": 3, "regime": "TREND", "transition_date": "2026-04-21", "csv_date": "20260428", "atr_pct": 4.72, "rvol": 0.68, "participation_score": 1, "vol_tier": "ELE", "vol_tier_icon": "🔴"}]}, {"ticker": "EGSER", "score": 5, "raw_score": 4, "structural_score": 4, "tactical_score": 0, "has_conflict": true, "conflict_sources": ["regime_transition"], "details": ["⚠️ Çelişki: AL=['nox_v3_weekly', 'sbt'] vs SAT=['regime_transition']", "+4 NW PIVOT_AL + HAZIR + HC2 (WR %77.8)", "×1.2 Makro GÜÇLÜ_RISK_ON"], "recommendation": "BEKLE", "source_count": 1, "sources": ["nox_v3_weekly"], "signals": [{"screener": "nox_v3_weekly", "ticker": "EGSER", "signal_date": "2026-04-06", "direction": "AL", "signal_type": "PIVOT_AL", "entry_price": 2.81, "quality": null, "trigger_type": "HC2", "wl_status": "HAZIR", "delta_pct": 16.1, "rs_score": 0.962, "fresh": "YAKIN", "gate": false, "tb_stage": "OK", "dw_overlap": false, "csv_date": "20260424"}, {"screener": "regime_transition", "ticker": "EGSER", "signal_date": "2026-04-28", "direction": "SAT", "signal_type": "CHOPPY→FULL_TREND", "entry_price": 3.0, "quality": 2, "entry_window": "BEKLE", "oe": 0, "oe_detail": "", "cmf": 0.115, "adx": 24.0, "trend_score": 3, "regime": "FULL_TREND", "transition_date": "2026-04-22", "csv_date": "20260428", "atr_pct": 2.99, "rvol": 0.61, "participation_score": 2, "vol_tier": "NORMAL", "vol_tier_icon": ""}, {"screener": "sbt", "ticker": "EGSER", "signal_date": "2026-04-28", "direction": "AL", "signal_type": "BREAKOUT", "entry_price": 3.1, "quality": 3, "sl_price": 2.64, "tp1_price": 3.56, "tp2_price": 4.02, "tp3_price": 4.47, "sbt_bucket": "C", "sbt_ml_prob": 0.2212, "sbt_gate": "OK", "bars_ago": 2, "csv_date": "20260428", "ml_score": 0.472, "ml_score_short": 0.472, "ml_score_swing": 0.453, "breakout_master": 0.225, "breakout_fusion": 0.53, "breakout_tier": null, "brk_ml_s": 0.472, "brk_tavan_prob": 0.177, "brk_rally_prob": 0.273, "_rule_score": 132, "gate_penalty": 0, "ml_effect": "neutral", "sector_index": "XTAST", "sector_regime": "AL", "sector_in_trade": true}]}];
+const NEWS = [];
+const SL_SET = new Set(["MERCN", "AEFES", "RALYH", "TRHOL", "KMPUR", "ULKER", "LMKDC", "ZOREN", "ENKAI", "INVEO", "BRKO", "PASEU", "BIGTK", "YAYLA", "ALARK", "SAYAS", "HURGZ", "CRDFA", "ISYAT", "DOGUB", "TATGD", "EFOR", "HEDEF", "VBTYZ", "METRO", "KLKIM", "HUBVC", "ARENA", "ARASE", "CEMZY", "PETKM", "CIMSA", "KRDMA", "SELEC", "ULAS", "RYSAS", "MARBL", "OZSUB", "OBASE", "GWIND", "GEREL", "BRSAN", "ASELS", "KLSYN", "BSOKE", "GENTS", "ZERGY", "KOCMT", "ICUGS", "ODINE", "GIPTA", "BIGCH", "RUZYE", "KRDMB", "ECZYT", "DEVA", "INGRM", "VANGD", "DERHL", "EDIP", "CCOLA", "BNTAS", "OZATD", "THYAO", "KBORU", "BULGS", "ISKPL", "KUTPO", "ASUZU", "ISGSY", "PLTUR", "PEKGY", "GLRYH", "ESCOM", "EGEEN", "IZINV", "EUYO", "EGEPO", "BIGEN", "OSTIM", "MOBTL", "GSRAY", "ORCAY", "EGSER", "FRIGO", "DCTTR", "YYAPI", "VKFYO", "KLMSN", "DURDO", "AKSEN", "KRSTL", "YESIL", "TARKM", "AGESA", "ARDYZ", "SURGY", "TOASO", "KONYA", "KRVGD", "BVSAN", "DYOBY", "MANAS", "AKCNS", "AKENR", "TEZOL", "INFO", "FONET", "GUNDG", "FENER", "PARSN", "TURSG", "SMRVA", "ICBCT", "RODRG", "TRILC", "BIOEN", "TABGD", "RUBNS", "TURGG", "DUNYH", "EGGUB", "SEYKM", "ERSU", "HOROZ", "TRCAS", "CWENE", "INDES", "TKFEN", "PETUN", "MPARK", "TDGYO"]);
+const SAT_SET = new Set(["VERUS", "TEKTU", "RALYH", "TRHOL", "BORSK", "ALKIM", "ACSEL", "AYEN", "PASEU", "YAYLA", "DOGUB", "ANSGR", "HEDEF", "ULUUN", "METRO", "GMTAS", "ENDAE", "SKBNK", "IEYHO", "ARASE", "PETKM", "AKFIS", "IHAAS", "RYSAS", "GOODY", "AKYHO", "GWIND", "GEREL", "ASELS", "BSOKE", "ICUGS", "SEKUR", "NETAS", "ODINE", "ENJSA", "ISSEN", "ECZYT", "NTGAZ", "EREGL", "ASTOR", "DESA", "OZATD", "PENGD", "KBORU", "DGNMO", "ISKPL", "ISGSY", "GSDHO", "ESCOM", "SUMAS", "KUVVA", "IZINV", "ETILR", "EGEPO", "VAKFA", "RGYAS", "ECOGR", "CEOEM", "KTSKR", "DSTKF", "MOBTL", "GSRAY", "EGSER", "KTLEV", "DCTTR", "KAPLM", "AHGAZ", "ADESE", "VKFYO", "YYAPI", "ARMGD", "RNPOL", "AKFYE", "ETYAT", "MARKA", "MAKIM", "YESIL", "DMRGD", "ANELE", "BARMA", "ORGE", "MAGEN", "ADEL", "ZEDUR", "ODAS", "MACKO", "MANAS", "AKENR", "AYCES", "ESCAR", "SOKE", "GUNDG", "EGEGY", "BMSCH", "SASA", "HRKET", "OZRDN", "ICBCT", "EGPRO", "RODRG", "FLAP", "PNSUT", "TCKRC", "TURGG", "DUNYH", "ERSU", "SEYKM", "HOROZ", "INDES", "IHGZT", "TKFEN", "INVES", "ATLAS", "MARTI", "QUAGR", "TUPRS", "AYGAZ", "TDGYO", "CELHA", "KFEIN"]);
+const RERANK = [{"ticker": "KOCMT", "list": "rt", "list_tag": "RT", "old_rank": 3, "new_rank": 5, "delta": -2}, {"ticker": "TABGD", "list": "rt", "list_tag": "RT", "old_rank": 11, "new_rank": 13, "delta": -2}, {"ticker": "TATGD", "list": "rt", "list_tag": "RT", "old_rank": 26, "new_rank": 20, "delta": 6}, {"ticker": "TRCAS", "list": "rt", "list_tag": "RT", "old_rank": 49, "new_rank": 39, "delta": 10}, {"ticker": "BRKO", "list": "rt", "list_tag": "RT", "old_rank": 46, "new_rank": 43, "delta": 3}, {"ticker": "EDIP", "list": "rt", "list_tag": "RT", "old_rank": 47, "new_rank": 44, "delta": 3}, {"ticker": "DERHL", "list": "rt", "list_tag": "RT", "old_rank": 50, "new_rank": 45, "delta": 5}, {"ticker": "TOASO", "list": "rt", "list_tag": "RT", "old_rank": 51, "new_rank": 46, "delta": 5}, {"ticker": "BIOEN", "list": "rt", "list_tag": "RT", "old_rank": 52, "new_rank": 47, "delta": 5}, {"ticker": "KLMSN", "list": "rt", "list_tag": "RT", "old_rank": 53, "new_rank": 48, "delta": 5}, {"ticker": "INFO", "list": "rt", "list_tag": "RT", "old_rank": 54, "new_rank": 49, "delta": 5}, {"ticker": "EFOR", "list": "rt", "list_tag": "RT", "old_rank": 40, "new_rank": 50, "delta": -10}, {"ticker": "KRSTL", "list": "rt", "list_tag": "RT", "old_rank": 42, "new_rank": 51, "delta": -9}, {"ticker": "KUTPO", "list": "rt", "list_tag": "RT", "old_rank": 44, "new_rank": 52, "delta": -8}, {"ticker": "BNTAS", "list": "rt", "list_tag": "RT", "old_rank": 45, "new_rank": 53, "delta": -8}, {"ticker": "ZOREN", "list": "rt", "list_tag": "RT", "old_rank": 48, "new_rank": 54, "delta": -6}, {"ticker": "HEDEF", "list": "alpha", "list_tag": "alpha", "old_rank": 5, "new_rank": 3, "delta": 2}, {"ticker": "TRILC", "list": "alpha", "list_tag": "alpha", "old_rank": 11, "new_rank": 7, "delta": 4}, {"ticker": "ODINE", "list": "alpha", "list_tag": "alpha", "old_rank": 29, "new_rank": 25, "delta": 4}];
+const FILTERED = [{"ticker": "EUKYO", "reason": "tek kaynak + W<0.40 (39)", "rule_score": 130, "list": "rt"}, {"ticker": "OZYSR", "reason": "tek kaynak + W<0.40 (36)", "rule_score": 130, "list": "rt"}];
+const ML_S = [{"ticker": "KRDMB", "ml_short": 67, "ml_swing": 53, "best": 67, "sources": ["NYX9"]}, {"ticker": "ICUGS", "ml_short": 65, "ml_swing": 51, "best": 65, "sources": ["NYX9"]}, {"ticker": "OZATD", "ml_short": 63, "ml_swing": 48, "best": 63, "sources": ["NYX9", "NYX-Dip"]}, {"ticker": "TRHOL", "ml_short": 61, "ml_swing": 54, "best": 61, "sources": ["NYX-Dip"]}, {"ticker": "MERCN", "ml_short": 60, "ml_swing": 51, "best": 60, "sources": ["NYX-Tek"]}, {"ticker": "KLSYN", "ml_short": 56, "ml_swing": 47, "best": 56, "sources": ["NYX-Tek"]}, {"ticker": "HURGZ", "ml_short": 56, "ml_swing": 46, "best": 56, "sources": ["NYX-Krlm"]}, {"ticker": "ARENA", "ml_short": 55, "ml_swing": 45, "best": 55, "sources": ["NYX-Tek"]}, {"ticker": "YYAPI", "ml_short": 55, "ml_swing": 47, "best": 55, "sources": ["NYX9"]}, {"ticker": "PEKGY", "ml_short": 55, "ml_swing": 52, "best": 55, "sources": ["NYX-Krlm"]}, {"ticker": "DYOBY", "ml_short": 54, "ml_swing": 45, "best": 54, "sources": ["NYX-Tek", "NYX9"]}, {"ticker": "HOROZ", "ml_short": 54, "ml_swing": 46, "best": 54, "sources": ["NYX9"]}, {"ticker": "BRSAN", "ml_short": 53, "ml_swing": 45, "best": 53, "sources": ["NYX-Trend"]}, {"ticker": "CEMZY", "ml_short": 52, "ml_swing": 48, "best": 52, "sources": ["NYX-Dip"]}, {"ticker": "GEREL", "ml_short": 51, "ml_swing": 52, "best": 52, "sources": ["NYX-Dip"]}, {"ticker": "AGESA", "ml_short": 52, "ml_swing": 46, "best": 52, "sources": ["NYX-Trend"]}, {"ticker": "ARASE", "ml_short": 51, "ml_swing": 46, "best": 51, "sources": ["NYX-Tek", "NYX9"]}, {"ticker": "TRCAS", "ml_short": 51, "ml_swing": 46, "best": 51, "sources": ["NYX-Trend"]}, {"ticker": "PASEU", "ml_short": 50, "ml_swing": 48, "best": 50, "sources": ["NYX-Krlm"]}];
+const BRK_ML = [{"ticker": "RALYH", "tavan_prob": 54, "rally_prob": 59, "master": 57, "fusion": 97, "ml_s": 58, "tier": "top5", "in_shortlist": ""}, {"ticker": "TRHOL", "tavan_prob": 54, "rally_prob": 53, "master": 54, "fusion": 97, "ml_s": 61, "tier": "top5", "in_shortlist": ""}, {"ticker": "KAPLM", "tavan_prob": 49, "rally_prob": 58, "master": 53, "fusion": 94, "ml_s": 54, "tier": "top5", "in_shortlist": ""}, {"ticker": "TKFEN", "tavan_prob": 53, "rally_prob": 45, "master": 49, "fusion": 94, "ml_s": 55, "tier": "top5", "in_shortlist": ""}, {"ticker": "AKFIS", "tavan_prob": 52, "rally_prob": 40, "master": 46, "fusion": 93, "ml_s": 58, "tier": "top5", "in_shortlist": ""}, {"ticker": "RNPOL", "tavan_prob": 53, "rally_prob": 56, "master": 54, "fusion": 90, "ml_s": 51, "tier": "top10", "in_shortlist": ""}, {"ticker": "ERSU", "tavan_prob": 41, "rally_prob": 54, "master": 48, "fusion": 90, "ml_s": 52, "tier": "top10", "in_shortlist": ""}, {"ticker": "GEREL", "tavan_prob": 43, "rally_prob": 58, "master": 51, "fusion": 90, "ml_s": 51, "tier": "top10", "in_shortlist": ""}, {"ticker": "QNBFK", "tavan_prob": 67, "rally_prob": 51, "master": 59, "fusion": 90, "ml_s": 50, "tier": "top10", "in_shortlist": ""}, {"ticker": "SNPAM", "tavan_prob": 50, "rally_prob": 37, "master": 43, "fusion": 89, "ml_s": 56, "tier": "top10", "in_shortlist": ""}];
+const LTP = [{"ticker": "OZATD", "entry_close": 308.75, "limit_price": 304.12, "tp_price": 316.28, "net_pct": 2.44, "streak": 2, "ml_s": 63, "score": 558, "list_source": "TVN"}];
+const SL = {"tier1": {"label": "Tier 1 — Çakışmalar", "icon": "🔥", "total": 18, "items": [{"ticker": "OZATD", "score": 143, "reasons": ["⚡1G ⚡ALP+NW+TVN [140p] 🔀T+Y", "[ALP] ⚡3LİSTE ⏳3G ML:0.73 SW:0.53", "[NW] ⚡3LİSTE ⚡1G 🔥BUGÜN δ29.1%", "[TVN] ⚡3LİSTE ⚡1G seri:2 🔒skor:80", "🤖S63🟡·W48🔵", "✅XMESY"], "in_lists": ["tavan", "nw", "alpha"], "ml_score_short": 0.631, "ml_score_swing": 0.485, "ml_effect": "neutral", "sector_index": "XMESY", "sector_regime": "AL"}, {"ticker": "TRILC", "score": 121, "reasons": ["⚡1G ⚡ALP+AS+TVN [118p]", "[ALP] ⚡3LİSTE ⏳3G ML:0.59 SW:0.47", "[AS] ⚡3LİSTE ⏳3G BİLEŞEN✓ Q=85", "[TVN] ⚡3LİSTE ⚡1G seri:2 ⚠️Y-KLT:60", "🤖S43🔵·W45🔵", "✅XKMYA"], "in_lists": ["alsat", "tavan", "alpha"], "ml_score_short": 0.436, "ml_score_swing": 0.456, "ml_effect": "neutral", "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.575, "breakout_fusion": 0.58, "brk_ml_s": 0.436}, {"ticker": "BIGEN", "score": 118, "reasons": ["⚡1G ⚡ALP+AS+TVN [115p]", "[ALP] ⚡3LİSTE ⏳3G ML:0.58 SW:0.47", "[AS] ⚡3LİSTE ⏳3G GÜÇLÜ✓ Q=100", "[TVN] ⚡3LİSTE ⚡1G skor:53 vol:2.0x", "⚠️taban(ardışık4x,6gün)", "🤖S43🔵·W46🔵", "✅XELKT"], "in_lists": ["alsat", "tavan", "alpha"], "ml_score_short": 0.433, "ml_score_swing": 0.464, "ml_effect": "neutral", "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.629, "breakout_fusion": 0.575, "brk_ml_s": 0.433}, {"ticker": "AKCNS", "score": 94, "reasons": ["⏳3G ⚡ALP+RT [91p]", "[ALP] ∩RT ⏳3G ML:0.50 SW:0.49", "[RT] ∩ALP 🔄SW 🏅H+AL 2.DALGA", "🤖S48🔵·W46🔵", "✅XTAST"], "in_lists": ["rt", "alpha"], "ml_score_short": 0.487, "ml_score_swing": 0.463, "ml_effect": "neutral", "sector_index": "XTAST", "sector_regime": "AL", "breakout_master": 0.146, "breakout_fusion": 0.535, "brk_ml_s": 0.487, "vol_tier": "NORMAL", "vol_tier_icon": ""}, {"ticker": "PLTUR", "score": 88, "reasons": ["⚡1G ⚡RT+SBT [85p]", "[RT] ∩SBT 🔄SW 🏅H+AL 2.DALGA", "[SBT] ∩RT ⚡1G SBT:B 💪3/4", "🤖S43🔵·W45🔵", "SBT:B", "✅XUHIZ"], "in_lists": ["rt", "sbt"], "ml_score_short": 0.432, "ml_score_swing": 0.451, "ml_effect": "neutral", "sbt_bucket": "B", "sector_index": "XUHIZ", "sector_regime": "AL"}, {"ticker": "OBASE", "score": 85, "reasons": ["⚡1G ⚡ALP+AS [83p]", "[ALP] ∩AS ⏳3G ML:0.52 SW:0.48", "[AS] ∩ALP ⏳3G CMB Q=85", "🤖S47🔵·W44🔵", "ML↓", "✅XBLSM"], "in_lists": ["alsat", "alpha"], "ml_score_short": 0.471, "ml_score_swing": 0.45, "ml_effect": "down", "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.294, "breakout_fusion": 0.597, "brk_ml_s": 0.471}, {"ticker": "ESCOM", "score": 78, "reasons": ["⚡1G ⚡ALP+TVN [75p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.70 SW:0.53", "[TVN] ∩ALP ⚡1G ▲skor:45 vol:0.5x", "🤖S45🔵·W46🔵", "✅XBLSM"], "in_lists": ["tavan", "alpha"], "ml_score_short": 0.455, "ml_score_swing": 0.46, "ml_effect": "neutral", "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.369, "breakout_fusion": 0.581, "brk_ml_s": 0.455}, {"ticker": "YYAPI", "score": 64, "reasons": ["⚡1G ⚡ALP+TVN [65p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.56 SW:0.46", "[TVN] ∩ALP ⚡1G 🔥seri:3 ⚠️Y-KLT:63", "⚠️taban(ardışık3x,6gün)", "🤖S56🔵·W44🔵", "ML↓"], "in_lists": ["tavan", "alpha"], "ml_score_short": 0.561, "ml_score_swing": 0.449, "ml_effect": "down"}, {"ticker": "TRCAS", "score": 67, "reasons": ["⏳3G ⚡ALP+RT [64p]", "[ALP] ∩RT ⏳3G ML:0.49 SW:0.46", "[RT] ∩ALP ⏳3G 2.DALGA F3", "🤖S51🔵·W45🔵", "✅XHOLD"], "in_lists": ["rt", "alpha"], "ml_score_short": 0.512, "ml_score_swing": 0.458, "ml_effect": "neutral", "sector_index": "XHOLD", "sector_regime": "AL", "breakout_master": 0.252, "breakout_fusion": 0.694, "brk_ml_s": 0.512}, {"ticker": "ARASE", "score": 58, "reasons": ["⚡1G ⚡AS+TVN [55p] 🔶TAKTİK", "[AS] ∩TVN ⏳3G CMB Q=100", "[TVN] ∩AS ⚡1G ▲skor:27 vol:2.9x", "🤖S50🔵·W45🔵", "✅XELKT"], "in_lists": ["alsat", "tavan"], "ml_score_short": 0.51, "ml_score_swing": 0.457, "ml_effect": "neutral", "sector_index": "XELKT", "sector_regime": "AL", "breakout_master": 0.274, "breakout_fusion": 0.711, "brk_ml_s": 0.51}, {"ticker": "GUNDG", "score": 58, "reasons": ["⚡1G ⚡ALP+NW [55p]", "[ALP] ∩NW ⏳3G ML:0.52 SW:0.51", "[NW] ∩ALP ⚡1G 🔥BUGÜN δ7.5%", "🤖S47🔵·W49🔵", "✅XGIDA"], "in_lists": ["nw", "alpha"], "ml_score_short": 0.476, "ml_score_swing": 0.494, "ml_effect": "neutral", "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.305, "breakout_fusion": 0.647, "brk_ml_s": 0.476}, {"ticker": "ORCAY", "score": 57, "reasons": ["⚡1G ⚡ALP+TVN [55p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.57 SW:0.47", "[TVN] ∩ALP ⚡1G ▲skor:47 vol:1.7x", "🤖S45🔵·W44🔵", "ML↓", "✅XGIDA"], "in_lists": ["tavan", "alpha"], "ml_score_short": 0.453, "ml_score_swing": 0.45, "ml_effect": "down", "sector_index": "XGIDA", "sector_regime": "AL", "breakout_master": 0.466, "breakout_fusion": 0.654, "brk_ml_s": 0.453}, {"ticker": "SMRVA", "score": 57, "reasons": ["⚡1G ⚡ALP+TVN [55p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.60 SW:0.47", "[TVN] ∩ALP ⚡1G ▲skor:45 vol:1.6x", "⚠️taban(ardışık6x,40gün)", "🤖S37🔴·W42🔵", "ML↓", "✅XUMAL"], "in_lists": ["tavan", "alpha"], "ml_score_short": 0.377, "ml_score_swing": 0.424, "ml_effect": "down", "sector_index": "XUMAL", "sector_regime": "AL", "breakout_master": 0.71, "breakout_fusion": 0.407, "brk_ml_s": 0.377}, {"ticker": "ICUGS", "score": 53, "reasons": ["⚡1G ⚡ALP+TVN [50p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.55 SW:0.52", "[TVN] ∩ALP ⚡1G seri:2 ⚠️Y-KLT:60", "🤖S63🟡·W52🔵", "✅XHOLD"], "in_lists": ["tavan", "alpha"], "ml_score_short": 0.634, "ml_score_swing": 0.529, "ml_effect": "neutral", "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "FENER", "score": 47, "reasons": ["⚡1G ⚡ALP+TVN [45p] 🔶TAKTİK", "[ALP] ∩TVN ⏳3G ML:0.52 SW:0.46", "[TVN] ∩ALP ⚡1G ▲skor:35 vol:2.3x", "⚠️taban(ardışık2x,7gün)", "🤖S41🔵·W43🔵", "ML↓", "✅XSPOR"], "in_lists": ["tavan", "alpha"], "ml_score_short": 0.418, "ml_score_swing": 0.436, "ml_effect": "down", "sector_index": "XSPOR", "sector_regime": "AL", "breakout_master": 0.409, "breakout_fusion": 0.372, "brk_ml_s": 0.418}]}, "tier2a": {"label": "Tier 2A — Tactical ⚡1G", "icon": "⚡", "total": 6, "items": [{"ticker": "YAYLA", "score": 252, "reasons": ["[SBT]", "⚡1G", "SBT:A", "💪3/4", "ML%39", "🤖S38🔴·W42🔵", "ML↓", "SBT:A", "🤖S38🔴·W42🔵", "ML↓", "SBT:A", "✅XINSA", "✅XINSA"], "in_lists": [], "ml_score_short": 0.388, "ml_score_swing": 0.421, "ml_effect": "down", "sbt_bucket": "A", "sector_index": "XINSA", "sector_regime": "AL"}, {"ticker": "ISYAT", "score": 245, "reasons": ["[SBT]", "⚡1G", "SBT:A", "💪3/4", "ML%35", "🤖S46🔵·W44🔵", "ML↓", "SBT:A", "🤖S46🔵·W44🔵", "ML↓", "SBT:A"], "in_lists": [], "ml_score_short": 0.464, "ml_score_swing": 0.446, "ml_effect": "down", "sbt_bucket": "A"}, {"ticker": "PASEU", "score": 195, "reasons": ["[SBT]", "⚡1G", "SBT:B", "💪3/4", "ML%32", "🤖S50🔵·W47🔵", "SBT:B", "🤖S50🔵·W47🔵", "SBT:B", "✅XULAS", "✅XULAS"], "in_lists": [], "ml_score_short": 0.501, "ml_score_swing": 0.477, "ml_effect": "neutral", "sbt_bucket": "B", "sector_index": "XULAS", "sector_regime": "AL"}, {"ticker": "ISGSY", "score": 173, "reasons": ["[TVN]", "⚡1G", "▲skor:30", "vol:2.0x", "RS-6%", "✅XHOLD", "✅XHOLD"], "in_lists": [], "ml_effect": "neutral", "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "RODRG", "score": 162, "reasons": ["[TVN]", "∩AS", "⚡1G", "▲skor:32", "vol:3.6x", "RS-2%", "CMF+0.30", "🤖S48🔵·W46🔵", "SBT:X", "🤖S48🔵·W46🔵", "SBT:X", "⚠️XTEKS↓", "⚠️XTEKS↓"], "in_lists": [], "ml_score_short": 0.484, "ml_score_swing": 0.464, "ml_effect": "neutral", "sbt_bucket": "X", "sector_index": "XTEKS", "sector_regime": "PASIF", "breakout_master": 0.447, "breakout_fusion": 0.759, "brk_ml_s": 0.474}, {"ticker": "DOGUB", "score": 144, "reasons": ["[TVN]", "∩ALP", "⚡1G", "▲skor:35", "vol:6.6x", "RS+3%", "CMF+0.11", "⚠️taban(ardışık2x,12gün)", "⚠️taban(ardışık2x,12gün)", "🤖S42🔵·W49🔵", "🤖S42🔵·W49🔵", "✅XTAST", "✅XTAST"], "in_lists": [], "ml_score_short": 0.426, "ml_score_swing": 0.491, "ml_effect": "neutral", "sector_index": "XTAST", "sector_regime": "AL"}]}, "tier2b": {"label": "Tier 2B — Swing-Lite", "icon": "⭐", "total": 9, "items": [{"ticker": "TURGG", "score": 474, "reasons": ["[AS]", "⚡3LİSTE", "⏳3G", "CMB", "Q=100", "RS=40", "MACD=+1.0796", "OE=5", "R:R=1.5", "⚠️taban(ardışık2x,4gün)", "⚠️taban(ardışık2x,4gün)", "🤖S41🔵·W43🔵", "ML↓", "🤖S41🔵·W43🔵", "ML↓", "✅XINSA", "✅XINSA"], "in_lists": [], "ml_score_short": 0.412, "ml_score_swing": 0.435, "ml_effect": "down", "sector_index": "XINSA", "sector_regime": "AL"}, {"ticker": "DYOBY", "score": 263, "reasons": ["[AS]", "∩TVN", "⏳3G", "GÜÇLÜ✓", "Q=90", "RS=39", "MACD=+0.5435", "OE=5", "R:R=1.5", "🤖S53🔵·W44🔵", "ML↓", "🤖S53🔵·W44🔵", "ML↓", "✅XKMYA", "✅XKMYA"], "in_lists": [], "ml_score_short": 0.539, "ml_score_swing": 0.449, "ml_effect": "down", "sector_index": "XKMYA", "sector_regime": "AL"}, {"ticker": "KLSYN", "score": 253, "reasons": ["[AS]", "⏳3G", "GÜÇLÜ✓", "Q=55", "RS=30", "MACD=+0.2279", "OE=3", "R:R=1.5", "⚠️taban(ardışık2x,3gün)", "⚠️taban(ardışık2x,3gün)", "🤖S56🔵·W47🔵", "🤖S56🔵·W47🔵", "✅XKAGT", "✅XKAGT"], "in_lists": [], "ml_score_short": 0.562, "ml_score_swing": 0.473, "ml_effect": "neutral", "sector_index": "XKAGT", "sector_regime": "AL"}, {"ticker": "AGESA", "score": 153, "reasons": ["[RT]", "⏳3G", "🏅H+PB", "2.DALGA", "F4", "CMF+0.15", "ADX=18", "🤖S51🔵·W46🔵", "🤖S51🔵·W46🔵", "✅XSGRT", "✅XSGRT"], "in_lists": [], "ml_score_short": 0.519, "ml_score_swing": 0.462, "ml_effect": "neutral", "sector_index": "XSGRT", "sector_regime": "AL", "breakout_master": 0.111, "breakout_fusion": 0.582, "brk_ml_s": 0.519}, {"ticker": "FONET", "score": 148, "reasons": ["[RT]", "🔄SW", "🏅H+AL", "TAZE", "📍BUGÜN", "F3", "CMF-0.11", "ADX=28", "🤖S44🔵·W49🔵", "🤖S44🔵·W49🔵", "✅XBLSM", "✅XBLSM"], "in_lists": [], "ml_score_short": 0.446, "ml_score_swing": 0.493, "ml_effect": "neutral", "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.435, "breakout_fusion": 0.593, "brk_ml_s": 0.446}, {"ticker": "KOCMT", "score": 142, "reasons": ["[RT]", "⏳3G", "🏅H+PB", "2.DALGA", "F3", "CMF-0.10", "ADX=22", "🤖S47🔵·W43🔵", "ML↓", "🤖S47🔵·W43🔵", "ML↓", "✅XMANA", "✅XMANA"], "in_lists": [], "ml_score_short": 0.473, "ml_score_swing": 0.438, "ml_effect": "down", "sector_index": "XMANA", "sector_regime": "AL", "breakout_master": 0.148, "breakout_fusion": 0.468, "brk_ml_s": 0.473, "vol_tier": "NORMAL", "vol_tier_icon": ""}, {"ticker": "HEDEF", "score": 141, "reasons": ["[ALP]", "⏳3G", "ML:0.56", "SW:0.54", "C45", "S12%", "⚠️taban(ardışık2x,8gün)", "⚠️taban(ardışık2x,8gün)", "🤖S58🔵·W55🔵", "ML↑", "🤖S58🔵·W55🔵", "ML↑", "✅XHOLD", "✅XHOLD"], "in_lists": [], "ml_score_short": 0.585, "ml_score_swing": 0.551, "ml_effect": "up", "sector_index": "XHOLD", "sector_regime": "AL"}, {"ticker": "ISKPL", "score": 140, "reasons": ["[ALP]", "⏳3G", "ML:0.57", "SW:0.56", "C46", "S10%", "🤖S52🔵·W53🔵", "🤖S52🔵·W53🔵", "✅XKMYA", "✅XKMYA"], "in_lists": [], "ml_score_short": 0.53, "ml_score_swing": 0.535, "ml_effect": "neutral", "sector_index": "XKMYA", "sector_regime": "AL", "breakout_master": 0.36, "breakout_fusion": 0.816, "brk_ml_s": 0.53}, {"ticker": "MOBTL", "score": 139, "reasons": ["[ALP]", "⏳3G", "ML:0.51", "SW:0.48", "C46", "S9%", "🤖S47🔵·W46🔵", "🤖S47🔵·W46🔵", "✅XBLSM", "✅XBLSM"], "in_lists": [], "ml_score_short": 0.471, "ml_score_swing": 0.461, "ml_effect": "neutral", "sector_index": "XBLSM", "sector_regime": "AL", "breakout_master": 0.304, "breakout_fusion": 0.614, "brk_ml_s": 0.471}]}};
+const SEC = {"groups": [{"key": "piyasa", "label": "📈 Piyasa", "al": ["X10XB", "XBANA", "XTUMY", "XU030", "XU050", "XU100", "XU500", "XUTUM", "XYLDZ", "XYUZO"], "pasif": ["XLBNK"], "total": 11}, {"key": "sektor", "label": "🏭 Sektör", "al": ["XBLSM", "XELKT", "XFINK", "XGIDA", "XGMYO", "XHOLD", "XILTM", "XINSA", "XKAGT", "XKMYA", "XMANA", "XMESY", "XSGRT", "XSPOR", "XTAST", "XTCRT", "XTRZM", "XUHIZ", "XULAS", "XUMAL", "XUSIN", "XUTEK", "XYORT"], "pasif": ["XAKUR", "XBANK", "XMADN", "XTEKS"], "total": 27}, {"key": "tematik", "label": "🏷 Tematik", "al": ["XHARZ", "XKOBI", "XKURY", "XSD25", "XT05Y", "XT10Y", "XTM25", "XTMTU", "XUGRA", "XUSRD"], "pasif": [], "total": 10}, {"key": "katilim", "label": "☪️ Katılım", "al": ["XK030", "XK050", "XK100", "XKTMT", "XKTUM", "XSRDK"], "pasif": [], "total": 6}], "total": 54};
+const ALPHA_PF = {};
+const SCAN = {
+    'alsat': 'https://aalpkk.github.io/bist-signals/',
+    'tavan': 'https://aalpkk.github.io/bist-signals/tavan.html',
+    'nw': 'https://aalpkk.github.io/nox-signals/nox_v3_weekly.html',
+    'rt': 'https://aalpkk.github.io/nox-signals/regime_transition.html',
+    'sbt': 'https://aalpkk.github.io/nox-signals/smart_breakout.html',
+    'alpha': 'https://aalpkk.github.io/nox-signals/alpha_scan.html',
+};
+
+// ── Utility: Badge render helpers ──
+function tvL(t) { return `<a href="${TV}${t}" target="_blank" class="tv-link">${t}</a>`; }
+function mlBadge(item) {
+    const mk = (v,p) => {
+        if(v==null) return '';
+        const n=Math.round(v*100), c=v>=0.60?'ml-strong':v>=0.40?'ml-mid':'ml-weak';
+        return `<span class="ml-${p} ${c}">${p.toUpperCase()}${n}</span>`;
+    };
+    if(item.ml_score_short!=null||item.ml_score_swing!=null)
+        return `<span class="ml-dual">${mk(item.ml_score_short,'s')}${mk(item.ml_score_swing,'w')}</span>`;
+    return '';
+}
+function sbtBadge(item) {
+    if(!item.sbt_bucket) return '';
+    const c={'A+':'sbt-ap','A':'sbt-a','B':'sbt-b','C':'sbt-b','X':'sbt-x'}[item.sbt_bucket]||'';
+    return `<span class="sbt-badge ${c}">SBT:${item.sbt_bucket}</span>`;
+}
+function sectorBadge(item) {
+    if(!item.sector_index) return '';
+    return item.sector_regime==='AL'
+        ? `<span class="sector-badge sector-ok">✅${item.sector_index}</span>`
+        : `<span class="sector-badge sector-warn">⚠️${item.sector_index}↓</span>`;
+}
+function brkBadge(item) {
+    if(item.brk_avoid) return `<span class="brk-avoid">⛔ALMA</span>`;
+    if(item.breakout_tier==='top5') {
+        const f=item.breakout_fusion?Math.round(item.breakout_fusion*100):'';
+        return `<span class="ml-badge ml-strong" style="font-size:0.65rem">BRK🎯T5${f?'·F'+f:''}</span>`;
+    }
+    if(item.breakout_tier==='top10') {
+        const f=item.breakout_fusion?Math.round(item.breakout_fusion*100):'';
+        return `<span class="ml-badge ml-mid" style="font-size:0.65rem">BRK⚡T10${f?'·F'+f:''}</span>`;
+    }
+    return '';
+}
+function iceBadge(item) {
+    if(item.ice_mult==null) return '';
+    const c=item.ice_mult>=1.15?'#7a9e7a':item.ice_mult>=1.02?'#c9a96e':item.ice_mult>=0.90?'#8a8580':'#9e5a5a';
+    let x='';
+    if(item.streak_days>=3) { const m=item.streak_momentum==='GÜÇLÜ'?'💪':''; x+=` SM${item.streak_days}g${m}`; }
+    if(item.position_change_pct!=null&&Math.abs(item.position_change_pct)>=0.5) { x+=` Δ${item.position_change_pct>0?'+':''}${item.position_change_pct.toFixed(1)}%`; }
+    if(item.cost_ratio) x+=` r=${item.cost_ratio.toFixed(2)}`;
+    return `<span style="background:${c}18;color:${c};padding:0.1rem 0.35rem;border-radius:0.25rem;font-size:0.65rem;font-weight:600;white-space:nowrap">ICE×${item.ice_mult.toFixed(2)}${x}</span>`;
+}
+function volBadge(item) {
+    if(!item.vol_tier||item.vol_tier==='NORMAL') return '';
+    const c={'ALTIN':'vt-altin','GUMUS':'vt-gumus','BRONZ':'vt-bronz'}[item.vol_tier]||'';
+    return `<span class="vol-tier ${c}">${item.vol_tier_icon||''}${item.vol_tier}</span>`;
+}
+function filterReasons(reasons) {
+    return (reasons||[]).filter(r=>!r.startsWith('🤖')&&!r.startsWith('SBT:')&&!r.startsWith('✅')&&!(r.startsWith('⚠️')&&!r.startsWith('⚠️taban')));
+}
+
+// ══════ KATMAN 1: Makro pills (sticky bar) ══════
+(function() {
+    const pills = document.getElementById('macroPills');
+    // Key macro instruments for pills
+    const keyNames = ['XU100', 'USDTRY', 'SPY', 'VIX'];
+    const keyItems = MACRO.filter(m => keyNames.some(k => (m.name||'').toUpperCase().includes(k)));
+    keyItems.forEach(item => {
+        if(!item.price) return;
+        const chg = item.chg_1d != null ? item.chg_1d.toFixed(1) : '-';
+        const arrow = item.chg_1d > 0 ? '↑' : item.chg_1d < 0 ? '↓' : '→';
+        const color = item.chg_1d > 0 ? 'var(--nox-green)' : item.chg_1d < 0 ? 'var(--nox-red)' : 'var(--text-muted)';
+        pills.innerHTML += `<span class="mpill"><b style="color:${color}">${arrow}</b> ${item.name} <b style="color:${color}">${chg}%</b></span>`;
+    });
+    // Add AL count from categories
+    const cats = MD.categories || {};
+    const bistCat = cats['BIST'];
+    if(bistCat) {
+        pills.innerHTML += `<span class="mpill">BIST <b>${bistCat.regime}</b></span>`;
+    }
+})();
+
+// ── Index warnings (sadece ⚠️ olanlar) ──
+(function() {
+    const container = document.getElementById('indexWarn');
+    if(!SEC || !SEC.groups || SEC.groups.length===0) return;
+    let warns = [];
+    SEC.groups.forEach(g => {
+        if(g.pasif && g.pasif.length > 0) {
+            g.pasif.forEach(s => warns.push(s));
+        }
+    });
+    if(warns.length === 0) return;
+    container.style.display = 'flex';
+    const alCount = SEC.groups.reduce((s,g) => s + (g.al?g.al.length:0), 0);
+    container.innerHTML = `<span style="font-size:0.75rem;color:var(--text-muted);margin-right:0.3rem">⚠️ Pasif endeksler (${warns.length}/${SEC.total}):</span>` +
+        warns.map(s => `<span class="sector-badge sector-warn" style="font-size:0.7rem">${s}</span>`).join(' ');
+})();
+
+// ══════ KATMAN 2: AKSİYON KARTLARI ══════
+(function() {
+    const container = document.getElementById('actionCards');
+    if(!SL || Object.keys(SL).length===0) {
+        container.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem">Shortlist verisi yok</div>';
+        return;
+    }
+    // Build limit TP lookup: ticker -> entry data
+    const ltpMap = {};
+    (LTP||[]).forEach(ltp => { ltpMap[ltp.ticker] = ltp; });
+
+    let html = '';
+    const tierConf = {
+        tier1:  { cls:'tier1', tag:'T1', tagCls:'t1' },
+        tier2a: { cls:'tier2a', tag:'T2A', tagCls:'t2a' },
+        tier2b: { cls:'tier2b', tag:'T2B', tagCls:'t2b' },
+    };
+    let cardIdx = 0;
+    ['tier1','tier2a','tier2b'].forEach(key => {
+        const list = SL[key];
+        if(!list || list.items.length===0) return;
+        const tc = tierConf[key];
+        html += `<div class="tier-group-label">${list.icon} ${list.label} <span class="cnt">${list.total}</span></div>`;
+        html += '<div class="action-grid">';
+        list.items.forEach((item,i) => {
+            const delay = (cardIdx * 0.04).toFixed(2);
+            cardIdx++;
+            const reasons = filterReasons(item.reasons).slice(0,3).join(' · ');
+            const listsTag = (item.in_lists||[]).map(l=>({alsat:'NYX-Tek',tavan:'NYX9',nw:'NYX-Dip',rt:'NYX-Trend',sbt:'NYX-Krlm',alpha:'ALP'})[l]||l).join('+');
+            // Entry info from limit TP
+            const ltp = ltpMap[item.ticker];
+            let entryHtml = '';
+            if(ltp) {
+                entryHtml = `<div class="card-entry">
+                    <span><span class="e-label">Limit</span> <span class="e-limit">${ltp.limit_price.toFixed(2)}</span></span>
+                    <span><span class="e-label">TP</span> <span class="e-tp">${ltp.tp_price.toFixed(2)}</span></span>
+                    <span class="e-tp">+%${ltp.net_pct.toFixed(1)}</span>
+                    <span style="color:var(--text-muted)">streak=${ltp.streak}</span>
+                </div>`;
+            }
+            html += `<div class="action-card ${tc.cls}" style="animation-delay:${delay}s">
+                <div class="card-head">
+                    ${tvL(item.ticker)}
+                    <span class="tier-tag ${tc.tagCls}">${tc.tag}</span>
+                    ${listsTag ? `<span style="font-size:0.65rem;color:var(--text-muted);font-family:var(--font-mono)">${listsTag}</span>` : ''}
+                    <span class="score-pill">${item.score}p</span>
+                </div>
+                <div class="card-badges">
+                    ${mlBadge(item)}${sbtBadge(item)}${sectorBadge(item)}${brkBadge(item)}${iceBadge(item)}${volBadge(item)}
+                </div>
+                <div class="card-reasons">${reasons}</div>
+                ${entryHtml}
+            </div>`;
+        });
+        html += '</div>';
+    });
+    container.innerHTML = html;
+})();
+
+// ══════ KATMAN 3: RADAR ══════
+(function() {
+    const container = document.getElementById('radarContainer');
+    // Combine ML Güçlü + Breakout ML + Limit TP (exclude those already in shortlist)
+    const slTickers = new Set();
+    ['tier1','tier2a','tier2b'].forEach(k => {
+        if(SL[k]) SL[k].items.forEach(it => slTickers.add(it.ticker));
+    });
+
+    let items = [];
+
+    // ML Güçlü (shortlist'te olmayanlar)
+    (ML_S||[]).forEach(m => {
+        if(slTickers.has(m.ticker)) return;
+        items.push({ticker:m.ticker, type:'ml', sort:m.best,
+            html:`<span class="tag ml">ML S${m.ml_short}·W${m.ml_swing}</span><span style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono)">${m.sources.join('+')}</span>`});
+    });
+    // Breakout ML (shortlist'te olmayanlar)
+    (BRK_ML||[]).forEach(b => {
+        if(slTickers.has(b.ticker) || items.some(x=>x.ticker===b.ticker)) return;
+        const fC = b.fusion>=80?'var(--nox-green)':b.fusion>=60?'#c9a96e':'var(--text-secondary)';
+        items.push({ticker:b.ticker, type:'brk', sort:b.fusion,
+            html:`<span class="tag brk">BRK F${b.fusion}</span><span style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono)">TVN:${b.tavan_prob} S:${b.ml_s}</span>`});
+    });
+    // Limit TP (shortlist'te olmayanlar)
+    (LTP||[]).forEach(ltp => {
+        if(slTickers.has(ltp.ticker) || items.some(x=>x.ticker===ltp.ticker)) return;
+        items.push({ticker:ltp.ticker, type:'ltp', sort:90,
+            html:`<span class="tag ltp">LTP +%${ltp.net_pct.toFixed(1)}</span><span style="font-size:0.7rem;color:var(--text-muted);font-family:var(--font-mono)">streak=${ltp.streak} S${ltp.ml_s}</span>`});
+    });
+
+    items.sort((a,b) => b.sort - a.sort);
+
+    if(items.length===0) {
+        container.innerHTML = '<div class="radar-section"><div style="color:var(--text-muted);font-size:0.85rem">Radar boş — tüm güçlü sinyaller shortlistte</div></div>';
+        return;
+    }
+    let html = '<div class="radar-section"><div class="radar-header">🔭 Keşif <span style="font-size:0.7rem;color:var(--text-muted);font-weight:400">shortlist dışı güçlü sinyaller</span></div>';
+    items.slice(0,15).forEach((it,i) => {
+        html += `<div class="radar-item">
+            <span class="rank">${i+1}</span>
+            <span class="ticker">${tvL(it.ticker)}</span>
+            ${it.html}
+        </div>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+})();
+
+// ══════ KATMAN 4a: Sinyal Listeleri (tab'lı) ══════
+(function() {
+    const tabsEl = document.getElementById('signalTabs');
+    const panelsEl = document.getElementById('signalTabPanels');
+    const order = ['alsat','tavan','nw','rt','sbt','alpha'];
+    let totalSignals = 0;
+    order.forEach((key,idx) => {
+        const list = LISTS[key];
+        if(!list) return;
+        totalSignals += list.total;
+        const isFirst = idx === 0;
+        // Tab button
+        tabsEl.innerHTML += `<button class="nox-tab${isFirst?' active':''}" data-tab="${key}">${list.icon} ${list.short} <span style="font-size:0.65rem;color:var(--text-muted)">${list.total}</span></button>`;
+        // Tab panel
+        const scanUrl = SCAN[key] || '#';
+        let html = `<div class="nox-tab-panel${isFirst?' active':''}" data-tab="${key}">`;
+        html += `<div style="margin-bottom:0.5rem;font-size:0.8rem"><a href="${scanUrl}" target="_blank" style="color:var(--nox-cyan);text-decoration:none">${list.label} →</a></div>`;
+        if(list.items.length===0) {
+            html += '<div style="color:var(--text-muted);font-size:0.8rem">Sinyal yok</div>';
+        }
+        list.items.forEach((item,i) => {
+            const reasons = filterReasons(item.reasons).slice(0,4).join(' ');
+            // Gate tag
+            let gateTag = '';
+            if(item.gate_penalty>=99) gateTag='<span class="gate-tag">HARD</span>';
+            else if(item.gate_penalty>=1) gateTag='<span class="gate-tag">soft</span>';
+            html += `<div class="signal-card">
+                <span class="rank">${i+1}</span>
+                <a href="${TV}${item.ticker}" target="_blank" class="tv-link ticker">${item.ticker}</a>
+                <span class="reasons">${reasons}</span>
+                ${volBadge(item)}${sectorBadge(item)}${sbtBadge(item)}${mlBadge(item)}${brkBadge(item)}${gateTag}${iceBadge(item)}
+                <span class="score-pill">${item.score}p</span>
+            </div>`;
+        });
+        // Alpha portföy kartı
+        if(key==='alpha' && ALPHA_PF && ALPHA_PF.weights && Object.keys(ALPHA_PF.weights).length>0) {
+            html += `<div style="margin-top:12px;padding:12px;background:var(--bg-elevated);border:1px solid var(--border-subtle);border-radius:8px;">`;
+            html += `<div style="font-weight:600;color:var(--nox-gold);margin-bottom:8px;">Max Sharpe Portföy <span style="font-size:0.75rem;color:var(--text-muted)">Sharpe:${ALPHA_PF.sharpe?.toFixed(2)||'—'} · Getiri:${ALPHA_PF.ret?.toFixed(1)||'—'}% · Risk:${ALPHA_PF.risk?.toFixed(1)||'—'}%</span></div>`;
+            Object.entries(ALPHA_PF.weights).sort((a,b)=>b[1]-a[1]).forEach(([t,w]) => {
+                const bar = Math.max(4, w*3);
+                html += `<div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;font-size:0.82rem;">
+                    <a href="${TV}${t}" target="_blank" class="tv-link" style="min-width:55px;font-weight:700">${t}</a>
+                    <div style="background:var(--nox-gold);height:14px;width:${bar}px;border-radius:3px;opacity:0.7;"></div>
+                    <span style="color:var(--text-secondary);font-family:var(--font-mono);font-size:0.75rem">${w.toFixed(1)}%</span>
+                </div>`;
+            });
+            html += `</div>`;
+        }
+        html += '</div>';
+        panelsEl.innerHTML += html;
+    });
+    document.getElementById('signalListsCount').textContent = totalSignals + ' sinyal';
+    // Tab switch logic
+    tabsEl.addEventListener('click', e => {
+        const btn = e.target.closest('.nox-tab');
+        if(!btn) return;
+        const key = btn.dataset.tab;
+        tabsEl.querySelectorAll('.nox-tab').forEach(b => b.classList.toggle('active', b.dataset.tab===key));
+        panelsEl.querySelectorAll('.nox-tab-panel').forEach(p => p.classList.toggle('active', p.dataset.tab===key));
+    });
+})();
+
+// ══════ KATMAN 4c: ML Rerank + Filtered ══════
+(function() {
+    let cnt = 0;
+    // Rerank
+    const rc = document.getElementById('rerankContainer');
+    if(!RERANK || RERANK.length===0) {
+        rc.innerHTML = '<div style="color:var(--text-muted);font-size:0.82rem">Rerank verisi yok</div>';
+    } else {
+        cnt += RERANK.length;
+        const ups = RERANK.filter(r=>r.delta>0).sort((a,b)=>b.delta-a.delta);
+        const downs = RERANK.filter(r=>r.delta<0).sort((a,b)=>a.delta-b.delta);
+        let h = '';
+        if(ups.length) {
+            h += '<div style="font-size:0.78rem;color:var(--nox-green);margin-bottom:0.3rem">↑ Yükselenler</div>';
+            ups.slice(0,8).forEach(r => {
+                h += `<div class="rerank-item">${tvL(r.ticker)} <span class="lists-tag">${r.list_tag}</span> <span style="font-size:0.78rem;color:var(--text-muted)">${r.old_rank}→${r.new_rank}</span> <span class="rerank-delta up">+${r.delta}</span></div>`;
+            });
+        }
+        if(downs.length) {
+            h += '<div style="font-size:0.78rem;color:var(--nox-red);margin:0.5rem 0 0.3rem">↓ Düşenler</div>';
+            downs.slice(0,8).forEach(r => {
+                h += `<div class="rerank-item">${tvL(r.ticker)} <span class="lists-tag">${r.list_tag}</span> <span style="font-size:0.78rem;color:var(--text-muted)">${r.old_rank}→${r.new_rank}</span> <span class="rerank-delta down">${r.delta}</span></div>`;
+            });
+        }
+        rc.innerHTML = h;
+    }
+    // Filtered
+    const fc = document.getElementById('filteredContainer');
+    const LS = {'alsat':'NYX-Tek','tavan':'NYX9','nw':'NYX-Dip','rt':'NYX-Trend','sbt':'NYX-Krlm','tier2a':'T2A','tier2b':'T2B','tier2':'T2'};
+    if(!FILTERED || FILTERED.length===0) {
+        fc.innerHTML = '<div style="color:var(--text-muted);font-size:0.82rem">Elenen sinyal yok</div>';
+    } else {
+        cnt += FILTERED.length;
+        let h = `<div style="font-size:0.72rem;color:var(--text-muted);margin-bottom:0.4rem">Rule güçlü ama ML zayıf — ${FILTERED.length} hisse</div>`;
+        FILTERED.slice(0,10).forEach(item => {
+            h += `<div class="filtered-item">${tvL(item.ticker)} <span class="lists-tag">${LS[item.list]||item.list}</span> <span style="font-family:var(--font-mono);font-size:0.72rem">rule:${item.rule_score}p</span> <span class="reason">${item.reason}</span></div>`;
+        });
+        fc.innerHTML = h;
+    }
+    document.getElementById('mlDetailCount').textContent = cnt ? cnt + ' kayıt' : '';
+})();
+
+// ══════ KATMAN 4d: Makro Detay ══════
+(function() {
+    const sigC = document.getElementById('macroSignals');
+    if(MD.signals && MD.signals.length>0) {
+        MD.signals.forEach(sig => {
+            const el = document.createElement('div');
+            el.className = 'regime-signal';
+            el.textContent = sig;
+            sigC.appendChild(el);
+        });
+    } else {
+        sigC.innerHTML = '<div style="color:var(--text-muted);font-size:0.8rem">Makro veri yok</div>';
+    }
+    const catGrid = document.getElementById('categoryGrid');
+    const catOrder = ['BIST','US','FX','Emtia','Kripto','Faiz'];
+    const rc = {'GÜÇLÜ_YUKARI':'var(--nox-green)','YUKARI':'var(--nox-green)','NÖTR':'var(--text-muted)','AŞAĞI':'var(--nox-red)','GÜÇLÜ_AŞAĞI':'var(--nox-red)'};
+    const cats = MD.categories || {};
+    catOrder.forEach(cat => {
+        const d = cats[cat]; if(!d) return;
+        const card = document.createElement('div');
+        card.className = 'category-regime';
+        card.innerHTML = `<div class="cat-name">${cat}</div><div class="cat-regime" style="color:${rc[d.regime]||'var(--text-secondary)'}">${d.regime}</div><div class="cat-score">skor: ${d.score}</div>`;
+        catGrid.appendChild(card);
+    });
+    const mg = document.getElementById('macroGrid');
+    MACRO.forEach(item => {
+        if(!item.price) return;
+        const c1 = item.chg_1d!=null?item.chg_1d.toFixed(1):'-';
+        const c5 = item.chg_5d!=null?item.chg_5d.toFixed(1):'-';
+        const cm = item.chg_1m!=null?item.chg_1m.toFixed(1):'-';
+        const clr = item.chg_1d>0?'var(--nox-green)':item.chg_1d<0?'var(--nox-red)':'var(--text-muted)';
+        const t = item.trend==='UP'?'↑':item.trend==='DOWN'?'↓':'→';
+        const ema = item.above_ema21?'<span style="color:var(--nox-green)">EMA↑</span>':'<span style="color:var(--nox-red)">EMA↓</span>';
+        const card = document.createElement('div');
+        card.className = 'macro-card';
+        card.innerHTML = `<div class="name">${item.name}</div><div class="price">${item.price.toLocaleString('tr-TR')}</div><div class="change" style="color:${clr}">${t} 1G:${c1}% · 5G:${c5}%</div><div class="detail">1A:${cm}% ${ema}</div>`;
+        mg.appendChild(card);
+    });
+})();
+
+// ══════ KATMAN 4f: Haberler ══════
+(function() {
+    const c = document.getElementById('newsContainer');
+    if(!NEWS || NEWS.length===0) { c.innerHTML = '<div style="color:var(--text-muted);font-size:0.85rem">Haber bulunamadı</div>'; return; }
+    let h = '';
+    NEWS.forEach(item => {
+        let ds = '';
+        if(item.pub_date) { try { const d=new Date(item.pub_date); ds=d.toLocaleDateString('tr-TR')+' '+d.toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'}); } catch(e){ ds=item.pub_date; } }
+        h += `<div class="news-item"><a href="${item.link||'#'}" target="_blank">${item.title||''}</a><div class="news-meta">${item.source||''}${item.source&&ds?' — ':''}${ds}</div></div>`;
+    });
+    c.innerHTML = h;
+})();
+
+// ══════ KATMAN 4g: Çakışma Tablosu ══════
+(function() {
+    const tbody = document.querySelector('#confluenceTable tbody');
+    const recC = {'TRADEABLE':'#7a9e7a','TAKTİK':'#7a8fa5','İZLE':'#c9a96e','BEKLE':'#a8876a','ELE':'#9e5a5a','VERİ_YOK':'#555250'};
+    // Screener → liste kısa adı (liste olmayanları atla)
+    const srcMap = {alsat:'AS',nox_v3_weekly:'NW',regime_transition:'RT',tavan:'TVN',sbt:'SBT',alpha:'ALP'};
+    // Confluence'da olmayan listeleri LISTS verisinden ekle
+    const extraLists = {'alpha':'ALP'};
+    const extraTickers = {};
+    Object.entries(extraLists).forEach(([key,tag]) => {
+        if(LISTS[key]) LISTS[key].items.forEach(it => {
+            if(!extraTickers[it.ticker]) extraTickers[it.ticker] = [];
+            extraTickers[it.ticker].push(tag);
+        });
+    });
+    document.getElementById('confluenceCount').textContent = CONF.length ? CONF.length + ' hisse' : '';
+    CONF.forEach(item => {
+        const tr = document.createElement('tr');
+        const sc = item.score>=5?'#7a9e7a':item.score>=3?'#c9a96e':item.score<=0?'#9e5a5a':'#8a8580';
+        const hc = item.has_conflict||(SAT_SET.has(item.ticker)&&item.recommendation!=='BEKLE');
+        const dr = hc?'BEKLE':item.recommendation;
+        const rc = recC[dr]||'#8a8580';
+        const det = (item.details||[]).slice(0,3).join('<br>');
+        let dur = '<span class="shortlist-badge not-in">—</span>';
+        if(hc) dur='<span class="shortlist-badge conflict">ÇELİŞKİ</span>';
+        else if(SL_SET.has(item.ticker)) dur='<span class="shortlist-badge in-list">SHORTLIST</span>';
+        const tags = (item.sources||[]).map(s=>srcMap[s]).filter(Boolean);
+        (extraTickers[item.ticker]||[]).forEach(t => { if(!tags.includes(t)) tags.push(t); });
+        const srcTags = tags.join('+');
+        tr.innerHTML = `<td>${tvL(item.ticker)}</td><td><span class="score-badge" style="background:${sc}20;color:${sc}">${item.score}</span></td><td style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-secondary)">${item.structural_score||0}</td><td style="font-family:var(--font-mono);font-size:0.85rem;color:var(--text-secondary)">${item.tactical_score||0}</td><td style="font-family:var(--font-mono);font-size:0.75rem;color:var(--nox-cyan)">${srcTags||'—'}</td><td><span class="rec-badge" style="background:${rc}20;color:${rc}">${dr}</span></td><td>${dur}</td><td style="font-size:0.8rem;color:var(--text-secondary)">${det}</td>`;
+        tbody.appendChild(tr);
+    });
+})();
+</script>
+</body>
+</html>

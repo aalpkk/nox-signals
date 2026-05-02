@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOX Triangle Break · Index — 2026-05-03</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+.briefing-container {
+  position: relative; z-index: 1;
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+
+.cb-stack { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+
+.cb-card {
+  background: rgba(199,189,190,0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: none;
+  border-radius: 16px;
+  padding: 0.9rem 1rem 1.1rem;
+  position: relative;
+  overflow-x: auto;
+}
+.cb-card .card-title {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 0.55rem;
+}
+.cb-card .card-title b { color: var(--nox-gold); font-weight: 700; }
+.cb-card .card-title .n { color: var(--text-secondary); font-weight: 500; margin-left: 0.4rem; }
+
+.cb-banner {
+  background: rgba(122,143,165,0.08);
+  border: 1px solid rgba(122,143,165,0.30);
+  border-left: 3px solid var(--nox-blue);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.0rem;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.cb-banner b { color: var(--nox-blue); }
+.cb-banner.gold {
+  background: rgba(201,169,110,0.07);
+  border-color: rgba(201,169,110,0.30);
+  border-left-color: var(--nox-gold);
+}
+.cb-banner.gold b { color: var(--nox-gold); }
+
+.cb-tfnav {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 1rem;
+}
+.cb-tfnav a {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer; user-select: none;
+  transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.cb-tfnav a:hover { color: var(--text-primary); border-color: var(--border-dim); }
+.cb-tfnav a.active {
+  border-color: var(--nox-gold);
+  background: var(--nox-gold-dim);
+  color: var(--nox-gold);
+}
+.cb-tfnav a .tab-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; font-weight: 700;
+  color: var(--text-muted);
+}
+.cb-tfnav a.active .tab-count { color: var(--nox-gold); }
+
+.cb-tf-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+table.cb {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.76rem;
+  table-layout: auto;
+}
+table.cb th, table.cb td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(39,39,42,0.5);
+  text-align: left;
+  white-space: nowrap;
+}
+table.cb th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.64rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  position: sticky; top: 0;
+}
+table.cb td {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+table.cb tr:hover { background: var(--bg-hover); }
+table.cb td.tk {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800; font-size: 0.86rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+table.cb td.tk a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  transition: border-color 0.15s, color 0.15s;
+}
+table.cb td.tk a:hover {
+  color: var(--nox-gold);
+  border-bottom-color: var(--nox-gold);
+}
+table.cb td.num.pos { color: var(--nox-green); }
+table.cb td.num.neg { color: var(--nox-red); }
+table.cb td.muted { color: var(--text-muted); }
+
+.st-pill, .tri-pill, .fit-pill {
+  display: inline-block; padding: 2px 8px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.st-trig { background: rgba(122,158,122,0.14); color: var(--nox-green); border-color: rgba(122,158,122,0.40); }
+.st-pre  { background: rgba(201,169,110,0.16); color: var(--nox-gold);  border-color: rgba(201,169,110,0.42); }
+.st-ext  { background: rgba(122,143,165,0.12); color: var(--nox-blue);  border-color: rgba(122,143,165,0.30); }
+
+.tri-asc  { background: rgba(122,158,122,0.10); color: var(--nox-green); border-color: rgba(122,158,122,0.30); }
+.tri-sym  { background: rgba(201,169,110,0.10); color: var(--nox-gold); border-color: rgba(201,169,110,0.32); }
+.tri-desc { background: rgba(168,106,106,0.12); color: var(--nox-red);   border-color: rgba(168,106,106,0.32); }
+
+.fit-pill {
+  font-size: 0.58rem; padding: 1px 6px; border-radius: 4px;
+}
+.fit-tight { background: rgba(122,158,122,0.10); color: var(--nox-green); border-color: rgba(122,158,122,0.30); }
+.fit-loose { background: rgba(122,143,165,0.10); color: var(--nox-blue); border-color: rgba(122,143,165,0.30); }
+.fit-rough { background: rgba(168,106,106,0.10); color: var(--nox-red); border-color: rgba(168,106,106,0.30); }
+
+.tier-pill {
+  display: inline-block; padding: 1px 7px; border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.62rem; font-weight: 800;
+  border: 1px solid var(--border-subtle);
+}
+.tier-A { color: var(--nox-gold); border-color: rgba(201,169,110,0.45); background: rgba(201,169,110,0.10); }
+.tier-B { color: var(--text-secondary); }
+
+.tf-chip {
+  display: inline-block; padding: 1px 5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  margin-right: 2px;
+}
+.tf-chip.tr { color: var(--nox-orange); border-color: rgba(168,135,106,0.35); }
+
+.stack-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem;
+}
+.stack-item {
+  background: rgba(6,7,9,0.55);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+}
+.stack-item .stk-tk {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800; font-size: 1rem;
+  color: #fff;
+  margin-right: 0.45rem;
+}
+.stack-item .stk-tk a { color: #fff; text-decoration: none; }
+.stack-item .stk-tk a:hover { color: var(--nox-gold); }
+.stack-item .stk-n {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--nox-gold);
+  margin-right: 0.4rem;
+}
+.stack-item .stk-fams { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+.cb-empty {
+  text-align: center;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 1rem 0;
+  font-size: 0.84rem;
+}
+
+.cb-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.cb-footer code {
+  background: var(--bg-elevated);
+  padding: 1px 6px; border-radius: 3px;
+  color: var(--text-secondary);
+}
+
+.cb-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.cb-index-tile {
+  background: rgba(199,189,190,0.07);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+  display: block;
+}
+.cb-index-tile:hover { border-color: var(--nox-gold); transform: translateY(-2px); }
+.cb-index-tile .tile-tf {
+  font-family: var(--font-display);
+  font-size: 0.66rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.cb-index-tile .tile-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0.25rem 0;
+}
+.cb-index-tile .tile-n {
+  font-family: var(--font-mono);
+  font-size: 0.84rem; color: var(--nox-gold); font-weight: 700;
+}
+.cb-index-tile .tile-note {
+  font-family: var(--font-mono);
+  font-size: 0.66rem; color: var(--text-secondary);
+  margin-top: 0.4rem; letter-spacing: 0.02em;
+}
+
+.subtype-summary {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 0.7rem;
+}
+.subtype-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+.subtype-chip b { color: #fff; font-weight: 700; }
+
+</style>
+</head>
+<body>
+<script id="triangle-break-data" type="application/json">{"schema_version": 2, "system": "triangle_break", "page": "index", "asof": "2026-05-03", "tf_totals": {"5h": 27, "1d": 21, "1w": 33, "1M": 12}, "grand_total": 93, "subtype_counts": {"symmetric": 83, "descending": 4, "ascending": 6}, "stack_count": 9, "tier_a_per_tf": {"5h": ["OZSUB"], "1d": ["BURCE", "KMPUR"], "1w": ["AKSA"], "1M": []}, "trigger_per_tf": {"5h": ["CELHA"], "1d": ["MAKTK", "MTRKS"], "1w": ["ICUGS", "ULUUN", "BESLR", "SANKO"], "1M": ["KRDMD", "INDES", "ISDMR", "SOKE", "KMPUR", "AKSUE", "KAREL"]}}</script>
+
+<div class="aurora-bg">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
+</div>
+<div class="mesh-overlay"></div>
+
+<div class="briefing-container">
+
+  <div class="nox-header" style="margin-bottom:1.2rem;">
+    <div class="nox-logo">
+      TRIANGLE BREAK<span class="proj"> · v0.1</span>
+      <span class="mode">converging-line · close-only · long-only</span>
+    </div>
+    <div class="nox-meta">
+      As-of: <b>2026-05-03</b><br>
+      Aktif üçgen: <b>93</b><br>
+      generated 2026-05-02 22:30 UTC
+    </div>
+  </div>
+
+  <div class="nox-stats">
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
+      <span>5-saatlik</span><span class="cnt">27</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-green);"></span>
+      <span>Günlük</span><span class="cnt">21</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-blue);"></span>
+      <span>Haftalık</span><span class="cnt">33</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-orange);"></span>
+      <span>Aylık</span><span class="cnt">12</span></div>
+  </div>
+
+  <div class="cb-tfnav"><a href="triangle_break_scan_latest.html" class="active"><span>Index</span></a><a href="triangle_break_5h_latest.html" class=""><span>5 saatlik</span><span class="tab-count">N=27</span></a><a href="triangle_break_1d_latest.html" class=""><span>Günlük</span><span class="tab-count">N=21</span></a><a href="triangle_break_1w_latest.html" class=""><span>Haftalık</span><span class="tab-count">N=33</span></a><a href="triangle_break_1mo_latest.html" class=""><span>Aylık</span><span class="tab-count">N=12</span></a></div>
+
+  
+  <div class="cb-banner gold">
+    <b>NOX Triangle Break v0.1</b> — TF başına ayrı sayfalar. Daralan
+    iki trendline (asc / sym / desc) + apex henüz geçilmemiş + ≥%15
+    width contraction + long-only up-break. Cross-TF stack panel ≥2
+    TF'de fire eden ticker'ları topluyor.
+  </div>
+
+  <div class="subtype-summary"><span class="subtype-chip">▲ ASC <b>6</b></span><span class="subtype-chip">◆ SYM <b>83</b></span><span class="subtype-chip">▼ DESC <b>4</b></span></div>
+
+  <div class="cb-index-grid">
+    <a class="cb-index-tile" href="triangle_break_5h_latest.html"><div class="tile-tf" style="color:var(--nox-gold);">5h</div><div class="tile-name">5 saatlik</div><div class="tile-n">N=27 · Tier-A 1</div><div class="tile-note">TV-aligned 5h — 09:00 + 14:00 binleri (BIST seans-içi).</div></a><a class="cb-index-tile" href="triangle_break_1d_latest.html"><div class="tile-tf" style="color:var(--nox-green);">1d</div><div class="tile-name">Günlük</div><div class="tile-n">N=21 · Tier-A 2</div><div class="tile-note">Günlük bar (TR günü, 18:10 closing-price kapanışı).</div></a><a class="cb-index-tile" href="triangle_break_1w_latest.html"><div class="tile-tf" style="color:var(--nox-blue);">1w</div><div class="tile-name">Haftalık</div><div class="tile-n">N=33 · Tier-A 1</div><div class="tile-note">Haftalık bar — TV gibi Pazartesi etiketi; data anchor Cuma kapanışı.</div></a><a class="cb-index-tile" href="triangle_break_1mo_latest.html"><div class="tile-tf" style="color:var(--nox-orange);">1M</div><div class="tile-name">Aylık</div><div class="tile-n">N=12 · Tier-A 0</div><div class="tile-note">Aylık bar — TV gibi ayın 1&#x27;i etiketi; data anchor ayın son iş günü.</div></a>
+  </div>
+
+  <div class="cb-card"><div class="card-title">Cross-TF Stack <b>· ≥2 TF</b><span class="n">— top 9 / 9 ticker</span></div><div class="stack-grid"><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ALTNY" target="_blank" rel="noopener">ALTNY</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1M</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:HLGYO" target="_blank" rel="noopener">HLGYO</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ICBCT" target="_blank" rel="noopener">ICBCT</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_5h</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:INDES" target="_blank" rel="noopener">INDES</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1w</span><span class="tf-chip tr">tr_1M</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:INGRM" target="_blank" rel="noopener">INGRM</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ISDMR" target="_blank" rel="noopener">ISDMR</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1M</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:KMPUR" target="_blank" rel="noopener">KMPUR</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1M</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:KRGYO" target="_blank" rel="noopener">KRGYO</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_5h</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ORMA" target="_blank" rel="noopener">ORMA</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div></div></div>
+
+
+  <div class="cb-footer">
+    Pipeline: <code>triangle_break/</code> · close-only pivots · OLS line fits ·
+    4 aile (5h/1d/1w/1M) · subtypes asc/sym/desc.<br>
+    Driver: <code>tools/triangle_break_html.py</code>. Tier A = ≥3 H + ≥3 L pivot touch.
+    Convergence gates: bars_to_apex ≥ 1 (henüz expire değil) ·
+    width_contraction &lt; 0.85 (≥%15 sıkışma).<br>
+    Veri: <code>output/extfeed_intraday_1h_3y_master.parquet</code> (3y, BIST 607 evren).<br>
+    <b>Descriptive only</b> — backtest/ML çalışması yok. Expanding/ambiguous reddedilir.
+  </div>
+
+</div>
+
+</body>
+</html>

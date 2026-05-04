@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOX MB/BB Scanner · Index — 2026-05-04</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+.briefing-container {
+  position: relative; z-index: 1;
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+
+.mb-stack { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+
+.mb-card {
+  background: rgba(199,189,190,0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: none;
+  border-radius: 16px;
+  padding: 0.9rem 1rem 1.1rem;
+  position: relative;
+  overflow-x: auto;
+}
+.mb-card .card-title {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 0.55rem;
+}
+.mb-card .card-title b { color: var(--nox-gold); font-weight: 700; }
+.mb-card .card-title .freq { color: var(--text-secondary); font-weight:500; }
+.mb-card .card-title .n { color: var(--text-secondary); font-weight: 500; margin-left: 0.4rem; }
+
+.mb-banner {
+  background: rgba(122,143,165,0.08);
+  border: 1px solid rgba(122,143,165,0.30);
+  border-left: 3px solid var(--nox-blue);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.0rem;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.mb-banner b { color: var(--nox-blue); }
+.mb-banner.gold {
+  background: rgba(201,169,110,0.07);
+  border-color: rgba(201,169,110,0.30);
+  border-left-color: var(--nox-gold);
+}
+.mb-banner.gold b { color: var(--nox-gold); }
+
+.mb-tfnav {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 1rem;
+}
+.mb-tfnav a {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer; user-select: none;
+  transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.mb-tfnav a:hover { color: var(--text-primary); border-color: var(--border-dim); }
+.mb-tfnav a.active {
+  border-color: var(--nox-gold);
+  background: var(--nox-gold-dim);
+  color: var(--nox-gold);
+}
+.mb-tfnav a .tab-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; font-weight: 700;
+  color: var(--text-muted);
+}
+.mb-tfnav a.active .tab-count { color: var(--nox-gold); }
+
+.mb-tf-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+table.mb {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.76rem;
+  table-layout: auto;
+}
+table.mb th, table.mb td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(39,39,42,0.5);
+  text-align: left;
+  white-space: nowrap;
+}
+table.mb th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.64rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  position: sticky; top: 0;
+}
+table.mb td {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+table.mb tr:hover { background: var(--bg-hover); }
+table.mb td.tk {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800; font-size: 0.86rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+table.mb td.tk a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  transition: border-color 0.15s, color 0.15s;
+}
+table.mb td.tk a:hover {
+  color: var(--nox-gold);
+  border-bottom-color: var(--nox-gold);
+}
+table.mb td.score {
+  color: var(--nox-gold); font-weight: 700;
+}
+table.mb td.num.pos { color: var(--nox-green); }
+table.mb td.num.neg { color: var(--nox-red); }
+table.mb td.muted { color: var(--text-muted); }
+
+.st-pill {
+  display: inline-block; padding: 2px 8px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.st-retest { background: rgba(201,169,110,0.18); color: var(--nox-gold); border-color: rgba(201,169,110,0.45); }
+.st-above  { background: rgba(122,158,122,0.13); color: var(--nox-green); border-color: rgba(122,158,122,0.35); }
+.st-mit    { background: rgba(122,143,165,0.12); color: var(--nox-blue); border-color: rgba(122,143,165,0.30); }
+
+.rk-pill {
+  display: inline-block; padding: 1px 6px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  background: var(--bg-elevated);
+}
+.rk-deep { color: var(--nox-gold); border-color: rgba(201,169,110,0.45); background: rgba(201,169,110,0.10); }
+.rk-shallow { color: var(--nox-blue); border-color: rgba(122,143,165,0.35); background: rgba(122,143,165,0.10); }
+.rk-no { color: var(--text-muted); }
+
+.tf-chip {
+  display: inline-block; padding: 1px 5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  margin-right: 2px;
+}
+.tf-chip.mb { color: var(--nox-gold); border-color: rgba(201,169,110,0.30); }
+.tf-chip.bb { color: var(--nox-orange); border-color: rgba(168,135,106,0.30); }
+
+.stack-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem;
+}
+.stack-item {
+  background: rgba(6,7,9,0.55);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+}
+.stack-item .stk-tk {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800; font-size: 1rem;
+  color: #fff;
+  margin-right: 0.45rem;
+}
+.stack-item .stk-tk a {
+  color: #fff;
+  text-decoration: none;
+}
+.stack-item .stk-tk a:hover { color: var(--nox-gold); }
+.stack-item .stk-n {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--nox-gold);
+  margin-right: 0.4rem;
+}
+.stack-item .stk-fams { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+.mb-empty {
+  text-align: center;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 1rem 0;
+  font-size: 0.84rem;
+}
+
+.mb-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.mb-footer code {
+  background: var(--bg-elevated);
+  padding: 1px 6px; border-radius: 3px;
+  color: var(--text-secondary);
+}
+
+.mb-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.mb-index-tile {
+  background: rgba(199,189,190,0.07);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+  display: block;
+}
+.mb-index-tile:hover { border-color: var(--nox-gold); transform: translateY(-2px); }
+.mb-index-tile .tile-tf {
+  font-family: var(--font-display);
+  font-size: 0.66rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.mb-index-tile .tile-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0.25rem 0;
+}
+.mb-index-tile .tile-n {
+  font-family: var(--font-mono);
+  font-size: 0.84rem; color: var(--nox-gold); font-weight: 700;
+}
+.mb-index-tile .tile-note {
+  font-family: var(--font-mono);
+  font-size: 0.66rem; color: var(--text-secondary);
+  margin-top: 0.4rem; letter-spacing: 0.02em;
+}
+
+</style>
+</head>
+<body>
+<script id="mb-scanner-data" type="application/json">{"schema_version": 2, "system": "mb_scanner", "page": "index", "asof": "2026-05-04", "fam_n": {"mb_5h": 454, "bb_5h": 420, "mb_1d": 405, "bb_1d": 391, "mb_1w": 182, "bb_1w": 144, "mb_1M": 92, "bb_1M": 15}, "tf_totals": {"5h": 874, "1d": 796, "1w": 326, "1M": 107}, "stack_count": 449}</script>
+
+<div class="aurora-bg">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
+</div>
+<div class="mesh-overlay"></div>
+
+<div class="briefing-container">
+
+  <div class="nox-header" style="margin-bottom:1.2rem;">
+    <div class="nox-logo">
+      MB/BB SCANNER<span class="proj"> · ICT/SMC</span>
+      <span class="mode">strict MSS · close-only · multi-quartet</span>
+    </div>
+    <div class="nox-meta">
+      As-of: <b>2026-05-04</b><br>
+      Aktif setup: <b>2103</b><br>
+      generated 2026-05-04 17:06 UTC
+    </div>
+  </div>
+
+  <div class="nox-stats">
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
+      <span>5-saatlik</span><span class="cnt">874</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-green);"></span>
+      <span>Günlük</span><span class="cnt">796</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-blue);"></span>
+      <span>Haftalık</span><span class="cnt">326</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-orange);"></span>
+      <span>Aylık</span><span class="cnt">107</span></div>
+  </div>
+
+  <div class="mb-tfnav"><a href="mb_scanner_scan_latest.html" class="active"><span>Index</span></a><a href="mb_scanner_5h_latest.html" class=""><span>5 saatlik</span><span class="tab-count">N=874</span></a><a href="mb_scanner_1d_latest.html" class=""><span>Günlük</span><span class="tab-count">N=796</span></a><a href="mb_scanner_1w_latest.html" class=""><span>Haftalık</span><span class="tab-count">N=326</span></a><a href="mb_scanner_1mo_latest.html" class=""><span>Aylık</span><span class="tab-count">N=107</span></a></div>
+
+  
+  <div class="mb-banner gold">
+    <b>NOX MB/BB Scanner</b> — TF başına ayrı sayfalar. Cross-TF stack panel
+    ≥3 aile fire eden ticker'ları topluyor. Ticker üstüne tıkla → TV grafik;
+    hover et → pivot tarihleri. Score = freshness × state × BoS · retest · nesting.
+  </div>
+
+  <div class="mb-index-grid">
+    <a class="mb-index-tile" href="mb_scanner_5h_latest.html"><div class="tile-tf" style="color:var(--nox-gold);">5h</div><div class="tile-name">5 saatlik</div><div class="tile-n">N=874 · MB 454 · BB 420</div><div class="tile-note">TV-aligned 5h — 09:00 + 14:00 binleri (BIST seans-içi).</div></a><a class="mb-index-tile" href="mb_scanner_1d_latest.html"><div class="tile-tf" style="color:var(--nox-green);">1d</div><div class="tile-name">Günlük</div><div class="tile-n">N=796 · MB 405 · BB 391</div><div class="tile-note">Günlük bar (TR günü, 18:10 closing-price kapanışı).</div></a><a class="mb-index-tile" href="mb_scanner_1w_latest.html"><div class="tile-tf" style="color:var(--nox-blue);">1w</div><div class="tile-name">Haftalık</div><div class="tile-n">N=326 · MB 182 · BB 144</div><div class="tile-note">Haftalık bar — TV gibi Pazartesi (hafta-başı) etiketi gösterilir; data anchor Cuma kapanışı.</div></a><a class="mb-index-tile" href="mb_scanner_1mo_latest.html"><div class="tile-tf" style="color:var(--nox-orange);">1M</div><div class="tile-name">Aylık</div><div class="tile-n">N=107 · MB 92 · BB 15</div><div class="tile-note">Aylık bar — TV gibi ayın 1&#x27;i etiketi gösterilir; data anchor ayın son iş günü.</div></a>
+  </div>
+
+  <div class="mb-card"><div class="card-title">Cross-TF Stack <b>· ≥3 aile</b><span class="n">— top 24 / 449 ticker</span></div><div class="stack-grid"><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:AEFES" target="_blank" rel="noopener">AEFES</a></span><span class="stk-n">×7</span><div class="stk-fams"><span class="tf-chip bb">bb_1M</span><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:DOHOL" target="_blank" rel="noopener">DOHOL</a></span><span class="stk-n">×7</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:PAGYO" target="_blank" rel="noopener">PAGYO</a></span><span class="stk-n">×7</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:TURSG" target="_blank" rel="noopener">TURSG</a></span><span class="stk-n">×7</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:A1YEN" target="_blank" rel="noopener">A1YEN</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ADEL" target="_blank" rel="noopener">ADEL</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:AGYO" target="_blank" rel="noopener">AGYO</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ARDYZ" target="_blank" rel="noopener">ARDYZ</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ARMGD" target="_blank" rel="noopener">ARMGD</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ASUZU" target="_blank" rel="noopener">ASUZU</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1M</span><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:AYEN" target="_blank" rel="noopener">AYEN</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:BEYAZ" target="_blank" rel="noopener">BEYAZ</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:BIZIM" target="_blank" rel="noopener">BIZIM</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:BYDNR" target="_blank" rel="noopener">BYDNR</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:CRDFA" target="_blank" rel="noopener">CRDFA</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:DCTTR" target="_blank" rel="noopener">DCTTR</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:EGPRO" target="_blank" rel="noopener">EGPRO</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:GEREL" target="_blank" rel="noopener">GEREL</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:GSDHO" target="_blank" rel="noopener">GSDHO</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:GWIND" target="_blank" rel="noopener">GWIND</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1M</span><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:GZNMI" target="_blank" rel="noopener">GZNMI</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:KAREL" target="_blank" rel="noopener">KAREL</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:KRDMB" target="_blank" rel="noopener">KRDMB</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1M</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:KTSKR" target="_blank" rel="noopener">KTSKR</a></span><span class="stk-n">×6</span><div class="stk-fams"><span class="tf-chip bb">bb_1d</span><span class="tf-chip bb">bb_1w</span><span class="tf-chip bb">bb_5h</span><span class="tf-chip mb">mb_1d</span><span class="tf-chip mb">mb_1w</span><span class="tf-chip mb">mb_5h</span></div></div></div></div>
+
+
+  <div class="mb-footer">
+    Pipeline: <code>mb_scanner/</code> · close-only pivots · multi-quartet schema v0.3 ·
+    8 aile (mb/bb × 5h/1d/1w/1M).<br>
+    Driver: <code>tools/mb_scanner_html.py</code> · scoring: <code>mb_scanner/rank.py</code>.<br>
+    Veri: <code>output/extfeed_intraday_1h_3y_master.parquet</code> (3y, BIST 607 evren).
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -444,7 +444,7 @@ details.sbt-details > .body {
 </style>
 </head>
 <body>
-<script id="sbt1700-data" type="application/json">{"schema_version": 1, "system": "SBT-1700/E04_C01", "scan_date": "2026-05-05", "cutoffs": {"q80": 3.192879580703899, "q90": 3.695062729605979}, "picks": []}</script>
+<script id="sbt1700-data" type="application/json">{"schema_version": 1, "system": "SBT-1700/E04_C01", "scan_date": "2026-05-05", "cutoffs": {"q80": 3.192879580703899, "q90": 3.695062729605979}, "picks": [{"ticker": "SEKFK", "score": 4.3254, "tier": "D10"}]}</script>
 
 <div class="aurora-bg">
   <div class="aurora-layer aurora-layer-1"></div>
@@ -463,7 +463,7 @@ details.sbt-details > .body {
     <div class="nox-meta">
       As-of close: <b>2026-05-05</b><br>
       n_train (TRAIN+VAL) = <b>706</b><br>
-      generated 2026-05-05 13:50 UTC
+      generated 2026-05-05 16:04 UTC
     </div>
   </div>
 
@@ -471,9 +471,9 @@ details.sbt-details > .body {
     <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
       <span>Tetikli</span><span class="cnt">2</span></div>
     <div class="nox-stat"><span class="dot" style="background:var(--nox-green);"></span>
-      <span>Top-quintile</span><span class="cnt">0</span></div>
+      <span>Top-quintile</span><span class="cnt">1</span></div>
     <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
-      <span>Top-decile</span><span class="cnt">0</span></div>
+      <span>Top-decile</span><span class="cnt">1</span></div>
     <div class="nox-stat"><span class="dot" style="background:var(--nox-red);"></span>
       <span>q80 cutoff</span><span class="cnt">3.193</span></div>
   </div>
@@ -486,60 +486,27 @@ details.sbt-details > .body {
     pencere, top-5 winners = 62% pozitif R) caveats geçerli.
   </div>
 
-  <div class="sbt-banner info"><b>BELOW CUTOFF</b> · 2 aday tetikledi ama hiçbiri TEST top-quintile eşiğini (q80 = 3.193) aşmadı. Locked policy altında NO-ENTRY günü.</div>
+  <div class="sbt-banner gold"><b>TOP-QUINTILE PASS</b> · 1 aday locked P2 cohort eşiğini aştı: SEKFK (4.325). Paper portföye uygun.</div>
 
   <div class="sbt-grid">
     <div>
       
     <div class="sbt-card">
-      <div class="card-title">Aday · <b>NTGAZ</b></div>
-      <div class="sbt-cand">
-        <span class="ticker">NTGAZ</span>
-        <span class="pill below">BELOW TOP-Q</span>
-        
-        <span class="score-chip">score 2.4781</span>
-        <span class="rank-chip">cohort rank #52 / 124</span>
-      </div>
-      <div class="sbt-kv">
-        <div class="row"><span class="k">Entry (17:00 open)</span><span class="v gold">13.7800</span></div>
-        <div class="row"><span class="k">ATR14 prior</span><span class="v">0.4157</span></div>
-        <div class="row"><span class="k">Initial stop (−2.0 ATR)</span><span class="v red">12.9486</span></div>
-        <div class="row"><span class="k">Stop distance</span><span class="v red">+6.03%</span></div>
-        <div class="row"><span class="k">+1R (trail arm)</span><span class="v green">14.1957</span></div>
-        <div class="row"><span class="k">+2R level</span><span class="v green">14.6114</span></div>
-        <div class="row"><span class="k">box_top</span><span class="v">12.8200</span></div>
-        <div class="row"><span class="k">low_1700</span><span class="v">13.3700</span></div>
-        <div class="row"><span class="k">intraday cov.</span><span class="v">1.00</span></div>
-        <div class="row"><span class="k">Round-trip cost</span><span class="v">+0.15%</span></div>
-      </div>
-      <div style="margin-top:0.8rem;padding-top:0.55rem;border-top:1px solid var(--border-subtle);">
-        <div class="card-title" style="margin-bottom:0.4rem;">P2 sizing · 1M TRY ref · binding: <b>risk_budget</b></div>
-        <div class="sbt-kv">
-          <div class="row"><span class="k">Risk budget</span><span class="v">5000 TRY</span></div>
-          <div class="row"><span class="k">Quantity</span><span class="v">6013 pay</span></div>
-          <div class="row"><span class="k">Notional</span><span class="v">82859 TRY</span></div>
-          <div class="row"><span class="k">Actual risk</span><span class="v">4999 TRY</span></div>
-        </div>
-      </div>
-    </div>
-    
-
-    <div class="sbt-card">
       <div class="card-title">Aday · <b>SEKFK</b></div>
       <div class="sbt-cand">
         <span class="ticker">SEKFK</span>
-        <span class="pill below">BELOW TOP-Q</span>
-        
-        <span class="score-chip">score 1.6282</span>
-        <span class="rank-chip">cohort rank #100 / 124</span>
+        <span class="pill in-decile">TOP-DECILE</span>
+        <span class="sbt1700-badge d10" title="SBT-1700 / E04_C01 paper-pick · top-decile">🎯 SBT-1700 · D10</span>
+        <span class="score-chip">score 4.3254</span>
+        <span class="rank-chip">cohort rank #9 / 124</span>
       </div>
       <div class="sbt-kv">
-        <div class="row"><span class="k">Entry (17:00 open)</span><span class="v gold">12.0900</span></div>
+        <div class="row"><span class="k">Entry (17:00 open)</span><span class="v gold">11.9800</span></div>
         <div class="row"><span class="k">ATR14 prior</span><span class="v">0.3121</span></div>
-        <div class="row"><span class="k">Initial stop (−2.0 ATR)</span><span class="v red">11.4657</span></div>
-        <div class="row"><span class="k">Stop distance</span><span class="v red">+5.16%</span></div>
-        <div class="row"><span class="k">+1R (trail arm)</span><span class="v green">12.4021</span></div>
-        <div class="row"><span class="k">+2R level</span><span class="v green">12.7143</span></div>
+        <div class="row"><span class="k">Initial stop (−2.0 ATR)</span><span class="v red">11.3557</span></div>
+        <div class="row"><span class="k">Stop distance</span><span class="v red">+5.21%</span></div>
+        <div class="row"><span class="k">+1R (trail arm)</span><span class="v green">12.2921</span></div>
+        <div class="row"><span class="k">+2R level</span><span class="v green">12.6043</span></div>
         <div class="row"><span class="k">box_top</span><span class="v">11.2900</span></div>
         <div class="row"><span class="k">low_1700</span><span class="v">11.0400</span></div>
         <div class="row"><span class="k">intraday cov.</span><span class="v">1.00</span></div>
@@ -550,8 +517,41 @@ details.sbt-details > .body {
         <div class="sbt-kv">
           <div class="row"><span class="k">Risk budget</span><span class="v">5000 TRY</span></div>
           <div class="row"><span class="k">Quantity</span><span class="v">8009 pay</span></div>
-          <div class="row"><span class="k">Notional</span><span class="v">96829 TRY</span></div>
+          <div class="row"><span class="k">Notional</span><span class="v">95948 TRY</span></div>
           <div class="row"><span class="k">Actual risk</span><span class="v">5000 TRY</span></div>
+        </div>
+      </div>
+    </div>
+    
+
+    <div class="sbt-card">
+      <div class="card-title">Aday · <b>NTGAZ</b></div>
+      <div class="sbt-cand">
+        <span class="ticker">NTGAZ</span>
+        <span class="pill below">BELOW TOP-Q</span>
+        
+        <span class="score-chip">score 1.6732</span>
+        <span class="rank-chip">cohort rank #98 / 124</span>
+      </div>
+      <div class="sbt-kv">
+        <div class="row"><span class="k">Entry (17:00 open)</span><span class="v gold">13.8700</span></div>
+        <div class="row"><span class="k">ATR14 prior</span><span class="v">0.4157</span></div>
+        <div class="row"><span class="k">Initial stop (−2.0 ATR)</span><span class="v red">13.0386</span></div>
+        <div class="row"><span class="k">Stop distance</span><span class="v red">+5.99%</span></div>
+        <div class="row"><span class="k">+1R (trail arm)</span><span class="v green">14.2857</span></div>
+        <div class="row"><span class="k">+2R level</span><span class="v green">14.7014</span></div>
+        <div class="row"><span class="k">box_top</span><span class="v">12.8200</span></div>
+        <div class="row"><span class="k">low_1700</span><span class="v">13.3700</span></div>
+        <div class="row"><span class="k">intraday cov.</span><span class="v">1.00</span></div>
+        <div class="row"><span class="k">Round-trip cost</span><span class="v">+0.15%</span></div>
+      </div>
+      <div style="margin-top:0.8rem;padding-top:0.55rem;border-top:1px solid var(--border-subtle);">
+        <div class="card-title" style="margin-bottom:0.4rem;">P2 sizing · 1M TRY ref · binding: <b>risk_budget</b></div>
+        <div class="sbt-kv">
+          <div class="row"><span class="k">Risk budget</span><span class="v">5000 TRY</span></div>
+          <div class="row"><span class="k">Quantity</span><span class="v">6013 pay</span></div>
+          <div class="row"><span class="k">Notional</span><span class="v">83400 TRY</span></div>
+          <div class="row"><span class="k">Actual risk</span><span class="v">4999 TRY</span></div>
         </div>
       </div>
     </div>

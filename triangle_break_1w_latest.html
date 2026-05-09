@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOX Triangle Break · Haftalık — 2026-05-08</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+.briefing-container {
+  position: relative; z-index: 1;
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 1.5rem 2rem;
+}
+
+
+.cb-stack { display: grid; grid-template-columns: 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+
+.cb-card {
+  background: rgba(199,189,190,0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: none;
+  border-radius: 16px;
+  padding: 0.9rem 1rem 1.1rem;
+  position: relative;
+  overflow-x: auto;
+}
+.cb-card .card-title {
+  font-family: var(--font-display);
+  font-size: 0.72rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+  margin-bottom: 0.55rem;
+}
+.cb-card .card-title b { color: var(--nox-gold); font-weight: 700; }
+.cb-card .card-title .n { color: var(--text-secondary); font-weight: 500; margin-left: 0.4rem; }
+
+.cb-banner {
+  background: rgba(122,143,165,0.08);
+  border: 1px solid rgba(122,143,165,0.30);
+  border-left: 3px solid var(--nox-blue);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.0rem;
+  font-size: 0.82rem;
+  color: var(--text-primary);
+  line-height: 1.5;
+}
+.cb-banner b { color: var(--nox-blue); }
+.cb-banner.gold {
+  background: rgba(201,169,110,0.07);
+  border-color: rgba(201,169,110,0.30);
+  border-left-color: var(--nox-gold);
+}
+.cb-banner.gold b { color: var(--nox-gold); }
+
+.cb-tfnav {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 1rem;
+}
+.cb-tfnav a {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: 999px;
+  padding: 7px 16px;
+  font-family: var(--font-display);
+  font-size: 0.78rem; font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  cursor: pointer; user-select: none;
+  transition: all 0.15s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.cb-tfnav a:hover { color: var(--text-primary); border-color: var(--border-dim); }
+.cb-tfnav a.active {
+  border-color: var(--nox-gold);
+  background: var(--nox-gold-dim);
+  color: var(--nox-gold);
+}
+.cb-tfnav a .tab-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem; font-weight: 700;
+  color: var(--text-muted);
+}
+.cb-tfnav a.active .tab-count { color: var(--nox-gold); }
+
+.cb-tf-note {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.02em;
+}
+
+table.cb {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.76rem;
+  table-layout: auto;
+}
+table.cb th, table.cb td {
+  padding: 6px 8px;
+  border-bottom: 1px solid rgba(39,39,42,0.5);
+  text-align: left;
+  white-space: nowrap;
+}
+table.cb th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-family: var(--font-display);
+  font-size: 0.64rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  position: sticky; top: 0;
+}
+table.cb td {
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+}
+table.cb tr:hover { background: var(--bg-hover); }
+table.cb td.tk {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800; font-size: 0.86rem;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+table.cb td.tk a {
+  color: #fff;
+  text-decoration: none;
+  border-bottom: 1px dashed rgba(255,255,255,0.25);
+  transition: border-color 0.15s, color 0.15s;
+}
+table.cb td.tk a:hover {
+  color: var(--nox-gold);
+  border-bottom-color: var(--nox-gold);
+}
+table.cb td.num.pos { color: var(--nox-green); }
+table.cb td.num.neg { color: var(--nox-red); }
+table.cb td.muted { color: var(--text-muted); }
+
+.st-pill, .tri-pill, .fit-pill {
+  display: inline-block; padding: 2px 8px;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  border: 1px solid transparent;
+}
+.st-trig { background: rgba(122,158,122,0.14); color: var(--nox-green); border-color: rgba(122,158,122,0.40); }
+.st-pre  { background: rgba(201,169,110,0.16); color: var(--nox-gold);  border-color: rgba(201,169,110,0.42); }
+.st-ext  { background: rgba(122,143,165,0.12); color: var(--nox-blue);  border-color: rgba(122,143,165,0.30); }
+
+.tri-asc  { background: rgba(122,158,122,0.10); color: var(--nox-green); border-color: rgba(122,158,122,0.30); }
+.tri-sym  { background: rgba(201,169,110,0.10); color: var(--nox-gold); border-color: rgba(201,169,110,0.32); }
+.tri-desc { background: rgba(168,106,106,0.12); color: var(--nox-red);   border-color: rgba(168,106,106,0.32); }
+
+.fit-pill {
+  font-size: 0.58rem; padding: 1px 6px; border-radius: 4px;
+}
+.fit-tight { background: rgba(122,158,122,0.10); color: var(--nox-green); border-color: rgba(122,158,122,0.30); }
+.fit-loose { background: rgba(122,143,165,0.10); color: var(--nox-blue); border-color: rgba(122,143,165,0.30); }
+.fit-rough { background: rgba(168,106,106,0.10); color: var(--nox-red); border-color: rgba(168,106,106,0.30); }
+
+.tier-pill {
+  display: inline-block; padding: 1px 7px; border-radius: 4px;
+  font-family: var(--font-display);
+  font-size: 0.62rem; font-weight: 800;
+  border: 1px solid var(--border-subtle);
+}
+.tier-A { color: var(--nox-gold); border-color: rgba(201,169,110,0.45); background: rgba(201,169,110,0.10); }
+.tier-B { color: var(--text-secondary); }
+
+.tf-chip {
+  display: inline-block; padding: 1px 5px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  background: var(--bg-card);
+  margin-right: 2px;
+}
+.tf-chip.tr { color: var(--nox-orange); border-color: rgba(168,135,106,0.35); }
+
+.stack-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.5rem;
+}
+.stack-item {
+  background: rgba(6,7,9,0.55);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
+  padding: 0.5rem 0.7rem;
+}
+.stack-item .stk-tk {
+  font-family: 'Inter', sans-serif;
+  font-weight: 800; font-size: 1rem;
+  color: #fff;
+  margin-right: 0.45rem;
+}
+.stack-item .stk-tk a { color: #fff; text-decoration: none; }
+.stack-item .stk-tk a:hover { color: var(--nox-gold); }
+.stack-item .stk-n {
+  font-family: var(--font-mono);
+  font-size: 0.7rem; font-weight: 700;
+  color: var(--nox-gold);
+  margin-right: 0.4rem;
+}
+.stack-item .stk-fams { font-family: var(--font-mono); font-size: 0.62rem; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+
+.cb-empty {
+  text-align: center;
+  font-family: var(--font-mono);
+  color: var(--text-muted);
+  padding: 1rem 0;
+  font-size: 0.84rem;
+}
+
+.cb-footer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.cb-footer code {
+  background: var(--bg-elevated);
+  padding: 1px 6px; border-radius: 3px;
+  color: var(--text-secondary);
+}
+
+.cb-index-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem; margin-bottom: 1.5rem;
+}
+.cb-index-tile {
+  background: rgba(199,189,190,0.07);
+  border: 1px solid var(--border-subtle);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s, transform 0.15s;
+  display: block;
+}
+.cb-index-tile:hover { border-color: var(--nox-gold); transform: translateY(-2px); }
+.cb-index-tile .tile-tf {
+  font-family: var(--font-display);
+  font-size: 0.66rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.cb-index-tile .tile-name {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.4rem; font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.01em;
+  margin: 0.25rem 0;
+}
+.cb-index-tile .tile-n {
+  font-family: var(--font-mono);
+  font-size: 0.84rem; color: var(--nox-gold); font-weight: 700;
+}
+.cb-index-tile .tile-note {
+  font-family: var(--font-mono);
+  font-size: 0.66rem; color: var(--text-secondary);
+  margin-top: 0.4rem; letter-spacing: 0.02em;
+}
+
+.subtype-summary {
+  display: flex; flex-wrap: wrap; gap: 6px;
+  margin-bottom: 0.7rem;
+}
+.subtype-chip {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+.subtype-chip b { color: #fff; font-weight: 700; }
+
+</style>
+</head>
+<body>
+<script id="triangle-break-data" type="application/json">{"schema_version": 2, "system": "triangle_break", "page": "1w", "asof": "2026-05-08", "tf_totals": {"5h": 43, "1d": 56, "1w": 52, "1M": 12}, "grand_total": 163, "subtype_counts": {"symmetric": 49, "descending": 2, "ascending": 1}, "stack_count": 14, "tier_a_tickers": ["AKSA", "SNICA", "VAKFN", "AKFGY"], "trigger_tickers": ["AKSA", "SNICA", "ULUUN", "BRLSM", "SAMAT", "PCILT", "PRDGS", "TUKAS", "DGATE", "ORMA", "PENTA", "BESLR", "BVSAN", "FONET", "LMKDC", "ONRYT", "AZTEK", "ACSEL", "INGRM", "IZMDC", "MIATK", "ATSYH", "VBTYZ", "SANEL", "HATSN", "IZINV", "TATGD", "ELITE", "ALGYO", "PETUN", "IHLGM", "ODAS", "PNSUT", "ENDAE", "ALTNY"]}</script>
+
+<div class="aurora-bg">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
+</div>
+<div class="mesh-overlay"></div>
+
+<div class="briefing-container">
+
+  <div class="nox-header" style="margin-bottom:1.2rem;">
+    <div class="nox-logo">
+      TRIANGLE BREAK<span class="proj"> · v0.1</span>
+      <span class="mode">converging-line · close-only · long-only</span>
+    </div>
+    <div class="nox-meta">
+      As-of: <b>2026-05-08</b><br>
+      Aktif üçgen: <b>163</b><br>
+      generated 2026-05-09 23:31 UTC
+    </div>
+  </div>
+
+  <div class="nox-stats">
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-gold);"></span>
+      <span>5-saatlik</span><span class="cnt">43</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-green);"></span>
+      <span>Günlük</span><span class="cnt">56</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-blue);"></span>
+      <span>Haftalık</span><span class="cnt">52</span></div>
+    <div class="nox-stat"><span class="dot" style="background:var(--nox-orange);"></span>
+      <span>Aylık</span><span class="cnt">12</span></div>
+  </div>
+
+  <div class="cb-tfnav"><a href="triangle_break_scan_latest.html" class=""><span>Index</span></a><a href="triangle_break_5h_latest.html" class=""><span>5 saatlik</span><span class="tab-count">N=43</span></a><a href="triangle_break_1d_latest.html" class=""><span>Günlük</span><span class="tab-count">N=56</span></a><a href="triangle_break_1w_latest.html" class="active"><span>Haftalık</span><span class="tab-count">N=52</span></a><a href="triangle_break_1mo_latest.html" class=""><span>Aylık</span><span class="tab-count">N=12</span></a></div>
+
+  
+  <div class="cb-banner">
+    <b>RESEARCH WATCHLIST · NOT LIVE.</b>
+    Daralan iki trendline (parallelism &gt; 0.25) + alt-tip filtre
+    (asc / sym / desc; expanding/ambiguous out) + apex henüz geçilmemiş
+    + ≥%15 width contraction. Long-only up-break.
+    State'ler: <b>TRIGGER</b> (asof'ta üst-line kırılım, gates pass),
+    <b>EXTENDED</b> (1-5 bar önce gates-pass kırılım),
+    <b>PRE-BREAK</b> (close ±%0.5 üst trendline, henüz kırılmadı veya
+    gates fail). Tier A = ≥3 H + ≥3 L pivot. Contract = width@asof /
+    width@first_pivot (düşük → daha sıkışmış). Ticker → TV grafik.
+  </div>
+
+  <div class="cb-card"><div class="card-title">Cross-TF Stack <b>· ≥2 TF</b><span class="n">— top 14 / 14 ticker</span></div><div class="stack-grid"><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:SNICA" target="_blank" rel="noopener">SNICA</a></span><span class="stk-n">×3</span><div class="stk-fams"><span class="tf-chip tr">tr_5h</span><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ACSEL" target="_blank" rel="noopener">ACSEL</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:AKSA" target="_blank" rel="noopener">AKSA</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:AKSUE" target="_blank" rel="noopener">AKSUE</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1w</span><span class="tf-chip tr">tr_1M</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:ALTNY" target="_blank" rel="noopener">ALTNY</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1w</span><span class="tf-chip tr">tr_1M</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:BRISA" target="_blank" rel="noopener">BRISA</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_5h</span><span class="tf-chip tr">tr_1d</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:BVSAN" target="_blank" rel="noopener">BVSAN</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:MAVI" target="_blank" rel="noopener">MAVI</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_5h</span><span class="tf-chip tr">tr_1d</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:MIATK" target="_blank" rel="noopener">MIATK</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:PENTA" target="_blank" rel="noopener">PENTA</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:PNSUT" target="_blank" rel="noopener">PNSUT</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:SAMAT" target="_blank" rel="noopener">SAMAT</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_1d</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:VBTYZ" target="_blank" rel="noopener">VBTYZ</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_5h</span><span class="tf-chip tr">tr_1w</span></div></div><div class="stack-item"><span class="stk-tk"><a href="https://www.tradingview.com/chart/?symbol=BIST:VKFYO" target="_blank" rel="noopener">VKFYO</a></span><span class="stk-n">×2</span><div class="stk-fams"><span class="tf-chip tr">tr_5h</span><span class="tf-chip tr">tr_1d</span></div></div></div></div>
+
+  <div class="cb-tf-note">Haftalık — Haftalık bar — TV gibi Pazartesi etiketi; data anchor Cuma kapanışı.</div>
+  <div class="cb-stack">
+    <div class="cb-card">
+      <div class="card-title">TRIANGLE · <b>tr_1w</b><span class="n">N=52</span></div>
+      <div class="subtype-summary"><span class="subtype-chip">▲ ASC <b>1</b></span><span class="subtype-chip">◆ SYM <b>49</b></span><span class="subtype-chip">▼ DESC <b>2</b></span></div>
+      <table class="cb"><thead><tr><th>#</th><th>Ticker</th><th>State</th><th>Subtype</th><th>Tier</th><th>Width</th><th>Contract</th><th>→Apex</th><th>H/L</th><th>S↑·%/bar</th><th>S↓·%/bar</th><th>Fit</th><th>Age</th><th>Brk-Age</th><th>Close</th><th>ATR%</th></tr></thead><tbody><tr><td class='muted'>1</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:AKSA" target="_blank" rel="noopener" title="First pivot: 2025-10-31 | Last pivot: 2026-04-17 | Apex: — (4 bar) | H/L pivots: 4/3 | Upper@asof: 10.64 | Lower@asof: 10.27 | Parallelism: 2.00 | Break: 2026-05-08">AKSA</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-A">A</span></td><td class='num'>3.4%</td><td class='num'>13.7%</td><td class='num'>4</td><td class='num'>4/3</td><td class='num neg'>-0.61</td><td class='num pos'>0.21</td><td><span class="fit-pill fit-tight">tight</span></td><td class='num'>27</td><td class='num'>0</td><td class='num'>11.20</td><td class='num'>8.2%</td></tr>
+<tr><td class='muted'>2</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:SNICA" target="_blank" rel="noopener" title="First pivot: 2025-09-12 | Last pivot: 2026-04-17 | Apex: — (15 bar) | H/L pivots: 3/3 | Upper@asof: 4.02 | Lower@asof: 3.58 | Parallelism: 0.81 | Break: 2026-05-08">SNICA</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-A">A</span></td><td class='num'>9.7%</td><td class='num'>31.2%</td><td class='num'>15</td><td class='num'>3/3</td><td class='num neg'>-1.12</td><td class='num neg'>-0.47</td><td><span class="fit-pill fit-tight">tight</span></td><td class='num'>34</td><td class='num'>0</td><td class='num'>4.51</td><td class='num'>7.2%</td></tr>
+<tr><td class='muted'>3</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:VAKFN" target="_blank" rel="noopener" title="First pivot: 2025-09-12 | Last pivot: 2026-04-17 | Apex: — (7 bar) | H/L pivots: 3/3 | Upper@asof: 1.89 | Lower@asof: 1.75 | Parallelism: 2.00">VAKFN</a></td><td><span class="st-pill st-pre">PRE-BREAK</span></td><td><span class="tri-pill tri-desc">▼ DESC</span></td><td><span class="tier-pill tier-A">A</span></td><td class='num'>7.2%</td><td class='num'>18.0%</td><td class='num'>7</td><td class='num'>3/3</td><td class='num neg'>-0.91</td><td class='num pos'>0.02</td><td><span class="fit-pill fit-tight">tight</span></td><td class='num'>34</td><td class='num'>—</td><td class='num'>1.88</td><td class='num'>7.5%</td></tr>
+<tr><td class='muted'>4</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:AKFGY" target="_blank" rel="noopener" title="First pivot: 2025-08-29 | Last pivot: 2026-03-27 | Apex: — (22 bar) | H/L pivots: 3/3 | Upper@asof: 3.05 | Lower@asof: 2.79 | Parallelism: 2.00">AKFGY</a></td><td><span class="st-pill st-pre">PRE-BREAK</span></td><td><span class="tri-pill tri-asc">▲ ASC</span></td><td><span class="tier-pill tier-A">A</span></td><td class='num'>8.5%</td><td class='num'>38.2%</td><td class='num'>22</td><td class='num'>3/3</td><td class='num neg'>-0.01</td><td class='num pos'>0.40</td><td><span class="fit-pill fit-tight">tight</span></td><td class='num'>36</td><td class='num'>—</td><td class='num'>3.06</td><td class='num'>7.1%</td></tr>
+<tr><td class='muted'>5</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:ULUUN" target="_blank" rel="noopener" title="First pivot: 2025-08-15 | Last pivot: 2026-03-27 | Apex: — (4 bar) | H/L pivots: 2/3 | Upper@asof: 7.95 | Lower@asof: 7.63 | Parallelism: 2.00 | Break: 2026-05-08">ULUUN</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>3.4%</td><td class='num'>9.5%</td><td class='num'>4</td><td class='num'>2/3</td><td class='num neg'>-0.25</td><td class='num pos'>0.81</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>38</td><td class='num'>0</td><td class='num'>9.49</td><td class='num'>8.3%</td></tr>
+<tr><td class='muted'>6</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:BRLSM" target="_blank" rel="noopener" title="First pivot: 2025-11-14 | Last pivot: 2026-04-17 | Apex: — (3 bar) | H/L pivots: 2/3 | Upper@asof: 15.37 | Lower@asof: 14.71 | Parallelism: 2.00 | Break: 2026-05-08">BRLSM</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>3.9%</td><td class='num'>11.5%</td><td class='num'>3</td><td class='num'>2/3</td><td class='num neg'>-0.94</td><td class='num pos'>0.40</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>25</td><td class='num'>0</td><td class='num'>16.80</td><td class='num'>10.4%</td></tr>
+<tr><td class='muted'>7</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:SAMAT" target="_blank" rel="noopener" title="First pivot: 2025-08-08 | Last pivot: 2026-03-27 | Apex: — (6 bar) | H/L pivots: 2/5 | Upper@asof: 5.25 | Lower@asof: 5.04 | Parallelism: 0.57 | Break: 2026-05-08">SAMAT</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>3.5%</td><td class='num'>12.7%</td><td class='num'>6</td><td class='num'>2/5</td><td class='num neg'>-1.33</td><td class='num neg'>-0.74</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>39</td><td class='num'>0</td><td class='num'>5.94</td><td class='num'>8.5%</td></tr>
+<tr><td class='muted'>8</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:PCILT" target="_blank" rel="noopener" title="First pivot: 2025-09-19 | Last pivot: 2026-04-24 | Apex: — (6 bar) | H/L pivots: 2/3 | Upper@asof: 29.18 | Lower@asof: 26.62 | Parallelism: 2.00 | Break: 2026-05-08">PCILT</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>8.0%</td><td class='num'>15.1%</td><td class='num'>6</td><td class='num'>2/3</td><td class='num neg'>-0.71</td><td class='num pos'>1.05</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>33</td><td class='num'>0</td><td class='num'>31.80</td><td class='num'>11.1%</td></tr>
+<tr><td class='muted'>9</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:PRDGS" target="_blank" rel="noopener" title="First pivot: 2025-08-22 | Last pivot: 2026-03-06 | Apex: — (7 bar) | H/L pivots: 2/3 | Upper@asof: 7.12 | Lower@asof: 6.71 | Parallelism: 2.00 | Break: 2026-05-08">PRDGS</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>4.4%</td><td class='num'>16.3%</td><td class='num'>7</td><td class='num'>2/3</td><td class='num neg'>-0.28</td><td class='num pos'>0.55</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>37</td><td class='num'>0</td><td class='num'>9.28</td><td class='num'>10.7%</td></tr>
+<tr><td class='muted'>10</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:TUKAS" target="_blank" rel="noopener" title="First pivot: 2025-08-01 | Last pivot: 2026-04-17 | Apex: — (11 bar) | H/L pivots: 2/5 | Upper@asof: 2.47 | Lower@asof: 2.22 | Parallelism: 0.98 | Break: 2026-05-08">TUKAS</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>9.5%</td><td class='num'>21.0%</td><td class='num'>11</td><td class='num'>2/5</td><td class='num neg'>-1.30</td><td class='num neg'>-0.44</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>40</td><td class='num'>0</td><td class='num'>2.64</td><td class='num'>7.6%</td></tr>
+<tr><td class='muted'>11</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:DGATE" target="_blank" rel="noopener" title="First pivot: 2025-08-22 | Last pivot: 2026-04-10 | Apex: — (11 bar) | H/L pivots: 2/3 | Upper@asof: 81.71 | Lower@asof: 72.75 | Parallelism: 2.00 | Break: 2026-05-08">DGATE</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>7.9%</td><td class='num'>23.4%</td><td class='num'>11</td><td class='num'>2/3</td><td class='num neg'>-0.23</td><td class='num pos'>0.83</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>37</td><td class='num'>0</td><td class='num'>113.30</td><td class='num'>8.4%</td></tr>
+<tr><td class='muted'>12</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:ORMA" target="_blank" rel="noopener" title="First pivot: 2025-08-22 | Last pivot: 2026-04-17 | Apex: — (13 bar) | H/L pivots: 2/3 | Upper@asof: 159.78 | Lower@asof: 148.40 | Parallelism: 0.84 | Break: 2026-05-08">ORMA</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>6.2%</td><td class='num'>26.0%</td><td class='num'>13</td><td class='num'>2/3</td><td class='num neg'>-0.85</td><td class='num neg'>-0.35</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>37</td><td class='num'>0</td><td class='num'>183.90</td><td class='num'>6.3%</td></tr>
+<tr><td class='muted'>13</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:PENTA" target="_blank" rel="noopener" title="First pivot: 2025-09-05 | Last pivot: 2026-04-17 | Apex: — (13 bar) | H/L pivots: 2/4 | Upper@asof: 13.94 | Lower@asof: 12.69 | Parallelism: 1.17 | Break: 2026-05-08">PENTA</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>7.9%</td><td class='num'>27.1%</td><td class='num'>13</td><td class='num'>2/4</td><td class='num neg'>-0.89</td><td class='num neg'>-0.23</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>35</td><td class='num'>0</td><td class='num'>15.80</td><td class='num'>7.0%</td></tr>
+<tr><td class='muted'>14</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:BESLR" target="_blank" rel="noopener" title="First pivot: 2025-08-08 | Last pivot: 2026-03-27 | Apex: — (16 bar) | H/L pivots: 2/3 | Upper@asof: 14.68 | Lower@asof: 13.02 | Parallelism: 2.00 | Break: 2026-05-08">BESLR</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>10.5%</td><td class='num'>29.3%</td><td class='num'>16</td><td class='num'>2/3</td><td class='num neg'>-0.45</td><td class='num pos'>0.29</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>39</td><td class='num'>0</td><td class='num'>15.83</td><td class='num'>8.5%</td></tr>
+<tr><td class='muted'>15</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:BVSAN" target="_blank" rel="noopener" title="First pivot: 2025-10-17 | Last pivot: 2026-03-06 | Apex: — (17 bar) | H/L pivots: 2/3 | Upper@asof: 121.46 | Lower@asof: 107.74 | Parallelism: 2.00 | Break: 2026-05-08">BVSAN</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>9.1%</td><td class='num'>37.3%</td><td class='num'>17</td><td class='num'>2/3</td><td class='num neg'>-0.47</td><td class='num pos'>0.23</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>29</td><td class='num'>0</td><td class='num'>150.50</td><td class='num'>7.6%</td></tr>
+<tr><td class='muted'>16</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:FONET" target="_blank" rel="noopener" title="First pivot: 2025-09-12 | Last pivot: 2026-04-17 | Apex: — (21 bar) | H/L pivots: 2/3 | Upper@asof: 4.89 | Lower@asof: 3.14 | Parallelism: 2.00 | Break: 2026-05-08">FONET</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>29.2%</td><td class='num'>38.5%</td><td class='num'>21</td><td class='num'>2/3</td><td class='num neg'>-1.78</td><td class='num pos'>0.66</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>34</td><td class='num'>0</td><td class='num'>6.00</td><td class='num'>13.2%</td></tr>
+<tr><td class='muted'>17</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:LMKDC" target="_blank" rel="noopener" title="First pivot: 2025-08-08 | Last pivot: 2026-04-03 | Apex: — (28 bar) | H/L pivots: 2/4 | Upper@asof: 36.03 | Lower@asof: 32.45 | Parallelism: 0.64 | Break: 2026-05-08">LMKDC</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>9.5%</td><td class='num'>41.4%</td><td class='num'>28</td><td class='num'>2/4</td><td class='num pos'>0.46</td><td class='num pos'>0.90</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>39</td><td class='num'>0</td><td class='num'>37.60</td><td class='num'>8.5%</td></tr>
+<tr><td class='muted'>18</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:ONRYT" target="_blank" rel="noopener" title="First pivot: 2025-09-19 | Last pivot: 2026-03-27 | Apex: — (24 bar) | H/L pivots: 3/2 | Upper@asof: 64.40 | Lower@asof: 54.15 | Parallelism: 0.84 | Break: 2026-05-08">ONRYT</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>14.2%</td><td class='num'>42.2%</td><td class='num'>24</td><td class='num'>3/2</td><td class='num neg'>-1.02</td><td class='num neg'>-0.41</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>33</td><td class='num'>0</td><td class='num'>72.00</td><td class='num'>8.1%</td></tr>
+<tr><td class='muted'>19</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:AZTEK" target="_blank" rel="noopener" title="First pivot: 2025-08-15 | Last pivot: 2026-04-17 | Apex: — (34 bar) | H/L pivots: 2/3 | Upper@asof: 4.51 | Lower@asof: 3.82 | Parallelism: 0.86 | Break: 2026-05-08">AZTEK</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>14.0%</td><td class='num'>47.5%</td><td class='num'>34</td><td class='num'>2/3</td><td class='num neg'>-0.73</td><td class='num neg'>-0.29</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>38</td><td class='num'>0</td><td class='num'>4.89</td><td class='num'>10.2%</td></tr>
+<tr><td class='muted'>20</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:ACSEL" target="_blank" rel="noopener" title="First pivot: 2025-09-05 | Last pivot: 2026-04-17 | Apex: — (44 bar) | H/L pivots: 2/3 | Upper@asof: 122.67 | Lower@asof: 103.49 | Parallelism: 2.00 | Break: 2026-05-08">ACSEL</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>13.8%</td><td class='num'>55.6%</td><td class='num'>44</td><td class='num'>2/3</td><td class='num neg'>-0.16</td><td class='num pos'>0.24</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>35</td><td class='num'>0</td><td class='num'>138.80</td><td class='num'>9.6%</td></tr>
+<tr><td class='muted'>21</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:INGRM" target="_blank" rel="noopener" title="First pivot: 2025-09-12 | Last pivot: 2026-04-17 | Apex: — (48 bar) | H/L pivots: 3/2 | Upper@asof: 424.94 | Lower@asof: 361.99 | Parallelism: 0.77 | Break: 2026-05-08">INGRM</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>12.7%</td><td class='num'>58.6%</td><td class='num'>48</td><td class='num'>3/2</td><td class='num neg'>-0.56</td><td class='num neg'>-0.25</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>34</td><td class='num'>0</td><td class='num'>494.50</td><td class='num'>7.8%</td></tr>
+<tr><td class='muted'>22</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:IZMDC" target="_blank" rel="noopener" title="First pivot: 2025-09-05 | Last pivot: 2026-03-27 | Apex: — (54 bar) | H/L pivots: 2/3 | Upper@asof: 7.92 | Lower@asof: 6.22 | Parallelism: 2.00 | Break: 2026-05-08">IZMDC</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>19.2%</td><td class='num'>60.5%</td><td class='num'>54</td><td class='num'>2/3</td><td class='num neg'>-0.30</td><td class='num pos'>0.16</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>35</td><td class='num'>0</td><td class='num'>8.87</td><td class='num'>8.2%</td></tr>
+<tr><td class='muted'>23</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:MIATK" target="_blank" rel="noopener" title="First pivot: 2025-09-19 | Last pivot: 2026-04-10 | Apex: — (51 bar) | H/L pivots: 2/3 | Upper@asof: 42.80 | Lower@asof: 35.97 | Parallelism: 2.00 | Break: 2026-05-08">MIATK</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>13.8%</td><td class='num'>60.7%</td><td class='num'>51</td><td class='num'>2/3</td><td class='num neg'>-0.21</td><td class='num pos'>0.13</td><td><span class="fit-pill fit-loose">loose</span></td><td class='num'>33</td><td class='num'>0</td><td class='num'>49.60</td><td class='num'>10.0%</td></tr>
+<tr><td class='muted'>24</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:ATSYH" target="_blank" rel="noopener" title="First pivot: 2025-08-15 | Last pivot: 2026-04-03 | Apex: — (2 bar) | H/L pivots: 2/2 | Upper@asof: 51.10 | Lower@asof: 48.78 | Parallelism: 1.86 | Break: 2026-05-08">ATSYH</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>3.2%</td><td class='num'>4.8%</td><td class='num'>2</td><td class='num'>2/2</td><td class='num neg'>-1.99</td><td class='num neg'>-0.07</td><td><span class="fit-pill fit-rough">rough</span></td><td class='num'>38</td><td class='num'>0</td><td class='num'>71.55</td><td class='num'>9.2%</td></tr>
+<tr><td class='muted'>25</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:VBTYZ" target="_blank" rel="noopener" title="First pivot: 2026-01-09 | Last pivot: 2026-04-17 | Apex: — (3 bar) | H/L pivots: 2/2 | Upper@asof: 22.54 | Lower@asof: 21.40 | Parallelism: 2.00 | Break: 2026-05-08">VBTYZ</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>4.7%</td><td class='num'>13.3%</td><td class='num'>3</td><td class='num'>2/2</td><td class='num neg'>-0.44</td><td class='num pos'>1.76</td><td><span class="fit-pill fit-rough">rough</span></td><td class='num'>17</td><td class='num'>0</td><td class='num'>24.38</td><td class='num'>11.0%</td></tr>
+<tr><td class='muted'>26</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:SANEL" target="_blank" rel="noopener" title="First pivot: 2025-11-07 | Last pivot: 2026-03-27 | Apex: — (7 bar) | H/L pivots: 2/2 | Upper@asof: 39.47 | Lower@asof: 35.77 | Parallelism: 2.00 | Break: 2026-05-08">SANEL</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>8.9%</td><td class='num'>20.3%</td><td class='num'>7</td><td class='num'>2/2</td><td class='num neg'>-0.63</td><td class='num pos'>1.00</td><td><span class="fit-pill fit-rough">rough</span></td><td class='num'>26</td><td class='num'>0</td><td class='num'>41.66</td><td class='num'>12.5%</td></tr>
+<tr><td class='muted'>27</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:HATSN" target="_blank" rel="noopener" title="First pivot: 2025-09-05 | Last pivot: 2026-03-13 | Apex: — (10 bar) | H/L pivots: 2/2 | Upper@asof: 38.45 | Lower@asof: 35.51 | Parallelism: 0.87 | Break: 2026-05-08">HATSN</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>5.9%</td><td class='num'>22.8%</td><td class='num'>10</td><td class='num'>2/2</td><td class='num neg'>-1.07</td><td class='num neg'>-0.42</td><td><span class="fit-pill fit-rough">rough</span></td><td class='num'>35</td><td class='num'>0</td><td class='num'>49.60</td><td class='num'>8.2%</td></tr>
+<tr><td class='muted'>28</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:IZINV" target="_blank" rel="noopener" title="First pivot: 2025-09-05 | Last pivot: 2026-03-27 | Apex: — (14 bar) | H/L pivots: 2/2 | Upper@asof: 63.54 | Lower@asof: 55.67 | Parallelism: 1.07 | Break: 2026-05-08">IZINV</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>9.8%</td><td class='num'>28.7%</td><td class='num'>14</td><td class='num'>2/2</td><td class='num neg'>-1.18</td><td class='num neg'>-0.36</td><td><span class="fit-pill fit-rough">rough</span></td><td class='num'>35</td><td class='num'>0</td><td class='num'>80.30</td><td class='num'>10.1%</td></tr>
+<tr><td class='muted'>29</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:TATGD" target="_blank" rel="noopener" title="First pivot: 2025-08-22 | Last pivot: 2026-04-24 | Apex: — (16 bar) | H/L pivots: 2/2 | Upper@asof: 19.46 | Lower@asof: 17.12 | Parallelism: 0.71 | Break: 2026-05-08">TATGD</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>11.3%</td><td class='num'>29.7%</td><td class='num'>16</td><td class='num'>2/2</td><td class='num pos'>0.94</td><td class='num pos'>1.98</td><td><span class="fit-pill fit-rough">rough</span></td><td class='num'>37</td><td class='num'>0</td><td class='num'>20.74</td><td class='num'>10.0%</td></tr>
+<tr><td class='muted'>30</td><td class='tk'><a href="https://www.tradingview.com/chart/?symbol=BIST:ELITE" target="_blank" rel="noopener" title="First pivot: 2025-11-07 | Last pivot: 2026-03-27 | Apex: — (22 bar) | H/L pivots: 2/2 | Upper@asof: 30.75 | Lower@asof: 27.57 | Parallelism: 1.43 | Break: 2026-05-08">ELITE</a></td><td><span class="st-pill st-trig">TRIGGER</span></td><td><span class="tri-pill tri-sym">◆ SYM</span></td><td><span class="tier-pill tier-B">B</span></td><td class='num'>8.9%</td><td class='num'>45.6%</td><td class='num'>22</td><td class='num'>2/2</td><td class='num neg'>-0.55</td><td class='num neg'>-0.09</td><td><span class="fit-pill fit-rough">rough</span></td><td class='num'>26</td><td class='num'>0</td><td class='num'>35.78</td><td class='num'>7.5%</td></tr></tbody></table>
+    </div>
+  </div>
+
+
+  <div class="cb-footer">
+    Pipeline: <code>triangle_break/</code> · close-only pivots · OLS line fits ·
+    4 aile (5h/1d/1w/1M) · subtypes asc/sym/desc.<br>
+    Driver: <code>tools/triangle_break_html.py</code>. Tier A = ≥3 H + ≥3 L pivot touch.
+    Convergence gates: bars_to_apex ≥ 1 (henüz expire değil) ·
+    width_contraction &lt; 0.85 (≥%15 sıkışma).<br>
+    Veri: <code>output/extfeed_intraday_1h_3y_master.parquet</code> (3y, BIST 607 evren).<br>
+    <b>Descriptive only</b> — backtest/ML çalışması yok. Expanding/ambiguous reddedilir.
+  </div>
+
+</div>
+
+</body>
+</html>

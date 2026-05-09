@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOX Horizontal Base · 2026-05-08</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+
+.briefing-container {
+  position: relative; z-index: 1;
+  max-width: 1280px; margin: 0 auto;
+  padding: 0 1.4rem 2rem;
+}
+.hb-tab-nav {
+  display: flex; gap: 0.6rem; flex-wrap: wrap;
+  margin: 0.8rem 0 1.2rem 0;
+  position: sticky; top: 0; z-index: 5;
+  background: var(--bg, #0c0d10); padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border-dim);
+}
+.hb-tab {
+  display: inline-flex; align-items: center; gap: 0.45rem;
+  padding: 0.4rem 0.8rem; border: 1px solid var(--border-dim);
+  border-radius: 999px; font-size: 0.78rem; cursor: pointer;
+  background: var(--bg-elevated); color: var(--text-secondary);
+  text-decoration: none;
+}
+.hb-tab:hover { border-color: var(--nox-cyan); color: var(--nox-cyan); }
+.hb-tab .cnt {
+  font-family: var(--font-mono); font-weight: 700; font-size: 0.78rem;
+  color: var(--text-primary);
+}
+.hb-tab .dot { width: 8px; height: 8px; border-radius: 50%; }
+.hb-card {
+  background: var(--bg-elevated); border: 1px solid var(--border-dim);
+  border-radius: 10px; padding: 1rem 1.1rem; margin: 1rem 0;
+  scroll-margin-top: 5rem;
+}
+.hb-card h2 {
+  font-size: 0.95rem; font-weight: 600; letter-spacing: 0.04em;
+  text-transform: uppercase; color: var(--text-secondary);
+  margin: 0 0 0.7rem 0;
+  display: flex; align-items: center; gap: 0.6rem;
+}
+.hb-card h2 .tag {
+  font-size: 0.7rem; font-weight: 600; padding: 1px 8px; border-radius: 999px;
+  border: 1px solid var(--border-dim); color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+.hb-card h3 {
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin: 1rem 0 0.5rem 0;
+}
+.hb-note {
+  font-size: 0.78rem; color: var(--text-muted);
+  line-height: 1.5; margin: 0 0 0.8rem 0;
+}
+table.nox-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+table.nox-table th, table.nox-table td {
+  padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--border-dim);
+}
+table.nox-table th {
+  text-align: left; font-weight: 600; letter-spacing: 0.03em;
+  color: var(--text-secondary); text-transform: uppercase; font-size: 0.72rem;
+}
+table.nox-table tbody tr:hover { background: var(--bg-hover); }
+tr.tradeable-row { background: rgba(34,197,94,0.06); }
+tr.tradeable-row:hover { background: rgba(34,197,94,0.10); }
+.pill {
+  display: inline-block; padding: 1px 7px; border-radius: 999px;
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.03em;
+}
+.pill-tradeable {
+  background: var(--nox-green); color: #0a0a0a;
+  font-size: 0.65rem; padding: 0 5px;
+}
+.empty-row td {
+  text-align: center; opacity: 0.6; padding: 1.1rem 0.6rem;
+}
+.hb-footer {
+  margin-top: 1.4rem; font-size: 0.72rem; color: var(--text-muted);
+  line-height: 1.5;
+}
+.hb-footer code { color: var(--text-secondary); }
+
+</style>
+</head>
+<body>
+<script id="horizontal-base-live-data" type="application/json">{"schema_version": 1, "system": "horizontal_base_live", "scanner_version": "1.4.0", "feature_version": "1.3.0", "asof": "2026-05-08", "n_total": 30, "n_trigger": 6, "n_retest_bounce": 4, "n_extended": 20, "n_tradeable_a": 1, "n_tradeable_ab": 6, "tier_summaries": {"A": {"n_total": 1, "n_trigger": 0, "n_retest_bounce": 1, "n_extended": 0, "n_tradeable_a": 1, "n_tradeable_ab": 1, "tradeable_a_tickers": ["BYDNR"], "tradeable_ab_tickers": []}, "B": {"n_total": 5, "n_trigger": 4, "n_retest_bounce": 1, "n_extended": 0, "n_tradeable_a": 0, "n_tradeable_ab": 5, "tradeable_a_tickers": [], "tradeable_ab_tickers": ["ARSAN", "TUCLK", "OBAMS", "DNISI", "KOTON"]}, "C": {"n_total": 24, "n_trigger": 2, "n_retest_bounce": 2, "n_extended": 20, "n_tradeable_a": 0, "n_tradeable_ab": 0, "tradeable_a_tickers": [], "tradeable_ab_tickers": []}}}</script>
+
+<div class="aurora-bg">
+  <div class="aurora-layer aurora-layer-1"></div>
+  <div class="aurora-layer aurora-layer-2"></div>
+  <div class="aurora-layer aurora-layer-3"></div>
+</div>
+<div class="mesh-overlay"></div>
+
+<div class="briefing-container">
+
+  <div class="nox-header" style="margin-bottom:1.2rem;">
+    <div class="nox-logo">
+      HORIZONTAL BASE<span class="proj"> · LIVE TARAMA</span>
+      <span class="mode">scanner v1.4.0 · feature 1.3.0 · trigger ∪ retest_bounce ∪ extended · tier A/B/C</span>
+    </div>
+    <div class="nox-meta">
+      As-of: <b>2026-05-08</b><br>
+      N <b>30</b> · trigger <b>6</b> · retest <b>4</b> · extended <b>20</b><br>
+      tradeable A <b>1</b> · AB <b>6</b><br>
+      generated 2026-05-09 22:43 UTC
+    </div>
+  </div>
+
+  <div class="nox-stats">
+<div class="nox-stat"><span class="dot" style="background:var(--nox-green);"></span><span>Tier A</span><span class="cnt">1</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-cyan);"></span><span>Tier B</span><span class="cnt">5</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-orange);"></span><span>Tier C</span><span class="cnt">24</span></div>
+  </div>
+
+  <div class="hb-tab-nav"><a class="hb-tab" href="#tier-A"><span class="dot" style="background:var(--nox-green)"></span>Tier A <span class="cnt">1</span></a><a class="hb-tab" href="#tier-B"><span class="dot" style="background:var(--nox-cyan)"></span>Tier B <span class="cnt">5</span></a><a class="hb-tab" href="#tier-C"><span class="dot" style="background:var(--nox-orange)"></span>Tier C <span class="cnt">24</span></a></div>
+
+  <p class="hb-note">
+    <b>Tradeable filter:</b> signal_state ∈ {trigger, retest_bounce} ∧ breakout_age ≤ 5
+    ∧ regime ∈ {long, neutral}. Yeşil zemin = <code>tradeable_a</code> (Tier A geçenler);
+    AB rozeti = Tier B'den eklenenler. Extended (cycle yaşlı) <b>tradeable değil</b>;
+    referans amaçlı listelenir.
+  </p>
+
+  
+<section class="hb-card" id="tier-A">
+  <h2>
+    <span style="color:var(--nox-green);">●</span>
+    Tier A
+    <span style="color:var(--text-muted);font-weight:400;font-size:0.78rem;">· trigger·mid_body ∪ retest·deep_touch</span>
+    <span class="tag">N 1</span>
+    <span class="tag">trig 0 / retest 1 / ext 0</span>
+    <span class="tag">tradeable A 1 · AB 1</span>
+  </h2>
+  <table class='nox-table'><thead><tr><th>Sembol</th><th>State</th><th>Body</th><th>Retest</th><th style='text-align:right'>Age</th><th>Regime</th><th style='text-align:right'>Day %</th><th style='text-align:right'>ATR %</th><th style='text-align:right'>BO %</th><th>Trade</th></tr></thead><tbody><tr class='tradeable-row'><td><b>BYDNR</b></td><td><span class='pill' style='color:var(--nox-cyan);border:1px solid var(--nox-cyan)'>Retest</span></td><td>strict_body</td><td>deep_touch</td><td style='text-align:right'>3</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+4.99%</td><td style='text-align:right'>6.97%</td><td style='text-align:right'>+2.35%</td><td><span class='pill pill-tradeable'>A</span></td></tr></tbody></table>
+</section>
+
+<section class="hb-card" id="tier-B">
+  <h2>
+    <span style="color:var(--nox-cyan);">●</span>
+    Tier B
+    <span style="color:var(--text-muted);font-weight:400;font-size:0.78rem;">· trigger·strict_body ∪ retest·shallow_touch</span>
+    <span class="tag">N 5</span>
+    <span class="tag">trig 4 / retest 1 / ext 0</span>
+    <span class="tag">tradeable A 0 · AB 5</span>
+  </h2>
+  <table class='nox-table'><thead><tr><th>Sembol</th><th>State</th><th>Body</th><th>Retest</th><th style='text-align:right'>Age</th><th>Regime</th><th style='text-align:right'>Day %</th><th style='text-align:right'>ATR %</th><th style='text-align:right'>BO %</th><th>Trade</th></tr></thead><tbody><tr class=''><td><b>ARSAN</b></td><td><span class='pill' style='color:var(--nox-green);border:1px solid var(--nox-green)'>Trigger</span></td><td>strict_body</td><td>—</td><td style='text-align:right'>0</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+3.45%</td><td style='text-align:right'>3.85%</td><td style='text-align:right'>+5.25%</td><td><span class='pill pill-tradeable' style='background:var(--nox-cyan)'>AB</span></td></tr><tr class=''><td><b>TUCLK</b></td><td><span class='pill' style='color:var(--nox-green);border:1px solid var(--nox-green)'>Trigger</span></td><td>strict_body</td><td>—</td><td style='text-align:right'>0</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+2.33%</td><td style='text-align:right'>3.08%</td><td style='text-align:right'>+2.02%</td><td><span class='pill pill-tradeable' style='background:var(--nox-cyan)'>AB</span></td></tr><tr class=''><td><b>OBAMS</b></td><td><span class='pill' style='color:var(--nox-cyan);border:1px solid var(--nox-cyan)'>Retest</span></td><td>strict_body</td><td>shallow_touch</td><td style='text-align:right'>3</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+2.13%</td><td style='text-align:right'>2.77%</td><td style='text-align:right'>+2.89%</td><td><span class='pill pill-tradeable' style='background:var(--nox-cyan)'>AB</span></td></tr><tr class=''><td><b>DNISI</b></td><td><span class='pill' style='color:var(--nox-green);border:1px solid var(--nox-green)'>Trigger</span></td><td>strict_body</td><td>—</td><td style='text-align:right'>0</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+1.83%</td><td style='text-align:right'>3.04%</td><td style='text-align:right'>+3.58%</td><td><span class='pill pill-tradeable' style='background:var(--nox-cyan)'>AB</span></td></tr><tr class=''><td><b>KOTON</b></td><td><span class='pill' style='color:var(--nox-green);border:1px solid var(--nox-green)'>Trigger</span></td><td>strict_body</td><td>—</td><td style='text-align:right'>0</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+1.66%</td><td style='text-align:right'>2.41%</td><td style='text-align:right'>+5.06%</td><td><span class='pill pill-tradeable' style='background:var(--nox-cyan)'>AB</span></td></tr></tbody></table>
+</section>
+
+<section class="hb-card" id="tier-C">
+  <h2>
+    <span style="color:var(--nox-orange);">●</span>
+    Tier C
+    <span style="color:var(--text-muted);font-weight:400;font-size:0.78rem;">· trigger·large_body ∪ retest·no_touch ∪ extended</span>
+    <span class="tag">N 24</span>
+    <span class="tag">trig 2 / retest 2 / ext 20</span>
+    <span class="tag">tradeable A 0 · AB 0</span>
+  </h2>
+  <table class='nox-table'><thead><tr><th>Sembol</th><th>State</th><th>Body</th><th>Retest</th><th style='text-align:right'>Age</th><th>Regime</th><th style='text-align:right'>Day %</th><th style='text-align:right'>ATR %</th><th style='text-align:right'>BO %</th><th>Trade</th></tr></thead><tbody><tr class=''><td><b>AHSGY</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>6</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+10.00%</td><td style='text-align:right'>4.41%</td><td style='text-align:right'>+2.40%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>SDTTR</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>2</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+9.98%</td><td style='text-align:right'>4.86%</td><td style='text-align:right'>+14.28%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>MANAS</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>mid_body</td><td>—</td><td style='text-align:right'>6</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+9.94%</td><td style='text-align:right'>6.85%</td><td style='text-align:right'>+3.44%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>EYGYO</b></td><td><span class='pill' style='color:var(--nox-green);border:1px solid var(--nox-green)'>Trigger</span></td><td>large_body</td><td>—</td><td style='text-align:right'>0</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+9.75%</td><td style='text-align:right'>4.02%</td><td style='text-align:right'>+0.96%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>SNICA</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>1</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+7.23%</td><td style='text-align:right'>2.91%</td><td style='text-align:right'>+9.85%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>SNPAM</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>2</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+7.18%</td><td style='text-align:right'>1.96%</td><td style='text-align:right'>+5.75%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>KUVVA</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>2</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+6.93%</td><td style='text-align:right'>3.97%</td><td style='text-align:right'>+6.49%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>KRPLS</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>1</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+6.85%</td><td style='text-align:right'>3.24%</td><td style='text-align:right'>+9.75%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>ULUUN</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>4</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+6.63%</td><td style='text-align:right'>4.31%</td><td style='text-align:right'>+11.31%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>ARDYZ</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>9</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+5.81%</td><td style='text-align:right'>4.04%</td><td style='text-align:right'>+6.81%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>KRTEK</b></td><td><span class='pill' style='color:var(--nox-green);border:1px solid var(--nox-green)'>Trigger</span></td><td>large_body</td><td>—</td><td style='text-align:right'>0</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+5.65%</td><td style='text-align:right'>2.73%</td><td style='text-align:right'>+3.60%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>AGESA</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>5</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+5.20%</td><td style='text-align:right'>2.61%</td><td style='text-align:right'>+3.48%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>PAHOL</b></td><td><span class='pill' style='color:var(--nox-cyan);border:1px solid var(--nox-cyan)'>Retest</span></td><td>large_body</td><td>no_touch</td><td style='text-align:right'>1</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+4.79%</td><td style='text-align:right'>3.14%</td><td style='text-align:right'>+6.87%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>BRISA</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>strict_body</td><td>—</td><td style='text-align:right'>1</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+4.38%</td><td style='text-align:right'>3.75%</td><td style='text-align:right'>+4.57%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>KCHOL</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>strict_body</td><td>—</td><td style='text-align:right'>2</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+4.26%</td><td style='text-align:right'>2.85%</td><td style='text-align:right'>+3.54%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>ATSYH</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>mid_body</td><td>—</td><td style='text-align:right'>10</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+4.13%</td><td style='text-align:right'>3.66%</td><td style='text-align:right'>+9.75%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>PARSN</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>large_body</td><td>—</td><td style='text-align:right'>8</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+3.58%</td><td style='text-align:right'>2.89%</td><td style='text-align:right'>+2.33%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>SRVGY</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>strict_body</td><td>—</td><td style='text-align:right'>6</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+3.36%</td><td style='text-align:right'>2.98%</td><td style='text-align:right'>+1.14%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>LINK</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>mid_body</td><td>—</td><td style='text-align:right'>1</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+3.10%</td><td style='text-align:right'>4.59%</td><td style='text-align:right'>+11.61%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>ZEDUR</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>mid_body</td><td>—</td><td style='text-align:right'>6</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+2.57%</td><td style='text-align:right'>3.55%</td><td style='text-align:right'>+12.16%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>BRLSM</b></td><td><span class='pill' style='color:var(--nox-cyan);border:1px solid var(--nox-cyan)'>Retest</span></td><td>strict_body</td><td>no_touch</td><td style='text-align:right'>1</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+2.19%</td><td style='text-align:right'>4.00%</td><td style='text-align:right'>+4.97%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>TATGD</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>mid_body</td><td>—</td><td style='text-align:right'>7</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+1.88%</td><td style='text-align:right'>3.78%</td><td style='text-align:right'>+0.84%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>DOKTA</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>mid_body</td><td>—</td><td style='text-align:right'>8</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+1.80%</td><td style='text-align:right'>3.48%</td><td style='text-align:right'>+3.40%</td><td><span style='color:var(--text-muted)'>—</span></td></tr><tr class=''><td><b>ANGEN</b></td><td><span class='pill' style='color:var(--nox-orange);border:1px solid var(--nox-orange)'>Extended</span></td><td>mid_body</td><td>—</td><td style='text-align:right'>9</td><td><span style='color:var(--nox-green)'>long</span></td><td style='text-align:right'>+1.34%</td><td style='text-align:right'>2.44%</td><td style='text-align:right'>+5.18%</td><td><span style='color:var(--text-muted)'>—</span></td></tr></tbody></table>
+</section>
+
+
+  <div class="hb-footer">
+    Pipeline: <code>tools/horizontal_base_scan_live.py</code> ·
+    render: <code>tools/horizontal_base_html.py</code>.<br>
+    Veri: <code>output/extfeed_intraday_1h_3y_master.parquet</code> (BIST 607 evren, 3y, 1h→günlük resample).
+    Regime: RDP v1 (mult=8 sw=8%) · <code>output/regime_labels_daily_rdp_v1.csv</code> backward as-of.<br>
+    Tier: <code>tools/scanner_v1_event_quality_diag.py</code> PF tag'lerinden türetildi
+    (A: trigger·mid_body ∪ retest·deep_touch · B: trigger·strict_body ∪ retest·shallow_touch ·
+    C: trigger·large_body ∪ retest·no_touch).<br>
+    <b>Bu bir tarama çıktısıdır</b> — descriptive event log, <b>trade-edge iddiası YOK</b>.
+    Pre-registered ML lines <code>v1</code> + <code>v1_2</code> REJECTED;
+    rules-based ranker backtest in-sample reference: tier-A K=3 portfolio
+    Sharpe ≈ 2.0 / MaxDD ≈ −5% (NOT pre-registered, NOT OOS).
+  </div>
+
+</div>
+
+</body>
+</html>

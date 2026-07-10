@@ -2,7 +2,7 @@
 <html lang="tr"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Nyx-WinMag: Momentum Continuation Ranker — 2026-07-09</title>
+<title>Nyx-WinMag: Momentum Continuation Ranker — 2026-07-10</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
 :root {
@@ -415,15 +415,15 @@ details.howto-card b { color: var(--text-primary); }
   <header class="nox-header">
     <div class="nox-logo">
       Nyx-WinMag<span class="proj"></span>
-      <span class="mode">Momentum Continuation Ranker · 2026-07-09</span>
+      <span class="mode">Momentum Continuation Ranker · 2026-07-10</span>
     </div>
     <div class="nox-meta">
-      Generated <b>2026-07-09 17:27 UTC</b><br>
+      Generated <b>2026-07-10 17:07 UTC</b><br>
       Dataset: <code>output/nyxexp_dataset_v4.parquet</code>
     </div>
   </header>
 
-  <div class="nox-stats"><div class="nox-stat"><span class="dot" style="background:var(--nox-blue)"></span><span>Evren</span><span class="cnt">588</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-cyan)"></span><span>Trigger</span><span class="cnt">0</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-red)"></span><span>Severe</span><span class="cnt">0</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-copper)"></span><span>Rejim</span><span class="cnt">—</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-green)"></span><span>PASS</span><span class="cnt">0</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-orange)"></span><span>DROP</span><span class="cnt">0</span></div></div>
+  <div class="nox-stats"><div class="nox-stat"><span class="dot" style="background:var(--nox-blue)"></span><span>Evren</span><span class="cnt">588</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-cyan)"></span><span>Trigger</span><span class="cnt">7</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-red)"></span><span>Severe</span><span class="cnt">2</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-copper)"></span><span>Rejim</span><span class="cnt">uptrend=7</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-green)"></span><span>PASS</span><span class="cnt">7</span></div><div class="nox-stat"><span class="dot" style="background:var(--nox-orange)"></span><span>DROP</span><span class="cnt">0</span></div></div>
 
   
     <section class="nox-card banner warn-banner">
@@ -441,20 +441,39 @@ details.howto-card b { color: var(--text-primary); }
           <span class="banner-icon">🛡</span>
           <div>
             <b>Timing-clean retention filter (17:00 TR top-10)</b> —
-            PASS=<b>0</b> · DROP=<b>0</b> · unscored=<b>0</b>.
+            PASS=<b>7</b> · DROP=<b>0</b> · unscored=<b>0</b>.
             Tradeable list = retention_pass=True; watchlist'te kalanlar gözlem amaçlı,
             17:30 proxy'de tradeable kabul edilmez.
-            <div class="banner-sub">Notes: <code>stage_disabled=0</code></div>
-            
+            <div class="banner-sub">Notes: <code>ok=7</code></div>
+            <div class="banner-sub">Bugün veri kaynakları: <code>extfeed_15m=7</code></div>
           </div>
         </section>
         
   
-        <section class="nox-card warn-card">
-          <h2>💼 Markowitz 4'lü Portföy — ÜRETİLMEDİ</h2>
-          <div class="card-body">Sebep: insufficient data (have 0 tickers with 60d history)</div>
-        </section>
-        
+    <section class="nox-card pf-card">
+      <h2>💼 Markowitz 4'lü Portföy <span class="sub">— Max Sharpe (combinatorial)</span></h2>
+      <div class="kpi-strip"><div class="kpi"><span class="k">Sharpe</span><span class="v">5.247</span></div><div class="kpi"><span class="k">μ (ann.)</span><span class="v">+286.76%</span></div><div class="kpi"><span class="k">σ (ann.)</span><span class="v">54.65%</span></div><div class="kpi"><span class="k">Hisse</span><span class="v">4</span></div><div class="kpi"><span class="k">Lookback</span><span class="v">60g</span></div><div class="kpi"><span class="k">w-aralığı</span><span class="v">[0.10, 0.50]</span></div><div class="kpi"><span class="k">Combos</span><span class="v">5</span></div></div>
+      <div class="nox-table-wrap">
+        <table>
+          <thead><tr>
+            <th>Hisse</th>
+            <th class="th-tip" title="Markowitz optimizasyonundan çıkan portföy ağırlığı (long-only, sum=1, w∈[0.10, 0.50]).">Ağırlık</th>
+            <th class="th-tip" title="Model'in tahmini kazanan büyüklüğü (regresyon R skoru).">winR</th>
+            <th class="th-tip" title="Risk skoru 4 kova: clean / mild / elevated / severe. severe = portföye alınmaz.">Bucket</th>
+            <th class="th-tip" title="Beklenen yıllık getiri (son 60 günlük log-return ortalamasının yıllıklandırılmış hâli, %).">μ (60g ann.)</th>
+            <th class="th-tip" title="Yıllık volatilite (60 günlük penceredeki standart sapmanın yıllıklandırılmış hâli, %).">σ (60g ann.)</th>
+            <th class="th-tip" title="Hissenin en son günkü realize getirisi (%).">Son Gün</th>
+          </tr></thead>
+          <tbody><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:HEDEF" target="_blank" rel="noopener" title="HEDEF — TradingView">HEDEF</a></td><td class='num'><b>50.0%</b></td><td class='num'>6.61</td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>+534.6%</td><td class='num'>86.7%</td><td class='num rs-pos'>+31.65%</td></tr><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:EKSUN" target="_blank" rel="noopener" title="EKSUN — TradingView">EKSUN</a></td><td class='num'><b>30.0%</b></td><td class='num'>5.00</td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>+54.2%</td><td class='num'>44.8%</td><td class='num rs-pos'>+12.40%</td></tr><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:OBASE" target="_blank" rel="noopener" title="OBASE — TradingView">OBASE</a></td><td class='num'><b>10.0%</b></td><td class='num'>4.77</td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>-2.6%</td><td class='num'>50.5%</td><td class='num rs-pos'>+7.84%</td></tr><tr><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:ALFAS" target="_blank" rel="noopener" title="ALFAS — TradingView">ALFAS</a></td><td class='num'><b>10.0%</b></td><td class='num'>4.65</td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>+34.8%</td><td class='num'>45.1%</td><td class='num rs-pos'>+14.74%</td></tr></tbody>
+        </table>
+      </div>
+      <div class="card-footer">
+        <b>Aday havuzu:</b> winR sıralı top-5 (risk_bucket ≠ severe) ·
+        60g daily log-return, yıllıklandırılmış μ/Σ + Ledoit-Wolf shrinkage ·
+        SLSQP, long-only, sum(w)=1.
+      </div>
+    </section>
+    
 
   
     <details class="howto-card">
@@ -595,7 +614,7 @@ details.howto-card b { color: var(--text-primary); }
     
 
   <section class="nox-card">
-    <h2>✅ Tradeable Candidates<span class="sec-count">0</span></h2>
+    <h2>✅ Tradeable Candidates<span class="sec-count">7</span></h2>
     <div class="card-body">retention_pass=True · 17:30 proxy için kabul edilen liste</div>
     
   <div class="nox-table-wrap">
@@ -615,7 +634,13 @@ details.howto-card b { color: var(--text-primary); }
         <th>Not</th>
       </tr></thead>
       <tbody>
-<tr><td colspan='12' style='text-align:center;color:var(--text-muted);padding:24px'>—</td></tr>
+<tr><td class='num'>1</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:KARTN" target="_blank" rel="noopener" title="KARTN — TradingView">KARTN</a></td><td class='num'>10.96</td><td class='num'>1.00</td><td class='num'>8.72</td><td class='num'>3</td><td><span class="kc-badge" style="background:rgba(138,122,158,0.16);color:var(--nox-purple)">special_handling</span></td><td><span class="reg-badge" style="background:rgba(158,90,90,0.20);color:var(--nox-red)">severe</span></td><td class='num'>5.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='trade-plan'><div class='tp-row tp-head'>E 179.90 · ATR 11.00</div><div class='tp-row tp-sl'>SL 163.39 <span>(-9.2%)</span></div><div class='tp-row'>TP1-15 → 196.41 <span>(+9.2%)</span></div><div class='tp-row'>TP2-15 → 212.91 <span>(+18.3%)</span></div><div class='tp-row tp-trail'>TR-70 <span>trail</span></div></td><td class='detail-cell'>very_extended, stretch=very_high, above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>2</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:ATSYH" target="_blank" rel="noopener" title="ATSYH — TradingView">ATSYH</a></td><td class='num'>9.75</td><td class='num'>0.86</td><td class='num'>8.94</td><td class='num'>3</td><td><span class="kc-badge" style="background:rgba(138,122,158,0.16);color:var(--nox-purple)">special_handling</span></td><td><span class="reg-badge" style="background:rgba(158,90,90,0.20);color:var(--nox-red)">severe</span></td><td class='num'>5.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='trade-plan'><div class='tp-row tp-head'>E 117.40 · ATR 6.31</div><div class='tp-row tp-sl'>SL 107.94 <span>(-8.1%)</span></div><div class='tp-row'>TP1-15 → 126.86 <span>(+8.1%)</span></div><div class='tp-row'>TP2-15 → 136.32 <span>(+16.1%)</span></div><div class='tp-row tp-trail'>TR-70 <span>trail</span></div></td><td class='detail-cell'>very_extended, stretch=very_high, above_52w, SEVERE→exclude</td></tr>
+<tr><td class='num'>3</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:HEDEF" target="_blank" rel="noopener" title="HEDEF — TradingView">HEDEF</a></td><td class='num'>6.61</td><td class='num'>0.71</td><td class='num'>5.27</td><td class='num'>5</td><td><span class="kc-badge" style="background:rgba(138,122,158,0.16);color:var(--nox-purple)">special_handling</span></td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>3.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='trade-plan'><div class='tp-row tp-head'>E 188.00 · ATR 10.68</div><div class='tp-row tp-sl'>SL 171.98 <span>(-8.5%)</span></div><div class='tp-row'>TP1-15 → 204.02 <span>(+8.5%)</span></div><div class='tp-row'>TP2-15 → 220.04 <span>(+17.0%)</span></div><div class='tp-row tp-trail'>TR-70 <span>trail</span></div></td><td class='detail-cell'>stretch=very_high, above_52w, strong_momo</td></tr>
+<tr><td class='num'>4</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:SMRTG" target="_blank" rel="noopener" title="SMRTG — TradingView">SMRTG</a></td><td class='num'>6.06</td><td class='num'>0.57</td><td class='num'>5.63</td><td class='num'>5</td><td><span class="kc-badge" style="background:rgba(138,122,158,0.16);color:var(--nox-purple)">special_handling</span></td><td><span class="reg-badge" style="background:rgba(122,143,165,0.18);color:var(--nox-blue)">mild</span></td><td class='num'>1.5</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='trade-plan'><div class='tp-row tp-head'>E 11.11 · ATR 0.63</div><div class='tp-row tp-sl'>SL 10.16 <span>(-8.5%)</span></div><div class='tp-row'>TP1-15 → 12.05 <span>(+8.5%)</span></div><div class='tp-row'>TP2-15 → 13.00 <span>(+17.0%)</span></div><div class='tp-row tp-trail'>TR-70 <span>trail</span></div></td><td class='detail-cell'>stretch=very_high, tight_room, strong_momo</td></tr>
+<tr><td class='num'>5</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:EKSUN" target="_blank" rel="noopener" title="EKSUN — TradingView">EKSUN</a></td><td class='num'>5.00</td><td class='num'>0.43</td><td class='num'>5.09</td><td class='num'>5</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(184,149,110,0.18);color:var(--nox-copper)">elevated</span></td><td class='num'>3.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='trade-plan'><div class='tp-row tp-head'>E 6.69 · ATR 0.27</div><div class='tp-row tp-sl'>SL 6.29 <span>(-6.0%)</span></div><div class='tp-row'>TP1-15 → 7.09 <span>(+6.0%)</span></div><div class='tp-row'>TP2-15 → 7.49 <span>(+11.9%)</span></div><div class='tp-row tp-trail'>TR-70 <span>trail</span></div></td><td class='detail-cell'>tight_room</td></tr>
+<tr><td class='num'>6</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:OBASE" target="_blank" rel="noopener" title="OBASE — TradingView">OBASE</a></td><td class='num'>4.77</td><td class='num'>0.29</td><td class='num'>4.57</td><td class='num'>8</td><td><span class="kc-badge" style="background:rgba(122,158,122,0.14);color:var(--nox-green)">clean_watch</span></td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>0.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='trade-plan'><div class='tp-row tp-head'>E 41.36 · ATR 2.15</div><div class='tp-row tp-sl'>SL 38.14 <span>(-7.8%)</span></div><div class='tp-row'>TP1-25 → 42.86 <span>(+3.6%)</span></div><div class='tp-row'>TP2-15 → 44.58 <span>(+7.8%)</span></div><div class='tp-row'>TP3-15 → 47.80 <span>(+15.6%)</span></div><div class='tp-row tp-trail'>TR-45 <span>trail</span></div></td><td class='detail-cell'>—</td></tr>
+<tr><td class='num'>7</td><td><a class="tv-link" href="https://www.tradingview.com/chart/?symbol=BIST:ALFAS" target="_blank" rel="noopener" title="ALFAS — TradingView">ALFAS</a></td><td class='num'>4.65</td><td class='num'>0.14</td><td class='num'>5.09</td><td class='num'>5</td><td><span class="kc-badge" style="background:rgba(184,149,110,0.16);color:var(--nox-copper)">extended_watch</span></td><td><span class="reg-badge" style="background:rgba(122,158,122,0.18);color:var(--nox-green)">clean</span></td><td class='num'>0.0</td><td><span class="kc-badge kc-hi" title="ok">PASS</span></td><td class='trade-plan'><div class='tp-row tp-head'>E 45.98 · ATR 1.69</div><div class='tp-row tp-sl'>SL 43.45 <span>(-5.5%)</span></div><div class='tp-row'>TP1-25 → 47.16 <span>(+2.6%)</span></div><div class='tp-row'>TP2-15 → 48.51 <span>(+5.5%)</span></div><div class='tp-row'>TP3-15 → 51.04 <span>(+11.0%)</span></div><div class='tp-row tp-trail'>TR-45 <span>trail</span></div></td><td class='detail-cell'>stretch=high</td></tr>
       </tbody>
     </table>
   </div>
@@ -651,7 +676,7 @@ details.howto-card b { color: var(--text-primary); }
   </section>
 
   <div class="nox-status">
-    nyxexpansion daily scan · <b>2026-07-09 17:27 UTC</b> · v4C ·
+    nyxexpansion daily scan · <b>2026-07-10 17:07 UTC</b> · v4C ·
     dataset=<code>output/nyxexp_dataset_v4.parquet</code>
   </div>
 

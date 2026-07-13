@@ -1,0 +1,2126 @@
+{
+  "schema_version": 1,
+  "asof": "2026-07-13",
+  "generated_at": "2026-07-13T17:58:29+00:00",
+  "model": "claude-opus-4-8",
+  "mode": "llm",
+  "portfolio_rev": "bc0aa45cd1942a73cafdc18f0e6d5c4ce8325abd",
+  "inputs_status": {
+    "decision_engine": "OK",
+    "tavan_lock": "UNAVAILABLE",
+    "cluster3": "STALE",
+    "sector_rotation": "OK",
+    "hw_obos": "OK",
+    "context_scanners": "OK",
+    "macro": "OK",
+    "prices": "OK",
+    "takas": "OK"
+  },
+  "portfolio_summary": {
+    "equity_tl": 3800966.95,
+    "cash_tl": 800000.0,
+    "invested_pct": 78.95,
+    "n_positions": 9,
+    "open_risk_pct": 0.0
+  },
+  "position_recommendations": [
+    {
+      "ticker": "SVGYO",
+      "action": "SELL",
+      "confidence": "high",
+      "weight_pct": 7.02,
+      "pnl_pct": -40.91,
+      "last": 12.479999542236328,
+      "qty": 21370,
+      "avg_cost": 21.12,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "macro",
+          "validation": "context-only / keşifsel"
+        }
+      ],
+      "rationale_tr": "-%40.9 ile portföyün en büyük yarası; RISK_OFF rejiminde (XU100 downtrend) toparlanma sinyali yok. Sermaye koru, çık."
+    },
+    {
+      "ticker": "KBORU",
+      "action": "TRIM",
+      "confidence": "medium",
+      "weight_pct": 12.75,
+      "pnl_pct": 4.5,
+      "last": 26.0,
+      "qty": 18633,
+      "avg_cost": 24.88,
+      "stop": null,
+      "flags": [
+        "HW_ROLLING_OVER:1w"
+      ],
+      "signal_refs": [
+        {
+          "source": "hw_obos",
+          "validation": "betimsel çoklu-TF dönüş (edge YOK, breadth/rejim-rengi)"
+        }
+      ],
+      "rationale_tr": "HW_ROLLING_OVER:1w (SAT_OB çoklu-TF tepe, betimsel) + %12.75 ağırlık; kârdayken kısmi azalt. hw_obos yalnızca destekleyici."
+    },
+    {
+      "ticker": "ASTOR",
+      "action": "TRIM",
+      "confidence": "medium",
+      "weight_pct": 14.22,
+      "pnl_pct": 5.39,
+      "last": 318.0,
+      "qty": 1700,
+      "avg_cost": 301.75,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "portfolio",
+          "validation": "korkuluk ön-hesap"
+        }
+      ],
+      "rationale_tr": "%14.22 ağırlık max_position %15'e dayalı, tek isim yoğunluğu yüksek; +%5.4 kârda hafif azaltıp risk dengele."
+    },
+    {
+      "ticker": "THYAO",
+      "action": "HOLD",
+      "confidence": "medium",
+      "weight_pct": 4.39,
+      "pnl_pct": 10.25,
+      "last": 333.5,
+      "qty": 500,
+      "avg_cost": 302.5,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "sector_rotation",
+          "validation": "paper-forward monitör"
+        }
+      ],
+      "rationale_tr": "+%10.25 kârda, XUHIZ TREND durumunda; ağırlık %4.4 makul, taşı."
+    },
+    {
+      "ticker": "AKHAN",
+      "action": "HOLD",
+      "confidence": "medium",
+      "weight_pct": 9.94,
+      "pnl_pct": 6.8,
+      "last": 35.97999954223633,
+      "qty": 10500,
+      "avg_cost": 33.69,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "portfolio",
+          "validation": "korkuluk ön-hesap"
+        }
+      ],
+      "rationale_tr": "+%6.8 kârda, ağırlık %9.9 sınır içinde; olumsuz sinyal yok, taşı."
+    },
+    {
+      "ticker": "FROTO",
+      "action": "HOLD",
+      "confidence": "low",
+      "weight_pct": 10.73,
+      "pnl_pct": -5.72,
+      "last": 81.55000305175781,
+      "qty": 5000,
+      "avg_cost": 86.5,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "context_signals",
+          "validation": "context-only / keşifsel"
+        }
+      ],
+      "rationale_tr": "-%5.7 zararda ama stop ihlali yok; nox_v3 bağlam listelerinde. RISK_OFF'ta ekleme yapma, izle."
+    },
+    {
+      "ticker": "BIMAS",
+      "action": "HOLD",
+      "confidence": "medium",
+      "weight_pct": 10.19,
+      "pnl_pct": -2.85,
+      "last": 374.25,
+      "qty": 1035,
+      "avg_cost": 385.24,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "sector_rotation",
+          "validation": "paper-forward monitör"
+        }
+      ],
+      "rationale_tr": "-%2.85, XGIDA sektörü TREND durumunda (defansif); RISK_OFF rejiminde tampon niteliği, taşı."
+    },
+    {
+      "ticker": "AGESA",
+      "action": "HOLD",
+      "confidence": "low",
+      "weight_pct": 4.59,
+      "pnl_pct": -3.49,
+      "last": 232.5,
+      "qty": 750,
+      "avg_cost": 240.9,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "context_signals",
+          "validation": "context-only / keşifsel"
+        }
+      ],
+      "rationale_tr": "-%3.49, XSGRT TETİK; ağırlık düşük (%4.6), stop ihlali yok. İzle, ekleme yok."
+    },
+    {
+      "ticker": "ISCTR",
+      "action": "HOLD",
+      "confidence": "low",
+      "weight_pct": 5.14,
+      "pnl_pct": -2.97,
+      "last": 13.699999809265137,
+      "qty": 14248,
+      "avg_cost": 14.12,
+      "stop": null,
+      "flags": [],
+      "signal_refs": [
+        {
+          "source": "sector_rotation",
+          "validation": "paper-forward monitör (BANK_IGNITION keşifsel)"
+        }
+      ],
+      "rationale_tr": "Banka; XBANK downtrend (-%6.16 aylık, RSI 34.7) ve BANK_IGNITION deseni ihtiyatlı. Düşük ağırlık (%5.1), zayıflarsa çık."
+    }
+  ],
+  "buy_candidates": [
+    {
+      "ticker": "SONME",
+      "source": "decision_engine_v1",
+      "section": "EXECUTABLE",
+      "action": "OK",
+      "validation": "paper-track (tek-rejim)",
+      "entry_ref": 131.9,
+      "stop_ref": 122.32071428571427,
+      "atr": 5.264285714285715,
+      "risk_atr": 1.8196743554952517,
+      "n_cells": 4,
+      "families": "bb_1d__above_mb_birth;bb_5h__above_mb_birth;bb_5h__retest_bounce_first",
+      "timeframe": "1d",
+      "state": "continuation",
+      "mtf_birth": [
+        "5h",
+        "1d"
+      ],
+      "n_tf_birth": 2,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "trident_tier1": false,
+      "trident_geo": false,
+      "trident_D_pct": 1.43,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "suggested_qty": 3967,
+      "risk_tl": 38001.03,
+      "notional_tl": 523247.3,
+      "risk_pct_equity": 1.0,
+      "guardrail_adjusted": false,
+      "rationale_tr": "EXECUTABLE, tam risk (%1.0), 2 TF doğum (5h+1d) + 3 aile örtüşmesi; paper-track (tek-rejim). nox_v3 daily+weekly konfluensi destekliyor.",
+      "sector_index": "XUHIZ",
+      "sector_name": "GAYRİMENKUL FAALİYETLERİ",
+      "down_capture": null
+    },
+    {
+      "ticker": "GUNDG",
+      "source": "decision_engine_v1",
+      "section": "EXECUTABLE",
+      "action": "OK",
+      "validation": "paper-track (tek-rejim)",
+      "entry_ref": 2020.0,
+      "stop_ref": 1918.321428571429,
+      "atr": 128.92857142857142,
+      "risk_atr": 0.7886426592797777,
+      "n_cells": 2,
+      "families": "mb_1d__above_mb_birth;mb_5h__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h",
+        "1d"
+      ],
+      "n_tf_birth": 2,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "regime_transition"
+      ],
+      "trident_tier1": false,
+      "trident_geo": false,
+      "trident_D_pct": 53.49,
+      "trident_tag": "D_PCT_30PLUS",
+      "trident_weekly_family": "",
+      "suggested_qty": 42,
+      "risk_tl": 4270.5,
+      "notional_tl": 84840.0,
+      "risk_pct_equity": 0.112,
+      "guardrail_adjusted": false,
+      "rationale_tr": "EXECUTABLE, çok küçük risk (%0.11); paper-track (tek-rejim), 2 TF doğum + 3 bağlam listesi (alsat+nox_v3_daily+regime_transition) konfluensi. D_PCT_30PLUS uzamış.",
+      "sector_index": "XGIDA",
+      "sector_name": "GIDA, İÇECEK VE TÜTÜN",
+      "down_capture": null
+    }
+  ],
+  "skipped_candidates": [
+    {
+      "ticker": "AKFIS",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "cluster3",
+        "nox_v3_daily",
+        "regime_transition"
+      ],
+      "families": "mb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 24.3,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 90.85,
+      "stop_ref": 86.62928571428571,
+      "down_capture": null
+    },
+    {
+      "ticker": "AKSGY",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "bb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 2.23,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 9.53,
+      "stop_ref": 9.300714285714289,
+      "down_capture": null
+    },
+    {
+      "ticker": "HEDEF",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_weekly",
+        "regime_transition",
+        "tavan_kandidat"
+      ],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 22.4,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 185.8,
+      "stop_ref": 177.89142857142858,
+      "down_capture": null
+    },
+    {
+      "ticker": "OBASE",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 8.69,
+      "trident_tag": "WEEKLY_BIRTH_ACTIVE",
+      "trident_weekly_family": "mb_1w",
+      "entry_ref": 40.36,
+      "stop_ref": 37.809714285714286,
+      "down_capture": null
+    },
+    {
+      "ticker": "INVES",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "bb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 1.95,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 607.5,
+      "stop_ref": 577.1892857142857,
+      "down_capture": null
+    },
+    {
+      "ticker": "KRDMA",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 2.82,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 40.74,
+      "stop_ref": 39.765142857142855,
+      "down_capture": null
+    },
+    {
+      "ticker": "AKCNS",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "cluster3",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 26.09,
+      "trident_tag": "WEEKLY_BIRTH_ACTIVE",
+      "trident_weekly_family": "bb_1w",
+      "entry_ref": 237.7,
+      "stop_ref": 229.56785714285715,
+      "down_capture": null
+    },
+    {
+      "ticker": "SELEC",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "bb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 1.47,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 209.0,
+      "stop_ref": 196.36857142857144,
+      "down_capture": null
+    },
+    {
+      "ticker": "ALCAR",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "cluster3",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 5.5,
+      "trident_tag": "SIL_DEEP;WEEKLY_BIRTH_ACTIVE",
+      "trident_weekly_family": "mb_1w",
+      "entry_ref": 889.0,
+      "stop_ref": 795.0535714285714,
+      "down_capture": null
+    },
+    {
+      "ticker": "BMSTL",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_5h__retest_bounce_first",
+      "timeframe": "5h",
+      "state": "retest",
+      "mtf_birth": [],
+      "n_tf_birth": 0,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": null,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 44.44,
+      "stop_ref": 42.13957142857143,
+      "down_capture": null
+    },
+    {
+      "ticker": "EGEGY",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 13.58,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 30.22,
+      "stop_ref": 29.522285714285715,
+      "down_capture": null
+    },
+    {
+      "ticker": "EUPWR",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 6.46,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 88.6,
+      "stop_ref": 84.57714285714286,
+      "down_capture": null
+    },
+    {
+      "ticker": "EKSUN",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 4.9,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 6.53,
+      "stop_ref": 6.261571428571428,
+      "down_capture": null
+    },
+    {
+      "ticker": "MMCAS",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "tavan"
+      ],
+      "families": "bb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 16.5,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 59.0,
+      "stop_ref": 56.214642857142856,
+      "down_capture": null
+    },
+    {
+      "ticker": "ODINE",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "regime_transition"
+      ],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 18.5,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 2051.0,
+      "stop_ref": 1919.4857142857145,
+      "down_capture": null
+    },
+    {
+      "ticker": "ASTOR",
+      "status": "BLOCKED_INSUFFICIENT_CASH",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "regime_transition"
+      ],
+      "families": "mb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 17.63,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 318.0,
+      "stop_ref": 299.74642857142857,
+      "down_capture": null
+    },
+    {
+      "ticker": "MACKO",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 18.39,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 33.6,
+      "stop_ref": 32.25271428571428,
+      "down_capture": null
+    },
+    {
+      "ticker": "PEKGY",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_5h__retest_bounce_first",
+      "timeframe": "5h",
+      "state": "retest",
+      "mtf_birth": [],
+      "n_tf_birth": 0,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": null,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 14.74,
+      "stop_ref": 14.4555,
+      "down_capture": null
+    },
+    {
+      "ticker": "PETKM",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 2.93,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 19.53,
+      "stop_ref": 18.90192857142857,
+      "down_capture": null
+    },
+    {
+      "ticker": "TCELL",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 1.31,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 109.0,
+      "stop_ref": 103.98071428571428,
+      "down_capture": null
+    },
+    {
+      "ticker": "TERA",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 7.27,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 161.0,
+      "stop_ref": 150.29071428571427,
+      "down_capture": null
+    },
+    {
+      "ticker": "SOKM",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 1.8,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 47.7,
+      "stop_ref": 46.01157142857143,
+      "down_capture": null
+    },
+    {
+      "ticker": "TRCAS",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 0.68,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 42.4,
+      "stop_ref": 40.16471428571429,
+      "down_capture": null
+    },
+    {
+      "ticker": "GRSEL",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 0.82,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 308.5,
+      "stop_ref": 293.4089285714286,
+      "down_capture": null
+    },
+    {
+      "ticker": "AKHAN",
+      "status": "BLOCKED_INSUFFICIENT_CASH",
+      "note": "",
+      "section": "EXECUTABLE",
+      "n_cells": 1,
+      "context_lists": [],
+      "families": "mb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 7.5,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 36.56,
+      "stop_ref": 34.889,
+      "down_capture": null
+    },
+    {
+      "ticker": "BVSAN",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 3,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "bb_1d__retest_bounce_first;bb_5h__above_mb_birth;mb_5h__retest_bounce_first",
+      "timeframe": "1d",
+      "state": "retest",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 1.54,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 125.4,
+      "stop_ref": 111.875,
+      "down_capture": null
+    },
+    {
+      "ticker": "SEGYO",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 2,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_1d__above_mb_birth;bb_1d__retest_bounce_first",
+      "timeframe": "1d",
+      "state": "continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 10.89,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 4.7,
+      "stop_ref": 4.3505,
+      "down_capture": null
+    },
+    {
+      "ticker": "FORTE",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "mb_1d__retest_bounce_first",
+      "timeframe": "1d",
+      "state": "retest",
+      "mtf_birth": [],
+      "n_tf_birth": 0,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": null,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 101.0,
+      "stop_ref": 91.10392857142855,
+      "down_capture": null
+    },
+    {
+      "ticker": "CEOEM",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition",
+        "tavan_kandidat"
+      ],
+      "families": "mb_1d__above_mb_birth",
+      "timeframe": "1d",
+      "state": "accepted_continuation",
+      "mtf_birth": [
+        "1d"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 16.37,
+      "trident_tag": "SIL_DEEP",
+      "trident_weekly_family": "",
+      "entry_ref": 30.2,
+      "stop_ref": 26.126285714285714,
+      "down_capture": null
+    },
+    {
+      "ticker": "DGGYO",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "bb_5h__retest_bounce_first",
+      "timeframe": "5h",
+      "state": "retest",
+      "mtf_birth": [],
+      "n_tf_birth": 0,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": null,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 40.76,
+      "stop_ref": 35.646142857142856,
+      "down_capture": null
+    },
+    {
+      "ticker": "DOHOL",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 1,
+      "context_lists": [
+        "alsat",
+        "nox_v3_daily",
+        "nox_v3_weekly",
+        "regime_transition"
+      ],
+      "families": "bb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 1.93,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 21.24,
+      "stop_ref": 19.945,
+      "down_capture": null
+    },
+    {
+      "ticker": "CEMAS",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_5h__above_mb_birth",
+      "timeframe": "5h",
+      "state": "continuation",
+      "mtf_birth": [
+        "5h"
+      ],
+      "n_tf_birth": 1,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": 0.23,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 4.47,
+      "stop_ref": 4.135285714285715,
+      "down_capture": null
+    },
+    {
+      "ticker": "VERTU",
+      "status": "BLOCKED_MAX_POSITIONS",
+      "note": "",
+      "section": "SIZE_REDUCED",
+      "n_cells": 1,
+      "context_lists": [
+        "nox_v3_daily",
+        "nox_v3_weekly"
+      ],
+      "families": "bb_5h__retest_bounce_first",
+      "timeframe": "5h",
+      "state": "retest",
+      "mtf_birth": [],
+      "n_tf_birth": 0,
+      "trident_geo": false,
+      "trident_tier1": false,
+      "trident_D_pct": null,
+      "trident_tag": "",
+      "trident_weekly_family": "",
+      "entry_ref": 39.72,
+      "stop_ref": 36.50785714285715,
+      "down_capture": null
+    }
+  ],
+  "risk_summary": {
+    "existing_open_risk_tl": 0.0,
+    "existing_open_risk_pct": 0.0,
+    "new_risk_tl": 42354.93,
+    "total_risk_tl": 42354.93,
+    "total_risk_pct": 1.11,
+    "cap_pct": 6.0,
+    "within_cap": true
+  },
+  "sector_rotation": {
+    "status": "OK",
+    "bar_date": "2026-07-09",
+    "state_primary_confirm_on": "IN_TRADE",
+    "brake_primary": false,
+    "state_explore_confirm_off": "IN_TRADE",
+    "brake_explore": false,
+    "last_bank_ignition": null,
+    "sectors": [
+      {
+        "kod": "XUSIN",
+        "durum": "TETİK",
+        "dipten_pct": 6.2,
+        "dd_pct": -6.0
+      },
+      {
+        "kod": "XGIDA",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -1.8
+      },
+      {
+        "kod": "XKMYA",
+        "durum": "TETİK",
+        "dipten_pct": 10.0,
+        "dd_pct": -11.4
+      },
+      {
+        "kod": "XMADN",
+        "durum": "TETİK",
+        "dipten_pct": 21.7,
+        "dd_pct": -12.8
+      },
+      {
+        "kod": "XMANA",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -4.5
+      },
+      {
+        "kod": "XMESY",
+        "durum": "TETİK",
+        "dipten_pct": 6.9,
+        "dd_pct": -5.2
+      },
+      {
+        "kod": "XKAGT",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -4.4
+      },
+      {
+        "kod": "XTAST",
+        "durum": "TETİK",
+        "dipten_pct": 2.5,
+        "dd_pct": -14.4
+      },
+      {
+        "kod": "XTEKS",
+        "durum": "TETİK",
+        "dipten_pct": 2.4,
+        "dd_pct": -20.6
+      },
+      {
+        "kod": "XUHIZ",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -6.2
+      },
+      {
+        "kod": "XELKT",
+        "durum": "TETİK",
+        "dipten_pct": 3.3,
+        "dd_pct": -10.7
+      },
+      {
+        "kod": "XILTM",
+        "durum": "TETİK",
+        "dipten_pct": 3.4,
+        "dd_pct": -16.9
+      },
+      {
+        "kod": "XINSA",
+        "durum": "TETİK",
+        "dipten_pct": 1.8,
+        "dd_pct": -9.8
+      },
+      {
+        "kod": "XTCRT",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -7.7
+      },
+      {
+        "kod": "XTRZM",
+        "durum": "TETİK",
+        "dipten_pct": 4.6,
+        "dd_pct": -12.3
+      },
+      {
+        "kod": "XULAS",
+        "durum": "TETİK",
+        "dipten_pct": 17.7,
+        "dd_pct": -7.7
+      },
+      {
+        "kod": "XUMAL",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -3.5
+      },
+      {
+        "kod": "XBANK",
+        "durum": "TETİK",
+        "dipten_pct": 10.5,
+        "dd_pct": -20.0
+      },
+      {
+        "kod": "XSGRT",
+        "durum": "TETİK",
+        "dipten_pct": 3.6,
+        "dd_pct": -11.2
+      },
+      {
+        "kod": "XFINK",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -2.0
+      },
+      {
+        "kod": "XHOLD",
+        "durum": "TETİK",
+        "dipten_pct": 13.1,
+        "dd_pct": -13.7
+      },
+      {
+        "kod": "XGMYO",
+        "durum": "TETİK",
+        "dipten_pct": 5.2,
+        "dd_pct": -11.1
+      },
+      {
+        "kod": "XYORT",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -3.2
+      },
+      {
+        "kod": "XUTEK",
+        "durum": "TETİK",
+        "dipten_pct": 5.1,
+        "dd_pct": -7.4
+      },
+      {
+        "kod": "XBLSM",
+        "durum": "TREND",
+        "dipten_pct": null,
+        "dd_pct": -2.3
+      },
+      {
+        "kod": "XU100",
+        "durum": "TETİK",
+        "dipten_pct": 8.8,
+        "dd_pct": -5.4
+      }
+    ],
+    "favorable_sectors": [
+      "XBANK",
+      "XELKT",
+      "XGMYO",
+      "XHOLD",
+      "XILTM",
+      "XINSA",
+      "XKMYA",
+      "XMADN",
+      "XMESY",
+      "XSGRT",
+      "XTAST",
+      "XTEKS",
+      "XTRZM",
+      "XU100",
+      "XULAS",
+      "XUSIN",
+      "XUTEK"
+    ],
+    "strength_source": "isy"
+  },
+  "hw_obos": {
+    "status": "OK",
+    "scan_date": "2026-07-13",
+    "n_al_os": 133,
+    "n_sat_ob": 58
+  },
+  "guardrail_log": [],
+  "narrative_tr": "Makro RISK_OFF: XU100/XU030 downtrend, EMA21/50 altında, USDTRY dikey (RSI 98) — sert bir kur baskısı rejimi. hw_obos breadth aşağı dönüşü değil ama AL_OS>SAT_OB olsa da bu taraf edge taşımıyor; sektör rotasyonu XU100 dip-TETİK durumunda, fren kapalı ancak canlı kapı KAPALI — sadece rejim rengi. Duruş defansif: en zayıf halka SVGYO tam çıkış, KBORU (HW tepe) ve yüksek-ağırlık ASTOR trim ile risk hafifletiliyor. XBANK belirgin zayıf (RSI 34.7, BANK_IGNITION deseni ihtiyatlı) — ISCTR yakın takipte. Yeni risk sadece iki EXECUTABLE ada (SONME tam, GUNDG minik) ile sınırlı; toplam risk %1.11, cap içinde. buy_table'daki AKFIS/AKSGY/HEDEF/OBASE vb. tüm OK olmayan satırlar BLOCKED_MAX_POSITIONS (9/12 dolu + yeni alımlar) olduğu için seçilmedi; RISK_OFF'ta pozisyon sayısını zorlamak istemiyoruz.",
+  "disclaimer_tr": "Tüm birincil sinyal hatları kağıt-doğrulamalı ve tek-rejim (2025-26 boğa) — canlı doğrulama yok. Yatırım tavsiyesi değildir.",
+  "scorecard_prev": {
+    "prev_asof": "2026-07-10",
+    "prev_mode": "llm",
+    "scored_at": "2026-07-13",
+    "items": [
+      {
+        "ticker": "ISGYO",
+        "kind": "buy",
+        "ref_price": 27.58,
+        "price_now": 26.719999313354492,
+        "ret_pct": -3.12
+      },
+      {
+        "ticker": "ARASE",
+        "kind": "buy",
+        "ref_price": 122.1,
+        "price_now": 121.9000015258789,
+        "ret_pct": -0.16
+      },
+      {
+        "ticker": "ASTOR",
+        "kind": "trim",
+        "ref_price": 325.75,
+        "price_now": 318.0,
+        "ret_pct": -2.38
+      },
+      {
+        "ticker": "SVGYO",
+        "kind": "sell",
+        "ref_price": 13.859999656677246,
+        "price_now": 12.479999542236328,
+        "ret_pct": -9.96
+      }
+    ],
+    "buy_mean_ret_pct": -1.64,
+    "sell_avoided_mean_pct": -6.17
+  },
+  "chased_excluded": [
+    {
+      "ticker": "ANELE",
+      "runup_pct": 158.5,
+      "section": "EXECUTABLE"
+    },
+    {
+      "ticker": "EMKEL",
+      "runup_pct": 35.3,
+      "section": "EXECUTABLE"
+    },
+    {
+      "ticker": "KARTN",
+      "runup_pct": 74.4,
+      "section": "EXECUTABLE"
+    },
+    {
+      "ticker": "PRZMA",
+      "runup_pct": 84.8,
+      "section": "EXECUTABLE"
+    },
+    {
+      "ticker": "ISKPL",
+      "runup_pct": 21.6,
+      "section": "SIZE_REDUCED"
+    },
+    {
+      "ticker": "KTLEV",
+      "runup_pct": 36.6,
+      "section": "SIZE_REDUCED"
+    },
+    {
+      "ticker": "TKFEN",
+      "runup_pct": 24.7,
+      "section": "SIZE_REDUCED"
+    }
+  ],
+  "takas": {
+    "status": "OK",
+    "per_ticker": {
+      "FROTO": {
+        "key": [
+          "YAPI KREDI YAT G-277,017/3A+26,448,731"
+        ],
+        "top_buyer": "QNB YATIRIM  +1,481,962",
+        "top_seller": "AK YATIRIM -5,387,482",
+        "ice": "07-08:-0.0M/66%  07-09:-0.4M/55%  07-10:+0.6M/51%",
+        "alerts": [],
+        "mark": "🟢"
+      },
+      "AGESA": {
+        "key": [
+          "IS YATIRIM G+92,223/3A+485,356"
+        ],
+        "top_buyer": "IS YATIRIM +92,223",
+        "top_seller": "GARANTI BBVA -51,482",
+        "ice": "07-08:+0.0M/56%  07-09:-0.0M/85%  07-10:-0.0M/79%",
+        "alerts": [
+          "ÇIKIŞ SERİSİ: -0.0M→-0.0M"
+        ],
+        "mark": "🟠"
+      },
+      "AKHAN": {
+        "key": [
+          "BANK-OF-AMERIC G-60,333/3A+4,878,260"
+        ],
+        "top_buyer": "QNB YATIRIM  +294,064",
+        "top_seller": "YATIRIM-FINA -259,326",
+        "ice": "07-08:+0.0M/52%  07-09:-0.1M/59%  07-10:+0.5M/91%",
+        "alerts": [],
+        "mark": "🟢"
+      },
+      "THYAO": {
+        "key": [
+          "PUSULA YATIRIM G+1,831,422/3A+24,942,580"
+        ],
+        "top_buyer": "BANK-OF-AMER +6,254,357",
+        "top_seller": "IS YATIRIM -8,391,188",
+        "ice": "07-08:+2.7M/78%  07-09:+2.8M/74%  07-10:-1.1M/58%",
+        "alerts": [],
+        "mark": "🟢"
+      },
+      "ISCTR": {
+        "key": [
+          "YAPI KREDI YAT G-8,091,046/3A+117,033,139"
+        ],
+        "top_buyer": "BANK-OF-AMER +26,445,481",
+        "top_seller": "HSBC YATIRIM -40,802,394",
+        "ice": "07-08:+4.5M/72%  07-09:-3.4M/52%  07-10:-13.6M/76%",
+        "alerts": [
+          "ÇIKIŞ SERİSİ: -3.4M→-13.6M"
+        ],
+        "mark": "🟠"
+      },
+      "BIMAS": {
+        "key": [
+          "YAPI KREDI YAT G-746,873/3A+5,474,502"
+        ],
+        "top_buyer": "BANK-OF-AMER +4,916,372",
+        "top_seller": "IS YATIRIM -2,143,642",
+        "ice": "07-08:+0.5M/89%  07-09:+0.2M/52%  07-10:+1.8M/87%",
+        "alerts": [
+          "EL DÖNÜŞÜ: key_buyer grubu net satıcı (toplam G-746,873/3A+5,474,502)"
+        ],
+        "mark": "🔴"
+      },
+      "ASTOR": {
+        "key": [
+          "YAPI KREDI YAT G-339,573/3A+31,739,802"
+        ],
+        "top_buyer": "GLOBAL MENKU +3,063,394",
+        "top_seller": "BANK-OF-AMER -6,090,074",
+        "ice": "07-08:-0.2M/77%  07-09:-0.6M/62%  07-10:+1.8M/76%",
+        "alerts": [],
+        "mark": "🟢"
+      },
+      "KBORU": {
+        "key": [
+          "BULLS YATIRIM  G+6,461,211/3A+28,322,927"
+        ],
+        "top_buyer": "BULLS YATIRI +6,461,211",
+        "top_seller": "BANK-OF-AMER -2,332,462",
+        "ice": "",
+        "alerts": [],
+        "mark": "🟢"
+      },
+      "SVGYO": {
+        "durum": "veri yok"
+      },
+      "SONME": {
+        "durum": "veri yok"
+      },
+      "GUNDG": {
+        "durum": "veri yok"
+      }
+    },
+    "n_alerts": 3,
+    "candidate_tickers": [
+      "SONME",
+      "GUNDG"
+    ]
+  },
+  "weekly_lead_watch": [
+    {
+      "ticker": "ALCAR",
+      "weekly_bar": "2026-07-10",
+      "tf": [
+        "1d"
+      ]
+    },
+    {
+      "ticker": "OBASE",
+      "weekly_bar": "2026-07-10",
+      "tf": [
+        "1d"
+      ]
+    }
+  ],
+  "weekly_lead_bar": "2026-07-10",
+  "cluster3_open": [],
+  "sector_dc_picks": {},
+  "rotation_picks": {},
+  "xu100_rdp": {
+    "status": "OK",
+    "regime": "neutral",
+    "is_sell": false,
+    "date": "2026-07-13",
+    "close": 14092.02,
+    "window_id": "rdp_v1_mult8_atr14_sw8",
+    "validation": "context-only / keşifsel"
+  },
+  "macro_snapshot": [
+    {
+      "ticker": "DX-Y.NYB",
+      "name": "DXY (Dolar Endeksi)",
+      "category": "FX",
+      "sektor": null,
+      "price": 101.225,
+      "chg_1d": 0.25,
+      "chg_5d": 0.37,
+      "chg_1m": 1.28,
+      "above_ema21": true,
+      "above_ema50": true,
+      "rsi": 61.8,
+      "reversal": "",
+      "trend": "FLAT"
+    },
+    {
+      "ticker": "USDTRY=X",
+      "name": "USD/TRY",
+      "category": "FX",
+      "sektor": null,
+      "price": 46.9961,
+      "chg_1d": 0.1,
+      "chg_5d": 0.4,
+      "chg_1m": 1.63,
+      "above_ema21": true,
+      "above_ema50": true,
+      "rsi": 98.0,
+      "reversal": "",
+      "trend": "UP"
+    },
+    {
+      "ticker": "EURTRY=X",
+      "name": "EUR/TRY",
+      "category": "FX",
+      "sektor": null,
+      "price": 53.5741,
+      "chg_1d": -0.22,
+      "chg_5d": 0.03,
+      "chg_1m": 0.03,
+      "above_ema21": true,
+      "above_ema50": true,
+      "rsi": 56.4,
+      "reversal": "",
+      "trend": "FLAT"
+    },
+    {
+      "ticker": "XU100.IS",
+      "name": "BIST 100",
+      "category": "BIST",
+      "sektor": null,
+      "price": 14092.0195,
+      "chg_1d": -1.6,
+      "chg_5d": -2.3,
+      "chg_1m": 1.1,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 45.6,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "XU030.IS",
+      "name": "BIST 30",
+      "category": "BIST",
+      "sektor": null,
+      "price": 16254.8301,
+      "chg_1d": -2.17,
+      "chg_5d": -3.04,
+      "chg_1m": 1.98,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 45.7,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "XBANK.IS",
+      "name": "BIST Banka",
+      "category": "BIST",
+      "sektor": null,
+      "price": 16207.3799,
+      "chg_1d": -1.83,
+      "chg_5d": -6.81,
+      "chg_1m": -6.16,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 34.7,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "SPY",
+      "name": "S&P 500 (SPY)",
+      "category": "US",
+      "sektor": null,
+      "price": 749.265,
+      "chg_1d": -0.75,
+      "chg_5d": -0.27,
+      "chg_1m": 3.55,
+      "above_ema21": true,
+      "above_ema50": true,
+      "rsi": 54.7,
+      "reversal": "",
+      "trend": "UP"
+    },
+    {
+      "ticker": "QQQ",
+      "name": "NASDAQ 100 (QQQ)",
+      "category": "US",
+      "sektor": null,
+      "price": 712.225,
+      "chg_1d": -1.83,
+      "chg_5d": -1.47,
+      "chg_1m": 2.78,
+      "above_ema21": false,
+      "above_ema50": true,
+      "rsi": 48.0,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "^VIX",
+      "name": "VIX",
+      "category": "US",
+      "sektor": null,
+      "price": 16.66,
+      "chg_1d": 10.84,
+      "chg_5d": 7.0,
+      "chg_1m": -25.02,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 48.4,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "GC=F",
+      "name": "Altın (XAU)",
+      "category": "Emtia",
+      "sektor": null,
+      "price": 4005.1001,
+      "chg_1d": -2.41,
+      "chg_5d": -3.61,
+      "chg_1m": -2.51,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 37.2,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "SI=F",
+      "name": "Gümüş (XAG)",
+      "category": "Emtia",
+      "sektor": null,
+      "price": 57.91,
+      "chg_1d": -3.18,
+      "chg_5d": -6.48,
+      "chg_1m": -10.35,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 35.8,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "PL=F",
+      "name": "Platin (XPT)",
+      "category": "Emtia",
+      "sektor": null,
+      "price": 1610.1,
+      "chg_1d": -0.49,
+      "chg_5d": -1.32,
+      "chg_1m": -4.61,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 41.0,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "PA=F",
+      "name": "Paladyum (XPD)",
+      "category": "Emtia",
+      "sektor": null,
+      "price": 1253.0,
+      "chg_1d": -1.05,
+      "chg_5d": -0.59,
+      "chg_1m": 1.8,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 47.3,
+      "reversal": "",
+      "trend": "FLAT"
+    },
+    {
+      "ticker": "HG=F",
+      "name": "Bakır (Copper)",
+      "category": "Emtia",
+      "sektor": null,
+      "price": 6.2785,
+      "chg_1d": 0.72,
+      "chg_5d": 1.63,
+      "chg_1m": 0.47,
+      "above_ema21": true,
+      "above_ema50": true,
+      "rsi": 52.8,
+      "reversal": "",
+      "trend": "UP"
+    },
+    {
+      "ticker": "CL=F",
+      "name": "WTI Petrol",
+      "category": "Emtia",
+      "sektor": null,
+      "price": 76.82,
+      "chg_1d": 7.58,
+      "chg_5d": 12.06,
+      "chg_1m": -14.67,
+      "above_ema21": true,
+      "above_ema50": false,
+      "rsi": 49.1,
+      "reversal": "dip↗",
+      "trend": "UP"
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "Bitcoin",
+      "category": "Kripto",
+      "sektor": null,
+      "price": 61916.0,
+      "chg_1d": -2.89,
+      "chg_5d": -0.55,
+      "chg_1m": -3.18,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 44.4,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "ETH-USD",
+      "name": "Ethereum",
+      "category": "Kripto",
+      "sektor": null,
+      "price": 1756.39,
+      "chg_1d": -2.74,
+      "chg_5d": 0.79,
+      "chg_1m": 1.73,
+      "above_ema21": true,
+      "above_ema50": false,
+      "rsi": 51.8,
+      "reversal": "",
+      "trend": "UP"
+    },
+    {
+      "ticker": "SOL-USD",
+      "name": "Solana (L1)",
+      "category": "Kripto",
+      "sektor": null,
+      "price": 74.64,
+      "chg_1d": -2.91,
+      "chg_5d": -4.05,
+      "chg_1m": 3.8,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 46.0,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "AVAX-USD",
+      "name": "Avalanche (L1)",
+      "category": "Kripto",
+      "sektor": null,
+      "price": 6.44,
+      "chg_1d": 0.59,
+      "chg_5d": -0.4,
+      "chg_1m": 3.33,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 42.3,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "BNB-USD",
+      "name": "BNB (L1)",
+      "category": "Kripto",
+      "sektor": null,
+      "price": 562.92,
+      "chg_1d": -1.92,
+      "chg_5d": -0.95,
+      "chg_1m": -4.58,
+      "above_ema21": false,
+      "above_ema50": false,
+      "rsi": 42.4,
+      "reversal": "",
+      "trend": "DOWN"
+    },
+    {
+      "ticker": "^TNX",
+      "name": "US 10Y Faiz",
+      "category": "Faiz",
+      "sektor": null,
+      "price": 4.612,
+      "chg_1d": 0.94,
+      "chg_5d": 2.97,
+      "chg_1m": 1.54,
+      "above_ema21": true,
+      "above_ema50": true,
+      "rsi": 64.2,
+      "reversal": "",
+      "trend": "UP"
+    }
+  ],
+  "tavan_lock": {
+    "status": "OK",
+    "validation": "paper-track (tek-rejim 2025-26 boğa)",
+    "asof": "2026-07-13",
+    "scan_asof": "2026-07-13",
+    "picks": [
+      {
+        "ticker": "OZATD",
+        "ml_s": 0.7056863721128905,
+        "v1_candidate": true,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.970238095238097,
+        "close": 2217.0,
+        "tavan_target": 2217.6000000000004
+      },
+      {
+        "ticker": "KONTR",
+        "ml_s": 0.646030576514596,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.963099630996313,
+        "close": 5.96,
+        "tavan_target": 5.962000000000001
+      },
+      {
+        "ticker": "MIATK",
+        "ml_s": 0.6381323460699363,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.968051118210866,
+        "close": 34.42,
+        "tavan_target": 34.43000000000001
+      },
+      {
+        "ticker": "TRILC",
+        "ml_s": 0.6181816273637786,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.523809523809517,
+        "close": 1.38,
+        "tavan_target": 1.386
+      },
+      {
+        "ticker": "VERUS",
+        "ml_s": 0.5889309439435195,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.946595460614152,
+        "close": 411.75,
+        "tavan_target": 411.9500000000001
+      },
+      {
+        "ticker": "IHAAS",
+        "ml_s": 0.5766902274435655,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.970014992503735,
+        "close": 73.35,
+        "tavan_target": 73.37
+      },
+      {
+        "ticker": "BALSU",
+        "ml_s": 0.5723295267448661,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.955089820359282,
+        "close": 14.69,
+        "tavan_target": 14.696
+      },
+      {
+        "ticker": "BALAT",
+        "ml_s": 0.566426165113501,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": true,
+        "pct_from_prev": 9.999999999999991,
+        "close": 78.1,
+        "tavan_target": 78.10000000000001
+      },
+      {
+        "ticker": "ISKPL",
+        "ml_s": 0.5485579085927681,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.921259842519698,
+        "close": 6.98,
+        "tavan_target": 6.985
+      },
+      {
+        "ticker": "ARSAN",
+        "ml_s": 0.5059855855415863,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.876543209876536,
+        "close": 3.56,
+        "tavan_target": 3.5640000000000005
+      },
+      {
+        "ticker": "KTSKR",
+        "ml_s": 0.4997804878620071,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.938524590163938,
+        "close": 107.3,
+        "tavan_target": 107.36
+      },
+      {
+        "ticker": "BRLSM",
+        "ml_s": 0.4975054804404892,
+        "v1_candidate": false,
+        "at_tavan": true,
+        "hit_tavan": false,
+        "pct_from_prev": 9.988038277511972,
+        "close": 18.39,
+        "tavan_target": 18.392
+      },
+      {
+        "ticker": "BIGEN",
+        "ml_s": 0.4691003262156327,
+        "v1_candidate": false,
+        "at_tavan": false,
+        "hit_tavan": true,
+        "pct_from_prev": 0.5102040816326531,
+        "close": 98.5,
+        "tavan_target": 107.8
+      },
+      {
+        "ticker": "QNBFK",
+        "ml_s": 0.4126256712417068,
+        "v1_candidate": false,
+        "at_tavan": false,
+        "hit_tavan": true,
+        "pct_from_prev": 2.8085106382978733,
+        "close": 48.32,
+        "tavan_target": 51.7
+      }
+    ],
+    "exit_rules": "V1 exit: SL −10% / TP1 +4% yarı sat / %2 trail / H25",
+    "scan_tag": "17_30"
+  },
+  "freshness": [
+    {
+      "kaynak": "DE v1 watchlist",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "ctx:alsat",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "ctx:cluster3",
+      "tarih": "2026-07-08",
+      "stale": true
+    },
+    {
+      "kaynak": "ctx:nox_v3_daily",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "ctx:nox_v3_weekly",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "ctx:regime_transition",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "ctx:tavan",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "ctx:tavan_kandidat",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "tavan-scan-live",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "hw-obos",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "sektör monitör",
+      "tarih": "2026-07-09",
+      "stale": true
+    },
+    {
+      "kaynak": "XU100 RDP",
+      "tarih": "2026-07-13",
+      "stale": false
+    },
+    {
+      "kaynak": "haftalık-lider bar",
+      "tarih": "2026-07-10",
+      "stale": false
+    },
+    {
+      "kaynak": "cluster3",
+      "tarih": "2026-06-12",
+      "stale": true
+    }
+  ],
+  "context_scan_dates": {
+    "regime_transition": "2026-07-13",
+    "nox_v3_weekly": "2026-07-13",
+    "nox_v3_daily": "2026-07-13",
+    "tavan_kandidat": "2026-07-13",
+    "cluster3": "2026-07-08",
+    "alsat": "2026-07-13",
+    "tavan": "2026-07-13"
+  }
+}

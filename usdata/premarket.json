@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_utc": "2026-08-19T18:19:40+00:00",
-  "ny_time": "2026-08-19 14:19",
+  "generated_utc": "2026-08-19T18:21:35+00:00",
+  "ny_time": "2026-08-19 14:21",
   "premarket_window_ny": "04:00-09:30",
   "symbols_ok": 48,
   "errors": {}
@@ -77,7 +77,7 @@
    "group": "memory",
    "prev_close": 1625.0,
    "prev_close_date": "2026-08-18",
-   "pm_last": 1682.93,
+   "pm_last": 1682.9,
    "pm_gap_pct": 3.56,
    "pm_hi": 1710.0,
    "pm_lo": 1565.04,
@@ -165,7 +165,7 @@
    "group": "gpu_logic",
    "prev_close": 413.48,
    "prev_close_date": "2026-08-18",
-   "pm_last": 417.9,
+   "pm_last": 417.92,
    "pm_gap_pct": 1.07,
    "pm_hi": 418.5,
    "pm_lo": 409.8,
@@ -504,10 +504,10 @@
   },
   "V": {
    "group": "quality_lowai",
-   "prev_close": 364.35,
+   "prev_close": 364.39,
    "prev_close_date": "2026-08-18",
    "pm_last": 364.26,
-   "pm_gap_pct": -0.02,
+   "pm_gap_pct": -0.03,
    "pm_hi": 366.05,
    "pm_lo": 362.06,
    "pm_bars": 54,

@@ -1,0 +1,347 @@
+<!DOCTYPE html><html lang="tr"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nyx Portföy Tavsiye Ekranı — 2026-09-04</title>
+<style>
+
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&family=Homemade+Apple&family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+:root {
+  --bg-primary: #060709;
+  --bg-card: #0d0d10;
+  --bg-elevated: #141417;
+  --bg-hover: #1b1b1f;
+  --border-subtle: #1e1e23;
+  --border-dim: #2c2b30;
+  --text-primary: #e8e4dc;
+  --text-secondary: #8a8580;
+  --text-muted: #555250;
+  --nox-gold: #c9a96e;
+  --nox-gold-dim: rgba(201,169,110,0.10);
+  --nox-cyan: #c9a96e;
+  --nox-cyan-dim: rgba(201,169,110,0.10);
+  --nox-copper: #b8956e;
+  --nox-orange: #a8876a;
+  --nox-orange-dim: rgba(168,135,106,0.10);
+  --nox-green: #7a9e7a;
+  --nox-red: #9e5a5a;
+  --nox-purple: #8a7a9e;
+  --nox-yellow: #c9a96e;
+  --nox-blue: #7a8fa5;
+  --font-display: 'DM Sans', sans-serif;
+  --font-brand: 'Rubik Glitch', cursive;
+  --font-handwrite: 'Homemade Apple', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --radius: 14px;
+  --radius-sm: 8px;
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+body {
+  font-family: var(--font-display);
+  background: #060709;
+  color: var(--text-primary);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ── Aurora mesh gradient ── */
+.aurora-bg {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.aurora-layer {
+  position: absolute;
+  width: 200%; height: 200%;
+  top: -50%; left: -50%;
+  opacity: 1;
+}
+.aurora-layer-1 {
+  background:
+    radial-gradient(ellipse 35% 25% at 8% 12%, rgba(207,199,196,0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 25% 20% at 88% 78%, rgba(32,30,33,0.6) 0%, transparent 50%);
+  animation: aurora-drift 28s ease-in-out infinite;
+}
+.aurora-layer-2 {
+  background:
+    radial-gradient(ellipse 30% 22% at 78% 8%, rgba(207,199,196,0.2) 0%, transparent 50%),
+    radial-gradient(ellipse 22% 22% at 12% 88%, rgba(32,30,33,0.5) 0%, transparent 50%);
+  animation: aurora-drift 35s ease-in-out infinite reverse;
+}
+.aurora-layer-3 {
+  background:
+    radial-gradient(ellipse 25% 15% at 45% 45%, rgba(184,149,110,0.12) 0%, transparent 40%);
+  animation: aurora-pulse 22s ease-in-out infinite;
+}
+.mesh-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle 400px at 12% 18%, rgba(207,199,196,0.08) 0%, transparent 50%),
+    radial-gradient(circle 350px at 88% 72%, rgba(32,30,33,0.2) 0%, transparent 50%);
+  filter: blur(40px);
+}
+@keyframes aurora-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(4%, -4%) rotate(3deg); }
+  50% { transform: translate(-4%, 4%) rotate(-3deg); }
+  75% { transform: translate(2%, 2%) rotate(2deg); }
+}
+@keyframes aurora-pulse {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+}
+.nox-container { position: relative; z-index: 1; max-width: 1440px; margin: 0 auto; padding: 20px 16px; }
+
+/* HEADER */
+.nox-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 0; margin-bottom: 24px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.nox-logo {
+  font-family: var(--font-display);
+  font-size: 1.6rem; font-weight: 800;
+  letter-spacing: -0.03em;
+  background: linear-gradient(135deg, #c9a96e, #e8dcc8, #a8876a);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.nox-logo .proj { font-weight: 400; -webkit-text-fill-color: var(--text-secondary); font-size: 0.75em; margin-left: 2px; letter-spacing: 0.02em; }
+.nox-logo .mode { display: block; font-size: 0.45em; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; -webkit-text-fill-color: var(--text-muted); margin-top: 2px; }
+.nox-meta { text-align: right; font-size: 0.8rem; color: var(--text-muted); font-family: var(--font-mono); }
+.nox-meta b { color: var(--nox-cyan); }
+
+/* STAT STRIP */
+.nox-stats {
+  display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.nox-stat {
+  display: flex; align-items: center; gap: 6px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: 20px; padding: 6px 14px;
+  font-size: 0.78rem; font-weight: 500;
+  cursor: pointer; transition: all 0.2s;
+  user-select: none;
+}
+.nox-stat:hover { border-color: var(--border-dim); background: var(--bg-elevated); }
+.nox-stat.active { border-color: var(--nox-cyan); background: var(--nox-cyan-dim); color: var(--nox-cyan); }
+.nox-stat .cnt { font-family: var(--font-mono); font-weight: 700; font-size: 0.85rem; }
+.nox-stat .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+/* FILTER BAR */
+.nox-filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+  margin-bottom: 16px;
+  padding: 10px 14px;
+  background: var(--bg-card); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius);
+}
+.nox-filters label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-right: 2px; }
+.nox-filters select, .nox-filters input {
+  background: var(--bg-primary); color: var(--text-primary);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius-sm);
+  padding: 5px 10px; font-size: 0.78rem; font-family: var(--font-mono);
+  outline: none; transition: border-color 0.2s;
+}
+.nox-filters select:focus, .nox-filters input:focus { border-color: var(--nox-cyan); }
+.nox-filters input[type=number] { width: 60px; }
+.nox-filters input[type=text] { width: 100px; }
+.nox-btn { background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm); padding: 5px 12px; cursor: pointer; font-size: 0.72rem;
+  font-family: var(--font-display); font-weight: 500; transition: all 0.15s; }
+.nox-btn:hover { color: var(--text-primary); border-color: var(--border-dim); }
+
+/* TABLE */
+.nox-table-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border-subtle); background: var(--bg-card); }
+table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+thead { position: sticky; top: 0; z-index: 10; }
+th {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  font-weight: 600; font-size: 0.68rem;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  padding: 10px 8px; text-align: left;
+  border-bottom: 1px solid var(--border-subtle);
+  cursor: pointer; user-select: none;
+  white-space: nowrap; transition: color 0.15s;
+}
+th:hover { color: var(--nox-cyan); }
+th.sorted { color: var(--nox-cyan); }
+td { padding: 8px; border-bottom: 1px solid rgba(39,39,42,0.5); white-space: nowrap; font-family: var(--font-mono); font-size: 0.74rem; }
+tr { transition: background 0.1s; }
+tr:hover { background: var(--bg-hover); }
+tr.hl { background: rgba(34,211,238,0.04); }
+tr.hidden { display: none; }
+
+/* BADGES */
+.sig-badge {
+  display: inline-block; padding: 3px 10px; border-radius: 12px;
+  font-weight: 700; font-size: 0.68rem; font-family: var(--font-display);
+  letter-spacing: 0.02em; color: #fff;
+}
+.reg-badge {
+  display: inline-block; padding: 2px 8px; border-radius: var(--radius-sm);
+  font-size: 0.65rem; font-weight: 600; font-family: var(--font-display);
+}
+.oe-badge {
+  display: inline-block; padding: 2px 7px; border-radius: 8px;
+  font-size: 0.62rem; font-weight: 700; font-family: var(--font-mono);
+  background: rgba(248,113,113,0.15); color: var(--nox-red);
+}
+.kc-badge {
+  display: inline-block; padding: 2px 6px; border-radius: var(--radius-sm);
+  font-size: 0.68rem; font-weight: 600; font-family: var(--font-mono);
+}
+.kc-hi { background: rgba(74,222,128,0.12); color: var(--nox-green); }
+.kc-mid { background: rgba(96,165,250,0.12); color: var(--nox-blue); }
+.kc-lo { background: rgba(113,113,122,0.12); color: var(--text-muted); }
+
+.tv-link {
+  color: var(--text-primary); text-decoration: none; font-weight: 600;
+  font-family: var(--font-display); font-size: 0.8rem;
+  transition: color 0.15s;
+}
+.tv-link:hover { color: var(--nox-cyan); }
+.rr-val { font-weight: 700; }
+.rs-pos { color: var(--nox-green); }
+.rs-neg { color: var(--nox-red); }
+.detail-cell { font-family: var(--font-mono); font-size: 0.65rem; color: var(--text-muted); max-width: 280px; overflow: hidden; text-overflow: ellipsis; }
+.detail-cell .kctag { color: var(--nox-blue); }
+
+/* STATUS BAR */
+.nox-status {
+  text-align: center; padding: 16px 0; margin-top: 16px;
+  font-size: 0.72rem; color: var(--text-muted);
+  font-family: var(--font-mono);
+  border-top: 1px solid var(--border-subtle);
+}
+.nox-status b { color: var(--nox-cyan); }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .nox-header { flex-direction: column; gap: 8px; text-align: center; }
+  .nox-meta { text-align: center; }
+  table { font-size: 0.7rem; }
+  td, th { padding: 5px 4px; }
+  .nox-logo { font-size: 1.2rem; }
+}
+
+.adv-wrap { position:relative; z-index:1; max-width:1180px; margin:0 auto; padding:20px 18px 48px; }
+.adv-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+  gap:12px; padding:18px 0 16px; margin-bottom:18px; border-bottom:1px solid var(--border-subtle); }
+.adv-logo { font-family:var(--font-display); font-size:1.7rem; font-weight:800; letter-spacing:-0.03em;
+  background:linear-gradient(135deg,#c9a96e,#e8dcc8,#a8876a); -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent; background-clip:text; line-height:1.05; }
+.adv-logo .sub { display:block; font-size:0.42em; font-weight:600; letter-spacing:0.18em;
+  text-transform:uppercase; -webkit-text-fill-color:var(--text-muted); margin-top:3px; }
+.adv-meta { text-align:right; font-size:0.78rem; color:var(--text-muted); font-family:var(--font-mono); line-height:1.6; }
+.adv-meta b { color:var(--nox-gold); }
+.adv-stats { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:22px; }
+.adv-stat { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:14px;
+  padding:10px 16px; min-width:130px; }
+.adv-stat .lbl { font-size:0.62rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; }
+.adv-stat .val { font-family:var(--font-mono); font-size:1.05rem; font-weight:700; color:var(--text-primary); margin-top:2px; }
+.adv-stat .val.gold { color:var(--nox-gold); }
+.adv-stat .val.warn { color:var(--nox-red); }
+h2.sec { font-family:var(--font-display); font-size:1.1rem; font-weight:700; color:var(--text-primary);
+  margin:26px 0 10px; display:flex; align-items:baseline; gap:10px; }
+h2.sec .sec-sub { font-size:0.7rem; font-weight:500; color:var(--text-muted); text-transform:uppercase;
+  letter-spacing:0.06em; font-family:var(--font-mono); }
+.note { font-size:0.76rem; color:var(--text-secondary); line-height:1.5; margin-bottom:10px; }
+.note code, td code { font-family:var(--font-mono); color:var(--nox-gold); font-size:0.92em; }
+ul.inputs { list-style:none; display:flex; flex-wrap:wrap; gap:6px; margin-bottom:8px; }
+ul.inputs li { background:var(--bg-card); border:1px solid var(--border-subtle); border-radius:20px;
+  padding:5px 12px; font-size:0.72rem; font-family:var(--font-mono); color:var(--text-secondary); }
+ul.guard { font-size:0.76rem; color:var(--text-secondary); line-height:1.6; padding-left:18px; }
+.tag { display:inline-block; padding:1px 6px; border-radius:4px; font-size:0.66rem; font-weight:600;
+  font-family:var(--font-mono); background:var(--nox-gold-dim); color:var(--nox-gold); }
+.tag-w { background:rgba(138,122,158,0.14); color:#a89ec0; }
+.narrative { background:var(--bg-card); border:1px solid var(--border-subtle); border-left:3px solid var(--nox-gold);
+  border-radius:10px; padding:14px 18px; font-size:0.85rem; line-height:1.6; color:var(--text-primary); }
+.disclaimer { color:var(--nox-orange); font-size:0.72rem; margin-top:28px; line-height:1.5;
+  border-top:1px solid var(--border-subtle); padding-top:14px; }
+td b { color:var(--text-primary); }
+details.fulllist { margin-top:26px; border:1px solid var(--border-subtle); border-radius:12px;
+  background:var(--bg-card); padding:0 4px; }
+details.fulllist > summary { cursor:pointer; list-style:none; padding:14px 16px; font-family:var(--font-display);
+  font-weight:700; font-size:1.0rem; color:var(--nox-gold); user-select:none; }
+details.fulllist > summary::-webkit-details-marker { display:none; }
+details.fulllist > summary:hover { color:var(--text-primary); }
+details.fulllist[open] > summary { border-bottom:1px solid var(--border-subtle); }
+details.fulllist .note { padding:10px 16px 0; }
+/* açılır-kapanır bölüm başlıkları (tüm section'lar dropdown) */
+details.sec-d { margin:14px 0; border:1px solid var(--border-subtle); border-radius:12px;
+  background:rgba(13,13,16,0.4); overflow:hidden; }
+details.sec-d > summary { cursor:pointer; list-style:none; padding:12px 16px; font-family:var(--font-display);
+  font-weight:700; font-size:1.08rem; color:var(--text-primary); user-select:none;
+  display:flex; align-items:baseline; gap:10px; }
+details.sec-d > summary::-webkit-details-marker { display:none; }
+details.sec-d > summary::before { content:'▸'; color:var(--nox-gold); font-size:0.8em; transition:transform .15s; }
+details.sec-d[open] > summary::before { transform:rotate(90deg); }
+details.sec-d > summary:hover { color:var(--nox-gold); }
+details.sec-d[open] > summary { border-bottom:1px solid var(--border-subtle); }
+details.sec-d .sec-body { padding:12px 16px; }
+details.sec-d .sec-body > .nox-table-wrap { margin:0; }
+</style></head><body>
+<div class="aurora-bg"><div class="aurora-layer aurora-layer-1"></div>
+<div class="aurora-layer aurora-layer-2"></div><div class="aurora-layer aurora-layer-3"></div></div>
+<div class="mesh-overlay"></div>
+<div class="adv-wrap">
+  <header class="adv-header">
+    <div class="adv-logo">NYX<span class="sub">Portföy Tavsiye Ekranı</span></div>
+    <div class="adv-meta"><b>2026-09-04</b> · mod: kural-tabanlı<br>
+      model: — · rev: 2a07dea7c510cde53c27fc9a1b00a10c370cf22a</div>
+  </header>
+
+  <div class="adv-stats">
+    <div class="adv-stat"><div class="lbl">Varlık</div><div class="val gold">2.913.164 ₺</div></div>
+    <div class="adv-stat"><div class="lbl">Nakit</div><div class="val">1.151.404 ₺</div></div>
+    <div class="adv-stat"><div class="lbl">Yatırımda</div><div class="val">%60.5</div></div>
+    <div class="adv-stat"><div class="lbl">Açık risk</div><div class="val">%0.0 <span style="font-size:0.6rem;color:var(--text-muted)">/ %6.0</span></div></div>
+  </div>
+
+  <details class='sec-d' open><summary>🌍 Makro & Rejim <span class='sec-sub'>trend + dipten/tepeden dönüş · bilgi</span></summary><div class='sec-body'><div style='border-left:3px solid #7a9e7a;background:var(--bg-card);border:1px solid var(--border-subtle);border-radius:10px;padding:10px 14px;margin:8px 0'><b style='color:#7a9e7a'>XU100 RDP: NEUTRAL</b> — risk-ON <span class='meta'>(2026-09-04 · RDP overlay, canlı kapı kapalı, bilgi)</span></div><p class='note'>🔄 <b>Sektör rotasyon monitörü</b> (2026-09-03): primer=<b>ARMED</b> · keşif=<b>ARMED</b> · fren kapalı <i>(paper-forward, canlı kapı kapalı)</i><br>⚡ [bilgi] 2026-08-03 BANK_IGNITION — XBANK 1g rel +3.3pp (tarihsel: XU100 fwd20-40 baz üstü; XBANK kovalamak değil endeks/rotasyon); [PRIMARY confirm-ON] 2026-08-03 LEG_SWITCH XMESY+XELKT+XFINK</p><p class='note'>📈 <b>Rotasyonda öne çıkan sektörler → o sektördeki DE adayların</b> <i>(sektör/zaman seçimi DOĞRULANMIŞ; sektör-içi sıra = DÜŞÜK down-capture/defansif önce — vs-XU100 +alfa her iki dönem ✓; dc düşük = düşerken az düşen)</i></p><div class='nox-table-wrap'><table><thead><tr><th>Sektör</th><th>Durum</th><th>DE adayların</th></tr></thead><tbody><tr><td><b>XBANK</b></td><td>TETİK · +13.0%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XELKT</b></td><td>TETİK · +2.8%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XFINK</b></td><td>TETİK · +32.3%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XGIDA</b></td><td>TETİK · +0.0%/5g</td><td><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VANGD">VANGD</a>, <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FRIGO">FRIGO</a></td></tr><tr><td><b>XGMYO</b></td><td>TETİK · +0.0%/5g</td><td><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KZGYO">KZGYO</a>, <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EYGYO">EYGYO</a></td></tr><tr><td><b>XHOLD</b></td><td>TETİK · +16.7%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XILTM</b></td><td>TETİK · +1.2%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XINSA</b></td><td>TETİK · +5.3%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XKAGT</b></td><td>TETİK · +0.0%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XMADN</b></td><td>TETİK · +22.3%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XSGRT</b></td><td>TETİK · +0.0%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XTAST</b></td><td>TETİK · +0.0%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XTEKS</b></td><td>TETİK · +0.0%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XTRZM</b></td><td>TETİK · +0.0%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XU100</b></td><td>TETİK · +5.8%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XULAS</b></td><td>TETİK · +8.4%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr><tr><td><b>XUMAL</b></td><td>TETİK · +5.0%/5g</td><td><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KTLEV">KTLEV</a></td></tr><tr><td><b>XYORT</b></td><td>TETİK · +0.0%/5g</td><td><span class='meta'>bugün DE adayı yok</span></td></tr></tbody></table></div><div class='nox-table-wrap'><table><thead><tr><th>Kategori</th><th>Enstrüman</th><th>Fiyat</th><th>1g</th><th>5g</th><th>1a</th><th>RSI</th><th>Trend</th><th>Dönüş</th></tr></thead><tbody><tr><td rowspan='3' style='vertical-align:top'><b>BIST</b></td><td>BIST 100</td><td>14012.4199</td><td style='color:#7a9e7a'>+0.6%</td><td>-4.3%</td><td>+1.6%</td><td>45</td><td>DOWN</td><td></td></tr><tr><td>BIST 30</td><td>16445.4102</td><td style='color:#7a9e7a'>+0.9%</td><td>-2.0%</td><td>+5.0%</td><td>54</td><td>UP</td><td></td></tr><tr><td>BIST Banka</td><td>16611.2305</td><td style='color:#7a9e7a'>+0.8%</td><td>-0.7%</td><td>+7.3%</td><td>60</td><td>UP</td><td></td></tr><tr><td rowspan='3' style='vertical-align:top'><b>US</b></td><td>S&P 500 (SPY)</td><td>770.74</td><td style='color:#f85149'>-0.3%</td><td>+0.2%</td><td>+0.3%</td><td>56</td><td>UP</td><td></td></tr><tr><td>NASDAQ 100 (QQQ)</td><td>718.835</td><td style='color:#7a9e7a'>+0.2%</td><td>+0.3%</td><td>+0.6%</td><td>54</td><td>UP</td><td></td></tr><tr><td>VIX</td><td>14.02</td><td style='color:#f85149'>-2.1%</td><td>-2.8%</td><td>-7.5%</td><td>42</td><td>DOWN</td><td></td></tr><tr><td rowspan='5' style='vertical-align:top'><b>Kripto</b></td><td>Bitcoin</td><td>79630.3984</td><td style='color:#f85149'>-2.0%</td><td>+2.5%</td><td>+26.4%</td><td>66</td><td>UP</td><td><span style='color:#f85149;font-weight:700'>tepe↘</span></td></tr><tr><td>Ethereum</td><td>2458.0</td><td style='color:#f85149'>-2.0%</td><td>+1.7%</td><td>+30.7%</td><td>63</td><td>UP</td><td></td></tr><tr><td>Solana (L1)</td><td>101.92</td><td style='color:#f85149'>-2.0%</td><td>+0.0%</td><td>+35.3%</td><td>64</td><td>UP</td><td></td></tr><tr><td>Avalanche (L1)</td><td>7.389</td><td style='color:#f85149'>-1.7%</td><td>+3.9%</td><td>+14.2%</td><td>57</td><td>UP</td><td></td></tr><tr><td>BNB (L1)</td><td>719.08</td><td style='color:#f85149'>-0.8%</td><td>+5.0%</td><td>+18.4%</td><td>70</td><td>UP</td><td><span style='color:#f85149;font-weight:700'>tepe↘</span></td></tr><tr><td rowspan='6' style='vertical-align:top'><b>Emtia</b></td><td>Altın (XAU)</td><td>4485.6001</td><td style='color:#f85149'>-0.1%</td><td>+0.2%</td><td>+5.7%</td><td>56</td><td>UP</td><td></td></tr><tr><td>Gümüş (XAG)</td><td>66.68</td><td style='color:#f85149'>-0.4%</td><td>-0.5%</td><td>+8.5%</td><td>55</td><td>UP</td><td></td></tr><tr><td>Platin (XPT)</td><td>1831.8</td><td style='color:#7a9e7a'>+0.2%</td><td>-0.9%</td><td>+6.0%</td><td>58</td><td>UP</td><td></td></tr><tr><td>Paladyum (XPD)</td><td>1405.0</td><td style='color:#f85149'>-1.5%</td><td>-1.6%</td><td>+2.3%</td><td>57</td><td>UP</td><td></td></tr><tr><td>Bakır (Copper)</td><td>6.6815</td><td style='color:#7a9e7a'>+1.6%</td><td>+1.8%</td><td>-0.1%</td><td>60</td><td>UP</td><td></td></tr><tr><td>WTI Petrol</td><td>90.57</td><td style='color:#f85149'>-0.8%</td><td>+8.6%</td><td>+17.2%</td><td>63</td><td>UP</td><td></td></tr><tr><td rowspan='3' style='vertical-align:top'><b>FX</b></td><td>DXY (Dolar Endeksi)</td><td>99.083</td><td style='color:#7a9e7a'>+0.1%</td><td>-0.6%</td><td>-0.9%</td><td>42</td><td>FLAT</td><td></td></tr><tr><td>USD/TRY</td><td>48.436</td><td style='color:#7a9e7a'>+0.2%</td><td>+0.9%</td><td>+1.9%</td><td>86</td><td>UP</td><td></td></tr><tr><td>EUR/TRY</td><td>56.2867</td><td style='color:#7a9e7a'>+0.6%</td><td>+0.7%</td><td>+2.3%</td><td>72</td><td>UP</td><td></td></tr><tr><td rowspan='1' style='vertical-align:top'><b>Faiz</b></td><td>US 10Y Faiz</td><td>4.764</td><td style='color:#7a9e7a'>+0.0%</td><td>+0.9%</td><td>+2.0%</td><td>58</td><td>UP</td><td></td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d' open><summary>📋 Girdi durumu</summary><div class='sec-body'><ul class='inputs'><li>decision_engine: ✅ OK</li><li>tavan_lock: ❌ UNAVAILABLE</li><li>cluster3: ✅ OK</li><li>sector_rotation: ✅ OK</li><li>hw_obos: ❌ UNAVAILABLE</li><li>context_scanners: ✅ OK</li><li>macro: ✅ OK</li><li>prices: ✅ OK</li><li>takas: ✅ OK</li></ul></div></details>
+
+  <details class='sec-d' open><summary>📅 Tarama tazeliği <span class='sec-sub'>2 bayat / 13 kaynak</span></summary><div class='sec-body'><p class='note'>Advisor'a giren her kaynağın son veri tarihi. asof <b>2026-09-04</b>'tan ≥1 İŞGÜNÜ eski = BAYAT (hafta sonu hariç). 2 bayat / 13 kaynak.</p><div class='nox-table-wrap'><table><thead><tr><th>Kaynak</th><th>Son tarih</th><th>Durum</th></tr></thead><tbody><tr><td>DE v1 watchlist</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>ctx:alsat</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>ctx:cluster3</td><td>2026-09-03</td><td>⚠️ BAYAT</td></tr><tr><td>ctx:nox_v3_daily</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>ctx:nox_v3_weekly</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>ctx:regime_transition</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>ctx:tavan</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>ctx:tavan_kandidat</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>tavan-scan-live</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>sektör monitör</td><td>2026-09-03</td><td>⚠️ BAYAT</td></tr><tr><td>XU100 RDP</td><td>2026-09-04</td><td>✓ güncel</td></tr><tr><td>haftalık-lider bar</td><td>2026-08-28</td><td>✓ güncel</td></tr><tr><td>cluster3</td><td>2026-09-03</td><td>✓ güncel</td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d' open><summary>📊 Pozisyon önerileri</summary><div class='sec-body'><div class='nox-table-wrap'><table><thead><tr><th>Hisse</th><th>Aksiyon</th><th>Güven</th><th>Adet</th><th>Maliyet</th><th>Son</th><th>Ağırlık %</th><th>PnL %</th><th>Flag</th><th>Gerekçe</th></tr></thead><tbody><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AKHAN">AKHAN</a></b></td><td>HOLD</td><td>low</td><td>5250</td><td>33.69</td><td>40.0</td><td>7.21</td><td>18.73</td><td>[]</td><td>Kural-tabanlı mod: flag yok, varsayılan TUT.</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ASTOR">ASTOR</a></b></td><td>HOLD</td><td>low</td><td>850</td><td>301.75</td><td>295.0</td><td>8.61</td><td>-2.24</td><td>[]</td><td>Kural-tabanlı mod: flag yok, varsayılan TUT.</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FROTO">FROTO</a></b></td><td>HOLD</td><td>low</td><td>5000</td><td>84.5</td><td>77.19999694824219</td><td>13.25</td><td>-8.64</td><td>[]</td><td>Kural-tabanlı mod: flag yok, varsayılan TUT.</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ALCTL">ALCTL</a></b></td><td>HOLD</td><td>low</td><td>2660</td><td>169.37</td><td>116.0</td><td>10.59</td><td>-31.51</td><td>[]</td><td>Kural-tabanlı mod: flag yok, varsayılan TUT.</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BESTE">BESTE</a></b></td><td>HOLD</td><td>low</td><td>10000</td><td>34.88</td><td>31.6200008392334</td><td>10.85</td><td>-9.35</td><td>[]</td><td>Kural-tabanlı mod: flag yok, varsayılan TUT.</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ONRYT">ONRYT</a></b></td><td>HOLD</td><td>low</td><td>5000</td><td>70.44</td><td>58.04999923706055</td><td>9.96</td><td>-17.59</td><td>[]</td><td>Kural-tabanlı mod: flag yok, varsayılan TUT.</td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d' open><summary>💼 Takas / AKD <span class='sec-sub'>Matriks · 6 alarm</span></summary><div class='sec-body'><div class='nox-table-wrap'><table><thead><tr><th>Hisse</th><th>Key kurum (G/3A)</th><th>Bugün alıcı</th><th>Bugün satıcı</th><th>ICE (3g)</th><th>Alarm</th></tr></thead><tbody><tr><td>🟠 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AKHAN">AKHAN</a></td><td>BANK-OF-AMERIC G-458,882/3A+6,754,163</td><td>AK YATIRIM +188,188</td><td>BANK-OF-AMER -458,882</td><td>09-01:+0.0M/64%  09-02:-0.1M/59%  09-03:-0.7M/74%</td><td style='color:#f85149'>ÇIKIŞ SERİSİ: -0.1M→-0.7M</td></tr><tr><td>🟢 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ASTOR">ASTOR</a></td><td>HSBC YATIRIM G+4,386,517/3A+13,126,063</td><td>IS YATIRIM +10,708,838</td><td>AK YATIRIM -23,786,557</td><td>09-01:-1.1M/72%  09-02:+0.3M/79%  09-03:-0.8M/43%</td><td style='color:#f85149'>—</td></tr><tr><td>🟠 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FROTO">FROTO</a></td><td>GEDIK YATIRIM G+0/3A+13,700,652</td><td>YAPI KREDI Y +2,096,802</td><td>ALNUS YATIRI -2,369,915</td><td>09-01:+1.0M/73%  09-02:-0.6M/57%  09-03:-1.2M/56%</td><td style='color:#f85149'>ÇIKIŞ SERİSİ: -0.6M→-1.2M</td></tr><tr><td>🟢 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ALCTL">ALCTL</a></td><td>ALTERNATIF MEN G+0/3A+1,120,976</td><td>VAKIF YAT. +69,335</td><td>TEB YATIRIM -206,895</td><td>09-01:+0.0M/71%  09-02:+0.0M/67%  09-03:-0.0M/72%</td><td style='color:#f85149'>—</td></tr><tr><td>🟢 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BESTE">BESTE</a></td><td>TACIRLER YAT. G+54,618/3A+947,877</td><td>GARANTI BBVA +899,911</td><td>A1 CAPITAL M -635,154</td><td>09-01:-0.0M/88%  09-02:+0.0M/85%  09-03:-0.0M/53%</td><td style='color:#f85149'>—</td></tr><tr><td>🟠 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ONRYT">ONRYT</a></td><td>IS YATIRIM G-22,581/3A+519,720</td><td>VAKIF YAT. +108,629</td><td>UNLU MENKUL  -79,308</td><td>09-01:+0.0M/75%  09-02:-0.1M/67%  09-03:-0.1M/55%</td><td style='color:#f85149'>ÇIKIŞ SERİSİ: -0.1M→-0.1M</td></tr><tr><td>🟢 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KTLEV">KTLEV</a> <span class='tag tag-w'>AL adayı</span></td><td>PUSULA YATIRIM G+115,331,183/3A+111,250,404</td><td>PUSULA YATIR +115,331,183</td><td>INFO YATIRIM -70,530,052</td><td>09-01:+3.1M/59%  09-02:+87.1M/97%  09-03:+1.1M/99%</td><td style='color:#f85149'>—</td></tr><tr><td>🟠 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VANGD">VANGD</a> <span class='tag tag-w'>AL adayı</span></td><td>TERA YATIRIM M G+131,792/3A+250,746</td><td>TERA YATIRIM +131,792</td><td>A1 CAPITAL M -123,137</td><td>09-01:-0.1M/66%  09-02:-0.0M/67%  09-03:-0.0M/55%</td><td style='color:#f85149'>ÇIKIŞ SERİSİ: -0.0M→-0.0M</td></tr><tr><td>🔴 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KZGYO">KZGYO</a> <span class='tag tag-w'>AL adayı</span></td><td>VAKIF YAT. G-574,779/3A+866,527</td><td>MIDAS MENKUL +285,659</td><td>ZIRAAT YAT. -614,351</td><td>09-01:+0.2M/49%  09-02:+0.1M/72%  09-03:+0.1M/42%</td><td style='color:#f85149'>EL DÖNÜŞÜ: key_buyer grubu net satıcı (toplam G-574,779/3A+866,527)</td></tr><tr><td>🟠 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EYGYO">EYGYO</a> <span class='tag tag-w'>AL adayı</span></td><td>UNLU MENKUL DE G+2,911,325/3A+16,812,594</td><td>UNLU MENKUL  +2,911,325</td><td>VAKIF YAT. -2,943,724</td><td>09-01:-0.3M/78%  09-02:-0.6M/80%  09-03:-0.4M/75%</td><td style='color:#f85149'>ÇIKIŞ SERİSİ: -0.6M→-0.4M</td></tr><tr><td>🟢 <a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FRIGO">FRIGO</a> <span class='tag tag-w'>AL adayı</span></td><td>BULLS YATIRIM  G+5,747,333/3A+19,355,127</td><td>BANK-OF-AMER +6,546,756</td><td>IS YATIRIM -18,878,938</td><td>09-01:-2.5M/61%  09-02:+0.0M/76%  09-03:+6.4M/51%</td><td style='color:#f85149'>—</td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d' open><summary>🟢 AL adayları <span class='sec-sub'>DE v1 · paper-track · dc=down-capture (düşük=defansif) · takas=Matriks akış</span></summary><div class='sec-body'><div class='nox-table-wrap'><table><thead><tr><th>Hisse</th><th>TF</th><th>Setup</th><th>🔗 Tüm çakışma</th><th>dc</th><th>💼 Takas</th><th>Bölüm</th><th>Adet</th><th>Giriş</th><th>Stop</th><th>Risk ₺</th></tr></thead><tbody><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KTLEV">KTLEV</a></b></td><td>5h</td><td>retest</td><td>mb-retest[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>🟢 PUSULA YATIR +115,331,183</td><td>EXECUTABLE</td><td>7,055</td><td>48.26</td><td>44.13</td><td>29,131</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VANGD">VANGD</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-retest[5h], mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, horizontal_break</td><td>—</td><td>🟠 TERA YATIRIM +131,792 | ÇIKIŞ SERİSİ: -0.0M→-0.0M</td><td>EXECUTABLE</td><td>4,648</td><td>94.00</td><td>88.51</td><td>25,526</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KZGYO">KZGYO</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>🔴 MIDAS MENKUL +285,659 | EL DÖNÜŞÜ: key_buyer grubu net satıcı (toplam G-574,779/3A+866,527)</td><td>EXECUTABLE</td><td>10,158</td><td>22.48</td><td>21.37</td><td>11,249</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EYGYO">EYGYO</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 1w-birth[mit📐K kırılım08-28+brk📐K kırılım08-28], 🔱SIL_DEEP</td><td>—</td><td>🟠 UNLU MENKUL  +2,911,325 | ÇIKIŞ SERİSİ: -0.6M→-0.4M</td><td>EXECUTABLE</td><td>2</td><td>2.57</td><td>2.47</td><td>0</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FRIGO">FRIGO</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 1w-birth[mit📐K kırılım08-28], 🔱SIL_DEEP</td><td>—</td><td>🟢 BANK-OF-AMER +6,546,756</td><td>EXECUTABLE</td><td>1</td><td>2.34</td><td>2.19</td><td>0</td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d'><summary>⛔ Kovalama-filtresi — elenen adaylar <span class='sec-sub'>1 elendi · bilgi</span></summary><div class='sec-body'><p class='note'>Yakın zamanda <b>≥+%20 koşmuş</b>, koşu tepesinden sonra <b>altındaki geçerli bullish FVG/OB bölgesine DOKUNMAMIŞ</b> (yapısal düzeltme yok → hâlâ uzamış) VE weekly birth (mb_1w above) OLMAYAN adaylar aday-havuzundan çıkarıldı (kullanıcı kuralı 2026-07-17 — düzeltme sabit oran değil yapı hedeflidir; FVG/OB'ye dokunan koşu kovalama sayılmaz). düz.% kolonu bilgi amaçlıdır. Yakın-koşu extfeed'den.</p><div class='nox-table-wrap'><table><thead><tr><th>Hisse</th><th>Yakın koşu</th><th>DE bölüm</th></tr></thead><tbody><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BALAT">BALAT</a></b></td><td style='color:#f85149'>+34%</td><td>0%</td><td>SIZE_REDUCED</td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d' open><summary>📐 Haftalık-lider çakışma <span class='sec-sub'>aday-dışı · bilgi</span></summary><div class='sec-body'><p class='note'>Haftalık LİDER barda (<b>2026-08-28</b>) <code>mb_1w above_mb_birth</code> → İÇİNDE BULUNULAN (sonraki) hafta günlük/5h <code>above_mb_birth</code>. DE adayı DEĞİL — çapraz-TF lead-lag yapı hizalanması.</p><div class='nox-table-wrap'><table><thead><tr><th>Hisse</th><th>Çakışan TF</th></tr></thead><tbody><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AHGAZ">AHGAZ</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[mit📐U kırılım08-28+brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AKCNS">AKCNS</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[mit📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ALGYO">ALGYO</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[mit📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BAHKM">BAHKM</a></b></td><td><span class='tag tag-w'>1w</span> + 1d+5h <span class='note'>[mit📐U kırılım08-28+mit📐K kırılım08-28+brk📐U kırılım08-28+brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BIMAS">BIMAS</a></b></td><td><span class='tag tag-w'>1w</span> + 1d+5h <span class='note'>[mit📐U kırılım08-21]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BLCYT">BLCYT</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DOCO">DOCO</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[mit📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DOHOL">DOHOL</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ECILC">ECILC</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EGEGY">EGEGY</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[mit📐U kırılım08-28+mit📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ENERY">ENERY</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[mit📐K kırılım08-28+brk📐U kırılım08-28+brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ENKAI">ENKAI</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FLAP">FLAP</a></b></td><td><span class='tag tag-w'>1w</span> + 1d <span class='note'>[mit📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:INDES">INDES</a></b></td><td><span class='tag tag-w'>1w</span> + 1d+5h <span class='note'>[brk📐K kırılım08-28]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KLYPV">KLYPV</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[brk📐U kırılım08-21]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KUVVA">KUVVA</a></b></td><td><span class='tag tag-w'>1w</span> + 5h <span class='note'>[mit📐U kırılım08-21]</span></td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:PLTUR">PLTUR</a></b></td><td><span class='tag tag-w'>1w</span> + 1d <span class='note'>[brk📐K kırılım08-28]</span></td></tr></tbody></table></div></div></details>
+
+  
+
+  <details class='sec-d' open><summary>🔒 Tavan V1 canlı tarama <span class='sec-sub'>14 aday · izleme bağlamı</span></summary><div class='sec-body'><p class='note'>Tavan V1 canlı aday taraması (<code>tavan-scan-live</code>, scan 2026-09-04). ml_s = V1 kalite (≥0.65 yeşil), ✓=v1_candidate, 🟥=şu an tavanda. AL adayı DEĞİL — tavan izleme bağlamı (paper tek-rejim). Çıkış: <code>V1 exit: SL −10% / TP1 +4% yarı sat / %2 trail / H25</code></p><div class='nox-table-wrap'><table><thead><tr><th>Hisse</th><th>ml_s</th><th>v1</th><th>Kapanış</th><th>Δ önceki</th><th>Tavan</th></tr></thead><tbody><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:LYDHO">LYDHO</a></b></td><td style='color:var(--text-primary)'>0.65</td><td></td><td>145.70</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ONCSM">ONCSM</a></b></td><td style='color:var(--text-primary)'>0.61</td><td></td><td>196.40</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:HALKB">HALKB</a></b></td><td style='color:var(--text-primary)'>0.61</td><td></td><td>54.35</td><td>+9.9%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BAHKM">BAHKM</a></b></td><td style='color:var(--text-primary)'>0.61</td><td></td><td>171.10</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ICUGS">ICUGS</a></b></td><td style='color:var(--text-primary)'>0.58</td><td></td><td>4.03</td><td>+9.8%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:LYDYE">LYDYE</a></b></td><td style='color:var(--text-primary)'>0.56</td><td></td><td>13037.50</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KOCMT">KOCMT</a></b></td><td style='color:var(--text-primary)'>0.56</td><td></td><td>3.74</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BIGTK">BIGTK</a></b></td><td style='color:var(--text-primary)'>0.56</td><td></td><td>330.00</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:UFUK">UFUK</a></b></td><td style='color:var(--text-primary)'>0.56</td><td></td><td>1650.00</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:TGSAS">TGSAS</a></b></td><td style='color:var(--text-primary)'>0.55</td><td></td><td>233.20</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VESTL">VESTL</a></b></td><td style='color:var(--text-primary)'>0.53</td><td></td><td>26.46</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MIATK">MIATK</a></b></td><td style='color:var(--text-primary)'>0.51</td><td></td><td>30.70</td><td>+10.0%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VESBE">VESBE</a></b></td><td style='color:var(--text-primary)'>0.49</td><td></td><td>5.99</td><td>+9.9%</td><td>🟥tavanda</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DOGUB">DOGUB</a></b></td><td style='color:var(--text-primary)'>0.46</td><td></td><td>66.90</td><td>+6.2%</td><td>vurdu</td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d'><summary>🧬 cluster3 açık adaylar <span class='sec-sub'>40 açık aday · bilgi</span></summary><div class='sec-body'><p class='note'>cluster3 arketip forward-paper havuzu (son 30g açık, henüz realize olmamış). 🎯DE = aynı zamanda bugünkü DE adayı. Backtest'te zayıf/negatif edge → bilgi/paper-track.</p><div class='nox-table-wrap'><table><thead><tr><th>Hisse</th><th>Sinyal tarihi</th></tr></thead><tbody><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AKENR">AKENR</a></b></td><td>2026-08-14</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ALFAS">ALFAS</a></b></td><td>2026-08-20</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ATSYH">ATSYH</a></b></td><td>2026-08-31</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AVOD">AVOD</a></b></td><td>2026-09-03</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BAGFS">BAGFS</a></b></td><td>2026-08-18</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BIGTK">BIGTK</a></b></td><td>2026-08-25</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BJKAS">BJKAS</a></b></td><td>2026-08-18</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BORLS">BORLS</a></b></td><td>2026-08-20</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BRKO">BRKO</a></b></td><td>2026-08-14</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BRLSM">BRLSM</a></b></td><td>2026-08-27</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:CATES">CATES</a></b></td><td>2026-08-20</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:CRFSA">CRFSA</a></b></td><td>2026-09-01</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:CUSAN">CUSAN</a></b></td><td>2026-08-11</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DENGE">DENGE</a></b></td><td>2026-08-24</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DEVA">DEVA</a></b></td><td>2026-08-17</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DOKTA">DOKTA</a></b></td><td>2026-08-19</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EMPAE">EMPAE</a></b></td><td>2026-08-07</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ENDAE">ENDAE</a></b></td><td>2026-08-10</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ENSRI">ENSRI</a></b></td><td>2026-08-27</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EUHOL">EUHOL</a></b></td><td>2026-08-11</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:GIPTA">GIPTA</a></b></td><td>2026-08-26</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:HALKB">HALKB</a></b></td><td>2026-09-03</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:HATSN">HATSN</a></b></td><td>2026-08-28</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:HKTM">HKTM</a></b></td><td>2026-08-28</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:IHAAS">IHAAS</a></b></td><td>2026-08-13</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ISGSY">ISGSY</a></b></td><td>2026-08-10</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:IZFAS">IZFAS</a></b></td><td>2026-08-26</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:JANTS">JANTS</a></b></td><td>2026-08-20</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KARSN">KARSN</a></b></td><td>2026-09-03</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KGYO">KGYO</a></b></td><td>2026-08-13</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KOCMT">KOCMT</a></b></td><td>2026-08-10</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KORDS">KORDS</a></b></td><td>2026-08-14</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KRDMA">KRDMA</a></b></td><td>2026-08-31</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KRPLS">KRPLS</a></b></td><td>2026-08-10</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KUVVA">KUVVA</a></b></td><td>2026-08-18</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MARTI">MARTI</a></b></td><td>2026-09-02</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MCARD">MCARD</a></b></td><td>2026-08-10</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:NETAS">NETAS</a></b></td><td>2026-08-18</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:NIBAS">NIBAS</a></b></td><td>2026-09-01</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:PAPIL">PAPIL</a></b></td><td>2026-08-24</td></tr></tbody></table></div></div></details>
+
+  <details class='sec-d' open><summary>🧭 Genel değerlendirme</summary><div class='sec-body'><div class='narrative'>LLM kullanılamadı — kural-tabanlı rapor. DE v1 durumu: OK. Toplam risk %2.26 (tavan %6.0).</div></div></details>
+
+  <details class='sec-d'><summary>🛡 Korkuluk müdahaleleri</summary><div class='sec-body'><ul class='guard'><li>yok</li></ul></div></details>
+
+  <details class="fulllist">
+    <summary>📋 Bütçe kısıtı olmasa — TÜM liste (60) ▾</summary>
+    <p class="note">Portföy nakit/limit kısıtı dikkate alınmadan TÜM DE adayları
+    (alınabilir + bütçe duvarına takılanlar). Durum kolonu hangisinin bütçeyle
+    elendiğini gösterir.</p>
+    <div class="nox-table-wrap"><table><thead><tr><th>Hisse</th><th>TF</th><th>Setup</th>
+    <th>🔗 Tüm çakışma</th><th>dc</th><th>Bölüm</th><th>Giriş</th><th>Stop</th><th>Durum</th>
+    </tr></thead><tbody><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KTLEV">KTLEV</a></b></td><td>5h</td><td>retest</td><td>mb-retest[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>48.26</td><td>44.13</td><td>ALINABİLİR</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VANGD">VANGD</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-retest[5h], mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, horizontal_break</td><td>—</td><td>EXECUTABLE</td><td>94.00</td><td>88.51</td><td>ALINABİLİR</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KZGYO">KZGYO</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>22.48</td><td>21.37</td><td>ALINABİLİR</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EYGYO">EYGYO</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 1w-birth[mit📐K kırılım08-28+brk📐K kırılım08-28], 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>2.57</td><td>2.47</td><td>ALINABİLİR</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FRIGO">FRIGO</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 1w-birth[mit📐K kırılım08-28], 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>2.34</td><td>2.19</td><td>ALINABİLİR</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KRPLS">KRPLS</a></b></td><td>1d</td><td>accepted_continuation</td><td>çoklu-TF birth:5h+1d; mb-birth[5h,1d], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, tavan-kandidat(scr)</td><td>—</td><td>EXECUTABLE</td><td>11.30</td><td>10.21</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:TABGD">TABGD</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>239.20</td><td>228.84</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AHGAZ">AHGAZ</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 🔱WEEKLY_BIRTH_ACTIVE, 1w-birth(mb_1w)</td><td>—</td><td>EXECUTABLE</td><td>38.98</td><td>38.23</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ETYAT">ETYAT</a></b></td><td>1d</td><td>accepted_continuation</td><td>mb-birth[1d], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>16.13</td><td>15.12</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:OFSYM">OFSYM</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>70.00</td><td>66.95</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AKCNS">AKCNS</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>243.30</td><td>238.27</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ARDYZ">ARDYZ</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>85.75</td><td>81.67</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:SKYMD">SKYMD</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>15.58</td><td>13.48</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BLCYT">BLCYT</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly, regime_transition, tavan-aday(scr)</td><td>—</td><td>EXECUTABLE</td><td>2.36</td><td>2.21</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:TGSAS">TGSAS</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], alsat, cluster3, nox_v3_daily, nox_v3_weekly, regime_transition, tavan-aday(scr), 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>233.20</td><td>206.57</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:HATSN">HATSN</a></b></td><td>5h</td><td>retest</td><td>mb-retest[5h], alsat, cluster3, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>61.45</td><td>54.25</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DIRIT">DIRIT</a></b></td><td>1d</td><td>accepted_continuation</td><td>mb-birth[1d], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>28.00</td><td>26.25</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:INDES">INDES</a></b></td><td>5h</td><td>retest</td><td>mb-retest[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>11.70</td><td>11.30</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:TRCAS">TRCAS</a></b></td><td>1d</td><td>accepted_continuation</td><td>mb-birth[1d], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>49.20</td><td>46.17</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VESTL">VESTL</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>26.46</td><td>24.43</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:RYSAS">RYSAS</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 🔱D_PCT_30PLUS, 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>28.30</td><td>22.14</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AVOD">AVOD</a></b></td><td>1d</td><td>continuation</td><td>mb-birth[1d], alsat, cluster3, nox_v3_daily, nox_v3_weekly, regime_transition, tavan-aday(scr), tavan-kandidat(scr), 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>4.71</td><td>4.30</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VBTYZ">VBTYZ</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>39.00</td><td>36.50</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EUKYO">EUKYO</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>13.71</td><td>12.87</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:EGPRO">EGPRO</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>37.74</td><td>33.96</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:VESBE">VESBE</a></b></td><td>1d</td><td>continuation</td><td>mb-birth[1d], nox_v3_daily, nox_v3_weekly, regime_transition, tavan-aday(scr)</td><td>—</td><td>EXECUTABLE</td><td>5.99</td><td>5.51</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ISBTR">ISBTR</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>512,925.00</td><td>481,844.73</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KCHOL">KCHOL</a></b></td><td>1d</td><td>continuation</td><td>mb-birth[1d], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>215.10</td><td>211.22</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ZRGYO">ZRGYO</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>19.70</td><td>19.38</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BERA">BERA</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>13.62</td><td>13.02</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:TERA">TERA</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>194.40</td><td>169.22</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:GENKM">GENKM</a></b></td><td>1d</td><td>accepted_continuation</td><td>mb-birth[1d], nox_v3_daily, regime_transition, tavan-aday(scr)</td><td>—</td><td>EXECUTABLE</td><td>11.15</td><td>10.29</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DUNYH">DUNYH</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>EXECUTABLE</td><td>123.10</td><td>103.20</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:FLAP">FLAP</a></b></td><td>1d</td><td>accepted_continuation</td><td>mb-birth[1d], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>10.97</td><td>10.71</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:OZATD">OZATD</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], nox_v3_daily, regime_transition, 🔱D_PCT_30PLUS, 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>4,680.00</td><td>4,207.81</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AVTUR">AVTUR</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>12.24</td><td>11.87</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:AKSA">AKSA</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], alsat, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>10.75</td><td>10.60</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BFREN">BFREN</a></b></td><td>5h</td><td>retest</td><td>mb-retest[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>125.80</td><td>123.94</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MIATK">MIATK</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly, 🔱SIL_DEEP</td><td>—</td><td>EXECUTABLE</td><td>30.70</td><td>29.44</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ONRYT">ONRYT</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>58.05</td><td>55.97</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BRYAT">BRYAT</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>1,654.00</td><td>1,622.38</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ESCAR">ESCAR</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>47.40</td><td>43.88</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:DOFER">DOFER</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>27.84</td><td>26.90</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:HLGYO">HLGYO</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>EXECUTABLE</td><td>4.59</td><td>4.33</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BOBET">BOBET</a></b></td><td>1w</td><td>retest</td><td>mb-retest[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>SIZE_REDUCED</td><td>21.96</td><td>18.17</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MARTI">MARTI</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, cluster3, nox_v3_daily, nox_v3_weekly, regime_transition, 🔱SIL_DEEP</td><td>—</td><td>SIZE_REDUCED</td><td>2.01</td><td>1.54</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BIMAS">BIMAS</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 🔱WEEKLY_BIRTH_ACTIVE, 1w-birth(mb_1w)</td><td>—</td><td>SIZE_REDUCED</td><td>415.75</td><td>400.89</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BAHKM">BAHKM</a></b></td><td>5h</td><td>accepted_continuation</td><td>mb-birth[5h], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, tavan-aday(scr), 🔱D_PCT_30PLUS, 🔱SIL_DEEP, 🔱WEEKLY_BIRTH_ACTIVE, 1w-birth(bb_1w;mb_1w)</td><td>—</td><td>SIZE_REDUCED</td><td>171.10</td><td>150.28</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BIGTK">BIGTK</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], alsat, nox_v3_daily, regime_transition, tavan-aday(scr)</td><td>—</td><td>SIZE_REDUCED</td><td>330.00</td><td>264.02</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MANAS">MANAS</a></b></td><td>1w</td><td>continuation</td><td>mb-birth[1w], alsat, nox_v3_daily, nox_v3_weekly, regime_transition, 🔱D_PCT_30PLUS, 🔱SIL_DEEP</td><td>—</td><td>SIZE_REDUCED</td><td>37.22</td><td>27.55</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:BLUME">BLUME</a></b></td><td>1d</td><td>trigger</td><td>nyxexpansion, alsat, nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>SIZE_REDUCED</td><td>40.12</td><td>32.32</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:SERNT">SERNT</a></b></td><td>1d</td><td>continuation</td><td>çoklu-TF birth:5h+1d; mb-birth[5h,1d], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>SIZE_REDUCED</td><td>8.35</td><td>7.52</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KONYA">KONYA</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>SIZE_REDUCED</td><td>3,875.00</td><td>3,582.46</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:ARTMS">ARTMS</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>SIZE_REDUCED</td><td>42.48</td><td>39.07</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:UFUK">UFUK</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], nox_v3_daily, nox_v3_weekly, tavan-aday(scr)</td><td>—</td><td>SIZE_REDUCED</td><td>1,650.00</td><td>1,305.09</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:KRONT">KRONT</a></b></td><td>5h</td><td>retest</td><td>mb-retest[5h], nox_v3_daily, nox_v3_weekly, regime_transition</td><td>—</td><td>SIZE_REDUCED</td><td>24.80</td><td>21.33</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MEGMT">MEGMT</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>SIZE_REDUCED</td><td>46.20</td><td>43.11</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:QNBFK">QNBFK</a></b></td><td>1d</td><td>retest</td><td>mb-retest[1d], alsat, nox_v3_weekly</td><td>—</td><td>SIZE_REDUCED</td><td>40.70</td><td>38.45</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:YAYLA">YAYLA</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_daily, nox_v3_weekly</td><td>—</td><td>SIZE_REDUCED</td><td>21.98</td><td>20.32</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr><tr><td><b><a class="tv-link" target="_blank" href="https://www.tradingview.com/chart/?symbol=BIST:MSGYO">MSGYO</a></b></td><td>5h</td><td>continuation</td><td>mb-birth[5h], nox_v3_weekly</td><td>—</td><td>SIZE_REDUCED</td><td>5.87</td><td>5.45</td><td>⛔ BLOCKED_INSUFFICIENT_CASH</td></tr></tbody></table></div>
+  </details>
+
+  <p class="disclaimer">⚠️ Tüm birincil sinyal hatları kağıt-doğrulamalı ve tek-rejim (2025-26 boğa) — canlı doğrulama yok. Yatırım tavsiyesi değildir.</p>
+</div>
+</body></html>

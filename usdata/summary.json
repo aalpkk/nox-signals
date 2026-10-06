@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_utc": "2026-10-05T22:06:55",
+  "generated_utc": "2026-10-06T01:20:21",
   "session_state_ny": "post_close",
   "symbols_ok": 48,
   "errors": {},
@@ -45,7 +45,7 @@
    "hi252": 1255.0,
    "off_hi252_pct": -15.22,
    "atr14": 41.86,
-   "vol_ratio20": 0.71,
+   "vol_ratio20": 0.72,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -111,7 +111,7 @@
    "hi252": 655.95,
    "off_hi252_pct": -10.13,
    "atr14": 15.79,
-   "vol_ratio20": 0.62,
+   "vol_ratio20": 0.63,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -178,7 +178,7 @@
    "hi252": 799.87,
    "off_hi252_pct": -44.79,
    "atr14": 26.69,
-   "vol_ratio20": 1.4,
+   "vol_ratio20": 1.41,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -223,7 +223,7 @@
    "hi252": 438.5,
    "off_hi252_pct": -21.14,
    "atr14": 12.68,
-   "vol_ratio20": 0.64,
+   "vol_ratio20": 0.65,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -312,7 +312,7 @@
    "hi252": 495.0,
    "off_hi252_pct": -26.77,
    "atr14": 9.91,
-   "vol_ratio20": 0.87,
+   "vol_ratio20": 0.88,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -378,7 +378,7 @@
    "hi252": 329.88,
    "off_hi252_pct": -17.77,
    "atr14": 11.97,
-   "vol_ratio20": 0.74,
+   "vol_ratio20": 0.75,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -444,7 +444,7 @@
    "hi252": 233.67,
    "off_hi252_pct": -47.97,
    "atr14": 7.37,
-   "vol_ratio20": 1.21,
+   "vol_ratio20": 1.22,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -513,7 +513,7 @@
    "hi252": 153.2,
    "off_hi252_pct": -42.96,
    "atr14": 4.45,
-   "vol_ratio20": 0.59,
+   "vol_ratio20": 0.6,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -536,7 +536,7 @@
    "hi252": 299.86,
    "off_hi252_pct": -22.44,
    "atr14": 15.39,
-   "vol_ratio20": 0.96,
+   "vol_ratio20": 0.97,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -558,7 +558,7 @@
    "hi252": 76.87,
    "off_hi252_pct": -47.34,
    "atr14": 2.52,
-   "vol_ratio20": 0.93,
+   "vol_ratio20": 0.94,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -580,7 +580,7 @@
    "hi252": 50.73,
    "off_hi252_pct": -51.31,
    "atr14": 1.62,
-   "vol_ratio20": 1.41,
+   "vol_ratio20": 1.42,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -624,7 +624,7 @@
    "hi252": 29.84,
    "off_hi252_pct": -50.44,
    "atr14": 0.99,
-   "vol_ratio20": 1.28,
+   "vol_ratio20": 1.29,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -734,7 +734,7 @@
    "hi252": 217.1,
    "off_hi252_pct": -33.26,
    "atr14": 4.72,
-   "vol_ratio20": 1.96,
+   "vol_ratio20": 1.97,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -756,7 +756,7 @@
    "hi252": 193.84,
    "off_hi252_pct": -81.44,
    "atr14": 1.99,
-   "vol_ratio20": 0.75,
+   "vol_ratio20": 0.76,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -778,7 +778,7 @@
    "hi252": 151.0,
    "off_hi252_pct": -51.64,
    "atr14": 4.03,
-   "vol_ratio20": 0.88,
+   "vol_ratio20": 0.89,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -800,7 +800,7 @@
    "hi252": 225.64,
    "off_hi252_pct": -24.18,
    "atr14": 6.78,
-   "vol_ratio20": 1.37,
+   "vol_ratio20": 1.38,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [
@@ -932,7 +932,7 @@
    "hi252": 692.0,
    "off_hi252_pct": -26.79,
    "atr14": 10.93,
-   "vol_ratio20": 0.82,
+   "vol_ratio20": 0.83,
    "last_bar_date": "2026-10-05",
    "source": "ext",
    "tags": [

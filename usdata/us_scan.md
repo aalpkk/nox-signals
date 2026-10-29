@@ -1,4 +1,4 @@
-# NOX US tarama — 2026-10-29T20:17:06Z (48 sembol, NY seans: post_close)
+# NOX US tarama — 2026-10-29T20:23:47Z (48 sembol, NY seans: post_close)
 
 
 ## SINDIRME

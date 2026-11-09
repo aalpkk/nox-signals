@@ -1,5 +1,5 @@
-# NOX US FULL SCAN — 2026-11-09 22:49Z
-Taranan: 2094 likit sembol (fiyat>$3.0, $hacim>20M)
+# NOX US FULL SCAN — 2026-11-09 23:55Z
+Taranan: 2093 likit sembol (fiyat>$3.0, $hacim>20M)
 
 ## EN COK YUKSELENLER
 
@@ -118,7 +118,7 @@ Taranan: 2094 likit sembol (fiyat>$3.0, $hacim>20M)
 | **AIZ** | 317.21 | 3.33 | 6.72 | 18.08 | 9.2% | -0.2 | 1.27 | 118 | 20G_ZIRVE |
 | **TIGO** | 86.76 | 4.23 | 12.12 | 8.07 | 8.3% | -19.0 | 1.27 | 77 | 20G_ZIRVE |
 | **CTRE** | 38.86 | 1.7 | 7.53 | 6.06 | 6.0% | -10.9 | 1.23 | 96 | 20G_ZIRVE |
-| **FROG** | 108.18 | 7.13 | 27.11 | 9.25 | 15.0% | -0.3 | 1.18 | 221 | 20G_ZIRVE |
+| **FROG** | 108.18 | 7.13 | 27.11 | 9.25 | 15.0% | -0.4 | 1.18 | 221 | 20G_ZIRVE |
 | **XENE** | 40.45 | 3.27 | 7.52 | 12.96 | 10.7% | -44.3 | 1.17 | 48 | 20G_ZIRVE |
 
 ## SMA20 TESTI (pullback)

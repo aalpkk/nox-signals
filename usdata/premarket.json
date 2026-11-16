@@ -1,7 +1,7 @@
 {
  "meta": {
-  "generated_utc": "2026-11-16T12:50:08+00:00",
-  "ny_time": "2026-11-16 07:50",
+  "generated_utc": "2026-11-16T22:33:15+00:00",
+  "ny_time": "2026-11-16 17:33",
   "premarket_window_ny": "04:00-09:30",
   "symbols_ok": 48,
   "errors": {}
@@ -11,419 +11,419 @@
    "group": "core_positions",
    "prev_close": 162.82,
    "prev_close_date": "2026-11-13",
-   "pm_last": 157.75,
-   "pm_gap_pct": -3.11,
+   "pm_last": 158.98,
+   "pm_gap_pct": -2.36,
    "pm_hi": 162.97,
    "pm_lo": 155.6,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "MU": {
    "group": "core_positions",
    "prev_close": 778.4,
    "prev_close_date": "2026-11-13",
-   "pm_last": 734.71,
-   "pm_gap_pct": -5.61,
+   "pm_last": 735.31,
+   "pm_gap_pct": -5.54,
    "pm_hi": 752.0,
-   "pm_lo": 728.43,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_lo": 727.0,
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "SPY": {
    "group": "core_positions",
    "prev_close": 754.25,
    "prev_close_date": "2026-11-13",
-   "pm_last": 749.73,
-   "pm_gap_pct": -0.6,
+   "pm_last": 749.6,
+   "pm_gap_pct": -0.62,
    "pm_hi": 753.01,
    "pm_lo": 747.96,
-   "pm_bars": 46,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 63,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "QQQ": {
    "group": "core_positions",
    "prev_close": 679.9,
    "prev_close_date": "2026-11-13",
-   "pm_last": 671.24,
-   "pm_gap_pct": -1.27,
-   "pm_hi": 675.27,
+   "pm_last": 671.05,
+   "pm_gap_pct": -1.3,
+   "pm_hi": 680.4,
    "pm_lo": 668.33,
-   "pm_bars": 46,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "SOXX": {
    "group": "core_positions",
    "prev_close": 149.34,
    "prev_close_date": "2026-11-13",
-   "pm_last": 143.32,
-   "pm_gap_pct": -4.03,
+   "pm_last": 143.02,
+   "pm_gap_pct": -4.23,
    "pm_hi": 145.84,
    "pm_lo": 142.2,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "GLD": {
    "group": "core_positions",
    "prev_close": 355.45,
    "prev_close_date": "2026-11-13",
-   "pm_last": 354.38,
-   "pm_gap_pct": -0.3,
+   "pm_last": 354.03,
+   "pm_gap_pct": -0.4,
    "pm_hi": 355.3,
    "pm_lo": 351.15,
-   "pm_bars": 46,
-   "pm_last_bar_ny": "2026-11-16 07:47"
+   "pm_bars": 63,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "SNDK": {
    "group": "memory",
    "prev_close": 884.5,
    "prev_close_date": "2026-11-13",
-   "pm_last": 832.0,
-   "pm_gap_pct": -5.94,
+   "pm_last": 827.35,
+   "pm_gap_pct": -6.46,
    "pm_hi": 849.63,
    "pm_lo": 820.0,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "WDC": {
    "group": "memory",
    "prev_close": 295.58,
    "prev_close_date": "2026-11-13",
-   "pm_last": 279.62,
-   "pm_gap_pct": -5.4,
+   "pm_last": 281.69,
+   "pm_gap_pct": -4.7,
    "pm_hi": 286.8,
    "pm_lo": 277.22,
-   "pm_bars": 29,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_bars": 47,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "AMAT": {
    "group": "semicap",
    "prev_close": 370.25,
    "prev_close_date": "2026-11-13",
-   "pm_last": 353.61,
-   "pm_gap_pct": -4.49,
-   "pm_hi": 361.12,
-   "pm_lo": 350.49,
-   "pm_bars": 35,
-   "pm_last_bar_ny": "2026-11-16 07:49"
+   "pm_last": 348.31,
+   "pm_gap_pct": -5.93,
+   "pm_hi": 369.57,
+   "pm_lo": 345.06,
+   "pm_bars": 54,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "LRCX": {
    "group": "semicap",
    "prev_close": 225.91,
    "prev_close_date": "2026-11-13",
-   "pm_last": 215.18,
-   "pm_gap_pct": -4.75,
+   "pm_last": 213.17,
+   "pm_gap_pct": -5.64,
    "pm_hi": 219.96,
-   "pm_lo": 213.48,
-   "pm_bars": 32,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_lo": 212.0,
+   "pm_bars": 51,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "KLAC": {
    "group": "semicap",
    "prev_close": 152.33,
    "prev_close_date": "2026-11-13",
-   "pm_last": 146.55,
-   "pm_gap_pct": -3.79,
-   "pm_hi": 148.19,
-   "pm_lo": 144.77,
-   "pm_bars": 14,
-   "pm_last_bar_ny": "2026-11-16 07:40"
+   "pm_last": 144.41,
+   "pm_gap_pct": -5.2,
+   "pm_hi": 151.94,
+   "pm_lo": 144.0,
+   "pm_bars": 25,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "ASML": {
    "group": "semicap",
    "prev_close": 1494.8,
    "prev_close_date": "2026-11-13",
-   "pm_last": 1442.76,
-   "pm_gap_pct": -3.48,
+   "pm_last": 1436.69,
+   "pm_gap_pct": -3.89,
    "pm_hi": 1470.0,
-   "pm_lo": 1435.0,
-   "pm_bars": 40,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_lo": 1430.2,
+   "pm_bars": 60,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "AMD": {
    "group": "gpu_logic",
    "prev_close": 534.09,
    "prev_close_date": "2026-11-13",
-   "pm_last": 506.34,
-   "pm_gap_pct": -5.2,
+   "pm_last": 502.97,
+   "pm_gap_pct": -5.83,
    "pm_hi": 518.3,
-   "pm_lo": 503.05,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_lo": 500.36,
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "AVGO": {
    "group": "gpu_logic",
    "prev_close": 346.62,
    "prev_close_date": "2026-11-13",
-   "pm_last": 335.08,
-   "pm_gap_pct": -3.33,
-   "pm_hi": 338.57,
-   "pm_lo": 332.08,
-   "pm_bars": 45,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_last": 332.59,
+   "pm_gap_pct": -4.05,
+   "pm_hi": 346.14,
+   "pm_lo": 329.84,
+   "pm_bars": 65,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "TSM": {
    "group": "gpu_logic",
    "prev_close": 398.63,
    "prev_close_date": "2026-11-13",
-   "pm_last": 378.22,
-   "pm_gap_pct": -5.12,
-   "pm_hi": 386.27,
+   "pm_last": 379.65,
+   "pm_gap_pct": -4.76,
+   "pm_hi": 398.73,
    "pm_lo": 376.02,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_bars": 63,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "INTC": {
    "group": "gpu_logic",
-   "prev_close": 59.66,
+   "prev_close": 59.67,
    "prev_close_date": "2026-11-13",
-   "pm_last": 56.47,
-   "pm_gap_pct": -5.35,
-   "pm_hi": 57.83,
+   "pm_last": 56.65,
+   "pm_gap_pct": -5.05,
+   "pm_hi": 59.66,
    "pm_lo": 56.28,
-   "pm_bars": 46,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "MRVL": {
    "group": "gpu_logic",
    "prev_close": 156.71,
    "prev_close_date": "2026-11-13",
-   "pm_last": 147.32,
-   "pm_gap_pct": -5.99,
+   "pm_last": 148.11,
+   "pm_gap_pct": -5.49,
    "pm_hi": 151.68,
    "pm_lo": 146.0,
-   "pm_bars": 43,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 63,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "LITE": {
    "group": "optics",
    "prev_close": 597.12,
    "prev_close_date": "2026-11-13",
-   "pm_last": 559.69,
-   "pm_gap_pct": -6.27,
+   "pm_last": 553.82,
+   "pm_gap_pct": -7.25,
    "pm_hi": 573.66,
-   "pm_lo": 553.23,
-   "pm_bars": 34,
-   "pm_last_bar_ny": "2026-11-16 07:40"
+   "pm_lo": 549.32,
+   "pm_bars": 54,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "COHR": {
    "group": "optics",
    "prev_close": 218.19,
    "prev_close_date": "2026-11-13",
-   "pm_last": 204.65,
-   "pm_gap_pct": -6.21,
-   "pm_hi": 209.0,
-   "pm_lo": 203.0,
-   "pm_bars": 44,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_last": 201.68,
+   "pm_gap_pct": -7.57,
+   "pm_hi": 218.15,
+   "pm_lo": 201.37,
+   "pm_bars": 60,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "AAOI": {
    "group": "optics",
    "prev_close": 49.89,
    "prev_close_date": "2026-11-13",
-   "pm_last": 46.61,
-   "pm_gap_pct": -6.57,
+   "pm_last": 46.65,
+   "pm_gap_pct": -6.49,
    "pm_hi": 48.06,
    "pm_lo": 46.17,
-   "pm_bars": 41,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_bars": 60,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "GLW": {
    "group": "optics",
    "prev_close": 114.06,
    "prev_close_date": "2026-11-13",
-   "pm_last": 109.43,
-   "pm_gap_pct": -4.06,
-   "pm_hi": 111.1,
+   "pm_last": 108.91,
+   "pm_gap_pct": -4.51,
+   "pm_hi": 114.08,
    "pm_lo": 108.0,
-   "pm_bars": 30,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 45,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "CIEN": {
    "group": "optics",
    "prev_close": 280.62,
    "prev_close_date": "2026-11-13",
-   "pm_last": 264.3,
-   "pm_gap_pct": -5.82,
-   "pm_hi": 273.32,
+   "pm_last": 267.0,
+   "pm_gap_pct": -4.85,
+   "pm_hi": 280.54,
    "pm_lo": 263.0,
-   "pm_bars": 16,
-   "pm_last_bar_ny": "2026-11-16 07:25"
+   "pm_bars": 29,
+   "pm_last_bar_ny": "2026-11-16 09:05"
   },
   "CRWV": {
    "group": "neocloud_dc",
    "prev_close": 53.11,
    "prev_close_date": "2026-11-13",
-   "pm_last": 49.75,
-   "pm_gap_pct": -6.33,
+   "pm_last": 49.34,
+   "pm_gap_pct": -7.1,
    "pm_hi": 51.56,
    "pm_lo": 48.59,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "NBIS": {
    "group": "neocloud_dc",
    "prev_close": 115.81,
    "prev_close_date": "2026-11-13",
-   "pm_last": 108.0,
-   "pm_gap_pct": -6.74,
+   "pm_last": 106.84,
+   "pm_gap_pct": -7.75,
    "pm_hi": 111.85,
-   "pm_lo": 106.1,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_lo": 105.51,
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "IREN": {
    "group": "neocloud_dc",
    "prev_close": 18.16,
    "prev_close_date": "2026-11-13",
-   "pm_last": 17.05,
-   "pm_gap_pct": -6.11,
+   "pm_last": 17.1,
+   "pm_gap_pct": -5.85,
    "pm_hi": 17.67,
-   "pm_lo": 16.85,
-   "pm_bars": 46,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_lo": 16.82,
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "APLD": {
    "group": "neocloud_dc",
    "prev_close": 15.98,
    "prev_close_date": "2026-11-13",
-   "pm_last": 15.07,
-   "pm_gap_pct": -5.69,
+   "pm_last": 15.04,
+   "pm_gap_pct": -5.88,
    "pm_hi": 15.48,
    "pm_lo": 14.86,
-   "pm_bars": 36,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 56,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "CORZ": {
    "group": "neocloud_dc",
    "prev_close": 14.53,
    "prev_close_date": "2026-11-13",
-   "pm_last": 13.65,
-   "pm_gap_pct": -6.06,
+   "pm_last": 13.8,
+   "pm_gap_pct": -5.02,
    "pm_hi": 14.1,
    "pm_lo": 13.5,
-   "pm_bars": 15,
-   "pm_last_bar_ny": "2026-11-16 07:42"
+   "pm_bars": 23,
+   "pm_last_bar_ny": "2026-11-16 08:55"
   },
   "WULF": {
    "group": "neocloud_dc",
    "prev_close": 12.62,
    "prev_close_date": "2026-11-13",
-   "pm_last": 11.86,
-   "pm_gap_pct": -6.01,
+   "pm_last": 11.94,
+   "pm_gap_pct": -5.39,
    "pm_hi": 12.11,
-   "pm_lo": 11.82,
-   "pm_bars": 20,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_lo": 11.62,
+   "pm_bars": 40,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "SMCI": {
    "group": "neocloud_dc",
    "prev_close": 26.87,
    "prev_close_date": "2026-11-13",
-   "pm_last": 25.58,
-   "pm_gap_pct": -4.8,
+   "pm_last": 25.5,
+   "pm_gap_pct": -5.1,
    "pm_hi": 26.27,
-   "pm_lo": 25.34,
-   "pm_bars": 46,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_lo": 25.28,
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "VRT": {
    "group": "power",
    "prev_close": 202.08,
    "prev_close_date": "2026-11-13",
-   "pm_last": 191.07,
-   "pm_gap_pct": -5.45,
-   "pm_hi": 195.35,
+   "pm_last": 192.6,
+   "pm_gap_pct": -4.69,
+   "pm_hi": 202.07,
    "pm_lo": 189.32,
-   "pm_bars": 39,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 56,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "GEV": {
    "group": "power",
    "prev_close": 802.91,
    "prev_close_date": "2026-11-13",
-   "pm_last": 776.19,
+   "pm_last": 776.2,
    "pm_gap_pct": -3.33,
    "pm_hi": 787.0,
    "pm_lo": 770.0,
-   "pm_bars": 26,
-   "pm_last_bar_ny": "2026-11-16 07:43"
+   "pm_bars": 41,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "CEG": {
    "group": "power",
    "prev_close": 280.22,
    "prev_close_date": "2026-11-13",
-   "pm_last": 274.97,
-   "pm_gap_pct": -1.87,
+   "pm_last": 276.98,
+   "pm_gap_pct": -1.16,
    "pm_hi": 277.4,
    "pm_lo": 273.26,
-   "pm_bars": 16,
-   "pm_last_bar_ny": "2026-11-16 07:40"
+   "pm_bars": 30,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "VST": {
    "group": "power",
    "prev_close": 132.99,
    "prev_close_date": "2026-11-13",
-   "pm_last": 129.34,
-   "pm_gap_pct": -2.74,
-   "pm_hi": 130.25,
+   "pm_last": 130.41,
+   "pm_gap_pct": -1.94,
+   "pm_hi": 130.5,
    "pm_lo": 128.1,
-   "pm_bars": 23,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 34,
+   "pm_last_bar_ny": "2026-11-16 09:05"
   },
   "OKLO": {
    "group": "power",
    "prev_close": 23.93,
    "prev_close_date": "2026-11-13",
-   "pm_last": 22.77,
-   "pm_gap_pct": -4.87,
+   "pm_last": 22.95,
+   "pm_gap_pct": -4.12,
    "pm_hi": 23.27,
    "pm_lo": 22.69,
-   "pm_bars": 37,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 54,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "RKLB": {
    "group": "space",
    "prev_close": 61.53,
    "prev_close_date": "2026-11-13",
-   "pm_last": 59.69,
-   "pm_gap_pct": -3.0,
-   "pm_hi": 59.86,
+   "pm_last": 59.79,
+   "pm_gap_pct": -2.84,
+   "pm_hi": 60.51,
    "pm_lo": 58.62,
-   "pm_bars": 44,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 64,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "SPCX": {
    "group": "space",
    "prev_close": 139.1,
    "prev_close_date": "2026-11-13",
-   "pm_last": 139.0,
-   "pm_gap_pct": -0.07,
+   "pm_last": 138.47,
+   "pm_gap_pct": -0.45,
    "pm_hi": 141.04,
-   "pm_lo": 138.51,
-   "pm_bars": 47,
-   "pm_last_bar_ny": "2026-11-16 07:50"
+   "pm_lo": 137.88,
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "ASTS": {
    "group": "space",
    "prev_close": 32.6,
    "prev_close_date": "2026-11-13",
-   "pm_last": 31.33,
-   "pm_gap_pct": -3.9,
+   "pm_last": 31.7,
+   "pm_gap_pct": -2.76,
    "pm_hi": 31.84,
    "pm_lo": 30.74,
-   "pm_bars": 38,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 58,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "LUNR": {
    "group": "space",
    "prev_close": 12.99,
    "prev_close_date": "2026-11-13",
-   "pm_last": 12.47,
-   "pm_gap_pct": -4.02,
+   "pm_last": 12.58,
+   "pm_gap_pct": -3.17,
    "pm_hi": 12.67,
    "pm_lo": 12.31,
-   "pm_bars": 32,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 51,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "MSI": {
    "group": "defense",
@@ -438,96 +438,102 @@
   },
   "RTX": {
    "group": "defense",
-   "prev_close": 198.59,
+   "prev_close": 198.58,
    "prev_close_date": "2026-11-13",
-   "pm_last": 199.24,
-   "pm_gap_pct": 0.33,
-   "pm_hi": 199.24,
+   "pm_last": 199.75,
+   "pm_gap_pct": 0.59,
+   "pm_hi": 199.9,
    "pm_lo": 198.34,
-   "pm_bars": 4,
-   "pm_last_bar_ny": "2026-11-16 07:30"
+   "pm_bars": 7,
+   "pm_last_bar_ny": "2026-11-16 08:50"
   },
   "NOC": {
    "group": "defense",
    "prev_close": 550.73,
    "prev_close_date": "2026-11-13",
-   "pm_last": null,
-   "pm_gap_pct": null,
-   "pm_bars": 0
+   "pm_last": 551.69,
+   "pm_gap_pct": 0.17,
+   "pm_hi": 551.69,
+   "pm_lo": 551.69,
+   "pm_bars": 1,
+   "pm_last_bar_ny": "2026-11-16 07:30"
   },
   "LMT": {
    "group": "defense",
    "prev_close": 596.28,
    "prev_close_date": "2026-11-13",
-   "pm_last": 599.37,
-   "pm_gap_pct": 0.52,
-   "pm_hi": 599.37,
+   "pm_last": 599.2,
+   "pm_gap_pct": 0.49,
+   "pm_hi": 599.96,
    "pm_lo": 595.0,
-   "pm_bars": 10,
-   "pm_last_bar_ny": "2026-11-16 07:49"
+   "pm_bars": 17,
+   "pm_last_bar_ny": "2026-11-16 09:05"
   },
   "ISRG": {
    "group": "robotics_misc",
    "prev_close": 443.56,
    "prev_close_date": "2026-11-13",
-   "pm_last": 445.72,
-   "pm_gap_pct": 0.49,
-   "pm_hi": 446.02,
+   "pm_last": 445.52,
+   "pm_gap_pct": 0.44,
+   "pm_hi": 446.37,
    "pm_lo": 443.34,
-   "pm_bars": 5,
-   "pm_last_bar_ny": "2026-11-16 07:00"
+   "pm_bars": 11,
+   "pm_last_bar_ny": "2026-11-16 09:20"
   },
   "AMBA": {
    "group": "robotics_misc",
-   "prev_close": 60.05,
+   "prev_close": 60.08,
    "prev_close_date": "2026-11-13",
-   "pm_last": 58.39,
-   "pm_gap_pct": -2.76,
+   "pm_last": 58.18,
+   "pm_gap_pct": -3.17,
    "pm_hi": 58.91,
-   "pm_lo": 58.0,
-   "pm_bars": 5,
-   "pm_last_bar_ny": "2026-11-16 07:10"
+   "pm_lo": 57.6,
+   "pm_bars": 7,
+   "pm_last_bar_ny": "2026-11-16 09:00"
   },
   "TSLA": {
    "group": "robotics_misc",
    "prev_close": 390.14,
    "prev_close_date": "2026-11-13",
-   "pm_last": 385.75,
-   "pm_gap_pct": -1.13,
+   "pm_last": 387.11,
+   "pm_gap_pct": -0.78,
    "pm_hi": 388.7,
    "pm_lo": 383.51,
-   "pm_bars": 46,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 66,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   },
   "V": {
    "group": "quality_lowai",
    "prev_close": 425.85,
    "prev_close_date": "2026-11-13",
-   "pm_last": 429.2,
-   "pm_gap_pct": 0.79,
+   "pm_last": 428.8,
+   "pm_gap_pct": 0.69,
    "pm_hi": 429.61,
-   "pm_lo": 426.12,
-   "pm_bars": 13,
-   "pm_last_bar_ny": "2026-11-16 07:00"
+   "pm_lo": 425.76,
+   "pm_bars": 20,
+   "pm_last_bar_ny": "2026-11-16 09:05"
   },
   "LLY": {
    "group": "quality_lowai",
    "prev_close": 1444.61,
    "prev_close_date": "2026-11-13",
-   "pm_last": 1452.0,
-   "pm_gap_pct": 0.51,
+   "pm_last": 1455.0,
+   "pm_gap_pct": 0.72,
    "pm_hi": 1459.98,
    "pm_lo": 1443.45,
-   "pm_bars": 35,
-   "pm_last_bar_ny": "2026-11-16 07:45"
+   "pm_bars": 52,
+   "pm_last_bar_ny": "2026-11-16 09:10"
   },
   "CME": {
    "group": "quality_lowai",
    "prev_close": 318.04,
    "prev_close_date": "2026-11-13",
-   "pm_last": null,
-   "pm_gap_pct": null,
-   "pm_bars": 0
+   "pm_last": 318.01,
+   "pm_gap_pct": -0.01,
+   "pm_hi": 324.99,
+   "pm_lo": 311.39,
+   "pm_bars": 5,
+   "pm_last_bar_ny": "2026-11-16 09:25"
   }
  }
 }

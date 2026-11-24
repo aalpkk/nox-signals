@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_utc": "2026-11-24T00:24:53",
+  "generated_utc": "2026-11-24T02:26:03",
   "session_state_ny": "post_close",
   "symbols_ok": 48,
   "errors": {},
@@ -23,7 +23,7 @@
    "hi252": 243.37,
    "off_hi252_pct": -32.18,
    "atr14": 15.62,
-   "vol_ratio20": 2.42,
+   "vol_ratio20": 2.43,
    "last_bar_date": "2026-11-23",
    "source": "ext",
    "tags": [
@@ -155,7 +155,7 @@
    "hi252": 294.3,
    "off_hi252_pct": -70.2,
    "atr14": 13.95,
-   "vol_ratio20": 1.02,
+   "vol_ratio20": 1.03,
    "last_bar_date": "2026-11-23",
    "source": "ext",
    "tags": [
@@ -375,7 +375,7 @@
    "hi252": 329.88,
    "off_hi252_pct": -56.12,
    "atr14": 16.28,
-   "vol_ratio20": 1.08,
+   "vol_ratio20": 1.09,
    "last_bar_date": "2026-11-23",
    "source": "ext",
    "tags": [

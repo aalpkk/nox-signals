@@ -1,4 +1,4 @@
-# NOX US tarama — 2026-11-24T02:26:03Z (48 sembol, NY seans: post_close)
+# NOX US tarama — 2026-11-24T04:50:05Z (48 sembol, NY seans: post_close)
 
 
 ## BOLGEDE

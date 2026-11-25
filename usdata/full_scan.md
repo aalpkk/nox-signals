@@ -1,5 +1,5 @@
-# NOX US FULL SCAN — 2026-11-25 22:05Z
-Taranan: 2087 likit sembol (fiyat>$3.0, $hacim>20M)
+# NOX US FULL SCAN — 2026-11-25 23:48Z
+Taranan: 2088 likit sembol (fiyat>$3.0, $hacim>20M)
 
 ## EN COK YUKSELENLER
 
@@ -59,7 +59,7 @@ Taranan: 2087 likit sembol (fiyat>$3.0, $hacim>20M)
 | **DDOG** | 158.25 | -4.31 | -5.3 | -43.16 | -14.8% | -47.4 | 1.09 | 981 | - |
 | **EROC** | 5.6 | -4.27 | -23.81 | -37.78 | -25.9% | -72.9 | 1.23 | 23 | - |
 | **J** | 145.49 | -4.27 | -7.47 | -3.59 | -6.4% | -10.2 | 1.98 | 152 | - |
-| **MBLY** | 4.49 | -4.26 | -13.82 | -36.4 | -16.5% | -60.1 | 1.67 | 48 | - |
+| **PURR** | 7.41 | -4.26 | -6.79 | -25.68 | -16.9% | -49.8 | 0.78 | 169 | - |
 
 ## SINDIRME (bolge+onay adayi)
 

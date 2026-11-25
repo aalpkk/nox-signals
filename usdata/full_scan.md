@@ -1,4 +1,4 @@
-# NOX US FULL SCAN — 2026-11-24 22:50Z
+# NOX US FULL SCAN — 2026-11-25 00:03Z
 Taranan: 2086 likit sembol (fiyat>$3.0, $hacim>20M)
 
 ## EN COK YUKSELENLER

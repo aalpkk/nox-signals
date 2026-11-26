@@ -1,6 +1,4 @@
-# NOX US tarama — 2026-11-26T20:17:47Z (48 sembol, NY seans: in_session)
-
-> Seans içi koşu: son günlük bar KISMİ — 1g% ve HacimX gün sonu değildir.
+# NOX US tarama — 2026-11-26T21:57:39Z (48 sembol, NY seans: post_close)
 
 
 ## BOLGEDE

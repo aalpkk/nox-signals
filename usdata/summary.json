@@ -1,6 +1,6 @@
 {
  "meta": {
-  "generated_utc": "2026-11-27T21:40:24",
+  "generated_utc": "2026-11-27T23:37:07",
   "session_state_ny": "post_close",
   "symbols_ok": 48,
   "errors": {},
@@ -155,7 +155,7 @@
    "hi252": 294.3,
    "off_hi252_pct": -71.0,
    "atr14": 12.46,
-   "vol_ratio20": 0.83,
+   "vol_ratio20": 0.84,
    "last_bar_date": "2026-11-27",
    "source": "ext",
    "tags": [
@@ -815,7 +815,7 @@
    "hi252": 133.86,
    "off_hi252_pct": -79.94,
    "atr14": 3.49,
-   "vol_ratio20": 0.61,
+   "vol_ratio20": 0.62,
    "last_bar_date": "2026-11-27",
    "source": "ext",
    "tags": [

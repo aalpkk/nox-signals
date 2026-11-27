@@ -1,8 +1,54 @@
-# NOX US PREMARKET — 2026-11-27 07:50 ET (0/48 sembolde islem)
+# NOX US PREMARKET — 2026-11-27 16:40 ET (48/48 sembolde islem)
 
-Gap referansi: onceki seans (?) kapanisi. |gap| >= 2.0% isaretli. Yahoo premarket hacim vermez.
+Gap referansi: onceki seans (2026-11-25) kapanisi. |gap| >= 2.0% isaretli. Yahoo premarket hacim vermez.
 
 | Sem | Grup | Onceki kapanis | PM son | GAP% | PM aralik | Son bar (ET) | Bayrak |
 |---|---|---|---|---|---|---|---|
-
-Premarket islem yok: NVDA, MU, SPY, QQQ, SOXX, GLD, SNDK, WDC, AMAT, LRCX, KLAC, ASML, AMD, AVGO, TSM, INTC, MRVL, LITE, COHR, AAOI, GLW, CIEN, CRWV, NBIS, IREN, APLD, CORZ, WULF, SMCI, VRT, GEV, CEG, VST, OKLO, RKLB, SPCX, ASTS, LUNR, MSI, RTX, NOC, LMT, ISRG, AMBA, TSLA, V, LLY, CME
+| **AAOI** | optics | 36.97 | 40.71 | 10.12 | 39.7-41.0 | 09:25 | GAP_UP |
+| **SNDK** | memory | 73.51 | 79.9 | 8.69 | 78.88-82.5 | 09:25 | GAP_UP |
+| **LITE** | optics | 476.08 | 517.09 | 8.61 | 508.68-525.99 | 09:25 | GAP_UP |
+| **COHR** | optics | 196.19 | 210.95 | 7.52 | 208.89-216.76 | 09:10 | GAP_UP |
+| **LUNR** | space | 9.14 | 9.8 | 7.28 | 9.6-9.99 | 09:25 | GAP_UP |
+| **MRVL** | gpu_logic | 130.9 | 139.6 | 6.65 | 137.8-143.27 | 09:25 | GAP_UP |
+| **IREN** | neocloud_dc | 12.85 | 13.65 | 6.28 | 13.63-14.23 | 09:25 | GAP_UP |
+| **APLD** | neocloud_dc | 12.29 | 13.05 | 6.18 | 12.99-13.48 | 09:25 | GAP_UP |
+| **NBIS** | neocloud_dc | 84.97 | 89.99 | 5.91 | 89.88-93.85 | 09:25 | GAP_UP |
+| **CIEN** | optics | 242.77 | 256.04 | 5.46 | 250.0-260.87 | 09:10 | GAP_UP |
+| **WULF** | neocloud_dc | 10.02 | 10.56 | 5.39 | 10.49-10.85 | 09:25 | GAP_UP |
+| **RKLB** | space | 47.01 | 49.51 | 5.31 | 49.09-50.9 | 09:25 | GAP_UP |
+| **GLW** | optics | 100.2 | 105.34 | 5.13 | 104.5-107.05 | 09:10 | GAP_UP |
+| **LRCX** | semicap | 184.93 | 194.23 | 5.03 | 193.6-199.42 | 09:25 | GAP_UP |
+| **VRT** | power | 173.39 | 182.0 | 4.97 | 180.8-185.66 | 09:10 | GAP_UP |
+| **OKLO** | power | 19.5 | 20.45 | 4.87 | 20.19-20.79 | 09:10 | GAP_UP |
+| **WDC** | memory | 272.23 | 285.35 | 4.82 | 285.0-293.23 | 09:25 | GAP_UP |
+| **AMAT** | semicap | 310.61 | 324.25 | 4.39 | 323.1-332.46 | 09:25 | GAP_UP |
+| **MU** | core_positions | 604.16 | 630.25 | 4.32 | 599.75-650.4 | 09:25 | GAP_UP |
+| **INTC** | gpu_logic | 54.44 | 56.5 | 3.78 | 56.35-57.71 | 09:25 | GAP_UP |
+| **TSM** | gpu_logic | 342.31 | 354.86 | 3.67 | 349.98-357.9 | 09:10 | GAP_UP |
+| **SMCI** | neocloud_dc | 23.31 | 24.13 | 3.54 | 24.02-24.73 | 09:25 | GAP_UP |
+| **KLAC** | semicap | 134.08 | 138.74 | 3.48 | 138.74-143.0 | 09:25 | GAP_UP |
+| **SOXX** | core_positions | 127.96 | 132.2 | 3.31 | 132.01-135.76 | 09:25 | GAP_UP |
+| **GEV** | power | 714.75 | 738.25 | 3.29 | 736.39-750.0 | 09:10 | GAP_UP |
+| **AMD** | gpu_logic | 406.83 | 419.79 | 3.18 | 419.54-435.54 | 09:25 | GAP_UP |
+| **SPCX** | space | 127.32 | 131.2 | 3.05 | 130.12-134.07 | 09:25 | GAP_UP |
+| **CRWV** | neocloud_dc | 42.54 | 43.82 | 3.01 | 43.82-46.01 | 09:25 | GAP_UP |
+| **TSLA** | robotics_misc | 380.15 | 391.4 | 2.96 | 385.09-391.56 | 09:25 | GAP_UP |
+| **CORZ** | neocloud_dc | 10.81 | 11.1 | 2.68 | 11.09-11.59 | 09:25 | GAP_UP |
+| **VST** | power | 121.32 | 124.5 | 2.62 | 124.0-126.5 | 09:10 | GAP_UP |
+| **CEG** | power | 235.25 | 240.0 | 2.02 | 240.0-243.05 | 09:25 | GAP_UP |
+| **AVGO** | gpu_logic | 300.49 | 306.39 | 1.96 | 300.11-316.0 | 09:25 |  |
+| **QQQ** | core_positions | 633.81 | 645.67 | 1.87 | 637.67-652.6 | 09:25 |  |
+| **NVDA** | core_positions | 149.29 | 151.9 | 1.75 | 151.2-156.98 | 09:25 |  |
+| **ASTS** | space | 26.0 | 26.45 | 1.71 | 26.12-27.96 | 09:25 |  |
+| **GLD** | core_positions | 327.48 | 332.9 | 1.66 | 332.9-337.57 | 09:10 |  |
+| **ASML** | semicap | 1303.1 | 1324.5 | 1.64 | 1323.62-1367.2 | 09:25 |  |
+| **SPY** | core_positions | 716.76 | 727.41 | 1.49 | 726.77-731.49 | 09:10 |  |
+| **RTX** | defense | 196.21 | 198.5 | 1.17 | 195.25-198.5 | 09:10 |  |
+| **ISRG** | robotics_misc | 427.15 | 431.5 | 1.02 | 430.91-434.88 | 09:25 |  |
+| **AMBA** | robotics_misc | 35.67 | 36.02 | 0.98 | 36.02-37.33 | 09:25 |  |
+| **NOC** | defense | 556.06 | 560.86 | 0.86 | 560.86-560.86 | 08:55 |  |
+| **MSI** | defense | 540.69 | 544.98 | 0.79 | 543.51-544.98 | 08:55 |  |
+| **CME** | quality_lowai | 311.54 | 314.0 | 0.79 | 311.15-314.0 | 09:25 |  |
+| **LMT** | defense | 599.42 | 603.0 | 0.6 | 598.0-603.0 | 09:10 |  |
+| **LLY** | quality_lowai | 1392.27 | 1384.54 | -0.56 | 1383.0-1402.54 | 09:10 |  |
+| **V** | quality_lowai | 424.53 | 426.33 | 0.42 | 425.45-427.32 | 09:05 |  |

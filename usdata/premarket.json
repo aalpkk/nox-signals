@@ -1,17 +1,15 @@
 {
  "meta": {
-  "generated_utc": "2026-11-26T21:58:04+00:00",
-  "ny_time": "2026-11-26 16:58",
+  "generated_utc": "2026-11-27T12:50:08+00:00",
+  "ny_time": "2026-11-27 07:50",
   "premarket_window_ny": "04:00-09:30",
-  "symbols_ok": 47,
-  "errors": {
-   "COHR": "onceki seans bari yok"
-  }
+  "symbols_ok": 48,
+  "errors": {}
  },
  "symbols": {
   "NVDA": {
    "group": "core_positions",
-   "prev_close": 149.29,
+   "prev_close": 149.27,
    "prev_close_date": "2026-11-25",
    "pm_last": null,
    "pm_gap_pct": null,
@@ -27,7 +25,7 @@
   },
   "SPY": {
    "group": "core_positions",
-   "prev_close": 716.76,
+   "prev_close": 716.71,
    "prev_close_date": "2026-11-25",
    "pm_last": null,
    "pm_gap_pct": null,
@@ -115,7 +113,7 @@
   },
   "AVGO": {
    "group": "gpu_logic",
-   "prev_close": 300.49,
+   "prev_close": 300.55,
    "prev_close_date": "2026-11-25",
    "pm_last": null,
    "pm_gap_pct": null,
@@ -131,7 +129,7 @@
   },
   "INTC": {
    "group": "gpu_logic",
-   "prev_close": 54.44,
+   "prev_close": 54.45,
    "prev_close_date": "2026-11-25",
    "pm_last": null,
    "pm_gap_pct": null,
@@ -148,6 +146,14 @@
   "LITE": {
    "group": "optics",
    "prev_close": 476.08,
+   "prev_close_date": "2026-11-25",
+   "pm_last": null,
+   "pm_gap_pct": null,
+   "pm_bars": 0
+  },
+  "COHR": {
+   "group": "optics",
+   "prev_close": 196.19,
    "prev_close_date": "2026-11-25",
    "pm_last": null,
    "pm_gap_pct": null,
@@ -307,7 +313,7 @@
   },
   "MSI": {
    "group": "defense",
-   "prev_close": 540.69,
+   "prev_close": 540.7,
    "prev_close_date": "2026-11-25",
    "pm_last": null,
    "pm_gap_pct": null,
